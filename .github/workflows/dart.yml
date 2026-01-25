@@ -1,0 +1,33 @@
+name: Dart
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Set up Dart SDK
+      - uses: dart-lang/setup-dart@v1
+
+      # Install dependencies
+      - name: Install dependencies
+        run: dart pub get
+
+      # Run tests
+      - name: Run tests
+        run: dart test
+
+      # Build the application (if needed)
+      - name: Build app
+        run: dart compile exe bin/server.dart -o bin/server.exe
+
+      # Deploy to production (optional step)
+      - name: Deploy to production
+        run: ./deploy.sh
