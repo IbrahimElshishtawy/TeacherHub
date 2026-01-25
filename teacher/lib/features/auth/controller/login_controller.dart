@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import '../view/login/admin_login_screen.dart';
-import '../view/login/teacher_login_screen.dart';
-import '../view/login/student_login_screen.dart';
-import '../view/login/parent_login_screen.dart';
+import '../view/login/admin_login/admin_login_screen.dart';
+import '../view/login/teacher_login/teacher_login_screen.dart';
+import '../view/login/student_login/student_login_screen.dart';
+import '../view/login/parent_login/parent_login_screen.dart';
 
 class LoginController extends GetxController {
   // Define navigation functions for each user type
