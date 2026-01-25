@@ -50,17 +50,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           // Dots indicator for the pages
-          DotsIndicator(
-            currentPage: _currentPage,
-            onSkip: () {
-              Navigator.pushNamed(context, '/user_type');
-            },
-          ),
+          DotsIndicator(currentPage: _currentPage),
           SizedBox(height: 20),
           // Next button
           NextButton(
             currentPage: _currentPage,
             pageController: _pageController,
+            onSkip: () {
+              Navigator.pushReplacementNamed(context, '/user_type');
+            },
           ),
           SizedBox(height: 50),
         ],
