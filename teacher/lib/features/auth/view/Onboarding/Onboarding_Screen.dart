@@ -1,9 +1,9 @@
-// ignore_for_file: file_names, library_private_types_in_public_api
+// ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'widget/onboarding_page.dart';
-import 'widget/dots_indicator.dart';
-import 'widget/next_button.dart';
+import 'package:teacher/features/auth/view/Onboarding/widget/dots_indicator.dart';
+import 'package:teacher/features/auth/view/Onboarding/widget/next_button.dart';
+import 'package:teacher/features/auth/view/Onboarding/widget/onboarding_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -21,43 +21,48 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: Column(
         children: [
-          Align(
-            alignment: Alignment.topCenter, // جعل البداية من أعلى
-            child: Container(
-              padding: EdgeInsets.only(top: 50), // إضافة المسافة من الأعلى
-              child: PageView(
-                controller: _pageController,
-                onPageChanged: (int page) {
-                  setState(() {
-                    _currentPage = page;
-                  });
-                },
-                children: [
-                  OnboardingPage(
-                    lottieAsset: 'assets/lottie/Welcome.json',
-                    text:
-                        'مرحباً! اكتشف طريقة جديدة لتعلم الدروس بسهولة وبشكل منظم.',
-                  ),
-                  OnboardingPage(
-                    lottieAsset: 'assets/lottie/Student transparent.json',
-                    text:
-                        'جميع الدروس والملاحظات الآن في مكان واحد لسهولة الوصول.',
-                  ),
-                  OnboardingPage(
-                    lottieAsset: 'assets/lottie/sign in.json',
-                    text:
-                        'ابدأ رحلتك التعليمية الآن واستمتع بتجربة تعليمية مميزة.',
-                  ),
-                ],
-              ),
+          // PageView for onboarding pages
+          Expanded(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (int page) {
+                setState(() {
+                  _currentPage = page;
+                });
+              },
+              children: [
+                OnboardingPage(
+                  lottieAsset: 'assets/lottie/Welcome.json',
+                  text:
+                      'مرحباً! اكتشف طريقة جديدة لتعلم الدروس بسهولة وبشكل منظم.',
+                ),
+                OnboardingPage(
+                  lottieAsset: 'assets/lottie/Student transparent.json',
+                  text:
+                      'جميع الدروس والملاحظات الآن في مكان واحد لسهولة الوصول.',
+                ),
+                OnboardingPage(
+                  lottieAsset: 'assets/lottie/sign in.json',
+                  text:
+                      'ابدأ رحلتك التعليمية الآن واستمتع بتجربة تعليمية مميزة.',
+                ),
+              ],
             ),
           ),
-          DotsIndicator(currentPage: _currentPage),
+          // Dots indicator for the pages
+          DotsIndicator(
+            currentPage: _currentPage,
+            onSkip: () {
+              Navigator.pushNamed(context, '/user_type');
+            },
+          ),
           SizedBox(height: 20),
+          // Next button
           NextButton(
             currentPage: _currentPage,
             pageController: _pageController,
           ),
+          SizedBox(height: 50),
         ],
       ),
     );
