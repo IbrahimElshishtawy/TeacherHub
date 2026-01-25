@@ -35,6 +35,7 @@ class OnboardingPage extends StatelessWidget {
             maxLines: 3,
           ),
         ),
+
         SizedBox(height: 40),
       ],
     );
