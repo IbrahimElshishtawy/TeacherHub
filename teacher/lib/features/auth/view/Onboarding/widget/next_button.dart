@@ -1,4 +1,3 @@
-// TODO Implement this library.
 import 'package:flutter/material.dart';
 import 'package:teacher/features/auth/view/user_type/User_Type_Screen.dart';
 
@@ -26,7 +25,7 @@ class NextButton extends StatelessWidget {
                     UserTypeScreen(),
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
-                      const begin = Offset(1.0, 0.0);
+                      const begin = Offset(1.0, 0.0); // تحرك من اليمين لليسار
                       const end = Offset.zero;
                       const curve = Curves.easeInOut;
 
