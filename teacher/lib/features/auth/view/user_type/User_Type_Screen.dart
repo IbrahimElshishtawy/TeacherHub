@@ -1,7 +1,5 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'widgets/user_chosea_typelogin.dart';
 
 class UserTypeScreen extends StatelessWidget {
   const UserTypeScreen({super.key});
@@ -9,73 +7,53 @@ class UserTypeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("من سيستخدم التطبيق؟")),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Spacer(flex: 3),
             Text(
-              'ساعدنا في تخصيص تجربتك داخل التطبيق',
+              "من سيستخدم التطبيق؟",
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'يساعدنا هذا في تخصيص تجربتك داخل التطبيق',
               style: TextStyle(fontSize: 18),
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
-            _buildUserTypeTile(
-              context,
+            // Use UserChoseaTypelogin widget for each user type
+            UserChoseaTypelogin(
               title: 'Admin',
               lottieAsset: 'assets/lottie/admin.json',
               onTap: () => Navigator.pushNamed(context, '/admin_dashboard'),
+              subtitle: 'إدارة النظام والمستخدمين',
             ),
-            _buildUserTypeTile(
-              context,
+            UserChoseaTypelogin(
               title: 'Teacher',
               lottieAsset: 'assets/lottie/Teacher.json',
               onTap: () => Navigator.pushNamed(context, '/teacher_dashboard'),
+              subtitle: 'إنشاء وإدارة الدروس',
             ),
-            _buildUserTypeTile(
-              context,
+            UserChoseaTypelogin(
               title: 'Student',
               lottieAsset: 'assets/lottie/Student transparent.json',
               onTap: () => Navigator.pushNamed(context, '/student_dashboard'),
+              subtitle: 'التعلّم ومتابعة الدروس',
             ),
-            _buildUserTypeTile(
-              context,
+            UserChoseaTypelogin(
               title: 'Parent',
               lottieAsset: 'assets/lottie/present.json',
               onTap: () => Navigator.pushNamed(context, '/parent_dashboard'),
+              subtitle: 'تابع تعلم أبنك ومتابعة دروسه بسهولة',
             ),
+            Spacer(flex: 5),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUserTypeTile(
-    BuildContext context, {
-    required String title,
-    required String lottieAsset,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        elevation: 4,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        margin: EdgeInsets.symmetric(vertical: 10),
-        child: ListTile(
-          contentPadding: EdgeInsets.all(16),
-          leading: Lottie.asset(
-            lottieAsset,
-            width: 50,
-            height: 50,
-            fit: BoxFit.fill,
-          ),
-          title: Text(
-            title,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text('إدارة النظام داخل التطبيق'),
         ),
       ),
     );
