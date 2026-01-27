@@ -1,24 +1,33 @@
 import 'package:get/get.dart';
-import '../view/login/admin_login/admin_login_screen.dart';
-import '../view/login/teacher_login/teacher_login_screen.dart';
-import '../view/login/student_login/student_login_screen.dart';
-import '../view/login/parent_login/parent_login_screen.dart';
 
 class LoginController extends GetxController {
-  // Define navigation functions for each user type
-  void navigateToAdminLogin() {
-    Get.to(() => AdminLoginScreen());
+  RxBool isLoading = false.obs;
+  RxBool isAuthenticated = false.obs;
+  RxString userEmail = ''.obs;
+  RxString userPassword = ''.obs;
+  RxBool showPassword = false.obs;
+  RxBool rememberMe = false.obs;
+  void loginAsAdmin(String email, String password) async {
+    isLoading.value = true;
+    await Future.delayed(Duration(seconds: 2));
+
+    if (email == "admin@example.com" && password == "admin123") {
+      isAuthenticated.value = true;
+      userEmail.value = email;
+      Get.offAllNamed('/admin_dashboard');
+    } else {
+      isAuthenticated.value = false;
+      Get.snackbar("Error", "Invalid credentials");
+    }
+
+    isLoading.value = false;
   }
 
-  void navigateToTeacherLogin() {
-    Get.to(() => TeacherLoginScreen());
+  void togglePasswordVisibility() {
+    showPassword.value = !showPassword.value;
   }
 
-  void navigateToStudentLogin() {
-    Get.to(() => StudentLoginScreen());
-  }
-
-  void navigateToParentLogin() {
-    Get.to(() => ParentLoginScreen());
+  void toggleRememberMe(bool? value) {
+    rememberMe.value = value ?? false;
   }
 }
