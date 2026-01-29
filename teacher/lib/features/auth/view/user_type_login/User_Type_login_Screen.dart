@@ -12,6 +12,7 @@ class UserTypeScreen extends StatefulWidget {
 
 class _UserTypeScreenState extends State<UserTypeScreen> {
   int selectedIndex = -1;
+  String selectedRoute = '';
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +48,10 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
               onTap: () {
                 setState(() {
                   selectedIndex = 0;
+                  selectedRoute = '/admin_login';
                 });
-                Navigator.pushNamed(context, '/admin_login');
               },
             ),
-
-            const SizedBox(height: 10),
 
             /// ===== Teacher =====
             UserChoseaTypelogin(
@@ -63,12 +62,10 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
               onTap: () {
                 setState(() {
                   selectedIndex = 1;
+                  selectedRoute = '/teacher_login';
                 });
-                Navigator.pushNamed(context, '/teacher_login');
               },
             ),
-
-            const SizedBox(height: 10),
 
             /// ===== Student =====
             UserChoseaTypelogin(
@@ -79,12 +76,10 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
               onTap: () {
                 setState(() {
                   selectedIndex = 2;
+                  selectedRoute = '/student_login';
                 });
-                Navigator.pushNamed(context, '/student_login');
               },
             ),
-
-            const SizedBox(height: 10),
 
             /// ===== Parent =====
             UserChoseaTypelogin(
@@ -95,12 +90,41 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
               onTap: () {
                 setState(() {
                   selectedIndex = 3;
+                  selectedRoute = '/parent_login';
                 });
-                Navigator.pushNamed(context, '/parent_login');
               },
             ),
 
-            const Spacer(flex: 3),
+            const Spacer(),
+
+            /// ===== زر الدخول (يظهر بعد الاختيار فقط) =====
+            if (selectedIndex != -1)
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    elevation: 6,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, selectedRoute);
+                  },
+                  child: const Text(
+                    "متابعة",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+
+            const SizedBox(height: 20),
           ],
         ),
       ),
