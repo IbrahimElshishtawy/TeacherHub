@@ -1,7 +1,16 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class TextBodyLogin extends StatelessWidget {
-  const TextBodyLogin({super.key});
+  final String firstText;
+  final String secondText;
+
+  const TextBodyLogin({
+    super.key,
+    required this.firstText,
+    required this.secondText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -9,15 +18,14 @@ class TextBodyLogin extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
-          // النص الأول
           Padding(
-            padding: const EdgeInsetsGeometry.only(top: 0, left: 100, right: 0),
+            padding: const EdgeInsetsGeometry.only(top: 0, left: 130, right: 0),
             child: Column(
               children: [
-                const Text(
-                  "استخدم البريد الإلكتروني وكلمة المرور \n المرسل إليك من المطور",
-                  style: TextStyle(
-                    fontSize: 16,
+                Text(
+                  firstText,
+                  style: const TextStyle(
+                    fontSize: 14,
                     color: Colors.grey,
                     fontWeight: FontWeight.w500,
                     height: 1.5,
@@ -25,13 +33,12 @@ class TextBodyLogin extends StatelessWidget {
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
                 ),
-                SizedBox(height: 8),
-                // النص الثاني
-                const Text(
-                  "يرجى ملء البيانات لتسجيل الدخول :",
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w600,
+                const SizedBox(height: 8),
+                Text(
+                  secondText,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w900,
                     height: 1.5,
                   ),
                   textDirection: TextDirection.rtl,
