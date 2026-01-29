@@ -55,7 +55,7 @@ class UserTypeScreen extends StatelessWidget {
             SizedBox(height: 10),
             UserChoseaTypelogin(
               title: 'Parent',
-              lottieAsset: 'assets/lottie/present.json',
+              lottieAsset: 'assets/lottie/Book loading.json',
               onTap: () => Navigator.pushNamed(context, '/parent_login'),
               subtitle: 'تابع تعلم أبنك ومتابعة دروسه بسهولة',
             ),
