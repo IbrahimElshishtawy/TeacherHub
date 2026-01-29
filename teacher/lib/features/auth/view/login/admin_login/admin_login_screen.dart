@@ -1,111 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/auth/controller/login_controller.dart';
+import 'package:teacher/features/auth/view/login/admin_login/widget/AppBar_Tap.dart';
+import 'package:teacher/features/auth/view/login/admin_login/widget/Text_body_login.dart';
+import 'package:teacher/features/auth/view/login/admin_login/widget/header_login_screan.dart';
+import 'package:teacher/features/auth/view/login/admin_login/widget/input_login.dart';
 
 class AdminLoginScreen extends StatelessWidget {
   const AdminLoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final LoginController loginController = Get.put(
-      LoginController(),
-    ); // الحصول على الـ Controller من GetX
+    final LoginController loginController = Get.put(LoginController());
 
     return Scaffold(
-      appBar: AppBar(title: Text("تسجيل دخول الأدمن")),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      appBar: AppbarTap(),
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // صورة شعار الأدمن
-            Icon(Icons.lock_outline, size: 100, color: Colors.blue),
-            SizedBox(height: 20),
-            Text(
-              "إدارة النظام والمستخدمين",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 20),
+            /// ===== HEADER =====
+            HeaderLoginScrean(),
 
-            // حقل البريد الإلكتروني
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'اسم المستخدم',
-                prefixIcon: Icon(Icons.email),
-              ),
-              onChanged: (value) {
-                loginController.userEmail.value = value;
-              },
-            ),
-            SizedBox(height: 20),
-            // حقل كلمة المرور
-            Obx(
-              () => TextField(
-                obscureText: !loginController
-                    .showPassword
-                    .value, // إخفاء/إظهار كلمة المرور
-                decoration: InputDecoration(
-                  labelText: 'كلمة المرور',
-                  prefixIcon: Icon(Icons.lock),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      loginController.showPassword.value
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                    ),
-                    onPressed: () {
-                      loginController.togglePasswordVisibility();
-                    },
-                  ),
-                ),
-                onChanged: (value) {
-                  loginController.userPassword.value = value;
-                },
-              ),
-            ),
-            SizedBox(height: 20),
+            /// ===== BODY =====
+            TextBodyLogin(),
 
-            // زر تسجيل الدخول
-            Obx(() {
-              return ElevatedButton(
-                onPressed: loginController.isLoading.value
-                    ? null
-                    : () {
-                        loginController.loginAsAdmin(
-                          loginController.userEmail.value,
-                          loginController.userPassword.value,
-                        );
-                      },
-                child: loginController.isLoading.value
-                    ? CircularProgressIndicator()
-                    : Text("تسجيل الدخول"),
-              );
-            }),
-
-            // رابط نسيان كلمة المرور
-            TextButton(
-              onPressed: () {
-                // فتح شاشة نسيان كلمة المرور
-                print("Forgot Password clicked");
-              },
-              child: Text("نسيت كلمة المرور؟"),
-            ),
+            // ===== login input ====
+            InputLogin(),
 
             // تذكرني
             Row(
               children: [
-                Obx(() {
-                  return Checkbox(
+                TextButton(
+                  onPressed: () {},
+                  child: const Text("نسيت كلمة المرور؟"),
+                ),
+                Obx(
+                  () => Checkbox(
                     value: loginController.rememberMe.value,
-                    onChanged: (value) {
-                      loginController.toggleRememberMe(value);
-                    },
-                  );
-                }),
-                Text("تذكرني"),
+                    onChanged: loginController.toggleRememberMe,
+                  ),
+                ),
+                const Text("تذكرني"),
               ],
             ),
+            const SizedBox(height: 25), // المسافة بين الحقول
+            // زر تسجيل الدخول
+            Obx(
+              () => SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton(
+                  onPressed: loginController.isLoading.value
+                      ? null
+                      : () {
+                          loginController.loginAsAdmin(
+                            loginController.userEmail.value,
+                            loginController.userPassword.value,
+                          );
+                        },
+                  child: loginController.isLoading.value
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : const Text("تسجيل الدخول"),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10), // المسافة بين الأزرار
+            // نسيان كلمة المرور
           ],
         ),
       ),
