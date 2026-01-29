@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/auth/view/user_type/User_Type_Screen.dart';
+import 'package:teacher/features/auth/view/user_type_login/User_Type_login_Screen.dart';
 
 class NextButton extends StatelessWidget {
   final int currentPage;

@@ -4,7 +4,7 @@ import 'package:teacher/features/auth/view/login/parent_login/parent_login_scree
 import 'package:teacher/features/auth/view/login/student_login/student_login_screen.dart';
 import 'package:teacher/features/auth/view/login/teacher_login/teacher_login_screen.dart';
 import 'features/auth/view/Onboarding/Onboarding_Screen.dart';
-import 'features/auth/view/user_type/User_Type_Screen.dart';
+import 'features/auth/view/user_type_login/User_Type_login_Screen.dart';
 
 void main() {
   runApp(MyApp());
