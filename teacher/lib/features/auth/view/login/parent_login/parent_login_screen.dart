@@ -39,7 +39,7 @@ class ParentLoginScreen extends StatelessWidget {
               passwordLabel: 'أدخل كلمة المرور الخاصه بك',
             ),
             // ===== login forget password ====
-            ActionForgetBassword(),
+            ActionForgetBassword(forget: 'parent'),
             // ===== login btn =====
             LoginBtn(),
           ],
