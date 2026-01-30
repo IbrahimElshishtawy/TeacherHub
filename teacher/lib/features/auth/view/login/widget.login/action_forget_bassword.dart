@@ -5,7 +5,8 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:teacher/features/auth/controller/login_controller.dart';
 
 class ActionForgetBassword extends StatelessWidget {
-  const ActionForgetBassword({super.key});
+  final String forget;
+  const ActionForgetBassword({super.key, required this.forget});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class ActionForgetBassword extends StatelessWidget {
             /// ===== نسيت كلمة المرور =====
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/forget_password');
+                Navigator.pushNamed(context, '/forget_password_$forget');
               },
               child: const Text(
                 "نسيت كلمة المرور؟",
