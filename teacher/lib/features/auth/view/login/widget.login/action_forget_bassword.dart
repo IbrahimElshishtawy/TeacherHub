@@ -18,8 +18,7 @@ class ActionForgetBassword extends StatelessWidget {
             /// ===== نسيت كلمة المرور =====
             TextButton(
               onPressed: () {
-                //     Get.to(() => const ForgotPasswordScreen());
-                // أو Navigator لو مش مستخدم GetX
+                Navigator.pushNamed(context, '/forget_password');
               },
               child: const Text(
                 "نسيت كلمة المرور؟",

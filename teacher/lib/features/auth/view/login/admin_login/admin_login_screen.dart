@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/auth/view/login/widget/AppBar_Tap.dart';
-import 'package:teacher/features/auth/view/login/widget/Text_body_login.dart';
-import 'package:teacher/features/auth/view/login/widget/action_forget_bassword.dart';
-import 'package:teacher/features/auth/view/login/widget/header_login_screan.dart';
-import 'package:teacher/features/auth/view/login/widget/input_login.dart';
-import 'package:teacher/features/auth/view/login/widget/login_btn.dart';
+import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
+import 'package:teacher/features/auth/view/login/widget.login/Text_body_login.dart';
+import 'package:teacher/features/auth/view/login/widget.login/action_forget_bassword.dart';
+import 'package:teacher/features/auth/view/login/widget.login/header_login_screan.dart';
+import 'package:teacher/features/auth/view/login/widget.login/input_login.dart';
+import 'package:teacher/features/auth/view/login/widget.login/login_btn.dart';
 
 class AdminLoginScreen extends StatelessWidget {
   const AdminLoginScreen({super.key});

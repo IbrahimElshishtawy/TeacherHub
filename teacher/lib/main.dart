@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:teacher/features/auth/view/login/admin_login/admin_login_screen.dart';
+import 'package:teacher/features/auth/view/login/admin_login/forget_password_admin.dart';
 import 'package:teacher/features/auth/view/login/parent_login/parent_login_screen.dart';
 import 'package:teacher/features/auth/view/login/student_login/student_login_screen.dart';
 import 'package:teacher/features/auth/view/login/teacher_login/teacher_login_screen.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/teacher_login': (context) => TeacherLoginScreen(),
         '/student_login': (context) => StudentLoginScreen(),
         '/parent_login': (context) => ParentLoginScreen(),
+        '/forget_password': (context) => ForgotPasswordScreen(),
       },
       home: OnboardingScreen(),
     );
