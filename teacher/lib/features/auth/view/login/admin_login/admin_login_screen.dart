@@ -39,7 +39,7 @@ class AdminLoginScreen extends StatelessWidget {
               passwordLabel: 'أدخل كلمة المرور الخاصه بك',
             ),
             // ===== login forget password ====
-            ActionForgetBassword(),
+            ActionForgetBassword(forget: 'admin'),
             // ===== login btn =====
             LoginBtn(),
           ],
