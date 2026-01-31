@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart'; // استيراد GetX
+import 'package:teacher/features/auth/view/login/admin_login/Error_401_Page.dart';
+import 'package:teacher/features/auth/view/login/admin_login/Error_403_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/admin_login_screen.dart';
 import 'package:teacher/features/auth/view/login/admin_login/forget_password_admin.dart';
 import 'package:teacher/features/auth/view/login/parent_login/parent_login_screen.dart';
@@ -18,7 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Onboarding Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       routes: {
@@ -31,6 +34,8 @@ class MyApp extends StatelessWidget {
         '/forget_password_admin': (context) => ForgotPasswordadminScreen(),
         '/forget_password_teacher': (context) => ForgetPasswordTeacher(),
         '/forget_password_student': (context) => ForgetPasswordStudent(),
+        '/error_403': (context) => Error403Page(),
+        '/error_401': (context) => Error401Page(),
       },
       home: OnboardingScreen(),
     );
