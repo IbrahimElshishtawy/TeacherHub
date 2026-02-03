@@ -15,7 +15,7 @@ class LoginController extends GetxController {
     if (email == "admin@example.com" && password == "admin123") {
       isAuthenticated.value = true;
       userEmail.value = email;
-      Get.offAllNamed('/admin_dashboard');
+      Get.toNamed("/home_admin");
     } else if (email == "admin@example.com" && password != "admin123") {
       isAuthenticated.value = false;
       Get.toNamed('/error_401');

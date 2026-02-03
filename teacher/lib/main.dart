@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart'; // استيراد GetX
+import 'package:get/get.dart';
+import 'package:teacher/features/admin/home/view/home_page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_401_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_403_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/admin_login_screen.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/forget_password_student': (context) => ForgetPasswordStudent(),
         '/error_403': (context) => Error403Page(),
         '/error_401': (context) => Error401Page(),
+        '/home_admin': (context) => HomePage(),
       },
       home: OnboardingScreen(),
     );
