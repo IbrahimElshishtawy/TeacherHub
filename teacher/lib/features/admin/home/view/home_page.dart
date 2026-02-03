@@ -1,7 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/drawer/view/widgets/admin_drawer.dart';
-import 'package:teacher/features/admin/home/view/widgets/home_app_bar.dart';
+import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/home_app_bar.dart';
 
 import '../controller/home_controller.dart';
 
@@ -22,10 +24,18 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: const Color(0xFFF6F7F9),
 
-        // AppBar كارد زي الصورة
-        appBar: HomeAppBarWidget(onMenuTap: controller.openDrawer),
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(100),
+          child: GetBuilder<HomeController>(
+            id: 'drawer',
+            builder: (c) {
+              final t = c.drawerAnim.value.clamp(0.0, 1.0);
 
-        // Body + Drawer Animation
+              return HomeAppBarWidget(onMenuTap: c.openDrawer, hideT: t);
+            },
+          ),
+        ),
+
         body: GetBuilder<HomeController>(
           id: 'drawer',
           builder: (c) {
@@ -53,7 +63,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
 
-                // محتوى الصفحة (يتحرك/يصغر)
                 Transform.translate(
                   offset: Offset(shiftX, shiftY),
                   child: Transform.scale(
@@ -85,7 +94,18 @@ class _HomeBodyContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: const [
-          // TODO: هنا هنحط الأقسام بتاعتك بعدين
+          SizedBox(height: 12),
+          _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
+          SizedBox(height: 12),
+          _DemoCard(title: "الإجراءات السريعة (قريباً)"),
+          SizedBox(height: 12),
+          _DemoCard(title: "المدفوعات (قريباً)"),
+          SizedBox(height: 12),
+          _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
+          SizedBox(height: 12),
+          _DemoCard(title: "الإجراءات السريعة (قريباً)"),
+          SizedBox(height: 12),
+          _DemoCard(title: "المدفوعات (قريباً)"),
           SizedBox(height: 12),
           _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
           SizedBox(height: 12),
