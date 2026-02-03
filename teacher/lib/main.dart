@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher/features/admin/drawer/controller/admin_drawer_controller.dart';
+import 'package:teacher/features/admin/home/controller/home_controller.dart';
 import 'package:teacher/features/admin/home/view/home_page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_401_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_403_Page.dart';
@@ -14,7 +16,7 @@ import 'features/auth/view/Onboarding/Onboarding_Screen.dart';
 import 'features/auth/view/user_type_login/User_Type_login_Screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Onboarding Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
+      home: OnboardingScreen(),
       routes: {
         '/onboarding': (context) => OnboardingScreen(),
         '/user_type': (context) => UserTypeScreen(),
@@ -37,9 +40,17 @@ class MyApp extends StatelessWidget {
         '/forget_password_student': (context) => ForgetPasswordStudent(),
         '/error_403': (context) => Error403Page(),
         '/error_401': (context) => Error401Page(),
-        '/home_admin': (context) => HomePage(),
+
+        '/home_admin': (context) {
+          if (!Get.isRegistered<HomeController>()) {
+            Get.put(HomeController());
+          }
+          if (!Get.isRegistered<AdminDrawerController>()) {
+            Get.put(AdminDrawerController());
+          }
+          return HomePage();
+        },
       },
-      home: OnboardingScreen(),
     );
   }
 }
