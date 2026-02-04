@@ -31,19 +31,19 @@ class AdminDrawerItem extends StatelessWidget {
           color: selected ? Colors.white.withOpacity(0.08) : Colors.transparent,
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Icon(icon, color: iconColor, size: 22),
+            const SizedBox(width: 12),
             Text(
               title,
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.left,
               style: TextStyle(
                 color: textColor,
                 fontSize: 16.5,
                 fontWeight: selected ? FontWeight.w800 : FontWeight.w700,
               ),
             ),
-            const SizedBox(width: 12),
-            Icon(icon, color: iconColor, size: 22),
           ],
         ),
       ),
