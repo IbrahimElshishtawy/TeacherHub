@@ -23,8 +23,8 @@ class AdminDrawer extends GetView<AdminDrawerController> {
       child: SafeArea(
         child: Column(
           children: [
+            SizedBox(height: 50),
             AdminDrawerHeader(onClose: onClose),
-            const SizedBox(height: 6),
 
             Expanded(
               child: Padding(
@@ -33,9 +33,9 @@ class AdminDrawer extends GetView<AdminDrawerController> {
                   final s = controller.state.value;
 
                   return Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 20),
 
                       ...List.generate(s.mainItems.length, (i) {
                         final item = s.mainItems[i];
@@ -75,7 +75,7 @@ class AdminDrawer extends GetView<AdminDrawerController> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: const [
                               Icon(
                                 Icons.logout_rounded,
@@ -95,7 +95,7 @@ class AdminDrawer extends GetView<AdminDrawerController> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 14),
+                      const SizedBox(height: 50),
                     ],
                   );
                 }),
