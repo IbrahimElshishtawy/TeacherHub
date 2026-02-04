@@ -19,6 +19,7 @@ class ProfileAvatarButton extends StatelessWidget {
     this.localImagePath,
     this.fallbackLottieAsset = 'assets/lottie/admin.json',
     this.radius = 22,
+    String? avatarUrl,
   });
 
   @override
