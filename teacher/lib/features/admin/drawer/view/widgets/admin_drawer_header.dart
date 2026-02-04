@@ -1,10 +1,11 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/profile_avatar_button.dart';
 
 class AdminDrawerHeader extends StatelessWidget {
   final VoidCallback onClose;
-  final VoidCallback? onAvatarTap;
+  final VoidCallback? onAvatarTap; // هنا يبقى يمكن أن يكون null
   final String? avatarUrl;
 
   const AdminDrawerHeader({
@@ -20,9 +21,10 @@ class AdminDrawerHeader extends StatelessWidget {
       height: 72,
       child: Stack(
         children: [
+          // Close button on the left (تم تغييره ليكون في الأسفل)
           Positioned(
             left: 16,
-            top: 12,
+            bottom: 16, // تم تعديل الـ top إلى bottom بحيث يكون في الأسفل
             child: Material(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
@@ -37,22 +39,19 @@ class AdminDrawerHeader extends StatelessWidget {
               ),
             ),
           ),
+
+          // Avatar button on the right (تم تغييره ليكون في الأسفل)
           Positioned(
             right: 16,
-            top: 10,
+            bottom: 16, // تم تعديل الـ top إلى bottom بحيث يكون في الأسفل
             child: InkWell(
-              onTap: onAvatarTap,
+              onTap:
+                  onAvatarTap ??
+                  () {}, // إذا كان onAvatarTap null، يستدعي وظيفة فارغة
               borderRadius: BorderRadius.circular(999),
-              child: CircleAvatar(
-                radius: 22,
-                backgroundColor: Colors.white.withOpacity(0.10),
-                backgroundImage:
-                    (avatarUrl != null && avatarUrl!.trim().isNotEmpty)
-                    ? NetworkImage(avatarUrl!)
-                    : null,
-                child: (avatarUrl == null || avatarUrl!.trim().isEmpty)
-                    ? Icon(Icons.person, color: Colors.white.withOpacity(0.9))
-                    : null,
+              child: ProfileAvatarButton(
+                onTap: onAvatarTap ?? () {}, // نفس الشيء هنا إذا كان null
+                avatarUrl: avatarUrl, // تأكد من تمرير الصورة هنا لو موجودة
               ),
             ),
           ),
