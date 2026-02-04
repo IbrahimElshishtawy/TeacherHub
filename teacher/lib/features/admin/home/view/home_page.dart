@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/drawer/view/widgets/admin_drawer.dart';
@@ -42,10 +40,10 @@ class _HomePageState extends State<HomePage> {
             final t = c.drawerAnim.value; // 0..1
 
             final width = MediaQuery.of(context).size.width;
-            final shiftX = -width * 0.58 * t; // تتحرك لليسار
-            final shiftY = 14.0 * t;
-            final scale = 1.0 - (0.18 * t);
-            final radius = 24.0 * t;
+            final shiftX = -width * 0.50 * t; // تتحرك لليسار
+            final shiftY = 35.0 * t;
+            final scale = 1 - (0.2 * t);
+            final radius = 20.0 * t;
 
             return Stack(
               children: [
@@ -92,7 +90,7 @@ class _HomeBodyContent extends StatelessWidget {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
           SizedBox(height: 12),
           _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
@@ -125,7 +123,7 @@ class _DemoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 100,
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
         color: Colors.white,
