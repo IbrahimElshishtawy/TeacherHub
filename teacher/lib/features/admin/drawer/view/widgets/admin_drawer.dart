@@ -21,13 +21,14 @@ class AdminDrawer extends GetView<AdminDrawerController> {
         ),
       ),
       child: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 50),
-            AdminDrawerHeader(onClose: onClose),
+        child: SingleChildScrollView(
+          // Allow scrolling if content overflows
+          child: Column(
+            children: [
+              SizedBox(height: 50),
+              AdminDrawerHeader(onClose: onClose),
 
-            Expanded(
-              child: Padding(
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Obx(() {
                   final s = controller.state.value;
@@ -64,8 +65,9 @@ class AdminDrawer extends GetView<AdminDrawerController> {
                         );
                       }),
 
-                      const Spacer(),
-
+                      const SizedBox(
+                        height: 14,
+                      ), // Add some spacing before the logout button
                       InkWell(
                         onTap: () {
                           onClose();
@@ -100,8 +102,8 @@ class AdminDrawer extends GetView<AdminDrawerController> {
                   );
                 }),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
