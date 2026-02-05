@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/drawer/view/widgets/admin_drawer.dart';
 import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/home_app_bar.dart';
+import 'package:teacher/features/admin/home/view/widgets/management_stats_section.dart';
 
 import '../controller/home_controller.dart';
 
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
             final width = MediaQuery.of(context).size.width;
             final shiftX = -width * 0.50 * t; // تتحرك لليسار
             final shiftY = 35.0 * t;
-            final scale = 1 - (0.2 * t);
+            final scale = 1 - (0.25 * t);
             final radius = 20.0 * t;
 
             return Stack(
@@ -91,25 +92,25 @@ class _HomeBodyContent extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-          SizedBox(height: 12),
-          _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
-          SizedBox(height: 12),
-          _DemoCard(title: "الإجراءات السريعة (قريباً)"),
-          SizedBox(height: 12),
-          _DemoCard(title: "المدفوعات (قريباً)"),
-          SizedBox(height: 12),
-          _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
-          SizedBox(height: 12),
-          _DemoCard(title: "الإجراءات السريعة (قريباً)"),
-          SizedBox(height: 12),
-          _DemoCard(title: "المدفوعات (قريباً)"),
-          SizedBox(height: 12),
-          _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
-          SizedBox(height: 12),
-          _DemoCard(title: "الإجراءات السريعة (قريباً)"),
-          SizedBox(height: 12),
-          _DemoCard(title: "المدفوعات (قريباً)"),
+        children: [
+          const SizedBox(height: 12),
+          ManagementStatsSection(),
+          const SizedBox(height: 12),
+          const _DemoCard(title: "الإجراءات السريعة (قريباً)"),
+          const SizedBox(height: 12),
+          const _DemoCard(title: "المدفوعات (قريباً)"),
+          const SizedBox(height: 12),
+          const _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
+          const SizedBox(height: 12),
+          const _DemoCard(title: "الإجراءات السريعة (قريباً)"),
+          const SizedBox(height: 12),
+          const _DemoCard(title: "المدفوعات (قريباً)"),
+          const SizedBox(height: 12),
+          const _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
+          const SizedBox(height: 12),
+          const _DemoCard(title: "الإجراءات السريعة (قريباً)"),
+          const SizedBox(height: 12),
+          const _DemoCard(title: "المدفوعات (قريباً)"),
         ],
       ),
     );
