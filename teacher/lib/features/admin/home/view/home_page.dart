@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/drawer/view/widgets/admin_drawer.dart';
 import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/home_app_bar.dart';
-import 'package:teacher/features/admin/home/view/widgets/management_stats_section.dart';
+import 'package:teacher/features/admin/home/view/widgets/management_stats_section/management_stats_section.dart';
 
 import '../controller/home_controller.dart';
 
