@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class ProfileAvatarButton extends StatelessWidget {
-  final String? imageUrl;
   final String? localImagePath;
   final String fallbackLottieAsset;
   final VoidCallback onTap;
 
   final double radius;
+
+  final dynamic imageUrl;
 
   const ProfileAvatarButton({
     super.key,
