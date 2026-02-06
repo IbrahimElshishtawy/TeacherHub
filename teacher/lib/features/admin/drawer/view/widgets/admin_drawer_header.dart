@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/profile_avatar_button.dart';
+import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/widget/profile_avatar_button.dart';
 
 class AdminDrawerHeader extends StatelessWidget {
   final VoidCallback onClose;
