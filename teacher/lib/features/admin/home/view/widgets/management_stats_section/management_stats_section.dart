@@ -38,19 +38,19 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
         return const [
           StatItem(
             title: "عدد الطلاب",
-            value: 1000,
+            value: 310,
             color: Color(0xFF0B197A),
             type: StatDisplayType.bar,
           ),
           StatItem(
             title: "عدد أولياء الأمور",
-            value: 950,
+            value: 240,
             color: Color(0xFF7B3F12),
             type: StatDisplayType.bar,
           ),
           StatItem(
             title: "عدد الكورسات",
-            value: 50,
+            value: 150,
             color: Color(0xFF6A1BB2),
             type: StatDisplayType.chip,
           ),
@@ -62,19 +62,19 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
           ),
           StatItem(
             title: "الأجهزة المسجلة",
-            value: 1953,
+            value: 233,
             color: Color(0xFF4B6F12),
             type: StatDisplayType.bar,
           ),
           StatItem(
             title: "الطلبات الجديدة",
-            value: 22,
+            value: 222,
             color: Color(0xFFF59A23),
             type: StatDisplayType.chip,
           ),
           StatItem(
             title: "الأجهزة المجمدة",
-            value: 0,
+            value: 230,
             color: Color(0xFFE53935),
             type: StatDisplayType.chip,
           ),
@@ -86,7 +86,7 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
             .map(
               (s) => StatItem(
                 title: s.title,
-                value: max(0, (s.value * (0.85 + factor * 0.03)).round()),
+                value: max(0, (s.value * (0.95 + factor * 0.06)).round()),
                 color: s.color,
                 type: s.type,
               ),
@@ -98,36 +98,36 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
   @override
   Widget build(BuildContext context) {
     final stats = _statsForMonth(selectedMonth);
-    final maxBarValue = stats
-        .where((s) => s.type == StatDisplayType.bar)
+
+    final maxValue = stats
         .map((s) => s.value)
-        .fold<int>(1, (prev, v) => max(prev, v));
+        .fold<int>(1, (p, v) => max(p, v));
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const SizedBox(height: 8),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
+          Align(
+            alignment: Alignment.centerRight,
             child: Text(
               "إحصائيات الإدارة",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.w800,
+              textAlign: TextAlign.right,
+              style: const TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w500,
                 color: Colors.black,
               ),
             ),
           ),
-          const SizedBox(height: 10),
 
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          const SizedBox(height: 5),
+          SizedBox(
+            width: double.infinity,
             child: Container(
+              width: double.infinity,
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(14),
+                borderRadius: BorderRadius.circular(1),
                 border: Border.all(color: const Color(0xFFE7E7E7)),
                 boxShadow: const [
                   BoxShadow(
@@ -143,14 +143,14 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
                   Positioned(
                     top: 10,
                     right: 10,
-                    child: Column(
+                    child: Row(
                       children: [
                         ManagementActionButton(
                           label: "تحديث",
                           icon: Icons.refresh,
                           onTap: widget.onRefresh ?? () {},
                         ),
-                        const SizedBox(height: 10),
+                        const SizedBox(width: 10),
                         ManagementActionButton(
                           label: "تحميل",
                           trailing: const Icon(
@@ -165,34 +165,30 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
                     ),
                   ),
 
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(14, 52, 14, 14),
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 6),
+                  Column(
+                    children: [
+                      const SizedBox(height: 50),
 
-                        ...stats.map(
-                          (s) => Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: ManagementStatRow(
-                              stat: s,
-                              maxBarValue: maxBarValue,
-                            ),
-                          ),
+                      ...stats.map(
+                        (s) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: ManagementStatRow(stat: s, maxValue: maxValue),
                         ),
+                      ),
 
-                        const SizedBox(height: 14),
+                      const SizedBox(height: 10),
 
-                        ManagementMonthSelector(
-                          months: months,
-                          selectedMonth: selectedMonth,
-                          onSelected: (m) {
-                            setState(() => selectedMonth = m);
-                            widget.onMonthChanged?.call(m);
-                          },
-                        ),
-                      ],
-                    ),
+                      ManagementMonthSelector(
+                        months: months,
+                        selectedMonth: selectedMonth,
+                        onSelected: (m) {
+                          setState(() => selectedMonth = m);
+                          widget.onMonthChanged?.call(m);
+                        },
+                      ),
+
+                      const SizedBox(height: 10),
+                    ],
                   ),
                 ],
               ),
