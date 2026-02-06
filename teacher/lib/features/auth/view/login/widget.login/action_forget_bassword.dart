@@ -23,6 +23,7 @@ class ActionForgetBassword extends StatelessWidget {
               },
               child: const Text(
                 "نسيت كلمة المرور؟",
+                textDirection: TextDirection.rtl,
                 style: TextStyle(
                   color: Colors.blue,
                   fontSize: 14,
@@ -36,6 +37,7 @@ class ActionForgetBassword extends StatelessWidget {
                 children: [
                   Text(
                     "تذكرني",
+                    textDirection: TextDirection.ltr,
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
                   ),
 
