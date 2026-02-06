@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:teacher/features/admin/drawer/view/widgets/admin_drawer.dart';
 import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/home_app_bar.dart';
 import 'package:teacher/features/admin/home/view/widgets/management_stats_section/management_stats_section.dart';
+import 'package:teacher/features/admin/home/view/widgets/quick_actions_section/quick_actions_section.dart';
 
 import '../controller/home_controller.dart';
 
@@ -89,14 +90,13 @@ class _HomeBodyContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+      padding: const EdgeInsets.all(1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 12),
           ManagementStatsSection(),
           const SizedBox(height: 12),
-          const _DemoCard(title: "الإجراءات السريعة (قريباً)"),
+          QuickActionsSection(),
           const SizedBox(height: 12),
           const _DemoCard(title: "المدفوعات (قريباً)"),
           const SizedBox(height: 12),
