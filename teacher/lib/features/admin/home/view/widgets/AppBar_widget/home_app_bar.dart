@@ -2,9 +2,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/Menu_Square_Button_appbar.dart';
-import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/appbar_greeting_center.dart';
-import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/profile_avatar_button.dart';
+import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/widget/Menu_Square_Button_appbar.dart';
+import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/widget/appbar_greeting_center.dart';
+import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/widget/profile_avatar_button.dart';
 
 import '../../../controller/home_controller.dart';
 
