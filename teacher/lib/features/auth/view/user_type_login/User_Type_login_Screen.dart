@@ -43,7 +43,7 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 60),
 
               const Text(
                 "من سيستخدم التطبيق؟",
