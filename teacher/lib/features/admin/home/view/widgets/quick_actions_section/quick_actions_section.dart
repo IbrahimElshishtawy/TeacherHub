@@ -46,39 +46,41 @@ class QuickActionsSection extends StatelessWidget {
       ),
     ];
 
+    final btnW = _buttonWidth(context);
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const Text(
-            'إجراءات سريعة',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w800,
-              color: Colors.black,
+          const Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              'إجراءات سريعة',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w800,
+                color: Colors.black,
+              ),
             ),
           ),
           const SizedBox(height: 10),
 
-          Row(
-            children: [
-              Wrap(
-                spacing: 10,
-                runSpacing: 10,
-                children: actions
-                    .map(
-                      (a) => SizedBox(
-                        width: _buttonWidth(context),
-                        child: _QuickActionButton(
-                          model: a,
-                          onTap: () =>
-                              Navigator.of(context).pushNamed(a.routeName),
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
-            ],
+          // ✅ Wrap مباشرة بدون Row (علشان ميبقاش overflow)
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: actions
+                .map(
+                  (a) => SizedBox(
+                    width: btnW,
+                    child: _QuickActionButton(
+                      model: a,
+                      onTap: () => Navigator.of(context).pushNamed(a.routeName),
+                    ),
+                  ),
+                )
+                .toList(),
           ),
         ],
       ),
@@ -87,8 +89,14 @@ class QuickActionsSection extends StatelessWidget {
 
   double _buttonWidth(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
-    final candidate = (w - 20) / 3; // محاولة 3 في الصف
-    return candidate.clamp(150.0, 260.0);
+
+    // ✅ موبايل: عمودين / شاشات أوسع: 3 أعمدة
+    final cols = w < 420 ? 2 : 3;
+    const spacing = 10.0;
+    final totalSpacing = spacing * (cols - 1);
+
+    final raw = (w - totalSpacing) / cols;
+    return raw.clamp(140.0, 260.0);
   }
 }
 
@@ -129,22 +137,27 @@ class _QuickActionButton extends StatelessWidget {
             border: Border.all(color: const Color(0xFFE6E6E6)),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // ✅ النص يتحرك/يتسحب من اليمين لليسار (Scroll أفقي)
               Expanded(
-                child: Text(
-                  model.title,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF222222),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  reverse: true, // ✅ يبدأ من اليمين
+                  physics: const BouncingScrollPhysics(),
+                  child: Text(
+                    model.title,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF222222),
+                    ),
+                    softWrap: false,
                   ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ),
+
               const SizedBox(width: 10),
+
               Container(
                 width: 28,
                 height: 28,
