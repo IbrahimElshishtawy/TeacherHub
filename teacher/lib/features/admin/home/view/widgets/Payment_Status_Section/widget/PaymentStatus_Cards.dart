@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/home/view/widgets/Payment_Status_Section/widget/payment_Status_Card.dart';
+import 'package:teacher/features/admin/home/view/widgets/Payment_Status_Section/widget/show_more_button.dart';
 
 class PaymentStatusCards extends StatelessWidget {
-  const PaymentStatusCards({super.key});
+  final bool isMoreVisible;
+  final VoidCallback onToggleVisibility;
+
+  const PaymentStatusCards({
+    super.key,
+    required this.isMoreVisible,
+    required this.onToggleVisibility,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +58,12 @@ class PaymentStatusCards extends StatelessWidget {
                 icon: Icons.check_circle_outline,
               ),
             ],
+          ),
+          SizedBox(height: 5),
+          // Button for showing more content
+          ShowMoreButton(
+            onPressed: onToggleVisibility,
+            isMoreVisible: isMoreVisible,
           ),
         ],
       ),

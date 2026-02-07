@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ShowMoreButton extends StatelessWidget {
-  final VoidCallback onPressed;
   final bool isMoreVisible;
+  final VoidCallback onPressed;
 
   const ShowMoreButton({
+    super.key,
     required this.onPressed,
     required this.isMoreVisible,
-    super.key,
   });
 
   @override
