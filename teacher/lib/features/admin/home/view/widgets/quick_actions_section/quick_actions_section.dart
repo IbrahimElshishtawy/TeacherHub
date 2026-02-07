@@ -49,20 +49,19 @@ class QuickActionsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const Align(
+          Align(
             alignment: Alignment.centerRight,
             child: Text(
-              'إجراءات سريعة',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w800,
+              "إجراءات سريعة",
+              textAlign: TextAlign.right,
+              style: const TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.w500,
                 color: Colors.black,
               ),
             ),
           ),
           const SizedBox(height: 10),
-
-          // Wrap مع Scroll أفقي
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Wrap(
