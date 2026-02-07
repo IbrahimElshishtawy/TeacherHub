@@ -24,7 +24,7 @@ class ManagementMonthSelector extends StatelessWidget {
           reverse: reverse,
           scrollDirection: Axis.horizontal,
           itemCount: months.length,
-          separatorBuilder: (_, __) => const SizedBox(width: 4),
+          separatorBuilder: (_, _) => const SizedBox(width: 4),
           padding: const EdgeInsets.symmetric(horizontal: 6),
           itemBuilder: (context, i) {
             final m = months[i];
