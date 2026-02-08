@@ -7,6 +7,7 @@ import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/home_app_
 import 'package:teacher/features/admin/home/view/widgets/management_stats_section/management_stats_section.dart';
 import 'package:teacher/features/admin/home/view/widgets/Payment_Status_Section/Payment_Status_Section.dart';
 import 'package:teacher/features/admin/home/view/widgets/quick_actions_section/quick_actions_section.dart';
+import 'package:teacher/features/admin/home/view/widgets/reports_section/reports_section.dart';
 
 import '../controller/home_controller.dart';
 
@@ -98,54 +99,14 @@ class _HomeBodyContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ManagementStatsSection(),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           QuickActionsSection(),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           PaymentStatusSection(),
-          const SizedBox(height: 12),
-          const _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
-          const SizedBox(height: 12),
-          const _DemoCard(title: "الإجراءات السريعة (قريباً)"),
-          const SizedBox(height: 12),
-          const _DemoCard(title: "المدفوعات (قريباً)"),
-          const SizedBox(height: 12),
-          const _DemoCard(title: "إحصائيات الإدارة (قريباً)"),
-          const SizedBox(height: 12),
-          const _DemoCard(title: "الإجراءات السريعة (قريباً)"),
-          const SizedBox(height: 12),
-          const _DemoCard(title: "المدفوعات (قريباً)"),
+          const SizedBox(height: 8),
+          ReportsStatisticsSection(),
+          const SizedBox(height: 8),
         ],
-      ),
-    );
-  }
-}
-
-class _DemoCard extends StatelessWidget {
-  final String title;
-  const _DemoCard({required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.06),
-            blurRadius: 18,
-            offset: const Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: Text(
-          title,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800),
-        ),
       ),
     );
   }
