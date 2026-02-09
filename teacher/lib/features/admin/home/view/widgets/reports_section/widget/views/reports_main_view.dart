@@ -57,7 +57,7 @@ class ReportsMainView extends StatelessWidget {
                 subtitle: '70 طالب غائب',
                 color: Colors.blue,
                 icon: Symbols.calendar_month,
-                onSubtitleTap: controller.showAttendance,
+
                 cardHeight: 150,
               ),
             ),

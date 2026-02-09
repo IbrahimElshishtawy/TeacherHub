@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/home/controller/Reports_Statistics_Controller.dart';
-import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/views/reports_attendance_view.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/views/reports_grades_view.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/views/reports_levels_view.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/views/reports_main_view.dart';
@@ -45,8 +44,6 @@ class ReportsStatisticsSection extends StatelessWidget {
                     return ReportsRegistrationView(onBack: c.backToMain);
                   case ReportsView.grades:
                     return ReportsGradesView(onBack: c.backToMain);
-                  case ReportsView.attendance:
-                    return ReportsAttendanceView(onBack: c.backToMain);
                 }
               }),
             ),
