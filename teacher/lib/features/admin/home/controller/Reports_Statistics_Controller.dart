@@ -7,7 +7,7 @@ enum ChartType { attendance, grades, registration, levels }
 class ReportsStatisticsController extends GetxController {
   final view = ReportsView.main.obs;
 
-  // ✅ chart state
+  //  chart state
   final chartType = ChartType.attendance.obs;
   final showValues = true.obs;
 
@@ -22,8 +22,6 @@ class ReportsStatisticsController extends GetxController {
   // charts actions
   void setChart(ChartType type) => chartType.value = type;
   void toggleValues() => showValues.value = !showValues.value;
-
-  // ✅ لو عايز الحضور يفتح الرسم مباشرة
   void showAttendanceChart() {
     chartType.value = ChartType.attendance;
     view.value = ReportsView.charts;

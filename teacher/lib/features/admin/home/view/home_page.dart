@@ -6,6 +6,7 @@ import 'package:teacher/features/admin/drawer/view/widgets/admin_drawer.dart';
 import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/home_app_bar.dart';
 import 'package:teacher/features/admin/home/view/widgets/management_stats_section/management_stats_section.dart';
 import 'package:teacher/features/admin/home/view/widgets/Payment_Status_Section/Payment_Status_Section.dart';
+import 'package:teacher/features/admin/home/view/widgets/performance_reports/performance_reports_card.dart';
 import 'package:teacher/features/admin/home/view/widgets/quick_actions_section/quick_actions_section.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/reports_section.dart';
 
@@ -106,6 +107,8 @@ class _HomeBodyContent extends StatelessWidget {
           const SizedBox(height: 8),
           ReportsStatisticsSection(),
           const SizedBox(height: 8),
+          PerformanceReportsCard(),
+          const SizedBox(height: 15),
         ],
       ),
     );
