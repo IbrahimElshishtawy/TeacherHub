@@ -1,14 +1,31 @@
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
 
-enum ReportsView { main, levels, registration, grades }
+enum ReportsView { main, levels, registration, grades, charts }
+
+enum ChartType { attendance, grades, registration, levels }
 
 class ReportsStatisticsController extends GetxController {
   final view = ReportsView.main.obs;
 
+  // ✅ chart state
+  final chartType = ChartType.attendance.obs;
+  final showValues = true.obs;
+
+  // navigation
   void showLevels() => view.value = ReportsView.levels;
   void showRegistration() => view.value = ReportsView.registration;
   void showGrades() => view.value = ReportsView.grades;
 
+  void showCharts() => view.value = ReportsView.charts;
   void backToMain() => view.value = ReportsView.main;
+
+  // charts actions
+  void setChart(ChartType type) => chartType.value = type;
+  void toggleValues() => showValues.value = !showValues.value;
+
+  // ✅ لو عايز الحضور يفتح الرسم مباشرة
+  void showAttendanceChart() {
+    chartType.value = ChartType.attendance;
+    view.value = ReportsView.charts;
+  }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:teacher/features/admin/home/controller/Reports_Statistics_Controller.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/widget/reports_State_Card.dart';
 
-class ReportsMainView extends StatelessWidget {
-  final ReportsStatisticsController controller;
-
-  const ReportsMainView({super.key, required this.controller});
+class ReportsMainView extends GetView<ReportsStatisticsController> {
+  const ReportsMainView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class ReportsMainView extends StatelessWidget {
                 cardHeight: 150,
               ),
             ),
-            const SizedBox(width: 6),
+            const SizedBox(width: 1),
             Expanded(
               child: StatCard(
                 title: 'التسجيل',
@@ -37,7 +37,7 @@ class ReportsMainView extends StatelessWidget {
                 cardHeight: 150,
               ),
             ),
-            const SizedBox(width: 6),
+            const SizedBox(width: 1),
             Expanded(
               child: StatCard(
                 title: 'الدرجات',
@@ -49,7 +49,7 @@ class ReportsMainView extends StatelessWidget {
                 cardHeight: 150,
               ),
             ),
-            const SizedBox(width: 6),
+            const SizedBox(width: 1),
             Expanded(
               child: StatCard(
                 title: 'الحضور',
@@ -63,14 +63,14 @@ class ReportsMainView extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 6),
+        const SizedBox(height: 5),
         Align(
           alignment: Alignment.center,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: controller.showCharts,
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 7),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
               ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/home/controller/Reports_Statistics_Controller.dart';
+
+import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/views/reports_charts_view.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/views/reports_grades_view.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/views/reports_levels_view.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/views/reports_main_view.dart';
@@ -35,16 +37,36 @@ class ReportsStatisticsSection extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: Obx(() {
-                switch (c.view.value) {
+                final v = c.view.value;
+
+                Widget child;
+                switch (v) {
                   case ReportsView.main:
-                    return ReportsMainView(controller: c);
+                    child = const ReportsMainView();
+                    break;
+
                   case ReportsView.levels:
-                    return ReportsLevelsView(onBack: c.backToMain);
+                    child = ReportsLevelsView(onBack: c.backToMain);
+                    break;
+
                   case ReportsView.registration:
-                    return ReportsRegistrationView(onBack: c.backToMain);
+                    child = ReportsRegistrationView(onBack: c.backToMain);
+                    break;
+
                   case ReportsView.grades:
-                    return ReportsGradesView(onBack: c.backToMain);
+                    child = ReportsGradesView(onBack: c.backToMain);
+                    break;
+
+                  case ReportsView.charts:
+                    child = ReportsChartsView(
+                      controller: c,
+                      onBack: c.backToMain,
+                    );
+                    break;
                 }
+
+                // ✅ ده بيمنع تعارض الـ Semantics / ParentData عند تبديل الـ views
+                return KeyedSubtree(key: ValueKey(v), child: child);
               }),
             ),
           ),
