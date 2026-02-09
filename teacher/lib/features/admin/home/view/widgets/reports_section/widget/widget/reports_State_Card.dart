@@ -16,9 +16,8 @@ class StatCard extends StatelessWidget {
   final String? percent; // للدرجات (88%)
   final String? note; // للدرجات (الأداء جيد...)
 
+  final double cardHeight; // ✅ هنثبت الارتفاع فقط
   final double cardWidth;
-  final double cardHeight;
-
   final VoidCallback? onSubtitleTap;
   final bool hideSubtitleWhenEmpty;
 
@@ -27,17 +26,15 @@ class StatCard extends StatelessWidget {
     this.title,
     this.icon,
     this.color = Colors.blue,
-
     this.value,
     this.subtitle,
-
     this.count,
     this.percent,
     this.note,
-
-    this.cardWidth = 90,
-    this.cardHeight = 150,
+    this.cardWidth = 84,
+    this.cardHeight = 139,
     this.onSubtitleTap,
+
     this.hideSubtitleWhenEmpty = true,
   });
 
@@ -47,8 +44,8 @@ class StatCard extends StatelessWidget {
     final bool hasSubtitle = sub.isNotEmpty;
 
     return SizedBox(
-      width: cardWidth,
       height: cardHeight,
+      width: cardWidth,
       child: Card(
         elevation: 5,
         color: Colors.white,
@@ -58,21 +55,21 @@ class StatCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 4),
-              Icon(icon, color: color, size: 37),
-              const SizedBox(height: 4),
+              const SizedBox(height: 1),
+              if (icon != null) Icon(icon, color: color, size: 37),
+              const SizedBox(height: 1),
               Text(
-                title!,
+                title ?? '',
                 style: const TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.w800,
-                  fontSize: 12,
+                  fontSize: 10,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 2),
 
-              // ✅ 1) لو percent موجود => ده كارت درجات
+              // ✅ 1) درجات
               if ((percent ?? '').trim().isNotEmpty) ...[
                 Text(
                   percent!.trim(),
@@ -82,7 +79,7 @@ class StatCard extends StatelessWidget {
                     color: color,
                   ),
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 4),
                 Text(
                   (note ?? '').trim(),
                   style: TextStyle(
@@ -95,28 +92,28 @@ class StatCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ]
-              // ✅ 2) لو count موجود => ده كارت تسجيل/مستويات
+              // ✅ 2) عدّاد (مستويات/تسجيل)
               else if ((count ?? '').trim().isNotEmpty) ...[
                 const Text(
                   "عدد الطلاب",
                   style: TextStyle(
-                    fontSize: 12,
+                    fontSize: 10,
                     color: Colors.black54,
                     fontWeight: FontWeight.w700,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 1),
                 Text(
                   count!.trim(),
                   style: TextStyle(
-                    fontSize: 13,
+                    fontSize: 10,
                     fontWeight: FontWeight.w900,
                     color: color,
                   ),
                 ),
               ]
-              // ✅ 3) غير كده => كارت Main (value)
+              // ✅ 3) Main value
               else if ((value ?? '').trim().isNotEmpty) ...[
                 Text(
                   value!.trim(),
@@ -129,13 +126,13 @@ class StatCard extends StatelessWidget {
                 ),
               ],
 
-              const SizedBox(height: 8),
+              const SizedBox(height: 2),
 
               // ✅ Subtitle (اختياري)
               if (!(hideSubtitleWhenEmpty && !hasSubtitle))
                 _Subtitle(subtitle: sub, color: color, onTap: onSubtitleTap),
 
-              const SizedBox(height: 6),
+              const SizedBox(height: 2),
             ],
           ),
         ),

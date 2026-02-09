@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/widget/reports_State_Card.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/widget/reports_back_button.dart';
 
@@ -11,37 +12,50 @@ class ReportsGradesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Wrap(
-          spacing: 12,
-          runSpacing: 12,
+        Row(
           children: const [
-            StatCard(
-              title: "عربي",
-              percent: "88%",
-              note: "الأداء جيد جدًا",
-              icon: Icons.menu_book,
-              color: Colors.blue,
+            Expanded(
+              child: StatCard(
+                title: "عربي",
+                icon: Symbols.menu_book,
+                color: Colors.blue,
+                percent: "88%",
+                note: "الأداء جيد جدًا",
+                cardHeight: 150,
+              ),
             ),
-            StatCard(
-              title: "رياضيات",
-              percent: "62%",
-              note: "الأداء ضعيف\nيرجى المتابعة",
-              icon: Icons.calculate,
-              color: Colors.orange,
+            SizedBox(width: 1),
+            Expanded(
+              child: StatCard(
+                title: "رياضيات",
+                icon: Symbols.calculate,
+                color: Colors.orange,
+                percent: "62%",
+                note: "الأداء ضعيف\nيرجى المتابعة",
+                cardHeight: 150,
+              ),
             ),
-            StatCard(
-              title: "كيمياء",
-              percent: "74%",
-              note: "الأداء متوسط",
-              icon: Icons.science,
-              color: Colors.purple,
+            SizedBox(width: 1),
+            Expanded(
+              child: StatCard(
+                title: "كيمياء",
+                icon: Symbols.science,
+                color: Colors.purple,
+                percent: "74%",
+                note: "الأداء متوسط",
+                cardHeight: 150,
+              ),
             ),
-            StatCard(
-              title: "فيزياء",
-              percent: "80%",
-              note: "الأداء جيد",
-              icon: Icons.blur_circular,
-              color: Colors.green,
+            SizedBox(width: 1),
+            Expanded(
+              child: StatCard(
+                title: "فيزياء",
+                icon: Symbols.hub,
+                color: Colors.green,
+                percent: "80%",
+                note: "الأداء جيد",
+                cardHeight: 150,
+              ),
             ),
           ],
         ),

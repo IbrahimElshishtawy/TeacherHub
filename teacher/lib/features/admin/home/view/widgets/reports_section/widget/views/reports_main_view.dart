@@ -1,5 +1,5 @@
-// TODO Implement this library.
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:teacher/features/admin/home/controller/Reports_Statistics_Controller.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/widget/reports_State_Card.dart';
 
@@ -13,39 +13,53 @@ class ReportsMainView extends StatelessWidget {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            StatCard(
-              title: 'مستويات',
-              value: 'عدد الطلاب \nحسب السنة',
-              subtitle: 'عرض الكل',
-              color: Colors.orange,
-              icon: Icons.timeline,
-              onSubtitleTap: controller.showLevels,
+            Expanded(
+              child: StatCard(
+                title: 'مستويات',
+                value: 'عدد الطلاب \nحسب السنة',
+                subtitle: 'عرض الكل',
+                color: Colors.orange,
+                icon: Symbols.timeline,
+                onSubtitleTap: controller.showLevels,
+                cardHeight: 150,
+              ),
             ),
-            StatCard(
-              title: 'التسجيل',
-              value: '600 طالب',
-              subtitle: 'عرض كل المواد',
-              color: Colors.green,
-              icon: Icons.school,
-              onSubtitleTap: controller.showRegistration,
+            const SizedBox(width: 6),
+            Expanded(
+              child: StatCard(
+                title: 'التسجيل',
+                value: '600 طالب',
+                subtitle: 'عرض كل المواد',
+                color: Colors.green,
+                icon: Symbols.school,
+                onSubtitleTap: controller.showRegistration,
+                cardHeight: 150,
+              ),
             ),
-            StatCard(
-              title: 'الدرجات',
-              value: '82%',
-              subtitle: 'عرض كل المواد',
-              color: Colors.purple,
-              icon: Icons.grade,
-              onSubtitleTap: controller.showGrades,
+            const SizedBox(width: 6),
+            Expanded(
+              child: StatCard(
+                title: 'الدرجات',
+                value: '82%',
+                subtitle: 'عرض كل المواد',
+                color: Colors.purple,
+                icon: Symbols.grading,
+                onSubtitleTap: controller.showGrades,
+                cardHeight: 150,
+              ),
             ),
-            StatCard(
-              title: 'الحضور',
-              value: '930/1000',
-              subtitle: '70 طالب غائب',
-              color: Colors.blue,
-              icon: Icons.calendar_today,
-              onSubtitleTap: controller.showAttendance,
+            const SizedBox(width: 6),
+            Expanded(
+              child: StatCard(
+                title: 'الحضور',
+                value: '930/1000',
+                subtitle: '70 طالب غائب',
+                color: Colors.blue,
+                icon: Symbols.calendar_month,
+                onSubtitleTap: controller.showAttendance,
+                cardHeight: 150,
+              ),
             ),
           ],
         ),

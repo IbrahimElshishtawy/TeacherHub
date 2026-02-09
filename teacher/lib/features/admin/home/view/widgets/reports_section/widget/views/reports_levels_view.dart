@@ -1,6 +1,4 @@
-// TODO Implement this library.
 import 'package:flutter/material.dart';
-
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/widget/reports_State_Card.dart';
 import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/widget/reports_back_button.dart';
 
@@ -13,14 +11,47 @@ class ReportsLevelsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Wrap(
-          spacing: 12,
-          runSpacing: 12,
+        Row(
           children: const [
-            StatCard(title: "3 اعدادي", count: "320 طالب", color: Colors.blue),
-            StatCard(title: "1 ثانوي", count: "250 طالب", color: Colors.orange),
-            StatCard(title: "2 ثانوي", count: "459 طالب", color: Colors.purple),
-            StatCard(title: "3 ثانوي", count: "600 طالب", color: Colors.green),
+            Expanded(
+              child: StatCard(
+                title: "3 اعدادي",
+                icon: Icons.groups,
+                count: "320 طالب",
+                color: Colors.blue,
+                cardHeight: 150,
+              ),
+            ),
+            SizedBox(width: 1),
+            Expanded(
+              child: StatCard(
+                title: "1 ثانوي",
+                icon: Icons.groups,
+                count: "250 طالب",
+                color: Colors.orange,
+                cardHeight: 150,
+              ),
+            ),
+            SizedBox(width: 1),
+            Expanded(
+              child: StatCard(
+                title: "2 ثانوي",
+                icon: Icons.groups,
+                count: "459 طالب",
+                color: Colors.purple,
+                cardHeight: 150,
+              ),
+            ),
+            SizedBox(width: 1),
+            Expanded(
+              child: StatCard(
+                title: "3 ثانوي",
+                icon: Icons.groups,
+                count: "600 طالب",
+                color: Colors.green,
+                cardHeight: 150,
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 14),

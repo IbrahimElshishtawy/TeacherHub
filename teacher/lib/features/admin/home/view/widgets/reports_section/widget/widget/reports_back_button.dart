@@ -8,8 +8,8 @@ class ReportsBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: 48,
+      width: 149,
+      height: 31,
       child: ElevatedButton(
         onPressed: onBack,
         style: ElevatedButton.styleFrom(
