@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:get/get.dart';
 
 enum ReportsView { main, levels, registration, grades, charts }

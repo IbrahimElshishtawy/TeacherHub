@@ -21,10 +21,9 @@ class AdminDrawerHeader extends StatelessWidget {
       height: 72,
       child: Stack(
         children: [
-          // Close button on the left (تم تغييره ليكون في الأسفل)
           Positioned(
             left: 16,
-            bottom: 16, // تم تعديل الـ top إلى bottom بحيث يكون في الأسفل
+            bottom: 16,
             child: Material(
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
@@ -40,18 +39,15 @@ class AdminDrawerHeader extends StatelessWidget {
             ),
           ),
 
-          // Avatar button on the right (تم تغييره ليكون في الأسفل)
           Positioned(
             right: 16,
-            bottom: 16, // تم تعديل الـ top إلى bottom بحيث يكون في الأسفل
+            bottom: 16,
             child: InkWell(
-              onTap:
-                  onAvatarTap ??
-                  () {}, // إذا كان onAvatarTap null، يستدعي وظيفة فارغة
+              onTap: onAvatarTap ?? () {},
               borderRadius: BorderRadius.circular(999),
               child: ProfileAvatarButton(
-                onTap: onAvatarTap ?? () {}, // نفس الشيء هنا إذا كان null
-                avatarUrl: avatarUrl, // تأكد من تمرير الصورة هنا لو موجودة
+                onTap: onAvatarTap ?? () {},
+                avatarUrl: avatarUrl,
               ),
             ),
           ),

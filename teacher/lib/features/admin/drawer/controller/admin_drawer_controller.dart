@@ -4,30 +4,22 @@ import '../state/admin_drawer_state.dart';
 class AdminDrawerController extends GetxController {
   final state = AdminDrawerState().obs;
 
-  void syncSelectedWithRoute(String currentRoute) {
-    final i = state.value.mainItems.indexWhere((e) => e.route == currentRoute);
-    if (i >= 0) {
-      state.update((s) {
-        if (s == null) return;
-        s.selectedIndex = i;
-      });
+  @override
+  void onInit() {
+    super.onInit();
+    final current = Get.currentRoute;
+    if (current.isNotEmpty) {
+      state.update((s) => s?.selectedRoute = current);
     }
   }
 
-  void openMain(int index) {
-    state.update((s) {
-      if (s == null) return;
-      s.selectedIndex = index;
-    });
+  void goTo(String route) {
+    state.update((s) => s?.selectedRoute = route);
 
-    Get.offNamed(state.value.mainItems[index].route);
-  }
+    if (Get.isOverlaysOpen) Get.back();
 
-  void openSecondary(int index) {
-    Get.toNamed(state.value.secondaryItems[index].route);
-  }
-
-  void logout() {
-    Get.offAllNamed("/login");
+    if (Get.currentRoute != route) {
+      Get.offNamed(route);
+    }
   }
 }

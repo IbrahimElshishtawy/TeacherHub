@@ -13,7 +13,11 @@ class HomeController extends GetxController
   late final AnimationController drawerController;
   late final Animation<double> drawerAnim;
 
-  bool get isDrawerOpen => drawerController.value > 0.001;
+  double get t => drawerAnim.value;
+  double get rawT => drawerController.value;
+
+  bool get isDrawerOpen => rawT > 0.001;
+
   bool get hasLocalImage =>
       userLocalPath.value.trim().isNotEmpty &&
       File(userLocalPath.value.trim()).existsSync();
@@ -44,6 +48,7 @@ class HomeController extends GetxController
   void openDrawer() => drawerController.forward();
   void closeDrawer() => drawerController.reverse();
   void toggleDrawer() => isDrawerOpen ? closeDrawer() : openDrawer();
+
   void setPickedProfileImage(String path) {
     userLocalPath.value = path.trim();
   }

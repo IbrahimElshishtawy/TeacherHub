@@ -1,109 +1,230 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher/features/admin/drawer/controller/admin_drawer_controller.dart';
+import 'package:teacher/features/admin/drawer/state/admin_drawer_state.dart';
 
-import '../../controller/admin_drawer_controller.dart';
-import 'admin_drawer_header.dart';
-import 'admin_drawer_item.dart';
+class AdminDrawer extends StatelessWidget {
+  const AdminDrawer({super.key});
 
-class AdminDrawer extends GetView<AdminDrawerController> {
-  final VoidCallback onClose;
-
-  const AdminDrawer({super.key, required this.onClose});
+  static const Color bg = Color(0xFF0E1622); // ✅ نفس الدارك
+  static const Color white = Colors.white;
+  static const Color accent = Color(0xFF2F6BFF); // ✅ أزرق التحديد
+  static const Color logoutRed = Color(0xFFE53935);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFF0B1726), Color(0xFF0A1C30)],
+    final c = Get.find<AdminDrawerController>();
+
+    return Drawer(
+      child: Container(
+        color: bg,
+        child: SafeArea(
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Obx(() {
+              final s = c.state.value;
+
+              return ListView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 10,
+                ),
+                children: [
+                  const SizedBox(height: 10),
+
+                  // ✅ القائمة
+                  for (final item in s.items) ...[
+                    if (!item.hasChildren)
+                      _MainTile(
+                        title: item.title,
+                        icon: item.icon,
+                        selected: s.selectedRoute == item.route,
+                        onTap: () => c.goTo(item.route!),
+                      )
+                    else
+                      _ExpandableTile(
+                        item: item,
+                        selectedRoute: s.selectedRoute,
+                        onTapSub: (r) => c.goTo(r),
+                      ),
+
+                    const SizedBox(height: 10),
+                  ],
+
+                  const SizedBox(height: 10),
+
+                  // ✅ Logout مثل الصورة
+                  _LogoutTile(
+                    onTap: () {
+                      // اعمل اللي انت عايزه هنا
+                      // Get.offAllNamed("/login");
+                    },
+                  ),
+                ],
+              );
+            }),
+          ),
         ),
       ),
-      child: SafeArea(
-        child: SingleChildScrollView(
-          // Allow scrolling if content overflows
-          child: Column(
-            children: [
-              SizedBox(height: 50),
-              AdminDrawerHeader(onClose: onClose),
+    );
+  }
+}
 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Obx(() {
-                  final s = controller.state.value;
+/* =================== Main Tile =================== */
 
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 20),
+class _MainTile extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final bool selected;
+  final VoidCallback onTap;
 
-                      ...List.generate(s.mainItems.length, (i) {
-                        final item = s.mainItems[i];
-                        return AdminDrawerItem(
-                          icon: item.icon,
-                          title: item.title,
-                          selected: s.selectedIndex == i,
-                          onTap: () {
-                            onClose();
-                            controller.openMain(i);
-                          },
-                        );
-                      }),
+  const _MainTile({
+    required this.title,
+    required this.icon,
+    required this.selected,
+    required this.onTap,
+  });
 
-                      const SizedBox(height: 14),
+  static const Color white = Colors.white;
+  static const Color accent = Color(0xFF2F6BFF);
 
-                      ...List.generate(s.secondaryItems.length, (i) {
-                        final item = s.secondaryItems[i];
-                        return AdminDrawerItem(
-                          icon: item.icon,
-                          title: item.title,
-                          onTap: () {
-                            onClose();
-                            controller.openSecondary(i);
-                          },
-                        );
-                      }),
+  @override
+  Widget build(BuildContext context) {
+    final color = selected ? accent : white;
 
-                      const SizedBox(
-                        height: 14,
-                      ), // Add some spacing before the logout button
-                      InkWell(
-                        onTap: () {
-                          onClose();
-                          controller.logout();
-                        },
-                        borderRadius: BorderRadius.circular(14),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: const [
-                              Icon(
-                                Icons.logout_rounded,
-                                color: Color(0xFFFF3B30),
-                                size: 22,
-                              ),
-                              SizedBox(width: 10),
-                              Text(
-                                "تسجيل الخروج",
-                                style: TextStyle(
-                                  color: Color(0xFFFF3B30),
-                                  fontSize: 16.5,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              ),
-                            ],
-                          ),
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            Icon(icon, color: color, size: 20),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  color: color,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/* =================== Expandable =================== */
+
+class _ExpandableTile extends StatelessWidget {
+  final DrawerItemModel item;
+  final String selectedRoute;
+  final void Function(String route) onTapSub;
+
+  const _ExpandableTile({
+    required this.item,
+    required this.selectedRoute,
+    required this.onTapSub,
+  });
+
+  static const Color white = Colors.white;
+  static const Color accent = Color(0xFF2F6BFF);
+
+  bool get _anyChildSelected =>
+      item.children.any((c) => c.route == selectedRoute);
+
+  @override
+  Widget build(BuildContext context) {
+    final titleColor = _anyChildSelected ? accent : white;
+
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        tilePadding: EdgeInsets.zero,
+        childrenPadding: const EdgeInsets.only(right: 30, top: 2, bottom: 2),
+        initiallyExpanded: _anyChildSelected,
+
+        leading: Icon(item.icon, color: titleColor, size: 20),
+        title: Text(
+          item.title,
+          style: TextStyle(
+            color: titleColor,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        iconColor: titleColor,
+        collapsedIconColor: titleColor,
+
+        children: [
+          for (final sub in item.children)
+            InkWell(
+              onTap: () => onTapSub(sub.route),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                child: Row(
+                  children: [
+                    Text(
+                      "•",
+                      style: TextStyle(
+                        color: sub.route == selectedRoute ? accent : white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        sub.title,
+                        style: TextStyle(
+                          color: sub.route == selectedRoute ? accent : white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(height: 50),
-                    ],
-                  );
-                }),
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+/* =================== Logout =================== */
+
+class _LogoutTile extends StatelessWidget {
+  final VoidCallback onTap;
+  const _LogoutTile({required this.onTap});
+
+  static const Color logoutRed = Color(0xFFE53935);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Row(
+          children: const [
+            Icon(Icons.logout_rounded, color: logoutRed, size: 20),
+            SizedBox(width: 10),
+            Text(
+              "تسجيل الخروج",
+              style: TextStyle(
+                color: logoutRed,
+                fontSize: 16,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+          ],
         ),
       ),
     );
