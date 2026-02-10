@@ -27,11 +27,7 @@ class AdminDrawerState {
   String selectedRoute = "/admin/home";
 
   final List<DrawerItemModel> items = const [
-    DrawerItemModel(
-      title: "لوحة التحكم",
-      icon: Icons.grid_view_rounded,
-      route: "/admin/home",
-    ),
+    DrawerItemModel(title: "لوحة التحكم", icon: Icons.grid_view_rounded),
 
     DrawerItemModel(
       title: "المستخدمين",
