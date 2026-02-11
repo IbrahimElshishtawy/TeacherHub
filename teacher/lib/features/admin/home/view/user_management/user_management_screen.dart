@@ -1,6 +1,5 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart'; // إضافة مكتبة Lottie
 import 'package:get/get.dart';
 
 enum UserManagementType { students, parents }
@@ -25,7 +24,6 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
   void _onEnter() {
     if (selected == null) return;
 
-    // غيّر الروتات حسب صفحاتك
     if (selected == UserManagementType.students) {
       Get.toNamed('/admin/users/students');
     } else {
@@ -77,7 +75,8 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
               _SelectCard(
                 titleEn: "students",
                 subtitleAr: "إدارة شاملة لحسابات الطلاب داخل التطبيق",
-                assetPath: "assets/images/students.png", // غيّرها
+                assetPath:
+                    "assets/lottie/Schoolstudent.json", // تغيير إلى ملف Lottie
                 isSelected: selected == UserManagementType.students,
                 onTap: () => _onSelect(UserManagementType.students),
               ),
@@ -85,14 +84,14 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
               _SelectCard(
                 titleEn: "Parents",
                 subtitleAr: "إدارة حسابات أولياء الأمور وربطهم بالطلاب",
-                assetPath: "assets/images/parents.png", // غيّرها
+                assetPath:
+                    "assets/lottie/Parenting.json", // تغيير إلى ملف Lottie
                 isSelected: selected == UserManagementType.parents,
                 onTap: () => _onSelect(UserManagementType.parents),
               ),
 
               const SizedBox(height: 18),
 
-              // زر الدخول يظهر فقط بعد الاختيار (زي الصورة)
               if (selected != null) ...[
                 SizedBox(
                   height: 52,
@@ -173,7 +172,7 @@ class _SelectCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // صورة (لو مش موجودة هتظهر Icon)
+            // عرض الرسوم المتحركة بدلاً من الصورة الثابتة
             Container(
               width: 54,
               height: 54,
@@ -184,15 +183,11 @@ class _SelectCard extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Center(
-                child: Image.asset(
+                child: Lottie.asset(
                   assetPath,
                   width: 42,
                   height: 42,
-                  errorBuilder: (_, __, ___) => Icon(
-                    Icons.people_alt_rounded,
-                    color: isSelected ? Colors.white : primaryBlue,
-                    size: 28,
-                  ),
+                  fit: BoxFit.contain,
                 ),
               ),
             ),

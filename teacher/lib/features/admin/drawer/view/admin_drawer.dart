@@ -11,7 +11,7 @@ class AdminDrawer extends StatelessWidget {
 
   static const Color bg = Color(0xFF0E1622);
   static const Color white = Colors.white;
-  static const Color accent = Color(0xFF2F6BFF);
+  static const Color accent = Color.fromARGB(255, 51, 86, 176);
   static const Color logoutRed = Color(0xFFE53935);
 
   @override
