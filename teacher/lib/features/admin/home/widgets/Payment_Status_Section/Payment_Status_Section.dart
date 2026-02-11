@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/home/view/widgets/Payment_Status_Section/widget/PaymentStatus_Cards.dart';
-import 'package:teacher/features/admin/home/view/widgets/Payment_Status_Section/widget/Payment_Status_Title.dart';
+import 'package:teacher/features/admin/home/widgets/Payment_Status_Section/widget/PaymentStatus_Cards.dart';
+import 'package:teacher/features/admin/home/widgets/Payment_Status_Section/widget/Payment_Status_Title.dart';
 import 'package:teacher/features/admin/home/view/widgets/Payment_Status_Section/widget/payment_status_table.dart';
 
 class PaymentStatusSection extends StatefulWidget {

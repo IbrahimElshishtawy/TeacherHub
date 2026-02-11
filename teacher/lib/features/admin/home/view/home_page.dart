@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/home/controller/home_controller.dart';
-import 'package:teacher/features/admin/home/view/widgets/AppBar_widget/home_app_bar.dart';
-import 'package:teacher/features/admin/home/view/widgets/Home_Body_Content.dart';
-import 'package:teacher/features/admin/home/view/widgets/drawer/animated_admin_drawer_scaffold.dart';
+import 'package:teacher/features/admin/home/widgets/AppBar_widget/home_app_bar.dart';
+import 'package:teacher/features/admin/home/widgets/Home_Body_Content.dart';
+import 'package:teacher/features/admin/home/widgets/drawer/animated_admin_drawer_scaffold.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

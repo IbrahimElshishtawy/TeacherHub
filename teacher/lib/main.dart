@@ -54,8 +54,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/home_admin',
           page: () => HomePage(),
-          binding:
-              HomeBinding(), // Use HomeBinding here to register dependencies
+          binding: HomeBinding(),
         ),
       ],
     );

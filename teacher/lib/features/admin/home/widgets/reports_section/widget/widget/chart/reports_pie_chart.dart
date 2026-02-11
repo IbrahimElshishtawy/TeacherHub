@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/home/view/widgets/reports_section/widget/widget/chart/reports_chart_data.dart';
+import 'package:teacher/features/admin/home/widgets/reports_section/widget/widget/chart/reports_chart_data.dart';
 
 class ReportsPieChart extends StatelessWidget {
   final List<PieItem> data;
