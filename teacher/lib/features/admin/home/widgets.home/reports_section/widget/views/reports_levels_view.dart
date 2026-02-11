@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/widget/reports_State_Card.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/widget/reports_back_button.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/widget/reports_State_Card.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/widget/reports_back_button.dart';
 
 class ReportsLevelsView extends StatelessWidget {
   final VoidCallback onBack;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/home/controller/Reports_Statistics_Controller.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/widget/chart/reports_pie_chart.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/widget/chart/reports_chart_menu.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/widget/chart/reports_chart_data.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/widget/chart/reports_pie_chart.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/widget/chart/reports_chart_menu.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/widget/chart/reports_chart_data.dart';
 
 class ReportsChartsView extends StatelessWidget {
   final ReportsStatisticsController controller;

@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/home/domain/entities/stat_item.dart';
-import 'package:teacher/features/admin/home/widgets/management_stats_section/widget/management_bar_value.dart';
-import 'package:teacher/features/admin/home/widgets/management_stats_section/widget/management_chip_value.dart';
+import 'package:teacher/features/admin/home/widgets.home/management_stats_section/widget/management_bar_value.dart';
+import 'package:teacher/features/admin/home/widgets.home/management_stats_section/widget/management_chip_value.dart';
 
 class ManagementStatRow extends StatelessWidget {
   const ManagementStatRow({

@@ -1,11 +1,11 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/home/widgets/Payment_Status_Section/Payment_Status_Section.dart';
-import 'package:teacher/features/admin/home/widgets/management_stats_section/management_stats_section.dart';
-import 'package:teacher/features/admin/home/widgets/performance_reports/performance_reports_card.dart';
-import 'package:teacher/features/admin/home/widgets/quick_actions_section/quick_actions_section.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/reports_section.dart';
+import 'package:teacher/features/admin/home/widgets.home/Payment_Status_Section/Payment_Status_Section.dart';
+import 'package:teacher/features/admin/home/widgets.home/management_stats_section/management_stats_section.dart';
+import 'package:teacher/features/admin/home/widgets.home/performance_reports/performance_reports_card.dart';
+import 'package:teacher/features/admin/home/widgets.home/quick_actions_section/quick_actions_section.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/reports_section.dart';
 
 class HomeBodyContent extends StatelessWidget {
   const HomeBodyContent({super.key});

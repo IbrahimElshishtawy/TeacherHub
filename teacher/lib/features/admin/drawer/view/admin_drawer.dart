@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/drawer/controller/admin_drawer_controller.dart';
-import 'package:teacher/features/admin/drawer/widgets/ExpandableT_ile.dart';
-import 'package:teacher/features/admin/drawer/widgets/Logout_Tile.dart';
-import 'package:teacher/features/admin/drawer/widgets/Main_Tile.dart';
-import 'package:teacher/features/admin/drawer/widgets/admin_drawer_header.dart';
+import 'package:teacher/features/admin/drawer/widgets.drawer/ExpandableT_ile.dart';
+import 'package:teacher/features/admin/drawer/widgets.drawer/Logout_Tile.dart';
+import 'package:teacher/features/admin/drawer/widgets.drawer/Main_Tile.dart';
+import 'package:teacher/features/admin/drawer/widgets.drawer/admin_drawer_header.dart';
 
 class AdminDrawer extends StatelessWidget {
   const AdminDrawer({super.key});

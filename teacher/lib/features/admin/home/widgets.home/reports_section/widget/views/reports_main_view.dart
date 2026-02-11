@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:teacher/features/admin/home/controller/Reports_Statistics_Controller.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/widget/reports_State_Card.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/widget/reports_State_Card.dart';
 
 class ReportsMainView extends GetView<ReportsStatisticsController> {
   const ReportsMainView({super.key});

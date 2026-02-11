@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/home/domain/entities/stat_item.dart';
-import 'package:teacher/features/admin/home/widgets/management_stats_section/widget/management_action_button.dart';
-import 'package:teacher/features/admin/home/widgets/management_stats_section/widget/management_month_selector.dart';
-import 'package:teacher/features/admin/home/widgets/management_stats_section/widget/management_stat_row.dart';
+import 'package:teacher/features/admin/home/widgets.home/management_stats_section/widget/management_action_button.dart';
+import 'package:teacher/features/admin/home/widgets.home/management_stats_section/widget/management_month_selector.dart';
+import 'package:teacher/features/admin/home/widgets.home/management_stats_section/widget/management_stat_row.dart';
 
 class ManagementStatsSection extends StatefulWidget {
   const ManagementStatsSection({

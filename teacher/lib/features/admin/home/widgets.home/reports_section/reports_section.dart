@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/home/controller/Reports_Statistics_Controller.dart';
 
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/views/reports_charts_view.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/views/reports_grades_view.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/views/reports_levels_view.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/views/reports_main_view.dart';
-import 'package:teacher/features/admin/home/widgets/reports_section/widget/views/reports_registration_view.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/views/reports_charts_view.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/views/reports_grades_view.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/views/reports_levels_view.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/views/reports_main_view.dart';
+import 'package:teacher/features/admin/home/widgets.home/reports_section/widget/views/reports_registration_view.dart';
 
 class ReportsStatisticsSection extends StatelessWidget {
   const ReportsStatisticsSection({super.key});

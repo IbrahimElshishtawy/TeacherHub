@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/home/widgets/performance_reports/widget/pie_outline_icon.dart';
+import 'package:teacher/features/admin/home/widgets.home/performance_reports/widget/pie_outline_icon.dart';
 
 class PerformanceReportsCard extends StatelessWidget {
   final VoidCallback? onTap;

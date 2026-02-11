@@ -1,8 +1,8 @@
 // quick_actions_section.dart
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/home/widgets/quick_actions_section/widget/button_Width.dart';
-import 'package:teacher/features/admin/home/widgets/quick_actions_section/widget/quick_action_button.dart';
-import 'package:teacher/features/admin/home/widgets/quick_actions_section/widget/quick_action_model.dart';
+import 'package:teacher/features/admin/home/widgets.home/quick_actions_section/widget/button_Width.dart';
+import 'package:teacher/features/admin/home/widgets.home/quick_actions_section/widget/quick_action_button.dart';
+import 'package:teacher/features/admin/home/widgets.home/quick_actions_section/widget/quick_action_model.dart';
 
 class QuickActionsSection extends StatelessWidget {
   const QuickActionsSection({super.key});
