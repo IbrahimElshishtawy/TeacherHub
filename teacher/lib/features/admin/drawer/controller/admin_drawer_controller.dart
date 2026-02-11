@@ -17,7 +17,10 @@ class AdminDrawerController extends GetxController {
       s!.selectedRoute = route;
     });
 
-    // 4) روح للصفحة (مهم: مش Get.back)
+    // 4) Collapse any expanded items (resetting them)
+    closeExpandableTile();
+
+    // 5) روح للصفحة (مهم: مش Get.back)
     Get.offNamed(route); // أو Get.toNamed(route) لو عايز stack
   }
 
@@ -26,5 +29,12 @@ class AdminDrawerController extends GetxController {
     if (Get.isRegistered<HomeController>()) {
       Get.find<HomeController>().closeDrawer();
     }
+  }
+
+  // دالة لتحديث حالة التوسيع والتقليص
+  void closeExpandableTile() {
+    state.update((s) {
+      s!.selectedRoute = ""; // إلغاء التوسيع عندما نغير الصفحة
+    });
   }
 }

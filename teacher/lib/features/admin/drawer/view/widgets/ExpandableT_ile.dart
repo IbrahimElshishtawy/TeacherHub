@@ -1,7 +1,11 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:teacher/features/admin/drawer/state/admin_drawer_state.dart';
 
-class ExpandableTile extends StatelessWidget {
+class ExpandableTile extends StatefulWidget {
   final DrawerItemModel item;
   final String selectedRoute;
   final void Function(String route) onTapSub;
@@ -13,39 +17,53 @@ class ExpandableTile extends StatelessWidget {
     required this.onTapSub,
   });
 
-  static const Color white = Colors.white;
-  static const Color accent = Color(0xFF2F6BFF);
+  @override
+  _ExpandableTileState createState() => _ExpandableTileState();
+}
 
-  bool get _anyChildSelected =>
-      item.children.any((c) => c.route == selectedRoute);
-
+class _ExpandableTileState extends State<ExpandableTile> {
   @override
   Widget build(BuildContext context) {
-    final titleColor = _anyChildSelected ? accent : white;
+    // Check if the item is expanded using the AdminDrawerState
+    final drawerState = Get.find<AdminDrawerState>();
+
+    // Check if this route is expanded
+    final bool isExpanded = drawerState.isExpanded(widget.item.route ?? "");
 
     return Theme(
       data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
       child: ExpansionTile(
         tilePadding: EdgeInsets.zero,
         childrenPadding: const EdgeInsets.only(right: 30, top: 2, bottom: 2),
-        initiallyExpanded: _anyChildSelected,
-
-        leading: Icon(item.icon, color: titleColor, size: 20),
+        initiallyExpanded: isExpanded,
+        onExpansionChanged: (bool expanded) {
+          setState(() {
+            drawerState.toggleExpansion(
+              widget.item.route ?? "",
+            ); // Toggle expansion
+          });
+        },
+        leading: Icon(widget.item.icon, color: Colors.blue, size: 20),
         title: Text(
-          item.title,
+          widget.item.title,
           style: TextStyle(
-            color: titleColor,
+            color: const Color.fromARGB(255, 251, 250, 250),
             fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
         ),
-        iconColor: titleColor,
-        collapsedIconColor: titleColor,
+        iconColor: Colors.blue,
+        collapsedIconColor: Colors.blue,
 
         children: [
-          for (final sub in item.children)
+          for (final sub in widget.item.children)
             InkWell(
-              onTap: () => onTapSub(sub.route),
+              onTap: () {
+                widget.onTapSub(sub.route);
+                setState(() {
+                  drawerState.toggleExpansion(sub.route);
+                });
+              },
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6),
                 child: Row(
@@ -53,7 +71,9 @@ class ExpandableTile extends StatelessWidget {
                     Text(
                       "•",
                       style: TextStyle(
-                        color: sub.route == selectedRoute ? accent : white,
+                        color: sub.route == widget.selectedRoute
+                            ? Colors.blue
+                            : const Color.fromARGB(255, 248, 245, 245),
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                       ),
@@ -63,7 +83,9 @@ class ExpandableTile extends StatelessWidget {
                       child: Text(
                         sub.title,
                         style: TextStyle(
-                          color: sub.route == selectedRoute ? accent : white,
+                          color: sub.route == widget.selectedRoute
+                              ? Colors.blue
+                              : const Color.fromARGB(255, 241, 239, 239),
                           fontSize: 15,
                           fontWeight: FontWeight.w600,
                         ),
@@ -78,5 +100,3 @@ class ExpandableTile extends StatelessWidget {
     );
   }
 }
-
-/* =================== Logout =================== */

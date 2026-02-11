@@ -49,62 +49,96 @@ class LogoutTile extends StatelessWidget {
           title: Column(
             children: [
               Lottie.asset(
-                'lottie/Connection error.json', // المسار إلى ملف Lottie
-                width: 50,
-                height: 50,
+                'assets/lottie/Warning Status.json',
+                width: 150,
+                height: 150,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 6),
               const Text(
-                "هناك مشكلة في الاتصال، حاول مرة أخرى.",
+                "هل أنت متأكد من رغبتك في تسجيل الخروج؟",
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 6),
+              const Text(
+                "ستحتاج إلى تسجيل الدخول مرة أخرى للوصول إلى حسابك.",
+                style: TextStyle(
+                  fontSize: 11,
+                  color: Colors.red,
+                  fontWeight: FontWeight.w700,
+                ),
                 textAlign: TextAlign.center,
               ),
             ],
           ),
           actions: [
             // زر إلغاء
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // إغلاق النافذة المنبثقة
-              },
-              style: TextButton.styleFrom(
-                backgroundColor: cancelBlue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+            Row(
+              children: [
+                SizedBox(
+                  width: 114,
+                  height: 40,
+                  child: TextButton(
+                    onPressed: () {
+                      onTap();
+                      Navigator.of(context).pop();
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: logoutRed,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "تسجيل الخروج",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-              child: const Text(
-                "إلغاء",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
+                SizedBox(width: 2),
+                SizedBox(
+                  width: 114,
+                  height: 40,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(); // إغلاق النافذة المنبثقة
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: cancelBlue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      "إلغاء",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-            // زر تأكيد
-            TextButton(
-              onPressed: () {
-                onTap(); // تنفيذ دالة الخروج أو أي إجراء آخر
-                Navigator.of(
-                  context,
-                ).pop(); // إغلاق النافذة المنبثقة بعد تنفيذ الإجراء
-              },
-              style: TextButton.styleFrom(
-                backgroundColor: logoutRed,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              child: const Text(
-                "حاول مرة أخرى",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     const Text(
+            //       "تذكرني",
+            //       textAlign: TextAlign.right,
+            //       style: TextStyle(fontSize: 14),
+            //     ),
+            //     Checkbox(value: false, onChanged: (bool? value) {}),
+            //   ],
+            // ),
           ],
         );
       },

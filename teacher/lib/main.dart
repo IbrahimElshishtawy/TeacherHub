@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/admin/drawer/controller/admin_drawer_controller.dart';
-import 'package:teacher/features/admin/home/controller/home_controller.dart';
+import 'package:teacher/features/admin/home/bindings/home_binding.dart';
 import 'package:teacher/features/admin/home/view/home_page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_401_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_403_Page.dart';
@@ -14,6 +13,7 @@ import 'package:teacher/features/auth/view/login/teacher_login/forget_password_t
 import 'package:teacher/features/auth/view/login/teacher_login/teacher_login_screen.dart';
 import 'features/auth/view/Onboarding/Onboarding_Screen.dart';
 import 'features/auth/view/user_type_login/User_Type_login_Screen.dart';
+// Import GetX
 
 void main() {
   runApp(const MyApp());
@@ -29,29 +29,35 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Onboarding Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: OnboardingScreen(),
-      routes: {
-        '/onboarding': (context) => OnboardingScreen(),
-        '/user_type': (context) => UserTypeScreen(),
-        '/admin_login': (context) => AdminLoginScreen(),
-        '/teacher_login': (context) => TeacherLoginScreen(),
-        '/student_login': (context) => StudentLoginScreen(),
-        '/parent_login': (context) => ParentLoginScreen(),
-        '/forget_password_admin': (context) => ForgotPasswordadminScreen(),
-        '/forget_password_teacher': (context) => ForgetPasswordTeacher(),
-        '/forget_password_student': (context) => ForgetPasswordStudent(),
-        '/error_403': (context) => Error403Page(),
-        '/error_401': (context) => Error401Page(),
-
-        '/home_admin': (context) {
-          if (!Get.isRegistered<HomeController>()) {
-            Get.put(HomeController());
-          }
-          if (!Get.isRegistered<AdminDrawerController>()) {
-            Get.put(AdminDrawerController());
-          }
-          return HomePage();
-        },
-      },
+      getPages: [
+        // Define your routes here with bindings
+        GetPage(name: '/onboarding', page: () => OnboardingScreen()),
+        GetPage(name: '/user_type', page: () => UserTypeScreen()),
+        GetPage(name: '/admin_login', page: () => AdminLoginScreen()),
+        GetPage(name: '/teacher_login', page: () => TeacherLoginScreen()),
+        GetPage(name: '/student_login', page: () => StudentLoginScreen()),
+        GetPage(name: '/parent_login', page: () => ParentLoginScreen()),
+        GetPage(
+          name: '/forget_password_admin',
+          page: () => ForgotPasswordadminScreen(),
+        ),
+        GetPage(
+          name: '/forget_password_teacher',
+          page: () => ForgetPasswordTeacher(),
+        ),
+        GetPage(
+          name: '/forget_password_student',
+          page: () => ForgetPasswordStudent(),
+        ),
+        GetPage(name: '/error_403', page: () => Error403Page()),
+        GetPage(name: '/error_401', page: () => Error401Page()),
+        GetPage(
+          name: '/home_admin',
+          page: () => HomePage(),
+          binding:
+              HomeBinding(), // Use HomeBinding here to register dependencies
+        ),
+      ],
     );
   }
 }

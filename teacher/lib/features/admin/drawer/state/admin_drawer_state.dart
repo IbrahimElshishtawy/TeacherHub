@@ -10,7 +10,7 @@ class DrawerSubItemModel {
 class DrawerItemModel {
   final String title;
   final IconData icon;
-  final String? route; // لو عنصر عادي يفتح صفحة
+  final String? route; // If it's a regular item that opens a page
   final List<DrawerSubItemModel> children;
 
   const DrawerItemModel({
@@ -24,11 +24,10 @@ class DrawerItemModel {
 }
 
 class AdminDrawerState {
-  String selectedRoute = "/admin/home";
+  String selectedRoute = "/admin/home"; // Currently selected route
 
   final List<DrawerItemModel> items = const [
     DrawerItemModel(title: "لوحة التحكم", icon: Icons.grid_view_rounded),
-
     DrawerItemModel(
       title: "المستخدمين",
       icon: Icons.group_outlined,
@@ -41,13 +40,11 @@ class AdminDrawerState {
         ),
       ],
     ),
-
     DrawerItemModel(
       title: "الكورسات",
       icon: Icons.folder_outlined,
       route: "/admin/courses",
     ),
-
     DrawerItemModel(
       title: "الاختبارات والمراجعات",
       icon: Icons.edit_note_outlined,
@@ -57,19 +54,16 @@ class AdminDrawerState {
         DrawerSubItemModel(title: "النتائج", route: "/admin/quizzes/results"),
       ],
     ),
-
     DrawerItemModel(
       title: "الحضور والغياب",
       icon: Icons.calendar_month_outlined,
       route: "/admin/attendance",
     ),
-
     DrawerItemModel(
       title: "المدفوعات",
       icon: Icons.credit_card_outlined,
       route: "/admin/payments",
     ),
-
     DrawerItemModel(
       title: "التقارير والإحصائيات",
       icon: Icons.bar_chart_rounded,
@@ -82,7 +76,6 @@ class AdminDrawerState {
         DrawerSubItemModel(title: "الكورسات", route: "/admin/reports/courses"),
       ],
     ),
-
     DrawerItemModel(
       title: "الإعدادات",
       icon: Icons.settings_outlined,
@@ -99,4 +92,28 @@ class AdminDrawerState {
       route: "/admin/support",
     ),
   ];
+
+  // A list to keep track of expanded items
+  final Map<String, bool> expandedItems = {};
+
+  // Function to toggle item expansion
+  void toggleExpansion(String route) {
+    if (expandedItems.containsKey(route)) {
+      expandedItems[route] = !expandedItems[route]!;
+    } else {
+      expandedItems[route] = true;
+    }
+
+    // Close all other items that are not the selected one
+    for (var key in expandedItems.keys) {
+      if (key != route) {
+        expandedItems[key] = false;
+      }
+    }
+  }
+
+  // Check if the item is expanded
+  bool isExpanded(String route) {
+    return expandedItems[route] ?? false;
+  }
 }
