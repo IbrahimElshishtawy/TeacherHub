@@ -67,7 +67,7 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
               _buildUserTypeOption(
                 'Admin',
                 'إدارة النظام والمستخدمين',
-                'assets/lottie/admin.json',
+                'assets/lottie/.json',
                 0,
                 '/admin_login',
               ),
@@ -88,7 +88,7 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
               _buildUserTypeOption(
                 'Parent',
                 'تابع تعلم أبنك ومتابعة دروسه بسهولة',
-                'assets/lottie/Book loading.json',
+                'assets/lottie/Parenting.json',
                 3,
                 '/parent_login',
               ),

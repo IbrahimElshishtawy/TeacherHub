@@ -38,24 +38,37 @@ class AdminDrawer extends StatelessWidget {
                   AdminDrawerHeader(onClose: () => c.closeDrawerFromHome()),
                   const SizedBox(height: 10),
 
+                  // Loop through all items in the drawer
                   for (final item in s.items) ...[
+                    // If the item does not have children, create a MainTile
                     if (!item.hasChildren)
                       MainTile(
                         title: item.title,
                         icon: item.icon,
                         selected: s.selectedRoute == item.route,
-                        onTap: () => c.goTo(item.route!),
+                        onTap: () {
+                          c.goTo(item.route!); // Go to the route when tapped
+                          c.toggleExpansion(
+                            item.route!,
+                          ); // Close any expanded items
+                        },
                       )
-                    else
+                    else // If it has children, create an ExpandableTile
                       ExpandableTile(
                         item: item,
                         selectedRoute: s.selectedRoute,
-                        onTapSub: (r) => c.goTo(r),
+                        onTapSub: (r) {
+                          c.goTo(r); // Go to sub-item route
+                          c.toggleExpansion(
+                            item.route!,
+                          ); // Close other expanded items
+                        },
                       ),
                     const SizedBox(height: 10),
                   ],
 
                   const SizedBox(height: 10),
+                  // Logout tile
                   LogoutTile(onTap: () {}),
                 ],
               );

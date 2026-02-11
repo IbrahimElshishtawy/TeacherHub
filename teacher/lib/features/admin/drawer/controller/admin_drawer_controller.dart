@@ -34,7 +34,31 @@ class AdminDrawerController extends GetxController {
   // دالة لتحديث حالة التوسيع والتقليص
   void closeExpandableTile() {
     state.update((s) {
-      s!.selectedRoute = ""; // إلغاء التوسيع عندما نغير الصفحة
+      s!.expandedItems.clear(); // إلغاء التوسيع لجميع العناصر عند التغيير
     });
+  }
+
+  // دالة لتوسيع أو تقليص عنصر عند الضغط عليه
+  void toggleExpansion(String route) {
+    if (state.value.expandedItems.containsKey(route)) {
+      state.update((s) {
+        s!.expandedItems[route] =
+            !s.expandedItems[route]!; // Toggle the expanded state
+      });
+    } else {
+      state.update((s) {
+        s!.expandedItems[route] =
+            true; // Expand the item if it's not expanded yet
+      });
+    }
+
+    // Close all other items that are not the selected one
+    for (var key in state.value.expandedItems.keys) {
+      if (key != route) {
+        state.update((s) {
+          s!.expandedItems[key] = false;
+        });
+      }
+    }
   }
 }
