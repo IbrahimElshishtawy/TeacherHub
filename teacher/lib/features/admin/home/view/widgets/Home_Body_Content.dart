@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/home/view/widgets/Payment_Status_Section/Payment_Status_Section.dart';
 import 'package:teacher/features/admin/home/view/widgets/management_stats_section/management_stats_section.dart';
