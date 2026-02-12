@@ -14,7 +14,6 @@ import 'package:teacher/features/auth/view/login/teacher_login/forget_password_t
 import 'package:teacher/features/auth/view/login/teacher_login/teacher_login_screen.dart';
 import 'features/auth/view/Onboarding/Onboarding_Screen.dart';
 import 'features/auth/view/user_type_login/User_Type_login_Screen.dart';
-// Import GetX
 
 void main() {
   runApp(const MyApp());

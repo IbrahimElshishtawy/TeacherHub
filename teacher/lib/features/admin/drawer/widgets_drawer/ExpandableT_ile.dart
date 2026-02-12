@@ -1,8 +1,5 @@
-// ignore_for_file: library_private_types_in_public_api, file_names
-
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get.dart';
 import 'package:teacher/features/admin/drawer/state/admin_drawer_state.dart';
 
 class ExpandableTile extends StatefulWidget {
@@ -15,6 +12,7 @@ class ExpandableTile extends StatefulWidget {
     required this.item,
     required this.selectedRoute,
     required this.onTapSub,
+    required bool isExpanded,
   });
 
   @override
@@ -24,7 +22,6 @@ class ExpandableTile extends StatefulWidget {
 class _ExpandableTileState extends State<ExpandableTile> {
   @override
   Widget build(BuildContext context) {
-    // Check if the item is expanded using the AdminDrawerState
     final drawerState = Get.find<AdminDrawerState>();
 
     // Check if this route is expanded
@@ -61,7 +58,9 @@ class _ExpandableTileState extends State<ExpandableTile> {
               onTap: () {
                 widget.onTapSub(sub.route);
                 setState(() {
-                  drawerState.toggleExpansion(sub.route);
+                  drawerState.toggleExpansion(
+                    sub.route,
+                  ); // Toggle sub-item expansion
                 });
               },
               child: Padding(

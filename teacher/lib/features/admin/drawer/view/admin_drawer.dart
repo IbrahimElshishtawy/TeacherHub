@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:teacher/features/admin/drawer/controller/admin_drawer_controller.dart';
-import 'package:teacher/features/admin/drawer/widgets.drawer/ExpandableT_ile.dart';
-import 'package:teacher/features/admin/drawer/widgets.drawer/Logout_Tile.dart';
-import 'package:teacher/features/admin/drawer/widgets.drawer/Main_Tile.dart';
-import 'package:teacher/features/admin/drawer/widgets.drawer/admin_drawer_header.dart';
+import 'package:teacher/features/admin/drawer/widgets_drawer/ExpandableT_ile.dart';
+import 'package:teacher/features/admin/drawer/widgets_drawer/Logout_Tile.dart';
+import 'package:teacher/features/admin/drawer/widgets_drawer/Main_Tile.dart';
+import 'package:teacher/features/admin/drawer/widgets_drawer/admin_drawer_header.dart';
 
 class AdminDrawer extends StatelessWidget {
   const AdminDrawer({super.key});
@@ -27,49 +29,64 @@ class AdminDrawer extends StatelessWidget {
             child: Obx(() {
               final s = c.state.value;
 
-              return ListView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 18,
-                ),
-                children: [
-                  const SizedBox(height: 30),
-
-                  AdminDrawerHeader(onClose: () => c.closeDrawerFromHome()),
-                  const SizedBox(height: 10),
-
-                  // Loop through all items in the drawer
-                  for (final item in s.items) ...[
-                    // If the item does not have children, create a MainTile
-                    if (!item.hasChildren)
-                      MainTile(
-                        title: item.title,
-                        icon: item.icon,
-                        selected: s.selectedRoute == item.route,
-                        onTap: () {
-                          c.goTo(item.route!); // Go to the route when tapped
-                          c.toggleExpansion(
-                            item.route!,
-                          ); // Close any expanded items
-                        },
-                      )
-                    else // If it has children, create an ExpandableTile
-                      ExpandableTile(
-                        item: item,
-                        selectedRoute: s.selectedRoute,
-                        onTapSub: (r) {
-                          c.goTo(r); // Go to sub-item route
-                          c.toggleExpansion(
-                            item.route!,
-                          ); // Close other expanded items
-                        },
+              return CustomScrollView(
+                slivers: [
+                  // Fixed header that does not scroll
+                  SliverAppBar(
+                    backgroundColor: bg,
+                    pinned: true,
+                    automaticallyImplyLeading: false,
+                    expandedHeight: 130.0,
+                    flexibleSpace: FlexibleSpaceBar(
+                      background: AdminDrawerHeader(
+                        onClose: () => c.closeDrawerFromHome(),
                       ),
-                    const SizedBox(height: 10),
-                  ],
+                    ),
+                  ),
 
-                  const SizedBox(height: 10),
+                  // List of drawer items
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate((context, index) {
+                      final item = s.items[index];
+
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        child: item.hasChildren
+                            ? ExpandableTile(
+                                item: item,
+                                selectedRoute: s.selectedRoute,
+                                isExpanded:
+                                    item.route != null &&
+                                    s.isExpanded(item.route!),
+                                onTapSub: (r) {
+                                  c.goTo(r);
+                                  if (item.route != null) {
+                                    c.toggleExpansion(item.route!);
+                                  }
+                                },
+                              )
+                            : MainTile(
+                                title: item.title,
+                                icon: item.icon,
+                                selected: s.selectedRoute == item.route,
+                                onTap: () {
+                                  if (item.route != null) {
+                                    c.goTo(item.route!);
+                                    c.toggleExpansion(item.route!);
+                                  }
+                                },
+                              ),
+                      );
+                    }, childCount: s.items.length),
+                  ),
+
                   // Logout tile
-                  LogoutTile(onTap: () {}),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      child: LogoutTile(onTap: () {}),
+                    ),
+                  ),
                 ],
               );
             }),
