@@ -50,7 +50,10 @@ class AdminDrawer extends StatelessWidget {
                       final item = s.items[index];
 
                       return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 4,
+                          horizontal: 6,
+                        ),
                         child: item.hasChildren
                             ? ExpandableTile(
                                 item: item,
@@ -83,7 +86,10 @@ class AdminDrawer extends StatelessWidget {
                   // Logout tile
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 2,
+                        horizontal: 5,
+                      ),
                       child: LogoutTile(onTap: () {}),
                     ),
                   ),

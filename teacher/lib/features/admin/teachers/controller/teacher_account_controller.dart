@@ -11,7 +11,7 @@ class TeacherAccountController extends GetxController {
     avatarUrl: '',
   ).obs;
 
-  void toggleActive() {
+  void toggleActive(bool value) {
     state.value = state.value.copyWith(isActive: !state.value.isActive);
   }
 

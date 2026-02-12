@@ -32,9 +32,15 @@ class AdminDrawerState {
       title: "المستخدمين",
       icon: Icons.group_outlined,
       children: [
-        DrawerSubItemModel(title: "الطلاب", route: "/user_management"),
+        DrawerSubItemModel(
+          title: "الطلاب",
+          route: "/admin/users/user_management",
+        ),
         DrawerSubItemModel(title: "المدرسين", route: "/admin/users/teachers"),
-        DrawerSubItemModel(title: "أولياء الأمور", route: "/user_management"),
+        DrawerSubItemModel(
+          title: "أولياء الأمور",
+          route: "/admin/users/user_management",
+        ),
       ],
     ),
     DrawerItemModel(

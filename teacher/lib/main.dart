@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:teacher/features/admin/home/bindings/home_binding.dart';
 import 'package:teacher/features/admin/home/view/home_page/home_page.dart';
 import 'package:teacher/features/admin/home/view/user_management/user_management_screen.dart';
+import 'package:teacher/features/admin/teachers/bindings/teachers_binding.dart';
+import 'package:teacher/features/admin/teachers/view/teacher_account_screen.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_401_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_403_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/admin_login_screen.dart';
@@ -56,7 +58,15 @@ class MyApp extends StatelessWidget {
           page: () => HomePage(),
           binding: HomeBinding(),
         ),
-        GetPage(name: '/user_management', page: () => UserManagementScreen()),
+        GetPage(
+          name: '/admin/users/user_management',
+          page: () => UserManagementScreen(),
+        ),
+        GetPage(
+          name: '/admin/users/teachers',
+          page: () => TeacherAccountScreen(),
+          binding: TeachersBinding(),
+        ),
       ],
     );
   }

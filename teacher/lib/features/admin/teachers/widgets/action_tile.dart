@@ -24,49 +24,66 @@ class ActionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final bg = backgroundColor ?? Colors.white;
-    final br = borderColor ?? const Color(0xFFE8EEF5);
+    final br = borderColor ?? const Color.fromARGB(147, 232, 238, 245);
 
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(14),
-      child: Container(
-        decoration: BoxDecoration(
-          color: bg,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: br),
-          boxShadow: const [
-            BoxShadow(
-              color: Color(0x0D000000),
-              blurRadius: 8,
-              offset: Offset(0, 4),
-            ),
-          ],
-        ),
-        padding: const EdgeInsets.all(14),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Icon(icon, color: iconColor ?? const Color(0xFF2F6FED), size: 26),
-            const Spacer(),
-            Text(
-              title,
-              style: theme.textTheme.titleSmall?.copyWith(
-                fontWeight: FontWeight.w800,
-                color: const Color(0xFF1E2A3B),
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(2),
+        child: Container(
+          decoration: BoxDecoration(
+            color: bg,
+            borderRadius: BorderRadius.circular(4), // تقليل الزوايا قليلاً
+            border: Border.all(color: br),
+            boxShadow: const [
+              BoxShadow(
+                color: Color(0x0D000000),
+                blurRadius: 6, // تقليل التشويش
+                offset: Offset(0, 3),
               ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              subtitle,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.bodySmall?.copyWith(
-                height: 1.3,
-                color: const Color(0xFF6B7C93),
-                fontWeight: FontWeight.w600,
+            ],
+          ),
+          padding: const EdgeInsets.symmetric(
+            vertical: 4,
+            horizontal: 2,
+          ), // تقليل padding
+          child: Column(
+            mainAxisAlignment:
+                MainAxisAlignment.center, // وضع النص في المنتصف عموديًا
+            crossAxisAlignment:
+                CrossAxisAlignment.center, // وضع النص في المنتصف أفقيًا
+            children: [
+              Icon(
+                icon,
+                color: iconColor ?? const Color(0xFF2F6FED),
+                size: 40, // تقليل حجم الأيقونة
               ),
-            ),
-          ],
+              const SizedBox(height: 6), // فاصل بين الأيقونة والنص
+              Text(
+                title,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  color: const Color(0xFF1E2A3B),
+                ),
+              ),
+              const SizedBox(
+                height: 4,
+              ), // تقليل المسافة بين العنوان والنص الفرعي
+              Center(
+                child: Text(
+                  subtitle,
+                  maxLines: 2,
+                  // overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    height: 2.4,
+                    color: const Color(0xFF6B7C93),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
