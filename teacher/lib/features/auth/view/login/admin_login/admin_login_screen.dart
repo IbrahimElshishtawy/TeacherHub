@@ -13,6 +13,7 @@ class AdminLoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppbarTap(),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

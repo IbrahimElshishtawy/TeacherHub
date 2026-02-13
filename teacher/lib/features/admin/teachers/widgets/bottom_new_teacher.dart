@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/teachers/widgets/massage_create_teacher.dart';
 
 class BottomNewTeacher extends StatefulWidget {
-  const BottomNewTeacher({super.key});
+  const BottomNewTeacher({super.key, required Null Function() onPress});
 
   @override
   State<BottomNewTeacher> createState() => _BottomNewTeacherState();

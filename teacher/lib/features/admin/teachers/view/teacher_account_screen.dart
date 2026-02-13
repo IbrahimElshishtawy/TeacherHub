@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/teachers/widgets/bottom_new_teacher.dart';
+import 'package:teacher/features/admin/teachers/widgets/massage_create_teacher.dart';
 import 'package:teacher/features/admin/teachers/widgets/teacher_card.dart';
 
 import '../controller/teacher_account_controller.dart';
@@ -73,7 +74,12 @@ class TeacherAccountScreen extends GetView<TeacherAccountController> {
 
               // Button to Create New Teacher Account
               const SizedBox(height: 20),
-              BottomNewTeacher(),
+              BottomNewTeacher(
+                onPress: () {
+                  // Your onPress logic to show the create teacher dialog
+                  showCreateTeacherDialog(context);
+                },
+              ),
               const SizedBox(height: 20),
             ],
           ),

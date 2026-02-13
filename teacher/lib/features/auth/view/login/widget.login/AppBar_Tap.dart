@@ -11,7 +11,7 @@ class AppbarTap extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: const Color.fromARGB(247, 255, 255, 255),
+      backgroundColor: Colors.white,
       shadowColor: Colors.white10,
       leading: IconButton(
         icon: const Icon(

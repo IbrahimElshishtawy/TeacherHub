@@ -2,36 +2,53 @@ import 'package:get/get.dart';
 import 'package:teacher/features/admin/teachers/state/teacher_account_state.dart';
 
 class TeacherAccountController extends GetxController {
-  // List of teachers (this will be dynamically updated)
   var teachers = <TeacherAccountState>[].obs;
-
-  // Method to add a new teacher to the list
-  void addTeacher(TeacherAccountState teacher) {
-    teachers.add(teacher);
+  var message = ''.obs;
+  void addTeacher({
+    required String fullName,
+    required String email,
+    required String stageLabel,
+    required String createdAtLabel,
+    String avatarUrl = '',
+    bool isActive = false,
+    bool? isOptionSelected,
+    String? selectedOption,
+  }) {
+    try {
+      TeacherAccountState newTeacher = TeacherAccountState(
+        fullName: fullName,
+        email: email,
+        stageLabel: stageLabel,
+        createdAtLabel: createdAtLabel,
+        avatarUrl: avatarUrl,
+        isActive: isActive,
+        isOptionSelected: isOptionSelected,
+        selectedOption: selectedOption,
+      );
+      teachers.add(newTeacher);
+      message.value = "Teacher added successfully!";
+    } catch (e) {
+      message.value = "Failed to add teacher: $e";
+    }
   }
 
-  // Example method for toggling teacher status (active/inactive)
   void toggleActive(bool isActive) {
-    // Implement your logic to toggle the teacher's active status
+    message.value = isActive ? "Teacher activated." : "Teacher deactivated.";
   }
 
-  // Example method for editing a teacher's data
   void onEditData() {
-    // Implement your logic to edit teacher data
+    message.value = "Teacher data updated.";
   }
 
-  // Example method for managing teacher's permissions
   void onPermissions() {
-    // Implement your logic to manage permissions
+    message.value = "Permissions updated.";
   }
 
-  // Example method for viewing teacher's analytics
   void onAnalytics() {
-    // Implement your logic for analytics
+    message.value = "Viewing teacher analytics.";
   }
 
-  // Example onCreateTeacher method
   void onCreateTeacher() {
-    // Implement your logic to create a new teacher account
+    message.value = "Creating a new teacher account.";
   }
 }
