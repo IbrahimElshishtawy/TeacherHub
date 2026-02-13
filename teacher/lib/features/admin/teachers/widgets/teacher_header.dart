@@ -131,3 +131,31 @@ class TeacherHeader extends StatelessWidget {
     );
   }
 }
+
+class CreateTeacherTopText extends StatelessWidget {
+  const CreateTeacherTopText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: const [
+        Text(
+          "إنشاء حساب جديد للمدرس",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+        ),
+        SizedBox(height: 6),
+        Text(
+          "إدخال بيانات المدرس وتحديد الصلاحيات قبل إنشاء الحساب",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+            color: Colors.black54,
+          ),
+        ),
+      ],
+    );
+  }
+}

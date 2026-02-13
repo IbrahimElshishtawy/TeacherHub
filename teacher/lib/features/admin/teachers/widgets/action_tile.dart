@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
 class ActionTile extends StatelessWidget {
-  final IconData icon;
   final String title;
   final String subtitle;
   final VoidCallback onTap;
   final Color? backgroundColor;
   final Color? borderColor;
   final Color? iconColor;
+  final Widget child; // Changed from AnimatedSwitcher? to Widget
 
   const ActionTile({
     super.key,
-    required this.icon,
     required this.title,
     required this.subtitle,
     required this.onTap,
     this.backgroundColor,
     this.borderColor,
     this.iconColor,
+    required this.child, // Ensuring child is passed as a widget
   });
 
   @override
@@ -34,32 +34,23 @@ class ActionTile extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             color: bg,
-            borderRadius: BorderRadius.circular(4), // تقليل الزوايا قليلاً
+            borderRadius: BorderRadius.circular(4),
             border: Border.all(color: br),
             boxShadow: const [
               BoxShadow(
                 color: Color(0x0D000000),
-                blurRadius: 6, // تقليل التشويش
+                blurRadius: 6,
                 offset: Offset(0, 3),
               ),
             ],
           ),
-          padding: const EdgeInsets.symmetric(
-            vertical: 4,
-            horizontal: 2,
-          ), // تقليل padding
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
           child: Column(
-            mainAxisAlignment:
-                MainAxisAlignment.center, // وضع النص في المنتصف عموديًا
-            crossAxisAlignment:
-                CrossAxisAlignment.center, // وضع النص في المنتصف أفقيًا
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
-                icon,
-                color: iconColor ?? const Color(0xFF2F6FED),
-                size: 40, // تقليل حجم الأيقونة
-              ),
-              const SizedBox(height: 6), // فاصل بين الأيقونة والنص
+              child, // This will be the AnimatedSwitcher or any widget passed to ActionTile
+              const SizedBox(height: 6),
               Text(
                 title,
                 style: theme.textTheme.titleSmall?.copyWith(
@@ -67,14 +58,11 @@ class ActionTile extends StatelessWidget {
                   color: const Color(0xFF1E2A3B),
                 ),
               ),
-              const SizedBox(
-                height: 4,
-              ), // تقليل المسافة بين العنوان والنص الفرعي
+              const SizedBox(height: 4),
               Center(
                 child: Text(
                   subtitle,
                   maxLines: 2,
-                  // overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.bodySmall?.copyWith(
                     height: 2.4,
                     color: const Color(0xFF6B7C93),

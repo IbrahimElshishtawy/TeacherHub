@@ -1,34 +1,37 @@
 import 'package:get/get.dart';
-import '../state/teacher_account_state.dart';
+import 'package:teacher/features/admin/teachers/state/teacher_account_state.dart';
 
 class TeacherAccountController extends GetxController {
-  final Rx<TeacherAccountState> state = const TeacherAccountState(
-    isActive: true,
-    fullName: 'أ / محمد أحمد',
-    email: 'mohamed@gmail.com',
-    stageLabel: 'الصف الثالث الثانوي - المرحلة الإعدادية',
-    createdAtLabel: 'تم إنشاء الحساب: 2025 / 9 / 12',
-    avatarUrl: '',
-  ).obs;
+  // List of teachers (this will be dynamically updated)
+  var teachers = <TeacherAccountState>[].obs;
 
-  void toggleActive(bool value) {
-    state.value = state.value.copyWith(isActive: !state.value.isActive);
+  // Method to add a new teacher to the list
+  void addTeacher(TeacherAccountState teacher) {
+    teachers.add(teacher);
   }
 
-  // Hooks جاهزة للربط بعدين
+  // Example method for toggling teacher status (active/inactive)
+  void toggleActive(bool isActive) {
+    // Implement your logic to toggle the teacher's active status
+  }
+
+  // Example method for editing a teacher's data
   void onEditData() {
-    // Get.toNamed(...)
+    // Implement your logic to edit teacher data
   }
 
+  // Example method for managing teacher's permissions
   void onPermissions() {
-    // Get.toNamed(...)
+    // Implement your logic to manage permissions
   }
 
+  // Example method for viewing teacher's analytics
   void onAnalytics() {
-    // Get.toNamed(...)
+    // Implement your logic for analytics
   }
 
+  // Example onCreateTeacher method
   void onCreateTeacher() {
-    // Get.toNamed(...)
+    // Implement your logic to create a new teacher account
   }
 }
