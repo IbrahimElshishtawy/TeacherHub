@@ -1,7 +1,9 @@
-// ignore_for_file: library_private_types_in_public_api
-
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/widget%20view/button_pop_account_teacher.dart';
+import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/widget%20view/copy_field.dart';
 import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
 
 class CreateTeacherScreen extends StatefulWidget {
@@ -13,8 +15,8 @@ class CreateTeacherScreen extends StatefulWidget {
 }
 
 class _CreateTeacherScreenState extends State<CreateTeacherScreen> {
-  final _usernameController = TextEditingController(text: "MohamedAli@53");
-  final _passwordController = TextEditingController(text: "125I26Aa");
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -23,9 +25,31 @@ class _CreateTeacherScreenState extends State<CreateTeacherScreen> {
     super.dispose();
   }
 
+  @override
+  void initState() {
+    super.initState();
+    _loadAccountData();
+  }
+
+  // Load account data from JSON
+  Future<void> _loadAccountData() async {
+    try {
+      final response = await rootBundle.loadString('assets/data/teacher.json');
+      final List<dynamic> data = json.decode(response);
+      if (data.isNotEmpty) {
+        setState(() {
+          _usernameController.text = data[0]['email'];
+          _passwordController.text = data[0]['password'];
+        });
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print("Error loading JSON: $e");
+      }
+    }
+  }
+
   static const _bg = Color(0xFFF6F8FC);
-  static const _cardBorder = Color(0xFFE6ECF5);
-  static const _primary = Color(0xFF2F6FED);
   static const _titleColor = Color(0xFF1E2A3B);
   static const _subColor = Color(0xFF6B7C93);
 
@@ -42,7 +66,6 @@ class _CreateTeacherScreenState extends State<CreateTeacherScreen> {
             child: Column(
               children: [
                 const SizedBox(height: 10),
-
                 const Text(
                   'حساب المدرس الجديد',
                   style: TextStyle(
@@ -62,75 +85,19 @@ class _CreateTeacherScreenState extends State<CreateTeacherScreen> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-
                 const SizedBox(height: 14),
-
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(14),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(14),
-                    border: Border.all(color: _cardBorder),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Color(0x14000000),
-                        blurRadius: 14,
-                        offset: Offset(0, 6),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      _label('اسم الحساب'),
-                      const SizedBox(height: 8),
-                      _copyField(
-                        controller: _usernameController,
-                        onCopy: () =>
-                            _copyToClipboard(_usernameController.text),
-                      ),
-
-                      const SizedBox(height: 12),
-
-                      _label('كلمة المرور'),
-                      const SizedBox(height: 8),
-                      _copyField(
-                        controller: _passwordController,
-                        onCopy: () =>
-                            _copyToClipboard(_passwordController.text),
-                      ),
-                    ],
-                  ),
+                CopyField(label: 'اسم الحساب', controller: _usernameController),
+                const SizedBox(height: 12),
+                CopyField(
+                  label: 'كلمة المرور',
+                  controller: _passwordController,
                 ),
-
-                const Spacer(),
-
-                SizedBox(
-                  width: double.infinity,
-                  height: 52,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: _primary,
-                      foregroundColor: Colors.white,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: const Text(
-                      'الرجوع للرئيسية',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
+                const SizedBox(height: 10),
+                ButtonWidget(
+                  onPressed: _onCreateAccount,
+                  email: _usernameController.text,
+                  password: _passwordController.text,
                 ),
-
                 const SizedBox(height: 10),
               ],
             ),
@@ -140,78 +107,11 @@ class _CreateTeacherScreenState extends State<CreateTeacherScreen> {
     );
   }
 
-  Widget _label(String text) {
-    return Text(
-      text,
-      style: const TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w900,
-        color: Colors.black,
-      ),
-      textAlign: TextAlign.right,
-    );
-  }
-
-  Widget _copyField({
-    required TextEditingController controller,
-    required VoidCallback onCopy,
-  }) {
-    return Container(
-      height: 48,
-      decoration: BoxDecoration(
-        color: const Color(0xFFF7F9FD),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: _cardBorder),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              color: _primary,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: IconButton(
-              onPressed: onCopy,
-              icon: const Icon(
-                Icons.copy_rounded,
-                color: Colors.white,
-                size: 20,
-              ),
-              tooltip: 'نسخ',
-            ),
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: TextField(
-              controller: controller,
-              readOnly: true,
-              textAlign: TextAlign.left,
-              style: const TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w800,
-                color: Color(0xFF2B3A4F),
-              ),
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                isDense: true,
-              ),
-            ),
-          ),
-          const SizedBox(width: 10),
-        ],
-      ),
-    );
-  }
-
-  void _copyToClipboard(String text) async {
-    await Clipboard.setData(ClipboardData(text: text));
-    if (!mounted) return;
+  void _onCreateAccount() {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('تم النسخ'),
-        duration: Duration(milliseconds: 900),
+        content: Text('تم إنشاء الحساب بنجاح'),
+        duration: Duration(seconds: 3),
       ),
     );
   }
