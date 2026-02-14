@@ -34,7 +34,7 @@ class PermissionsSectionCard extends StatelessWidget {
         boxShadow: const [
           BoxShadow(
             color: Color(0x14000000),
-            blurRadius: 14,
+            blurRadius: 4,
             offset: Offset(0, 6),
           ),
         ],
@@ -49,7 +49,7 @@ class PermissionsSectionCard extends StatelessWidget {
                 child: Text(
                   title,
                   style: const TextStyle(
-                    fontSize: 14,
+                    fontSize: 15,
                     fontWeight: FontWeight.w900,
                     color: PermColors.titleColor,
                   ),
