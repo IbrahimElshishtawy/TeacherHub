@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher/features/admin/teachers/widgets/teacher_card.dart';
 import 'package:teacher/features/admin/teachers/widgets/bottom_new_teacher.dart';
 import 'package:teacher/features/admin/teachers/widgets/massage_create_teacher.dart';
-import 'package:teacher/features/admin/teachers/widgets/teacher_card.dart';
-
 import '../controller/teacher_account_controller.dart';
 
 class TeacherAccountScreen extends GetView<TeacherAccountController> {
@@ -73,10 +72,8 @@ class TeacherAccountScreen extends GetView<TeacherAccountController> {
                       return CardTeacher(
                         fullName: teacher.fullName,
                         email: teacher.email,
-
                         stageLabel: teacher.stageLabel,
                         createdAtLabel: teacher.createdAtLabel,
-
                         avatarUrl: teacher.avatarUrl,
                         isActive: teacher.isActive,
                         onEditData: () => controller.onEditTeacherData(teacher),
