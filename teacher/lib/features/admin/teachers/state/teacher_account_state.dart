@@ -6,15 +6,15 @@ class TeacherAccountState {
   // ====== Core ======
   final String id;
   final bool isActive;
-  final String createdAt; // ISO String
-  final String? selectedOption; // new_account / disable_current / ...
+  final String createdAt;
+  final String? selectedOption;
 
   // ====== Basic Info (Step 1) ======
   final String fullName;
   final String email;
   final String? phone;
-  final String? avatarPath; // file path or url
-  final String? password; // (غير مفضل تخزينها محليًا)
+  final String? avatarPath;
+  final String? password;
 
   // ====== Academic Info (Step 2) ======
   final List<String> stages;
