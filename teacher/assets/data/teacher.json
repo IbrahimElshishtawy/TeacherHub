@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "isActive": true,
+    "createdAt": "2026-02-14T12:00:00",
+    "fullName": "Ahmed Ali",
+    "email": "ahmed@example.com",
+    "phone": "1234567890",
+    "avatarPath": "path/to/avatar.png",
+    "password": "password123",
+    "stages": ["Preparatory", "Secondary"],
+    "grades": ["Grade 1", "Grade 2"],
+    "subjects": ["Arabic", "Chemistry"],
+    "permissions": {"courses_create": true, "content_edit": false}
+  }
+]
