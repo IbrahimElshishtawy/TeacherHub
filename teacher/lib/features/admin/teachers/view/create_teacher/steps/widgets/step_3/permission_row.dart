@@ -20,19 +20,19 @@ class PermissionRow extends StatelessWidget {
       child: Row(
         children: [
           Transform.scale(
-            scale: 0.95,
+            scale: 0.85,
             child: Switch(
               value: value,
               onChanged: onChanged,
               activeThumbColor: PermColors.primary,
             ),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 1),
           Expanded(
             child: Text(
               title,
               style: const TextStyle(
-                fontSize: 12,
+                fontSize: 17,
                 fontWeight: FontWeight.w800,
                 color: PermColors.titleColor,
               ),
