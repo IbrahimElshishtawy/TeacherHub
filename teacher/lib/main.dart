@@ -64,7 +64,9 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/admin/users/teachers',
-          page: () => TeacherAccountScreen(),
+          page: () {
+            return TeacherAccountScreen();
+          },
           binding: TeachersBinding(),
         ),
       ],
