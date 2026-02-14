@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -22,24 +23,31 @@ class StepBasicInfoUploadRow extends StatefulWidget {
 class _StepBasicInfoUploadRowState extends State<StepBasicInfoUploadRow> {
   final ImagePicker _picker = ImagePicker();
   XFile? _image;
+  bool _isPickingImage = false;
 
   Future<void> _pickImage() async {
+    if (_isPickingImage) {
+      return;
+    }
+
     try {
-      // فتح معرض الصور
+      setState(() => _isPickingImage = true);
       final file = await _picker.pickImage(
-        source: ImageSource.gallery, // أو ImageSource.camera حسب الحاجة
+        source: ImageSource.gallery,
         imageQuality: 85,
       );
+
       if (!mounted) return;
 
-      // التحقق من أن الصورة تم اختيارها
-      if (file != null) {
-        setState(() => _image = file);
-        widget.onPicked?.call(file);
-      }
+      setState(() {
+        _image = file;
+        _isPickingImage = false;
+      });
+      widget.onPicked?.call(file);
     } catch (e) {
+      setState(() => _isPickingImage = false);
       if (kDebugMode) {
-        print("Error while picking image: $e");
+        print(e);
       }
     }
   }
@@ -80,7 +88,6 @@ class _StepBasicInfoUploadRowState extends State<StepBasicInfoUploadRow> {
                     ),
             ),
             const SizedBox(width: 10),
-
             Expanded(
               child: Text(
                 _image == null ? 'قم بتحميل صورة شخصية' : 'تم اختيار صورة ✅',
@@ -92,7 +99,6 @@ class _StepBasicInfoUploadRowState extends State<StepBasicInfoUploadRow> {
                 textAlign: TextAlign.right,
               ),
             ),
-
             if (_image != null) ...[
               IconButton(
                 onPressed: () {
@@ -103,7 +109,6 @@ class _StepBasicInfoUploadRowState extends State<StepBasicInfoUploadRow> {
                 color: const Color(0xFF6B7C93),
               ),
             ],
-
             const SizedBox(width: 6),
           ],
         ),
