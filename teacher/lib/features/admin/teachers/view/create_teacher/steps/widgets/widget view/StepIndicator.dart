@@ -17,7 +17,7 @@ class StepIndicator extends StatelessWidget {
   });
 
   Color get _mainColor {
-    if (isCompleted) return Colors.green; // Green for completed step
+    if (isCompleted) return Colors.green;
     if (isActive) {
       return const Color.fromARGB(255, 2, 159, 244); // Blue for active step
     }
@@ -71,9 +71,9 @@ class StepIndicator extends StatelessWidget {
 
         // Rectangle with rounded corners for the step title
         Container(
-          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 9),
           decoration: BoxDecoration(
-            color: _mainColor.withOpacity(0.2),
+            color: _mainColor,
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: isCompleted || isActive

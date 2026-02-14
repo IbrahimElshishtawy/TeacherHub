@@ -50,27 +50,45 @@ class TeacherAccountScreen extends GetView<TeacherAccountController> {
           child: Column(
             children: [
               // List of Teacher Cards
-              Obx(() {
-                return Expanded(
-                  child: ListView.builder(
-                    itemCount: controller.teachers.length, // Number of teachers
+              Expanded(
+                child: Obx(() {
+                  final list = controller.teachers;
+
+                  if (list.isEmpty) {
+                    return const Center(
+                      child: Text(
+                        'لا يوجد مدرسين حتى الآن',
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                    );
+                  }
+
+                  return ListView.separated(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    itemCount: list.length,
+                    separatorBuilder: (_, _) => const SizedBox(height: 8),
                     itemBuilder: (context, index) {
-                      final teacher = controller.teachers[index];
+                      final teacher = list[index];
+
                       return CardTeacher(
                         fullName: teacher.fullName,
                         email: teacher.email,
+
                         stageLabel: teacher.stageLabel,
                         createdAtLabel: teacher.createdAtLabel,
+
                         avatarUrl: teacher.avatarUrl,
                         isActive: teacher.isActive,
-                        onEditData: controller.onEditData,
-                        onPermissions: controller.onPermissions,
-                        onAnalytics: controller.onAnalytics,
+                        onEditData: () => controller.onEditTeacherData(teacher),
+                        onPermissions: () =>
+                            controller.onTeacherPermissions(teacher),
+                        onAnalytics: () =>
+                            controller.onTeacherAnalytics(teacher),
                       );
                     },
-                  ),
-                );
-              }),
+                  );
+                }),
+              ),
 
               // Button to Create New Teacher Account
               const SizedBox(height: 20),

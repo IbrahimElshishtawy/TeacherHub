@@ -36,7 +36,7 @@ class CreateTeacherHeaderWidget extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 2),
         Align(
           alignment: Alignment.topCenter,
           child: Text(
@@ -49,9 +49,7 @@ class CreateTeacherHeaderWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-        const SizedBox(height: 16),
-
-        // ✅ خطوات 1..3
+        const SizedBox(height: 4),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -82,9 +80,6 @@ class CreateTeacherHeaderWidget extends StatelessWidget {
   }
 
   List<bool> _autoCompleted(int step) {
-    // لو currentStep = 1 => ولا خطوة مكتملة
-    // لو currentStep = 2 => الخطوة 1 مكتملة
-    // لو currentStep = 3 => الخطوة 1 و 2 مكتملين
     return [step > 1, step > 2, false];
   }
 }

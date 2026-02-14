@@ -25,17 +25,21 @@ class _StepBasicInfoUploadRowState extends State<StepBasicInfoUploadRow> {
 
   Future<void> _pickImage() async {
     try {
+      // فتح معرض الصور
       final file = await _picker.pickImage(
-        source: ImageSource.gallery, // أو ImageSource.camera
+        source: ImageSource.gallery, // أو ImageSource.camera حسب الحاجة
         imageQuality: 85,
       );
       if (!mounted) return;
 
-      setState(() => _image = file);
-      widget.onPicked?.call(file);
+      // التحقق من أن الصورة تم اختيارها
+      if (file != null) {
+        setState(() => _image = file);
+        widget.onPicked?.call(file);
+      }
     } catch (e) {
       if (kDebugMode) {
-        print(e);
+        print("Error while picking image: $e");
       }
     }
   }
