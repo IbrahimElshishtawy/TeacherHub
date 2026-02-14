@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/teachers/view/create_teacher/create_teacher_screen.dart';
+import 'package:teacher/features/admin/teachers/view/create_teacher/steps/step_basic_info.dart';
 
 void showCreateTeacherDialog(BuildContext parentContext) {
   // Create a StatefulDialog to manage the button visibility
@@ -9,8 +9,13 @@ void showCreateTeacherDialog(BuildContext parentContext) {
     builder: (BuildContext dialogContext) {
       return StatefulBuilder(
         builder: (context, setState) {
-          bool isOptionSelected = false; // To track if an option is selected
           String selectedOption = ""; // Store selected option's description
+          Color optionOneColor = const Color(0xFF2F6FED);
+          Color optionTwoColor = const Color.fromARGB(255, 237, 47, 47);
+
+          // Dynamic message
+          String message =
+              'اختر الطريقة المناسبة لإنشاء حساب المدرس قبل المتابعة';
 
           return Dialog(
             shape: RoundedRectangleBorder(
@@ -18,7 +23,7 @@ void showCreateTeacherDialog(BuildContext parentContext) {
             ),
             child: SizedBox(
               width: 394,
-              height: 255,
+              height: 300, // Adjusted the height to fit all buttons
               child: AlertDialog(
                 insetPadding: EdgeInsets.zero,
                 contentPadding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
@@ -27,7 +32,7 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 title: Column(
-                  children: const [
+                  children: [
                     Text(
                       "كيفية إنشاء حساب المدرس الجديد",
                       style: TextStyle(
@@ -36,9 +41,9 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
-                      "اختر الطريقة المناسبة لإنشاء حساب المدرس قبل المتابعة.",
+                      message,
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
@@ -57,13 +62,23 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            isOptionSelected = true; // Set option selected
                             selectedOption =
                                 "new_account"; // Track option selection
+                            optionOneColor = const Color(
+                              0xFF1E3D99,
+                            ); // Highlight the selected button
+                            optionTwoColor = const Color.fromARGB(
+                              255,
+                              237,
+                              47,
+                              47,
+                            ); // Dim the other button
+                            message =
+                                'تم اختيار إنشاء حساب جديد دون التأثير على الحساب الحالي';
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF2F6FED),
+                          backgroundColor: optionOneColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -83,12 +98,7 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                                     'إنشاء حساب جديد دون التأثير على الحساب الحالي',
                                     style: TextStyle(
                                       fontSize: 10,
-                                      color: Color.fromRGBO(
-                                        255,
-                                        255,
-                                        255,
-                                        0.981,
-                                      ),
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w900,
                                     ),
                                     maxLines: 1,
@@ -99,12 +109,7 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                                     'إنشاء حساب مدرس جديد دون التأثير على الحساب الحالي',
                                     style: TextStyle(
                                       fontSize: 8,
-                                      color: Color.fromRGBO(
-                                        255,
-                                        255,
-                                        255,
-                                        0.981,
-                                      ),
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w500,
                                     ),
                                     maxLines: 1,
@@ -130,18 +135,20 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            isOptionSelected = true; // Set option selected
                             selectedOption =
                                 "disable_current"; // Track option selection
+                            optionTwoColor = const Color(
+                              0xFF1E3D99,
+                            ); // Highlight the selected button
+                            optionOneColor = const Color(
+                              0xFF2F6FED,
+                            ); // Dim the other button
+                            message =
+                                'تم اختيار إنشاء حساب جديد مع إيقاف الحساب الحالي';
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(
-                            255,
-                            237,
-                            47,
-                            47,
-                          ),
+                          backgroundColor: optionTwoColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -161,12 +168,7 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                                     'إنشاء حساب جديد مع إيقاف الحساب الحالي',
                                     style: TextStyle(
                                       fontSize: 11,
-                                      color: Color.fromRGBO(
-                                        255,
-                                        255,
-                                        255,
-                                        0.981,
-                                      ),
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w900,
                                     ),
                                     maxLines: 1,
@@ -177,12 +179,7 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                                     'سيتم إنشاء حساب جديد مع إيقاف الحساب الحالي مؤقتًا.',
                                     style: TextStyle(
                                       fontSize: 8,
-                                      color: Color.fromRGBO(
-                                        255,
-                                        255,
-                                        255,
-                                        0.981,
-                                      ),
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w500,
                                     ),
                                     maxLines: 1,
@@ -200,47 +197,45 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 10),
                   ],
                 ),
                 actions: [
-                  // Show "Continue" button only if an option is selected
-                  if (isOptionSelected)
-                    Center(
-                      child: SizedBox(
-                        width: 100,
-                        height: 38,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(dialogContext);
-                            Navigator.push(
-                              parentContext,
-                              MaterialPageRoute(
-                                builder: (context) => CreateTeacherScreen(
-                                  selectedOption:
-                                      selectedOption, // Pass the selected option
-                                ),
+                  Center(
+                    child: SizedBox(
+                      width: 100,
+                      height: 38,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(dialogContext);
+                          Navigator.push(
+                            parentContext,
+                            MaterialPageRoute(
+                              builder: (context) => StepBasicInfo(
+                                selectedOption:
+                                    selectedOption, // Pass the selected option
                               ),
-                            );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF3B82F6),
-                            elevation: 8,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
                             ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF3B82F6),
+                          elevation: 8,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: const Text(
-                            "المتابعة",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white,
-                            ),
+                        ),
+                        child: const Text(
+                          "المتابعة",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
                           ),
                         ),
                       ),
                     ),
+                  ),
                 ],
               ),
             ),
