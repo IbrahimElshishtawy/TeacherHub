@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/StepIndicator.dart';
+import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/widget%20view/StepIndicator.dart';
 
 class CreateTeacherHeaderWidget extends StatelessWidget {
   /// currentStep: من 1 إلى 3

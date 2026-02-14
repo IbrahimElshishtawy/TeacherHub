@@ -1,8 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:teacher/features/admin/teachers/view/create_teacher/steps/step_academic_info.dart';
 
-import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/Create_Teacher_Header.dart';
+import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/widget%20view/Create_Teacher_Header.dart';
 import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/step_1/step_basic_info_form_card.dart';
 import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
 
@@ -39,7 +42,7 @@ class _StepBasicInfoState extends State<StepBasicInfo> {
   void onNext() {
     final ok = formKey.currentState?.validate() ?? false;
     if (!ok) return;
-    //  Get.to(() => StepAcademicInfo(selectedOption: widget.selectedOption));
+    Get.to(() => StepAcademicInfo(selectedOption: widget.selectedOption));
   }
 
   @override
