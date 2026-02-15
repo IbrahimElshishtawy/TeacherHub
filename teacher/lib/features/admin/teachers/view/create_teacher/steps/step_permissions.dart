@@ -1,6 +1,10 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:teacher/features/admin/teachers/controller/teacher_form_controller.dart';
 import 'package:teacher/features/admin/teachers/view/create_teacher/create_teacher_screen.dart';
 import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/step_3/permissions_colors.dart';
 import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/step_3/permissions_page_title.dart';
@@ -193,15 +197,11 @@ class _StepPermissionsState extends State<StepPermissions> {
   }
 
   void _onCreateAccount() {
-    // Here, save the permissions or perform any necessary processing
+    final form = Get.find<TeacherFormController>();
+    form.patch(permissions: permissions);
 
-    // Example: You can pass the permissions data and selectedOption to the next screen
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) =>
-            CreateTeacherScreen(selectedOption: widget.selectedOption),
-      ),
-    );
+    form.save();
+
+    Get.to(() => CreateTeacherScreen(selectedOption: widget.selectedOption));
   }
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:teacher/features/admin/teachers/widgets/AccountStatusCard.dart';
 import 'package:teacher/features/admin/teachers/widgets/action_tile.dart';
+import 'package:teacher/features/admin/teachers/widgets/teacher_header.dart';
 
 class CardTeacher extends StatelessWidget {
   final String fullName;
@@ -8,9 +10,11 @@ class CardTeacher extends StatelessWidget {
   final String createdAtLabel;
   final String avatarUrl;
   final bool isActive;
+
   final VoidCallback onEditData;
   final VoidCallback onPermissions;
   final VoidCallback onAnalytics;
+  final ValueChanged<bool> onToggleActive;
 
   const CardTeacher({
     super.key,
@@ -23,38 +27,23 @@ class CardTeacher extends StatelessWidget {
     required this.onEditData,
     required this.onPermissions,
     required this.onAnalytics,
+    required this.onToggleActive,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color.fromARGB(206, 255, 255, 255),
+      color: const Color.fromARGB(206, 252, 247, 247),
       child: Column(
         children: [
-          ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage(avatarUrl),
-              radius: 30,
-            ),
-            title: Text(
-              fullName,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text(email),
+          TeacherHeader(
+            isActive: isActive,
+            fullName: fullName,
+            email: email,
+            stageLabel: stageLabel,
+            createdAtLabel: createdAtLabel,
+            avatarUrl: avatarUrl,
           ),
-          const Divider(),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Stage: $stageLabel'),
-                Text('Created At: $createdAtLabel'),
-                Text('Account Status: ${isActive ? 'Active' : 'Inactive'}'),
-              ],
-            ),
-          ),
-          // Add Action Tiles
           LayoutBuilder(
             builder: (_, constraints) {
               final crossAxisCount = constraints.maxWidth >= 520 ? 3 : 2;
@@ -74,9 +63,9 @@ class CardTeacher extends StatelessWidget {
                     subtitle: 'تحديث بيانات المدرس الأساسية',
                     onTap: onEditData,
                     iconColor: const Color(0xFFF5A623),
-                    child: Icon(
+                    child: const Icon(
                       Icons.edit,
-                      color: const Color(0xFFF5A623),
+                      color: Color(0xFFF5A623),
                       size: 40.0,
                     ),
                   ),
@@ -84,9 +73,9 @@ class CardTeacher extends StatelessWidget {
                     title: 'الصلاحيات والأذونات',
                     subtitle: 'إدارة الصلاحيات ووسائل الأمان',
                     onTap: onPermissions,
-                    child: Icon(
+                    child: const Icon(
                       Icons.verified_user_outlined,
-                      color: const Color(0xFF2F6FED),
+                      color: Color(0xFF2F6FED),
                       size: 40.0,
                     ),
                   ),
@@ -95,11 +84,16 @@ class CardTeacher extends StatelessWidget {
                     subtitle: 'نظرة سريعة على أداء المدرس',
                     onTap: onAnalytics,
                     iconColor: const Color(0xFF2F6FED),
-                    child: Icon(
+                    child: const Icon(
                       Icons.bar_chart_rounded,
-                      color: const Color(0xFF2F6FED),
+                      color: Color(0xFF2F6FED),
                       size: 40.0,
                     ),
+                  ),
+
+                  AccountStatusCard(
+                    isActive: isActive,
+                    onChanged: onToggleActive,
                   ),
                 ],
               );

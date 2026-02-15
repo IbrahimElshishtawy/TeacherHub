@@ -1,7 +1,7 @@
-import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:teacher/features/admin/teachers/controller/teacher_form_controller.dart';
+import 'package:teacher/features/admin/teachers/state/teacher_account_state.dart';
 import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/widget%20view/button_pop_account_teacher.dart';
 import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/widget%20view/copy_field.dart';
 import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
@@ -18,40 +18,37 @@ class _CreateTeacherScreenState extends State<CreateTeacherScreen> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  @override
-  void dispose() {
-    _usernameController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _loadAccountData();
-  }
-
-  // Load account data from JSON
-  Future<void> _loadAccountData() async {
-    try {
-      final response = await rootBundle.loadString('assets/data/teacher.json');
-      final List<dynamic> data = json.decode(response);
-      if (data.isNotEmpty) {
-        setState(() {
-          _usernameController.text = data[0]['email'];
-          _passwordController.text = data[0]['password'];
-        });
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print("Error loading JSON: $e");
-      }
-    }
-  }
+  late final TeacherFormController _form;
+  Worker? _worker; // ✅ nullable
 
   static const _bg = Color(0xFFF6F8FC);
   static const _titleColor = Color(0xFF1E2A3B);
   static const _subColor = Color(0xFF6B7C93);
+
+  @override
+  void initState() {
+    super.initState();
+    _form = Get.find<TeacherFormController>();
+    _syncFromTeacher(_form.teacher.value);
+    _worker = ever<TeacherAccountState?>(_form.teacher, (t) {
+      _syncFromTeacher(t);
+    });
+  }
+
+  void _syncFromTeacher(TeacherAccountState? t) {
+    if (t == null) return;
+    _usernameController.text = t.email;
+    _passwordController.text = t.password;
+    if (mounted) setState(() {});
+  }
+
+  @override
+  void dispose() {
+    _worker?.dispose();
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,18 +83,21 @@ class _CreateTeacherScreenState extends State<CreateTeacherScreen> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 14),
+
                 CopyField(label: 'اسم الحساب', controller: _usernameController),
                 const SizedBox(height: 12),
                 CopyField(
                   label: 'كلمة المرور',
                   controller: _passwordController,
                 ),
+
                 const SizedBox(height: 10),
                 ButtonWidget(
                   onPressed: _onCreateAccount,
                   email: _usernameController.text,
                   password: _passwordController.text,
                 ),
+
                 const SizedBox(height: 10),
               ],
             ),
@@ -108,6 +108,11 @@ class _CreateTeacherScreenState extends State<CreateTeacherScreen> {
   }
 
   void _onCreateAccount() {
+    _form.patch(
+      email: _usernameController.text.trim(),
+      password: _passwordController.text,
+    );
+
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('تم إنشاء الحساب بنجاح'),

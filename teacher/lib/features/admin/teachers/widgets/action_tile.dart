@@ -7,7 +7,7 @@ class ActionTile extends StatelessWidget {
   final Color? backgroundColor;
   final Color? borderColor;
   final Color? iconColor;
-  final Widget child; // Changed from AnimatedSwitcher? to Widget
+  final Widget child;
 
   const ActionTile({
     super.key,
@@ -17,7 +17,7 @@ class ActionTile extends StatelessWidget {
     this.backgroundColor,
     this.borderColor,
     this.iconColor,
-    required this.child, // Ensuring child is passed as a widget
+    required this.child,
   });
 
   @override
@@ -27,14 +27,14 @@ class ActionTile extends StatelessWidget {
     final br = borderColor ?? const Color.fromARGB(147, 232, 238, 245);
 
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: const EdgeInsets.all(4.0),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(2),
         child: Container(
           decoration: BoxDecoration(
             color: bg,
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(3.5),
             border: Border.all(color: br),
             boxShadow: const [
               BoxShadow(
@@ -44,7 +44,7 @@ class ActionTile extends StatelessWidget {
               ),
             ],
           ),
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 2),
+          padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 6),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,

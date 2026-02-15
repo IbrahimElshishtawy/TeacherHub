@@ -19,14 +19,28 @@ class TeacherHeader extends StatelessWidget {
     required this.avatarUrl,
   });
 
+  bool _isHttpUrl(String value) {
+    final raw = value.trim();
+    if (raw.isEmpty) return false;
+    if (raw.startsWith('assets/') ||
+        raw.endsWith('.json') ||
+        raw.startsWith('file:///assets/')) {
+      return false;
+    }
+    final uri = Uri.tryParse(raw);
+    return uri != null && (uri.scheme == 'http' || uri.scheme == 'https');
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final canUseNetwork = _isHttpUrl(avatarUrl);
 
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(4),
       child: Container(
-        height: 155,
+        height: 142,
+        width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(6),
@@ -43,11 +57,10 @@ class TeacherHeader extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Status and Full Name + Email
+            // Spacer(flex: 2),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                // Status dot + label
                 Container(
                   width: 12,
                   height: 12,
@@ -68,62 +81,66 @@ class TeacherHeader extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10), // Spacing between sections
-            // Email and Stage Label
-            Row(
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      fullName,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 18,
-                        color: const Color.fromARGB(255, 7, 9, 11),
+
+            Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(width: 75),
+                  Column(
+                    children: [
+                      Text(
+                        fullName,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 17,
+                          color: const Color.fromARGB(255, 7, 9, 11),
+                        ),
                       ),
-                    ),
-                    Text(
-                      email,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: const Color(0xFF5B6B80),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
+                      Text(
+                        email,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: const Color(0xFF5B6B80),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      stageLabel,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: const Color(0xFF6B7C93),
-                        fontWeight: FontWeight.w700,
-                        fontSize: 12,
+                      const SizedBox(height: 6),
+                      Text(
+                        '  الصف : $stageLabel',
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: const Color(0xFF6B7C93),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      createdAtLabel,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: const Color(0xFF6B7C93),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w900,
+                      const SizedBox(height: 6),
+                      Text(
+                        ' تم انشاء الحساب $createdAtLabel',
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: const Color(0xFF6B7C93),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(width: 15),
-                // Avatar, CreatedAtLabel
-                avatarUrl.isNotEmpty
-                    ? CircleAvatar(
-                        radius: 45,
-                        backgroundColor: const Color(0xFFEAF2FF),
-                        backgroundImage: NetworkImage(avatarUrl),
-                      )
-                    : Lottie.asset(
-                        'assets/lottie/Teacher.json', // الملف الخاص بالرسوم المتحركة
-                        width: 90,
-                        height: 90,
-                      ),
-              ],
+                    ],
+                  ),
+                  Spacer(flex: 1),
+
+                  canUseNetwork
+                      ? CircleAvatar(
+                          radius: 45,
+                          backgroundColor: const Color(0xFFEAF2FF),
+                          backgroundImage: NetworkImage(avatarUrl.trim()),
+                        )
+                      : Lottie.asset(
+                          'assets/lottie/Teacher.json',
+                          width: 90,
+                          height: 90,
+                        ),
+                ],
+              ),
             ),
           ],
         ),

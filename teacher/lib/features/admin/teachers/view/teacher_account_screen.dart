@@ -94,6 +94,9 @@ class TeacherAccountScreen extends GetView<TeachersController> {
                             arguments: teacher.id,
                           );
                         },
+                        onToggleActive: (v) {
+                          controller.toggleActive(teacher.id);
+                        },
                       );
                     },
                   );
