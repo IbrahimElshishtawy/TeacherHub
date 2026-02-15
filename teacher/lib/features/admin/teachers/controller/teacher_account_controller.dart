@@ -1,52 +1,36 @@
 import 'package:get/get.dart';
-import 'package:flutter/services.dart';
-import 'dart:convert';
 import 'package:teacher/features/admin/teachers/state/teacher_account_state.dart';
 
-class TeacherAccountController extends GetxController {
-  var teachers = <TeacherAccountState>[].obs;
-  var message = ''.obs;
+class TeachersController extends GetxController {
+  final teachers = <TeacherAccountState>[].obs;
 
-  // Load teachers data from the JSON file
-  Future<void> loadTeachersData() async {
+  TeacherAccountState? byId(String id) {
     try {
-      final String response = await rootBundle.loadString(
-        'assets/data/teacher.json',
-      );
-      final List<dynamic> data = json.decode(response);
-
-      // Assuming data contains a list of teacher objects
-      List<TeacherAccountState> loadedTeachers = data.map((teacherJson) {
-        return TeacherAccountState.fromJson(teacherJson);
-      }).toList();
-
-      // Updating the teachers list with loaded data
-      teachers.assignAll(loadedTeachers);
-      message.value = 'Teachers loaded successfully.';
-    } catch (e) {
-      message.value = 'Error loading teachers: $e';
+      return teachers.firstWhere((t) => t.id == id);
+    } catch (_) {
+      return null;
     }
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    loadTeachersData(); // Load data when the controller is initialized
+  void upsertTeacher(TeacherAccountState teacher) {
+    final index = teachers.indexWhere((t) => t.id == teacher.id);
+    if (index == -1) {
+      teachers.add(teacher);
+    } else {
+      teachers[index] = teacher;
+      teachers.refresh();
+    }
   }
 
-  // Function to handle when editing a teacher's data
-  void onEditTeacherData(TeacherAccountState teacher) {
-    message.value = "Editing data for: ${teacher.fullName}";
-    // Navigate or open the edit screen with the teacher's data
+  void removeTeacher(String id) {
+    teachers.removeWhere((t) => t.id == id);
   }
 
-  void onTeacherPermissions(TeacherAccountState teacher) {
-    message.value = "Managing permissions for: ${teacher.fullName}";
-    // Navigate to permissions screen
-  }
-
-  void onTeacherAnalytics(TeacherAccountState teacher) {
-    message.value = "Viewing analytics for: ${teacher.fullName}";
-    // Navigate to analytics screen
+  void toggleActive(String id) {
+    final index = teachers.indexWhere((t) => t.id == id);
+    if (index == -1) return;
+    final current = teachers[index];
+    teachers[index] = current.copyWith(isActive: !current.isActive);
+    teachers.refresh();
   }
 }

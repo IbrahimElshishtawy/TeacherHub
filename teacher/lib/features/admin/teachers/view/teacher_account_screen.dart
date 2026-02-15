@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher/features/admin/teachers/controller/teacher_account_controller.dart';
+import 'package:teacher/features/admin/teachers/controller/teacher_form_controller.dart';
+import 'package:teacher/features/admin/teachers/widgets/massage_create_teacher.dart';
 import 'package:teacher/features/admin/teachers/widgets/teacher_card.dart';
 import 'package:teacher/features/admin/teachers/widgets/bottom_new_teacher.dart';
-import 'package:teacher/features/admin/teachers/widgets/massage_create_teacher.dart';
-import '../controller/teacher_account_controller.dart';
 
-class TeacherAccountScreen extends GetView<TeacherAccountController> {
+class TeacherAccountScreen extends GetView<TeachersController> {
   const TeacherAccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final form = Get.find<TeacherFormController>();
 
     return Scaffold(
       backgroundColor: const Color(0xFFF6F8FC),
@@ -48,7 +50,6 @@ class TeacherAccountScreen extends GetView<TeacherAccountController> {
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
           child: Column(
             children: [
-              // List of Teacher Cards
               Expanded(
                 child: Obx(() {
                   final list = controller.teachers;
@@ -72,26 +73,41 @@ class TeacherAccountScreen extends GetView<TeacherAccountController> {
                       return CardTeacher(
                         fullName: teacher.fullName,
                         email: teacher.email,
-                        stageLabel: teacher.stageLabel,
-                        createdAtLabel: teacher.createdAtLabel,
-                        avatarUrl: teacher.avatarUrl,
+                        stageLabel: teacher.stages.isEmpty
+                            ? '—'
+                            : teacher.stages.join(' • '),
+
+                        createdAtLabel: teacher.createdAt,
+                        avatarUrl: teacher.avatarPath,
                         isActive: teacher.isActive,
-                        onEditData: () => controller.onEditTeacherData(teacher),
-                        onPermissions: () =>
-                            controller.onTeacherPermissions(teacher),
-                        onAnalytics: () =>
-                            controller.onTeacherAnalytics(teacher),
+                        onEditData: () {
+                          form.startEdit(teacher.id);
+                          Get.toNamed('/teacher-form');
+                        },
+                        onPermissions: () {
+                          form.startEdit(teacher.id);
+                          Get.toNamed('/teacher-permissions');
+                        },
+                        onAnalytics: () {
+                          Get.toNamed(
+                            '/teacher-analytics',
+                            arguments: teacher.id,
+                          );
+                        },
                       );
                     },
                   );
                 }),
               ),
 
-              // Button to Create New Teacher Account
               const SizedBox(height: 20),
               BottomNewTeacher(
                 onPress: () {
-                  // Your onPress logic to show the create teacher dialog
+                  // final id = DateTime.now().millisecondsSinceEpoch.toString();
+                  // final createdAt = DateTime.now().toIso8601String();
+
+                  // form.startCreate(newId: id, createdAt: createdAt);
+                  // Get.toNamed('/teacher-form');
                   showCreateTeacherDialog(context);
                 },
               ),
