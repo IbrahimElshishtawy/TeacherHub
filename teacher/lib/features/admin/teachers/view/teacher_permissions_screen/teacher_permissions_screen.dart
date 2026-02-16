@@ -18,12 +18,28 @@ class TeacherPermissionsScreen extends StatelessWidget {
       appBar: AppbarTap(),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(6.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _buildSection(
-              title: 'الصلاحيات و الكورسات',
+            Align(
+              child: Text(
+                ' الأمان والتحكم',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
+              ),
+            ),
+            Align(
+              child: Text(
+                'إدارة أمان الحساب وصلاحيات الدخول',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: const Color.fromARGB(255, 110, 122, 128),
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ),
+            SectionWithPermissions(
+              title: '  الكورسات',
               icon: FluentIcons.screenshot_record_16_filled,
               children: [
                 PermissionToggleRow(
@@ -44,7 +60,7 @@ class TeacherPermissionsScreen extends StatelessWidget {
                 ),
               ],
             ),
-            _buildSection(
+            SectionWithPermissions(
               title: 'محتوى التعلم',
               icon: FluentIcons.document_16_filled,
               children: [
@@ -70,7 +86,7 @@ class TeacherPermissionsScreen extends StatelessWidget {
                 ),
               ],
             ),
-            _buildSection(
+            SectionWithPermissions(
               title: 'الواجبات',
               icon: FluentIcons.task_list_add_20_filled,
               children: [
@@ -96,7 +112,7 @@ class TeacherPermissionsScreen extends StatelessWidget {
                 ),
               ],
             ),
-            _buildSection(
+            SectionWithPermissions(
               title: 'الاختبارات',
               icon: FluentIcons.question_48_filled,
               children: [
@@ -132,59 +148,6 @@ class TeacherPermissionsScreen extends StatelessWidget {
             SecurityActionsWidget(),
           ],
         ),
-      ),
-    );
-  }
-
-  // Section builder for reusability
-  Widget _buildSection({
-    required String title,
-    required IconData icon, // Add icon parameter
-    required List<Widget> children,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(6),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(3),
-        color: Colors.white,
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x11000000),
-            blurRadius: 10,
-            offset: Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Align(
-                alignment: Alignment.topRight,
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xFF1E2A3B),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Icon(
-                icon, // Using the icon parameter
-                color: Color(0xFF1E2A3B),
-                size: 24, // Size of the icon
-              ),
-            ],
-          ),
-          const SizedBox(height: 5),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: children,
-          ),
-        ],
       ),
     );
   }

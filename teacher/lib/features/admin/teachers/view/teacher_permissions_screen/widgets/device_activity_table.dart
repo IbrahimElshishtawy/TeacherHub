@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DeviceActivityTable extends StatelessWidget {
+  const DeviceActivityTable({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -16,7 +18,6 @@ class DeviceActivityTable extends StatelessWidget {
           1: FixedColumnWidth(150.0),
           2: FixedColumnWidth(100.0),
           3: FixedColumnWidth(80.0),
-          4: FixedColumnWidth(120.0),
         },
         children: [
           TableRow(
@@ -66,17 +67,6 @@ class DeviceActivityTable extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  'إجراء',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1E2A3B),
-                  ),
-                ),
-              ),
             ],
           ),
           _buildDeviceRow(
@@ -84,19 +74,21 @@ class DeviceActivityTable extends StatelessWidget {
             '18-1-2026 10:30 AM',
             'Iphone Xs',
             'iPhone',
+            isLogout: true, // No logout action for this row
           ),
           _buildDeviceRow(
             'تسجيل خروج',
             '1-12-2025 10:30 AM',
             'Realme 14',
             'Android',
-            isLogout: true, // Marking this row for logout action
+            isLogout: true, // This row will have logout functionality
           ),
           _buildDeviceRow(
             'تسجيل دخول',
             '1-1-2026 10:30 AM',
             'Dell Vostro',
             'Laptop',
+            isLogout: true, // No logout action for this row
           ),
         ],
       ),
@@ -115,9 +107,20 @@ class DeviceActivityTable extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(
-            action,
-            style: const TextStyle(fontSize: 14, color: Color(0xFF6B7C93)),
+          child: GestureDetector(
+            onTap: isLogout
+                ? _logout
+                : null, // Trigger the logout action if isLogout is true
+            child: Text(
+              isLogout ? 'تسجيل خروج' : 'إجراء',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: isLogout
+                    ? Colors.blue
+                    : Color(0xFF6B7C93), // Blue for logout
+              ),
+            ),
           ),
         ),
         Padding(
@@ -141,16 +144,6 @@ class DeviceActivityTable extends StatelessWidget {
             style: const TextStyle(fontSize: 14, color: Color(0xFF6B7C93)),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: isLogout
-              ? ElevatedButton(
-                  onPressed: _logout,
-                  child: const Text('تسجيل خروج'),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                )
-              : const SizedBox.shrink(), // Empty space if not a logout row
-        ),
       ],
     );
   }
@@ -166,17 +159,19 @@ class DeviceActivityTable extends StatelessWidget {
 }
 
 class DeviceActivityCard extends StatelessWidget {
+  const DeviceActivityCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(6),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: Colors.white,
         boxShadow: const [
           BoxShadow(
             color: Color(0x11000000),
-            blurRadius: 10,
+            blurRadius: 4,
             offset: Offset(0, 4),
           ),
         ],
@@ -191,36 +186,36 @@ class DeviceActivityCard extends StatelessWidget {
               color: Color(0xFF1E2A3B),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 7),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [DeviceActivityTable()],
           ),
-          const SizedBox(height: 10),
-          Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: 'محاولة تسجيل الدخول من جهاز غير معروف مدرسياً.\n',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red,
-                  ),
-                ),
-                TextSpan(
-                  text:
-                      'نوع المستخدم: طالب / غير معروف\n'
-                      'نوع الجهاز: iPhone\n'
-                      'وقت محاولة التسجيل: 3:10AM 2/1/2026\n'
-                      'ID: 123456',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
+          const SizedBox(height: 7),
+          Align(
+            alignment: AlignmentGeometry.center,
+            child: Text(
+              'محاولة تسجيل الدخول من جهاز غير معروف مدرسياً.\n',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
+          ),
+          Align(
+            alignment: AlignmentGeometry.topRight,
+            child: Text(
+              'نوع المستخدم: طالب / غير معروف\n'
+              'نوع الجهاز: iPhone\n'
+              'وقت محاولة التسجيل: 3:10AM 2/1/2026\n'
+              'ID: 123456',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+              textDirection: TextDirection.rtl,
             ),
           ),
         ],
