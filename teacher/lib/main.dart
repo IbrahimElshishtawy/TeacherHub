@@ -5,6 +5,9 @@ import 'package:teacher/features/admin/home/view/home_page/home_page.dart';
 import 'package:teacher/features/admin/home/view/user_management/user_management_screen.dart';
 import 'package:teacher/features/admin/teachers/bindings/teachers_binding.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_account_screen.dart';
+import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen.dart';
+import 'package:teacher/features/admin/teachers/view/teacher_form_screen/teacher_form_screen.dart';
+import 'package:teacher/features/admin/teachers/view/teacher_permissions_screen.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_401_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_403_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/admin_login_screen.dart';
@@ -68,6 +71,29 @@ class MyApp extends StatelessWidget {
             return TeacherAccountScreen();
           },
           binding: TeachersBinding(),
+        ),
+
+        // Teachers Screens
+        GetPage(
+          name: '/teacher-form',
+          page: () => const TeacherFormScreen(),
+          binding: TeachersBinding(),
+        ),
+        GetPage(
+          name: '/teacher-permissions',
+          page: () => const TeacherPermissionsScreen(),
+          binding: TeachersBinding(),
+        ),
+        GetPage(
+          name: '/teacher-analytics',
+          page: () => const TeacherAnalyticsScreen(),
+          binding: TeachersBinding(),
+        ),
+
+        GetPage(
+          name: '/not-found',
+          page: () =>
+              const Scaffold(body: Center(child: Text('Route Not Found'))),
         ),
       ],
     );

@@ -9,6 +9,20 @@ import 'package:teacher/features/admin/teachers/widgets/bottom_new_teacher.dart'
 class TeacherAccountScreen extends GetView<TeachersController> {
   const TeacherAccountScreen({super.key});
 
+  void _safeToNamed(String route, {dynamic arguments}) {
+    final match = Get.routeTree.matchRoute(route).route;
+    if (match == null) {
+      Get.snackbar(
+        'خطأ',
+        'Route مش متسجل: $route',
+        snackPosition: SnackPosition.BOTTOM,
+        margin: const EdgeInsets.all(12),
+      );
+      return;
+    }
+    Get.toNamed(route, arguments: arguments);
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -71,30 +85,33 @@ class TeacherAccountScreen extends GetView<TeachersController> {
                       final teacher = list[index];
 
                       return CardTeacher(
+                        id: teacher.id,
                         fullName: teacher.fullName,
                         email: teacher.email,
                         stageLabel: teacher.stages.isEmpty
                             ? '—'
                             : teacher.stages.join(' • '),
-
                         createdAtLabel: teacher.createdAt,
                         avatarUrl: teacher.avatarPath,
                         isActive: teacher.isActive,
+
                         onEditData: () {
                           form.startEdit(teacher.id);
-                          Get.toNamed('/teacher-form');
+                          _safeToNamed('/teacher-form');
                         },
                         onPermissions: () {
                           form.startEdit(teacher.id);
-                          Get.toNamed('/teacher-permissions');
+                          _safeToNamed('/teacher-permissions');
                         },
                         onAnalytics: () {
-                          Get.toNamed(
+                          _safeToNamed(
                             '/teacher-analytics',
                             arguments: teacher.id,
                           );
                         },
+
                         onToggleActive: (v) {
+                          // لو عندك setActive استخدمها بدل toggleActive
                           controller.toggleActive(teacher.id);
                         },
                       );
@@ -102,15 +119,9 @@ class TeacherAccountScreen extends GetView<TeachersController> {
                   );
                 }),
               ),
-
               const SizedBox(height: 20),
               BottomNewTeacher(
                 onPress: () {
-                  // final id = DateTime.now().millisecondsSinceEpoch.toString();
-                  // final createdAt = DateTime.now().toIso8601String();
-
-                  // form.startCreate(newId: id, createdAt: createdAt);
-                  // Get.toNamed('/teacher-form');
                   showCreateTeacherDialog(context);
                 },
               ),

@@ -4,6 +4,8 @@ import 'package:teacher/features/admin/teachers/widgets/action_tile.dart';
 import 'package:teacher/features/admin/teachers/widgets/teacher_header.dart';
 
 class CardTeacher extends StatelessWidget {
+  final String id;
+
   final String fullName;
   final String email;
   final String stageLabel;
@@ -14,10 +16,12 @@ class CardTeacher extends StatelessWidget {
   final VoidCallback onEditData;
   final VoidCallback onPermissions;
   final VoidCallback onAnalytics;
+
   final ValueChanged<bool> onToggleActive;
 
   const CardTeacher({
     super.key,
+    required this.id,
     required this.fullName,
     required this.email,
     required this.stageLabel,
@@ -33,7 +37,7 @@ class CardTeacher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color.fromARGB(206, 252, 247, 247),
+      color: const Color.fromARGB(206, 255, 255, 255),
       child: Column(
         children: [
           TeacherHeader(
