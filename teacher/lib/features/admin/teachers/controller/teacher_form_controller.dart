@@ -19,7 +19,6 @@ class TeacherFormController extends GetxController {
     );
   }
 
-  /// افتح فورم تعديل
   void startEdit(String id) {
     final existing = _teachers.byId(id);
     if (existing == null) return;
@@ -27,7 +26,6 @@ class TeacherFormController extends GetxController {
     teacher.value = existing;
   }
 
-  /// تحديث جزء من البيانات أثناء الكتابة
   void patch({
     String? fullName,
     String? email,

@@ -65,7 +65,6 @@ class ReportsStatisticsSection extends StatelessWidget {
                     break;
                 }
 
-                // ✅ ده بيمنع تعارض الـ Semantics / ParentData عند تبديل الـ views
                 return KeyedSubtree(key: ValueKey(v), child: child);
               }),
             ),

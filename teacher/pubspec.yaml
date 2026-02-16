@@ -41,6 +41,8 @@ dependencies:
   material_symbols_icons: ^4.2805.1
   image_picker: ^1.2.1
   path_provider: ^2.1.5
+  fluentui_system_icons: ^1.1.273
+  device_info_plus: ^12.3.0
 
 dev_dependencies:
   flutter_test:

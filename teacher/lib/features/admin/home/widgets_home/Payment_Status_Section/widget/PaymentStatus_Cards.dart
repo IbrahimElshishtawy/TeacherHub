@@ -1,5 +1,6 @@
 // ignore_for_file: file_names, deprecated_member_use
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/home/widgets_home/Payment_Status_Section/widget/Show_More_Button.dart';
 import 'package:teacher/features/admin/home/widgets_home/Payment_Status_Section/widget/payment_Status_Card.dart';
@@ -39,7 +40,7 @@ class PaymentStatusCards extends StatelessWidget {
                 title: 'الجديدة',
                 count: '5',
                 color: Colors.blue,
-                icon: Icons.refresh_outlined,
+                icon: CupertinoIcons.refresh_circled,
               ),
               StatusCard(
                 title: 'الفاشلة',
@@ -57,7 +58,7 @@ class PaymentStatusCards extends StatelessWidget {
                 title: 'الناجحة',
                 count: '1245',
                 color: Colors.green,
-                icon: Icons.check_circle_outline,
+                icon: CupertinoIcons.check_mark_circled,
               ),
             ],
           ),
