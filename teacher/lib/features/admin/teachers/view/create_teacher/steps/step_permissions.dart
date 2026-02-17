@@ -48,7 +48,7 @@ class _StepPermissionsState extends State<StepPermissions> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: PermColors.bg,
         appBar: AppbarTap(),

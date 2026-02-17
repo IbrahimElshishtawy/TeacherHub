@@ -42,6 +42,7 @@ class PermissionsSectionCard extends StatelessWidget {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Icon(icon, size: 18, color: PermColors.primary),
               const SizedBox(width: 8),

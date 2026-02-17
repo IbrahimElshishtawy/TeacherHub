@@ -11,7 +11,6 @@ void showCreateTeacherDialog(BuildContext parentContext) {
         builder: (context, setState) {
           String selectedOption = ""; // Store selected option's description
           Color optionOneColor = const Color(0xFF2F6FED);
-          Color optionTwoColor = const Color.fromARGB(255, 237, 47, 47);
 
           // Dynamic message
           String message =
@@ -67,12 +66,7 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                             optionOneColor = const Color(
                               0xFF1E3D99,
                             ); // Highlight the selected button
-                            optionTwoColor = const Color.fromARGB(
-                              255,
-                              237,
-                              47,
-                              47,
-                            ); // Dim the other button
+                            // Dim the other button
                             message =
                                 'تم اختيار إنشاء حساب جديد دون التأثير على الحساب الحالي';
                           });
@@ -128,76 +122,6 @@ void showCreateTeacherDialog(BuildContext parentContext) {
                       ),
                     ),
                     const SizedBox(height: 7),
-                    // Option 2: Create teacher account and disable the current account
-                    SizedBox(
-                      height: 50,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            selectedOption =
-                                "disable_current"; // Track option selection
-                            optionTwoColor = const Color(
-                              0xFF1E3D99,
-                            ); // Highlight the selected button
-                            optionOneColor = const Color(
-                              0xFF2F6FED,
-                            ); // Dim the other button
-                            message =
-                                'تم اختيار إنشاء حساب جديد مع إيقاف الحساب الحالي';
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: optionTwoColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 10,
-                            horizontal: 10,
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text(
-                                    'إنشاء حساب جديد مع إيقاف الحساب الحالي',
-                                    style: TextStyle(
-                                      fontSize: 11,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w900,
-                                    ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  SizedBox(height: 1),
-                                  Text(
-                                    'سيتم إنشاء حساب جديد مع إيقاف الحساب الحالي مؤقتًا.',
-                                    style: TextStyle(
-                                      fontSize: 8,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const Icon(
-                              Icons.block,
-                              color: Colors.white,
-                              size: 25,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
                   ],
                 ),
                 actions: [

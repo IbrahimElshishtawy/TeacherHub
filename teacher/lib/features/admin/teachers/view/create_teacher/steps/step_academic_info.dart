@@ -57,7 +57,7 @@ class _StepAcademicInfoState extends State<StepAcademicInfo>
     const primary = Color(0xFF2F6FED);
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: bg,
         appBar: AppbarTap(),

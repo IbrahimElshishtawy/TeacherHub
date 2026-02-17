@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'permissions_colors.dart';
+import 'package:teacher/features/admin/teachers/view/create_teacher/steps/widgets/step_3/permissions_colors.dart';
 
 class PermissionRow extends StatelessWidget {
   final String title;
@@ -16,8 +16,10 @@ class PermissionRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: EdgeInsets.symmetric(vertical: 4),
       child: Row(
+        mainAxisAlignment:
+            MainAxisAlignment.spaceBetween, // Align the text to the end
         children: [
           Transform.scale(
             scale: 0.85,
@@ -27,15 +29,13 @@ class PermissionRow extends StatelessWidget {
               activeThumbColor: PermColors.primary,
             ),
           ),
-          const SizedBox(width: 1),
-          Expanded(
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w800,
-                color: PermColors.titleColor,
-              ),
+          const SizedBox(width: 4),
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w800,
+              color: PermColors.titleColor,
             ),
           ),
         ],

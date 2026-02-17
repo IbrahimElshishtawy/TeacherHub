@@ -15,6 +15,7 @@ class ActionForgetBassword extends StatelessWidget {
       padding: const EdgeInsets.only(right: 0, left: 0, top: 1),
       child: Obx(
         () => Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             /// ===== نسيت كلمة المرور =====
             TextButton(
@@ -43,7 +44,28 @@ class ActionForgetBassword extends StatelessWidget {
 
                   Checkbox(
                     value: loginController.rememberMe.value,
-                    onChanged: loginController.toggleRememberMe,
+                    onChanged: (bool? value) {
+                      loginController.toggleRememberMe(value);
+                      if (value == true) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              "تم تفعيل تذكرني. سيتم تذكيرك بكلمة المرور لاحقًا.",
+                            ),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              "تم إلغاء تذكرني. سيتعين عليك تسجيل الدخول مجددًا.",
+                            ),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                      }
+                    },
                     activeColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4),
