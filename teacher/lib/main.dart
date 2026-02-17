@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/home/bindings/home_binding.dart';
 import 'package:teacher/features/admin/home/view/home_page/home_page.dart';
-import 'package:teacher/features/admin/home/view/user_management/user_management_screen.dart';
+import 'package:teacher/features/admin/user_management/user_management_screen.dart';
 import 'package:teacher/features/admin/teachers/bindings/teachers_binding.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_account_screen.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen/teacher_analytics_screen.dart';
@@ -62,11 +62,11 @@ class MyApp extends StatelessWidget {
           binding: HomeBinding(),
         ),
         GetPage(
-          name: '/admin/users/user_management',
+          name: '/home_admin/user_management',
           page: () => UserManagementScreen(),
         ),
         GetPage(
-          name: '/admin/users/teachers',
+          name: '/home_admin/teachers',
           page: () {
             return TeacherAccountScreen();
           },
@@ -75,17 +75,17 @@ class MyApp extends StatelessWidget {
 
         // Teachers Screens
         GetPage(
-          name: '/teacher-form',
+          name: '/teachers/teacher-form',
           page: () => const TeacherFormScreen(),
           binding: TeachersBinding(),
         ),
         GetPage(
-          name: '/teacher-permissions',
+          name: '/teachers/teacher-permissions',
           page: () => const TeacherPermissionsScreen(),
           binding: TeachersBinding(),
         ),
         GetPage(
-          name: '/teacher-analytics',
+          name: '/teachers/teacher-analytics',
           page: () => const TeacherAnalyticsScreen(),
           binding: TeachersBinding(),
         ),
