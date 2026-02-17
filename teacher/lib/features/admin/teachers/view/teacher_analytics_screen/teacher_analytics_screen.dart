@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart'; // Use the new 
 
 import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen/widgets/Weekly_Activity_Widget.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen/widgets/subjects_table_widgets.dart';
+import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
 
 class TeacherAnalyticsScreen extends StatelessWidget {
   const TeacherAnalyticsScreen({super.key});
@@ -13,12 +14,29 @@ class TeacherAnalyticsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(title: const Text('تحليل البيانات')),
+      appBar: AppbarTap(),
       body: Padding(
         padding: const EdgeInsets.all(6.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Align(
+                child: Text(
+                  'تحليل أداء المدرس',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
+                ),
+              ),
+              Align(
+                child: Text(
+                  'عرض تفصيلي لأنشطة المدرس',
+                  style: TextStyle(
+                    fontSize: 17,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              SizedBox(height: 5),
               Card(
                 elevation: 5,
                 shape: RoundedRectangleBorder(
