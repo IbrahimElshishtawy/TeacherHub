@@ -5,6 +5,7 @@ import 'package:teacher/features/admin/teachers/controller/teacher_form_controll
 import 'package:teacher/features/admin/teachers/widgets/massage_create_teacher.dart';
 import 'package:teacher/features/admin/teachers/widgets/teacher_card.dart';
 import 'package:teacher/features/admin/teachers/widgets/bottom_new_teacher.dart';
+import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
 
 class TeacherAccountScreen extends GetView<TeachersController> {
   const TeacherAccountScreen({super.key});
@@ -30,40 +31,33 @@ class TeacherAccountScreen extends GetView<TeachersController> {
 
     return Scaffold(
       backgroundColor: const Color(0xFFF6F8FC),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new, color: Color(0xFFB0202A)),
-          onPressed: () => Get.back(),
-        ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'حساب المدرس',
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.w900,
-                color: const Color(0xFF1E2A3B),
-              ),
-            ),
-            const SizedBox(height: 2),
-            Text(
-              'إدارة بيانات وأمان حساب المدرس',
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: const Color(0xFF6B7C93),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
-        centerTitle: true,
-      ),
+      appBar: AppbarTap(),
+
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+          padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 6),
           child: Column(
             children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'حساب المدرس',
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w900,
+                      color: const Color(0xFF1E2A3B),
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    'إدارة بيانات وأمان حساب المدرس',
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: const Color(0xFF6B7C93),
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
               Expanded(
                 child: Obx(() {
                   final list = controller.teachers;
@@ -97,15 +91,15 @@ class TeacherAccountScreen extends GetView<TeachersController> {
 
                         onEditData: () {
                           form.startEdit(teacher.id);
-                          _safeToNamed('/teacher-form');
+                          _safeToNamed('/teachers/teacher-form');
                         },
                         onPermissions: () {
                           form.startEdit(teacher.id);
-                          _safeToNamed('/teacher-permissions');
+                          _safeToNamed('/teachers/teacher-permissions');
                         },
                         onAnalytics: () {
                           _safeToNamed(
-                            '/teacher-analytics',
+                            '/teachers/teacher-analytics',
                             arguments: teacher.id,
                           );
                         },
