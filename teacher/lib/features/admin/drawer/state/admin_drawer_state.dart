@@ -24,7 +24,7 @@ class DrawerItemModel {
 }
 
 class AdminDrawerState {
-  String selectedRoute = "/admin/home"; // Currently selected route
+  String selectedRoute = "/home_admin"; // Currently selected route
 
   final List<DrawerItemModel> items = const [
     DrawerItemModel(title: "لوحة التحكم", icon: Icons.grid_view_rounded),
@@ -34,61 +34,76 @@ class AdminDrawerState {
       children: [
         DrawerSubItemModel(
           title: "الطلاب & اولياء الأمور",
-          route: "/admin/users/user_management",
+          route: "/home_admin/user_management",
         ),
-        DrawerSubItemModel(title: "المدرسين", route: "/admin/users/teachers"),
+        DrawerSubItemModel(title: "المدرسين", route: "/home_admin/teachers"),
       ],
     ),
     DrawerItemModel(
       title: "الكورسات",
       icon: Icons.folder_outlined,
-      route: "/admin/courses",
+      route: "/home_admin/courses",
     ),
     DrawerItemModel(
       title: "الاختبارات والمراجعات",
       icon: Icons.edit_note_outlined,
       children: [
-        DrawerSubItemModel(title: "الاختبارات", route: "/admin/quizzes/tests"),
-        DrawerSubItemModel(title: "المراجعات", route: "/admin/quizzes/reviews"),
-        DrawerSubItemModel(title: "النتائج", route: "/admin/quizzes/results"),
+        DrawerSubItemModel(
+          title: "الاختبارات",
+          route: "/home_admin/quizzes/tests",
+        ),
+        DrawerSubItemModel(
+          title: "المراجعات",
+          route: "/home_admin/quizzes/reviews",
+        ),
+        DrawerSubItemModel(
+          title: "النتائج",
+          route: "/home_admin/quizzes/results",
+        ),
       ],
     ),
     DrawerItemModel(
       title: "الحضور والغياب",
       icon: Icons.calendar_month_outlined,
-      route: "/admin/attendance",
+      route: "/home_admin/attendance",
     ),
     DrawerItemModel(
       title: "المدفوعات",
       icon: Icons.credit_card_outlined,
-      route: "/admin/payments",
+      route: "/home_admin/payments",
     ),
     DrawerItemModel(
       title: "التقارير والإحصائيات",
       icon: Icons.bar_chart_rounded,
       children: [
-        DrawerSubItemModel(title: "الحضور", route: "/admin/reports/attendance"),
+        DrawerSubItemModel(
+          title: "الحضور",
+          route: "/home_admin/reports/attendance",
+        ),
         DrawerSubItemModel(
           title: "المدفوعات",
-          route: "/admin/reports/payments",
+          route: "/home_admin/reports/payments",
         ),
-        DrawerSubItemModel(title: "الكورسات", route: "/admin/reports/courses"),
+        DrawerSubItemModel(
+          title: "الكورسات",
+          route: "/home_admin/reports/courses",
+        ),
       ],
     ),
     DrawerItemModel(
       title: "الإعدادات",
       icon: Icons.settings_outlined,
-      route: "/admin/settings",
+      route: "/home_admin/settings",
     ),
     DrawerItemModel(
       title: "الإشعارات",
       icon: Icons.notifications_none_rounded,
-      route: "/admin/notifications",
+      route: "/home_admin/notifications",
     ),
     DrawerItemModel(
       title: "الدعم والمساعدة",
       icon: Icons.support_agent_outlined,
-      route: "/admin/support",
+      route: "/home_admin/support",
     ),
   ];
 
