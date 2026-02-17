@@ -5,7 +5,7 @@ import 'package:teacher/features/admin/home/view/home_page/home_page.dart';
 import 'package:teacher/features/admin/home/view/user_management/user_management_screen.dart';
 import 'package:teacher/features/admin/teachers/bindings/teachers_binding.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_account_screen.dart';
-import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen.dart';
+import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen/teacher_analytics_screen.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_form_screen/teacher_form_screen.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_permissions_screen/teacher_permissions_screen.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_401_Page.dart';

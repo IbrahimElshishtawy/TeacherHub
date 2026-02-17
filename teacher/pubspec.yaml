@@ -43,6 +43,7 @@ dependencies:
   path_provider: ^2.1.5
   fluentui_system_icons: ^1.1.273
   device_info_plus: ^12.3.0
+  fl_chart: ^1.1.1
 
 dev_dependencies:
   flutter_test:
