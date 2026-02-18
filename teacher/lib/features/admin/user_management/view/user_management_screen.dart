@@ -26,10 +26,10 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
 
     if (selected == UserManagementType.students) {
       // Navigate to the students route
-      Get.offNamed('/admin/users/students');
+      Get.offNamed('/user_management/students');
     } else {
       // Navigate to the parents route
-      Get.offNamed('/admin/users/parents');
+      Get.offNamed('/user_management/parents');
     }
   }
 
