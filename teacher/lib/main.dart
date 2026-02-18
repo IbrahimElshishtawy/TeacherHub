@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/home/bindings/home_binding.dart';
 import 'package:teacher/features/admin/home/view/home_page/home_page.dart';
-import 'package:teacher/features/admin/user_management/user_management_screen.dart';
+import 'package:teacher/features/admin/user_management/view/user_management_screen.dart';
 import 'package:teacher/features/admin/teachers/bindings/teachers_binding.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_account_screen.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen/teacher_analytics_screen.dart';

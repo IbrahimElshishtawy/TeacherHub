@@ -22,26 +22,32 @@ class TextBodyLogin extends StatelessWidget {
             padding: const EdgeInsetsGeometry.only(top: 0, left: 130, right: 0),
             child: Column(
               children: [
-                Text(
-                  firstText,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
-                    height: 1.5,
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    firstText,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w500,
+                      height: 1.5,
+                    ),
+                    textAlign: TextAlign.right,
+                    textDirection: TextDirection.rtl,
                   ),
-                  textAlign: TextAlign.right,
-                  textDirection: TextDirection.rtl,
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  secondText,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w900,
-                    height: 1.5,
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Text(
+                    secondText,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w900,
+                      height: 1.5,
+                    ),
+                    textDirection: TextDirection.rtl,
                   ),
-                  textDirection: TextDirection.rtl,
                 ),
               ],
             ),

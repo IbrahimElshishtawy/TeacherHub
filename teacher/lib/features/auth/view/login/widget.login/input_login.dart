@@ -23,22 +23,23 @@ class InputLogin extends StatelessWidget {
     final LoginController loginController = Get.put(LoginController());
 
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(15.0),
       child: Column(
         children: [
           /// ===== Email title =====
-          Padding(
-            padding: const EdgeInsets.only(left: 220),
+          Align(
+            alignment: Alignment.centerRight,
             child: Text(
               emailTitle,
               style: const TextStyle(
                 fontSize: 15,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w800,
                 height: 1.5,
               ),
               textDirection: TextDirection.rtl,
             ),
           ),
+
           const SizedBox(height: 5),
 
           /// ===== Email field =====
@@ -92,16 +93,19 @@ class InputLogin extends StatelessWidget {
           const SizedBox(height: 20),
 
           /// ===== Password title =====
-          Padding(
-            padding: const EdgeInsets.only(left: 240),
-            child: Text(
-              passwordTitle,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w900,
-                height: 1.5,
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 240),
+              child: Text(
+                passwordTitle,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w800,
+                  height: 1.5,
+                ),
+                textDirection: TextDirection.rtl,
               ),
-              textDirection: TextDirection.rtl,
             ),
           ),
           const SizedBox(height: 5),
