@@ -12,10 +12,10 @@ class UserManagementScreen extends StatefulWidget {
 }
 
 class _UserManagementScreenState extends State<UserManagementScreen> {
-  UserManagementType? selected;
-
   static const Color primaryBlue = Color(0xFF2F6BFF);
   static const Color bg = Color(0xFFF6F7FB);
+
+  UserManagementType? selected;
 
   void _onSelect(UserManagementType type) {
     setState(() => selected = type);
@@ -25,11 +25,9 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
     if (selected == null) return;
 
     if (selected == UserManagementType.students) {
-      // Navigate to the students route
-      Get.offNamed('/user_management/students');
+      Get.toNamed('/user_management/students');
     } else {
-      // Navigate to the parents route
-      Get.offNamed('/user_management/parents');
+      Get.toNamed('/user_management/parents');
     }
   }
 
@@ -48,13 +46,15 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
               Row(
                 children: [
                   InkWell(
-                    onTap: () {
-                      Get.offNamed('/home_admin');
-                    },
+                    onTap: () => Get.offNamed('/home_admin'),
                     borderRadius: BorderRadius.circular(12),
                     child: const Padding(
                       padding: EdgeInsets.all(10),
-                      child: Icon(Icons.arrow_back_ios_new_rounded, size: 18),
+                      child: Icon(
+                        Icons.arrow_back_ios_new_rounded,
+                        size: 20,
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                   const Spacer(),
@@ -75,6 +75,7 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
               ),
               const SizedBox(height: 18),
 
+              // الطلاب
               SelectCard(
                 titleEn: "طلاب",
                 subtitleAr: "إدارة شاملة لحسابات الطلاب داخل التطبيق",
@@ -82,7 +83,10 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
                 isSelected: selected == UserManagementType.students,
                 onTap: () => _onSelect(UserManagementType.students),
               ),
+
               const SizedBox(height: 14),
+
+              // أولياء الأمور
               SelectCard(
                 titleEn: "أولياء الأمور",
                 subtitleAr: "إدارة حسابات أولياء الأمور وربطهم بالطلاب",
@@ -93,7 +97,8 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
 
               const SizedBox(height: 18),
 
-              if (selected != null) ...[
+              // زر الدخول يظهر فقط بعد الاختيار
+              if (selected != null)
                 SizedBox(
                   height: 52,
                   child: ElevatedButton(
@@ -115,7 +120,6 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
                     ),
                   ),
                 ),
-              ],
 
               const Spacer(),
             ],

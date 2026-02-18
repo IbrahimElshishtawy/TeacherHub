@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:teacher/features/admin/home/bindings/home_binding.dart';
 import 'package:teacher/features/admin/home/view/home_page/home_page.dart';
 import 'package:teacher/features/admin/user_management/bindings/user_management_binding.dart';
+import 'package:teacher/features/admin/user_management/view/students.dart';
 import 'package:teacher/features/admin/user_management/view/user_management_screen.dart';
 import 'package:teacher/features/admin/teachers/bindings/teachers_binding.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_account_screen.dart';
@@ -98,8 +99,8 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/user_management/students',
-          page: () => const UserManagementScreen(),
-          binding: StudentsManagementBinding(),
+          page: () => const StudentsScreen(),
+          binding: UserManagementBinding(),
         ),
       ],
     );

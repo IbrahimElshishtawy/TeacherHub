@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-class OverviewStatCard extends StatelessWidget {
+class OverviewCard extends StatelessWidget {
   final String title;
+  final String subtitle;
   final String value;
   final IconData icon;
   final Color iconColor;
   final Color valueColor;
 
-  const OverviewStatCard({
+  const OverviewCard({
     super.key,
     required this.title,
+    required this.subtitle,
     required this.value,
     required this.icon,
     required this.iconColor,
@@ -21,38 +23,32 @@ class OverviewStatCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
+        color: const Color(0xFFF6F7FB),
+        borderRadius: BorderRadius.circular(12),
         border: Border.all(color: const Color(0xFFE6E8F0)),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x14000000),
-            blurRadius: 10,
-            offset: Offset(0, 6),
-          ),
-        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Align(
             alignment: Alignment.centerRight,
-            child: Icon(icon, size: 28, color: iconColor),
+            child: Icon(icon, color: iconColor, size: 28),
           ),
           const Spacer(),
           Text(
             title,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: Colors.black87,
-            ),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
           ),
-          const SizedBox(height: 6),
+          const SizedBox(height: 4),
+          Text(
+            subtitle,
+            style: const TextStyle(fontSize: 11, color: Colors.black54),
+          ),
+          const SizedBox(height: 8),
           Text(
             value,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.w900,
               color: valueColor,
             ),
