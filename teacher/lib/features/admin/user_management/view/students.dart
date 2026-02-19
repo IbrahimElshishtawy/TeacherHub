@@ -18,7 +18,7 @@ class StudentsScreen extends GetView<UserManagementController> {
       backgroundColor: bg,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 6),
           child: Obx(() {
             final st = controller.state.value;
             final rows = controller.filteredStudents;

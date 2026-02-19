@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/user_management/controller/user_management_controller.dart';
 import 'package:teacher/features/admin/user_management/state/user_management_state.dart';
+import 'package:teacher/features/admin/user_management/widgets/Actions_Button.dart';
+import 'package:teacher/features/admin/user_management/widgets/Header_Text.dart';
 import 'package:teacher/features/admin/user_management/widgets/Status_Chip.dart';
 import 'package:teacher/features/admin/user_management/widgets/Student_Avatar.dart';
 import 'package:teacher/features/admin/user_management/widgets/table_cell_divider.dart';
@@ -22,8 +24,8 @@ class StudentsTable extends GetView<UserManagementController> {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: borderColor, width: 1.5),
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(color: borderColor, width: 0.5),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.06),
@@ -38,7 +40,7 @@ class StudentsTable extends GetView<UserManagementController> {
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(6),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
@@ -83,7 +85,7 @@ class StudentsTable extends GetView<UserManagementController> {
       label: TableCellBox(
         width: width,
         showVerticalBorder: showBorder,
-        child: _HeaderText(text),
+        child: HeaderText(text),
       ),
     );
   }
@@ -115,7 +117,7 @@ class StudentsTable extends GetView<UserManagementController> {
     return DataCell(
       TableCellBox(
         width: 145,
-        child: _ActionsButton(
+        child: ActionsButton(
           onPressed: () => controller.onStudentActions(student),
         ),
       ),
@@ -191,70 +193,3 @@ class StudentsTable extends GetView<UserManagementController> {
     );
   }
 }
-
-// ===============================================
-// Header Text Widget
-// ===============================================
-class _HeaderText extends StatelessWidget {
-  final String text;
-  const _HeaderText(this.text);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: const TextStyle(
-        fontSize: 13,
-        fontWeight: FontWeight.w900,
-        color: Color(0xFF1E2A3B),
-        letterSpacing: 0.2,
-      ),
-    );
-  }
-}
-
-// ===============================================
-// Actions Button Widget
-// ===============================================
-class _ActionsButton extends StatelessWidget {
-  final VoidCallback onPressed;
-  const _ActionsButton({required this.onPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 38,
-      child: OutlinedButton.icon(
-        onPressed: onPressed,
-        icon: const Icon(Icons.more_horiz_rounded, size: 20),
-        label: const Text(
-          "الإجراءات",
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            fontSize: 13,
-            letterSpacing: 0.2,
-          ),
-        ),
-        style:
-            OutlinedButton.styleFrom(
-              foregroundColor: StudentsTable.primaryBlue,
-              side: BorderSide(color: StudentsTable.borderColor, width: 1.5),
-              backgroundColor: Colors.white,
-              elevation: 0,
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ).copyWith(
-              overlayColor: WidgetStateProperty.all(
-                StudentsTable.primaryBlue.withValues(alpha: 0.08),
-              ),
-            ),
-      ),
-    );
-  }
-}
-
-// ===============================================
-// Status Chip Widget
-// ===============================================

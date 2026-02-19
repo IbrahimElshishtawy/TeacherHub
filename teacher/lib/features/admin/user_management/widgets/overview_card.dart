@@ -21,7 +21,7 @@ class OverviewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
         color: const Color(0xFFF6F7FB),
         borderRadius: BorderRadius.circular(12),
@@ -31,26 +31,35 @@ class OverviewCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Align(
-            alignment: Alignment.centerRight,
-            child: Icon(icon, color: iconColor, size: 28),
+            alignment: Alignment.center,
+            child: Icon(icon, color: iconColor, size: 40),
           ),
-          const Spacer(),
-          Text(
-            title,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
+          const SizedBox(height: 10),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              title,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
+            ),
           ),
           const SizedBox(height: 4),
-          Text(
-            subtitle,
-            style: const TextStyle(fontSize: 11, color: Colors.black54),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              subtitle,
+              style: const TextStyle(fontSize: 11, color: Colors.black54),
+            ),
           ),
           const SizedBox(height: 8),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w900,
-              color: valueColor,
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              value,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w900,
+                color: valueColor,
+              ),
             ),
           ),
         ],
