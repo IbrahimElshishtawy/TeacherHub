@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/admin/attendance/binding/attendance_binding.dart';
 import 'package:teacher/features/admin/attendance/view/attendance_screen.dart';
+import 'package:teacher/features/admin/courses/binding/courses_binding.dart';
+import 'package:teacher/features/admin/courses/view/course_details_screen.dart';
+import 'package:teacher/features/admin/courses/view/courses_screen.dart';
 import 'package:teacher/features/admin/exams_reviews_results/bindings/exams_rr_binding.dart';
 import 'package:teacher/features/admin/exams_reviews_results/view/exams_rr_screen.dart';
 import 'package:teacher/features/admin/home/bindings/home_binding.dart';
@@ -122,6 +125,15 @@ class MyApp extends StatelessWidget {
           name: '/home_admin/attendance',
           page: () => const AttendanceScreen(),
           binding: AttendanceBinding(),
+        ),
+        GetPage(
+          name: '/home_admin/courses',
+          page: () => const CoursesScreen(),
+          binding: CoursesBinding(),
+        ),
+        GetPage(
+          name: '/home_admin/courses/details',
+          page: () => const CourseDetailsScreen(),
         ),
       ],
     );
