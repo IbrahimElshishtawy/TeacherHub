@@ -47,20 +47,7 @@ class AdminDrawerState {
     DrawerItemModel(
       title: "الاختبارات والمراجعات",
       icon: Icons.edit_note_outlined,
-      children: [
-        DrawerSubItemModel(
-          title: "الاختبارات",
-          route: "/home_admin/quizzes/tests",
-        ),
-        DrawerSubItemModel(
-          title: "المراجعات",
-          route: "/home_admin/quizzes/reviews",
-        ),
-        DrawerSubItemModel(
-          title: "النتائج",
-          route: "/home_admin/quizzes/results",
-        ),
-      ],
+      route: "/home_admin/exams_rr",
     ),
     DrawerItemModel(
       title: "الحضور والغياب",

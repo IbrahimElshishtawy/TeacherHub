@@ -44,6 +44,7 @@ dependencies:
   fluentui_system_icons: ^1.1.273
   device_info_plus: ^12.3.0
   fl_chart: ^1.1.1
+  lucide_icons: ^0.257.0
 
 dev_dependencies:
   flutter_test:

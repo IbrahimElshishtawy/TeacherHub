@@ -49,12 +49,6 @@ class ParentsTable extends GetView<UserManagementController> {
               columns: [
                 DataColumn(
                   label: TableCellBox(
-                    width: 140,
-                    child: const HeaderText("Actions"),
-                  ),
-                ),
-                DataColumn(
-                  label: TableCellBox(
                     width: 90,
                     child: const HeaderText("الصورة"),
                   ),
@@ -90,6 +84,12 @@ class ParentsTable extends GetView<UserManagementController> {
                     child: const HeaderText("الحالة"),
                   ),
                 ),
+                DataColumn(
+                  label: TableCellBox(
+                    width: 140,
+                    child: const HeaderText("Actions"),
+                  ),
+                ),
               ],
 
               rows: rows.asMap().entries.map((entry) {
@@ -102,34 +102,6 @@ class ParentsTable extends GetView<UserManagementController> {
                   ),
                   cells: [
                     // Actions
-                    DataCell(
-                      TableCellBox(
-                        width: 140,
-                        child: SizedBox(
-                          height: 34,
-                          child: OutlinedButton.icon(
-                            onPressed: () => controller.onParentActions(p),
-                            icon: const Icon(Icons.more_horiz, size: 18),
-                            label: const Text(
-                              "الإجراءات",
-                              style: TextStyle(fontWeight: FontWeight.w900),
-                            ),
-                            style: OutlinedButton.styleFrom(
-                              foregroundColor: primaryBlue,
-                              side: const BorderSide(color: Color(0xFFE6E8F0)),
-                              backgroundColor: Colors.white,
-                              elevation: 0,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
 
                     // Avatar
                     DataCell(
@@ -202,6 +174,34 @@ class ParentsTable extends GetView<UserManagementController> {
                         width: 120,
                         showVerticalBorder: false,
                         child: StatusChip(isActive: p.isActive),
+                      ),
+                    ),
+                    DataCell(
+                      TableCellBox(
+                        width: 140,
+                        child: SizedBox(
+                          height: 34,
+                          child: OutlinedButton.icon(
+                            onPressed: () => controller.onParentActions(p),
+                            icon: const Icon(Icons.more_horiz, size: 18),
+                            label: const Text(
+                              "الإجراءات",
+                              style: TextStyle(fontWeight: FontWeight.w900),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: primaryBlue,
+                              side: const BorderSide(color: Color(0xFFE6E8F0)),
+                              backgroundColor: Colors.white,
+                              elevation: 0,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],

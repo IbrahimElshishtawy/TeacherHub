@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher/features/admin/exams_reviews_results/bindings/exams_rr_binding.dart';
+import 'package:teacher/features/admin/exams_reviews_results/view/exams_rr_screen.dart';
 import 'package:teacher/features/admin/home/bindings/home_binding.dart';
 import 'package:teacher/features/admin/home/view/home_page/home_page.dart';
 import 'package:teacher/features/admin/user_management/bindings/user_management_binding.dart';
@@ -108,6 +110,11 @@ class MyApp extends StatelessWidget {
           name: '/user_management/parents',
           page: () => const ParentsScreen(),
           binding: UserManagementBinding(),
+        ),
+        GetPage(
+          name: '/home_admin/exams_rr',
+          page: () => const ExamsRRScreen(),
+          binding: ExamsRRBinding(),
         ),
       ],
     );
