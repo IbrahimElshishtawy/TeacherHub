@@ -11,6 +11,20 @@ class QuickActionsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final actions = <QuickActionModel>[
       QuickActionModel(
+        title: 'إدارة المستخدمين',
+        icon: Icons.group_outlined,
+        color: const Color(0xFF7B3F12),
+        routeName: AppRoutes.usersManagement,
+      ),
+
+      QuickActionModel(
+        title: 'حسابات المدرسين',
+        icon: Icons.school_outlined,
+        color: const Color(0xFF6A1BB2),
+        routeName: AppRoutes.teachersAccounts,
+      ),
+
+      QuickActionModel(
         title: 'الأمان و التحكم',
         icon: Icons.security_outlined,
         color: const Color(0xFFF59A23),
@@ -27,18 +41,6 @@ class QuickActionsSection extends StatelessWidget {
         icon: Icons.settings_outlined,
         color: const Color(0xFF2F78FF),
         routeName: AppRoutes.reportsPreview,
-      ),
-      QuickActionModel(
-        title: 'حسابات المدرسين',
-        icon: Icons.school_outlined,
-        color: const Color(0xFF6A1BB2),
-        routeName: AppRoutes.teachersAccounts,
-      ),
-      QuickActionModel(
-        title: 'إدارة المستخدمين',
-        icon: Icons.group_outlined,
-        color: const Color(0xFF7B3F12),
-        routeName: AppRoutes.usersManagement,
       ),
     ];
 

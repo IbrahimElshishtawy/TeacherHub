@@ -19,6 +19,6 @@ class AppRoutes {
   static const String securityControl = '/admin/security-control';
   static const String paymentsFollowUp = '/admin/payments-followup';
   static const String reportsPreview = '/admin/reports-preview';
-  static const String teachersAccounts = '/admin/teachers-accounts';
-  static const String usersManagement = '/admin/users-management';
+  static const String teachersAccounts = '/home_admin/teachers';
+  static const String usersManagement = '/home_admin/user_management';
 }
