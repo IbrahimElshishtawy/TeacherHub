@@ -17,7 +17,7 @@ class CoursesScreen extends GetView<CoursesController> {
       backgroundColor: bg,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Obx(() {
             final courses = controller.filteredCourses;
 
@@ -32,10 +32,25 @@ class CoursesScreen extends GetView<CoursesController> {
                 ),
                 const SizedBox(height: 12),
 
-                const Text(
-                  "الكورسات",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: const Text(
+                    "الكورسات",
+
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentGeometry.centerRight,
+                  child: Text(
+                    "عرض جميع الكورسات المتاحة وتعديل بياناتها بسهولة",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 10),
 

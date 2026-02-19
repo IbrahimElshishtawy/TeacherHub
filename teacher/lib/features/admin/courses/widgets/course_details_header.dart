@@ -1,5 +1,8 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher/features/admin/courses/widgets/CourseStatus_Pill.dart';
 import '../state/courses_state.dart';
 
 class CourseDetailsHeader extends StatelessWidget {
@@ -12,7 +15,7 @@ class CourseDetailsHeader extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          height: 240,
+          height: 280,
           width: double.infinity,
           child: course.coverUrl.isEmpty
               ? Container(
@@ -30,15 +33,15 @@ class CourseDetailsHeader extends StatelessWidget {
 
         // Back
         Positioned(
-          top: 10,
-          left: 10,
+          top: 16,
+          left: 16,
           child: InkWell(
             onTap: () => Get.back(),
             borderRadius: BorderRadius.circular(12),
             child: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.25),
+                color: const Color.fromARGB(22, 0, 0, 0).withOpacity(0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Icon(
@@ -48,17 +51,14 @@ class CourseDetailsHeader extends StatelessWidget {
             ),
           ),
         ),
-
-        // Status (نشط/موقوف)
         Positioned(
-          top: 14,
-          right: 14,
-          child: _CourseStatusPill(isActive: course.isActive),
+          top: 20,
+          right: 15,
+          child: CourseStatusPill(isActive: course.isActive),
         ),
 
-        // Title + subtitle overlay
         Positioned(
-          left: 14,
+          left: 50,
           right: 14,
           bottom: 14,
           child: Column(
@@ -86,46 +86,6 @@ class CourseDetailsHeader extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _CourseStatusPill extends StatelessWidget {
-  final bool isActive;
-  const _CourseStatusPill({required this.isActive});
-
-  @override
-  Widget build(BuildContext context) {
-    final text = isActive ? "نشط" : "موقوف";
-    final fg = isActive ? const Color(0xFF19B66A) : const Color(0xFFE53935);
-    final bg = isActive ? const Color(0xFFE9F8F0) : const Color(0xFFFFEBEE);
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: fg.withOpacity(0.25)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 8,
-            height: 8,
-            decoration: BoxDecoration(color: fg, shape: BoxShape.circle),
-          ),
-          const SizedBox(width: 8),
-          Text(
-            text,
-            style: TextStyle(
-              color: fg,
-              fontWeight: FontWeight.w900,
-              fontSize: 12,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
