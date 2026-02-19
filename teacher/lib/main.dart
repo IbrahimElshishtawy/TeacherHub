@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher/features/admin/attendance/binding/attendance_binding.dart';
+import 'package:teacher/features/admin/attendance/view/attendance_screen.dart';
 import 'package:teacher/features/admin/exams_reviews_results/bindings/exams_rr_binding.dart';
 import 'package:teacher/features/admin/exams_reviews_results/view/exams_rr_screen.dart';
 import 'package:teacher/features/admin/home/bindings/home_binding.dart';
@@ -115,6 +117,11 @@ class MyApp extends StatelessWidget {
           name: '/home_admin/exams_rr',
           page: () => const ExamsRRScreen(),
           binding: ExamsRRBinding(),
+        ),
+        GetPage(
+          name: '/home_admin/attendance',
+          page: () => const AttendanceScreen(),
+          binding: AttendanceBinding(),
         ),
       ],
     );
