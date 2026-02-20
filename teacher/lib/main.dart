@@ -134,6 +134,11 @@ class MyApp extends StatelessWidget {
           name: '/home_admin/courses/details',
           page: () => const CourseDetailsScreen(),
         ),
+        GetPage(
+          name: '/admin/payments',
+          page: () => const PaymentsScreen(),
+          binding: PaymentsBinding(),
+        ),
       ],
     );
   }
