@@ -1,4 +1,6 @@
 // ملف WeeklyActivityWidget
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen/widgets/LineChart.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen/widgets/Paid_Courses_Widget.dart';

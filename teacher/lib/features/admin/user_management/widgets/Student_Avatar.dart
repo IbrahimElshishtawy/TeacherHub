@@ -1,3 +1,4 @@
+// ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
 
@@ -6,6 +7,7 @@ class StudentAvatar extends StatelessWidget {
   final String avatarUrl;
 
   const StudentAvatar({
+    super.key,
     required this.fullName,
     required this.avatarUrl,
   });
@@ -21,10 +23,7 @@ class StudentAvatar extends StatelessWidget {
           ? NetworkImage(avatarUrl.trim())
           : null,
       child: (avatarUrl.trim().isEmpty)
-          ? Text(
-              initial,
-              style: const TextStyle(fontWeight: FontWeight.w900),
-            )
+          ? Text(initial, style: const TextStyle(fontWeight: FontWeight.w900))
           : null,
     );
   }

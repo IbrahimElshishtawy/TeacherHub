@@ -1,10 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class InfoRow extends StatelessWidget {
   final IconData icon;
   final String title;
 
-  const InfoRow({required this.icon, required this.title});
+  const InfoRow({super.key, required this.icon, required this.title});
 
   @override
   Widget build(BuildContext context) {

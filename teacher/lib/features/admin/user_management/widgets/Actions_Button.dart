@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/user_management/widgets/students_table_section.dart';
 

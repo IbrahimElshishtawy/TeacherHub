@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class DeviceActivityTable extends StatelessWidget {
@@ -151,7 +152,9 @@ class DeviceActivityTable extends StatelessWidget {
   // Function to perform the logout action
   void _logout() {
     // Handle the logout action, for example:
-    print("Logging out...");
+    if (kDebugMode) {
+      print("Logging out...");
+    }
 
     // Implement actual logout functionality here, like updating user state, etc.
     // For example, navigate to login screen or change the authentication state

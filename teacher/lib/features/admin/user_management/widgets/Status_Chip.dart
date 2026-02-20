@@ -1,8 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class StatusChip extends StatelessWidget {
   final bool isActive;
-  const StatusChip({required this.isActive});
+  const StatusChip({super.key, required this.isActive});
 
   @override
   Widget build(BuildContext context) {

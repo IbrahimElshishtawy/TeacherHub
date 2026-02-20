@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -238,8 +240,9 @@ class _LineChartrefState extends State<LineChartref> {
                     reservedSize: 32,
                     interval: 1,
                     getTitlesWidget: (value, meta) {
-                      if (value == meta.min || value == meta.max)
+                      if (value == meta.min || value == meta.max) {
                         return const SizedBox();
+                      }
                       return Text(
                         value.toInt().toString(),
                         style: const TextStyle(
@@ -267,8 +270,9 @@ class _LineChartrefState extends State<LineChartref> {
                         'الجمعة',
                       ];
                       final index = value.toInt();
-                      if (index < 0 || index >= days.length)
+                      if (index < 0 || index >= days.length) {
                         return const Text('');
+                      }
                       return Padding(
                         padding: const EdgeInsets.only(top: 8),
                         child: Text(

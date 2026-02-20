@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
@@ -10,7 +12,7 @@ import 'package:teacher/features/admin/teachers/view/teacher_form_screen/widgets
 
 class EditLoginDialogPassword extends StatefulWidget {
   final TeacherFormController form;
-  const EditLoginDialogPassword({required this.form});
+  const EditLoginDialogPassword({super.key, required this.form});
 
   @override
   State<EditLoginDialogPassword> createState() =>

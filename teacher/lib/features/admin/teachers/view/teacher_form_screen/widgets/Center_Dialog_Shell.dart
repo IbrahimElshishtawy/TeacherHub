@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_form_screen/widgets/TabChip.dart';
 
