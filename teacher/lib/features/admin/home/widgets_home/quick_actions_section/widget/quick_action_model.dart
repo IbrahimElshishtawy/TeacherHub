@@ -17,8 +17,8 @@ class QuickActionModel {
 // app_routes.dart
 class AppRoutes {
   static const String securityControl = '/admin/security-control';
-  static const String paymentsFollowUp = '/admin/payments-followup';
-  static const String reportsPreview = '/admin/reports-preview';
+  static const String paymentsFollowUp = '/home_admin/payments';
+  static const String reportsPreview = '/home_admin/reports';
   static const String teachersAccounts = '/home_admin/teachers';
   static const String usersManagement = '/home_admin/user_management';
 }
