@@ -9,6 +9,8 @@ import 'package:teacher/features/admin/exams_reviews_results/bindings/exams_rr_b
 import 'package:teacher/features/admin/exams_reviews_results/view/exams_rr_screen.dart';
 import 'package:teacher/features/admin/home/bindings/home_binding.dart';
 import 'package:teacher/features/admin/home/view/home_page/home_page.dart';
+import 'package:teacher/features/admin/payments/binding/payments_binding.dart';
+import 'package:teacher/features/admin/payments/view/payments_screen.dart';
 import 'package:teacher/features/admin/user_management/bindings/user_management_binding.dart';
 import 'package:teacher/features/admin/user_management/view/parents.dart';
 import 'package:teacher/features/admin/user_management/view/students.dart';
@@ -48,10 +50,26 @@ class MyApp extends StatelessWidget {
         // Define your routes here with bindings
         GetPage(name: '/onboarding', page: () => OnboardingScreen()),
         GetPage(name: '/user_type', page: () => UserTypeScreen()),
-        GetPage(name: '/admin_login', page: () => AdminLoginScreen()),
-        GetPage(name: '/teacher_login', page: () => TeacherLoginScreen()),
-        GetPage(name: '/student_login', page: () => StudentLoginScreen()),
-        GetPage(name: '/parent_login', page: () => ParentLoginScreen()),
+        GetPage(
+          name: '/admin_login',
+          page: () => AdminLoginScreen(),
+          binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/teacher_login',
+          page: () => TeacherLoginScreen(),
+          binding: TeachersBinding(),
+        ),
+        GetPage(
+          name: '/student_login',
+          page: () => StudentLoginScreen(),
+          binding: UserManagementBinding(),
+        ),
+        GetPage(
+          name: '/parent_login',
+          page: () => ParentLoginScreen(),
+          binding: UserManagementBinding(),
+        ),
         GetPage(
           name: '/forget_password_admin',
           page: () => ForgotPasswordadminScreen(),
@@ -135,9 +153,14 @@ class MyApp extends StatelessWidget {
           page: () => const CourseDetailsScreen(),
         ),
         GetPage(
-          name: '/admin/payments',
+          name: '/home_admin/payments',
           page: () => const PaymentsScreen(),
           binding: PaymentsBinding(),
+        ),
+        GetPage(
+          name: '/reports',
+          page: () => const ReportsScreen(),
+          binding: ReportsBinding(),
         ),
       ],
     );
