@@ -62,20 +62,7 @@ class AdminDrawerState {
     DrawerItemModel(
       title: "التقارير والإحصائيات",
       icon: Icons.bar_chart_rounded,
-      children: [
-        DrawerSubItemModel(
-          title: "الحضور",
-          route: "/home_admin/reports/attendance",
-        ),
-        DrawerSubItemModel(
-          title: "المدفوعات",
-          route: "/home_admin/reports/payments",
-        ),
-        DrawerSubItemModel(
-          title: "الكورسات",
-          route: "/home_admin/reports/courses",
-        ),
-      ],
+      route: "/home_admin/reports",
     ),
     DrawerItemModel(
       title: "الإعدادات",
