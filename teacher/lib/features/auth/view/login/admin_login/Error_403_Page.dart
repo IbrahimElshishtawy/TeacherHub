@@ -11,7 +11,7 @@ class Error403Page extends StatelessWidget {
     return Scaffold(
       //appBar: AppbarTap(),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(6.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
