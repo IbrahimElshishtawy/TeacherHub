@@ -13,6 +13,8 @@ import 'package:teacher/features/admin/payments/binding/payments_binding.dart';
 import 'package:teacher/features/admin/payments/view/payments_screen.dart';
 import 'package:teacher/features/admin/reports/binding/reports_binding.dart';
 import 'package:teacher/features/admin/reports/view/reports_screen.dart';
+import 'package:teacher/features/admin/setting/binding/setting_binding.dart';
+import 'package:teacher/features/admin/setting/view/setting_screen.dart';
 import 'package:teacher/features/admin/user_management/bindings/user_management_binding.dart';
 import 'package:teacher/features/admin/user_management/view/parents.dart';
 import 'package:teacher/features/admin/user_management/view/students.dart';
@@ -163,6 +165,11 @@ class MyApp extends StatelessWidget {
           name: '/home_admin/reports',
           page: () => const ReportsScreen(),
           binding: ReportsBinding(),
+        ),
+        GetPage(
+          name: '/settings',
+          page: () => const SettingScreen(),
+          binding: SettingBinding(),
         ),
       ],
     );
