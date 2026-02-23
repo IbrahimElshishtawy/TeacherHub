@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:teacher/features/admin/home/widgets_home/Payment_Status_Section/Payment_Status_Section.dart';
+import 'package:teacher/features/admin/home/widgets_home/calender/calender_card_widgets.dart';
 import 'package:teacher/features/admin/home/widgets_home/management_stats_section/management_stats_section.dart';
-import 'package:teacher/features/admin/home/widgets_home/performance_reports/performance_reports_card.dart';
 import 'package:teacher/features/admin/home/widgets_home/quick_actions_section/quick_actions_section.dart';
 import 'package:teacher/features/admin/home/widgets_home/reports_section/reports_section.dart';
 
@@ -13,7 +13,7 @@ class HomeBodyContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(1),
+      padding: const EdgeInsets.all(2),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: const [
@@ -25,8 +25,9 @@ class HomeBodyContent extends StatelessWidget {
           SizedBox(height: 8),
           ReportsStatisticsSection(),
           SizedBox(height: 8),
-          PerformanceReportsCard(),
-          SizedBox(height: 15),
+          //   PerformanceReportsCard(),
+          EventsCalendarCard(),
+          SizedBox(height: 20),
         ],
       ),
     );
