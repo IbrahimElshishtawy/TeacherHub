@@ -14,10 +14,10 @@ class ReportsHeader extends StatelessWidget {
               onTap: onBack,
               borderRadius: BorderRadius.circular(12),
               child: const Padding(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(1),
                 child: Icon(
                   Icons.arrow_back_ios_new_rounded,
-                  size: 18,
+                  size: 28,
                   color: Colors.red,
                 ),
               ),
