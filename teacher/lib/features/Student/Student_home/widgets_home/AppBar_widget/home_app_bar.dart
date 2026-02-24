@@ -6,9 +6,9 @@ import 'package:teacher/features/admin/admin_home/widgets_home/AppBar_widget/wid
 import 'package:teacher/features/admin/admin_home/widgets_home/AppBar_widget/widget/appbar_greeting_center.dart';
 import 'package:teacher/features/admin/admin_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
 
-import '../../controller/home_controller.dart';
+import '../../controller/Student_home_controller.dart';
 
-class HomeAppBarWidget extends GetView<HomeController>
+class HomeAppBarWidget extends GetView<StudentHomeController>
     implements PreferredSizeWidget {
   final VoidCallback? onMenuTap;
   final double hideT;
@@ -57,7 +57,7 @@ class HomeAppBarWidget extends GetView<HomeController>
                         onTap: () => Get.toNamed('/profile'),
                       ),
                       //gap12,
-                      AppBarGreetingCenter(adminName: s.adminName),
+                      AppBarGreetingCenter(studentName: s.studentName),
                       gap12,
 
                       MenuSquareButton(onTap: onMenuTap),

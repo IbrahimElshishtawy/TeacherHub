@@ -7,8 +7,8 @@ import 'package:teacher/features/admin/admin_home/widgets_home/performance_repor
 import 'package:teacher/features/admin/admin_home/widgets_home/quick_actions_section/quick_actions_section.dart';
 import 'package:teacher/features/admin/admin_home/widgets_home/reports_section/reports_section.dart';
 
-class HomeBodyContent extends StatelessWidget {
-  const HomeBodyContent({super.key});
+class StudentHomeBodyContent extends StatelessWidget {
+  const StudentHomeBodyContent({super.key});
 
   @override
   Widget build(BuildContext context) {

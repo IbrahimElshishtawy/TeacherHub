@@ -1,14 +1,14 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/admin/admin_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
+import 'package:teacher/features/student/student_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
 
-class AdminDrawerHeader extends StatelessWidget {
+class StudentDrawerHeader extends StatelessWidget {
   final VoidCallback onClose;
   final VoidCallback? onAvatarTap; // هنا يبقى يمكن أن يكون null
   final String? avatarUrl;
 
-  const AdminDrawerHeader({
+  const StudentDrawerHeader({
     super.key,
     required this.onClose,
     this.onAvatarTap,

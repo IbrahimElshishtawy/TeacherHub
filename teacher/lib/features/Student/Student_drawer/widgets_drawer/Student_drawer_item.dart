@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
-class AdminDrawerItem extends StatelessWidget {
+class StudentDrawerItem extends StatelessWidget {
   final IconData icon;
   final String title;
   final VoidCallback onTap;
   final bool selected;
 
-  const AdminDrawerItem({
+  const StudentDrawerItem({
     super.key,
     required this.icon,
     required this.title,

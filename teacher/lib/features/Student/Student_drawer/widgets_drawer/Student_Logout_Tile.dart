@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class LogoutTile extends StatelessWidget {
+class StudentLogoutTile extends StatelessWidget {
   final VoidCallback onTap;
 
-  const LogoutTile({super.key, required this.onTap});
+  const StudentLogoutTile({super.key, required this.onTap});
 
   static const Color logoutRed = Color(0xFFE53935);
   static const Color cancelBlue = Color(0xFF2F6BFF);

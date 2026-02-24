@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
-class MainTile extends StatelessWidget {
+class StudentMainTile extends StatelessWidget {
   final String title;
   final IconData icon;
   final bool selected;
   final VoidCallback onTap;
 
-  const MainTile({
+  const StudentMainTile({
     super.key,
     required this.title,
     required this.icon,

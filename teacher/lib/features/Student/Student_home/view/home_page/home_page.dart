@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher/features/Student/Student_home/widgets_home/Home_Body_Content.dart';
 import 'package:teacher/features/admin/admin_home/controller/home_controller.dart';
 import 'package:teacher/features/admin/admin_home/widgets_home/AppBar_widget/home_app_bar.dart';
-import 'package:teacher/features/admin/admin_home/widgets_home/Home_Body_Content.dart';
 import 'package:teacher/features/admin/admin_home/widgets_home/drawer/animated_admin_drawer_scaffold.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class StudentHomePage extends StatelessWidget {
+  const StudentHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
-      body: HomeBodyContent(),
+      body: StudentHomeBodyContent(),
     );
   }
 }

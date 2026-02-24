@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../state/home_state.dart';
+import 'package:teacher/features/Student/Student_home/state/home_state.dart';
 
-class HomeController extends GetxController
+class StudentHomeController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  final state = HomeState().obs;
+  final state = studentHomeState().obs;
 
   final userImageUrl = ''.obs;
   final userLocalPath = ''.obs;

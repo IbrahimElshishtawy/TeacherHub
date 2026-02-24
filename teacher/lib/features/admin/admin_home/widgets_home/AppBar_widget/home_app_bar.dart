@@ -57,7 +57,7 @@ class HomeAppBarWidget extends GetView<HomeController>
                         onTap: () => Get.toNamed('/profile'),
                       ),
                       //gap12,
-                      AppBarGreetingCenter(adminName: s.adminName),
+                      AppBarGreetingCenter(studentName: s.studentName),
                       gap12,
 
                       MenuSquareButton(onTap: onMenuTap),
