@@ -1,6 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:teacher/features/admin/home/widgets_home/calender/view/add_event_screen.dart';
 
 import 'calendar_grid.dart';
 import 'legend_item.dart';
@@ -53,10 +56,10 @@ class _EventsCalendarCardState extends State<EventsCalendarCard> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Container(
-        padding: const EdgeInsets.all(14),
+        padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: _bg,
-          borderRadius: BorderRadius.circular(14),
+          borderRadius: BorderRadius.circular(9),
           border: Border.all(color: _border),
           boxShadow: const [
             BoxShadow(
@@ -71,7 +74,7 @@ class _EventsCalendarCardState extends State<EventsCalendarCard> {
           children: [
             const Text(
               "جدول الأحداث",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w900),
             ),
             const SizedBox(height: 10),
 
@@ -113,13 +116,17 @@ class _EventsCalendarCardState extends State<EventsCalendarCard> {
               ],
             ),
 
-            const SizedBox(height: 12),
+            const SizedBox(height: 20),
 
             SizedBox(
               height: 44,
-              width: double.infinity,
+              width: 180,
               child: ElevatedButton.icon(
-                onPressed: widget.onAddNew ?? () {},
+                onPressed:
+                    widget.onAddNew ??
+                    () async {
+                      await Get.to(() => const AddEventScreen());
+                    },
                 icon: const Icon(Icons.add, size: 20),
                 label: const Text(
                   "أضف موعد جديد",
