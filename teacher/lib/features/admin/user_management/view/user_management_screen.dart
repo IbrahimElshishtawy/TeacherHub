@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/admin/home/widgets/select_card.dart';
+import 'package:teacher/features/admin/admin_home/widgets/select_card.dart';
 
 enum UserManagementType { students, parents }
 
