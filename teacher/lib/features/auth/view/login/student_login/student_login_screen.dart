@@ -5,6 +5,7 @@ import 'package:teacher/features/auth/view/login/widget.login/action_forget_bass
 import 'package:teacher/features/auth/view/login/widget.login/header_login_screan.dart';
 import 'package:teacher/features/auth/view/login/widget.login/input_login.dart';
 import 'package:teacher/features/auth/view/login/widget.login/login_btn.dart';
+import 'package:teacher/features/auth/view/login/widget.login/text_register_click.dart';
 
 class StudentLoginScreen extends StatelessWidget {
   const StudentLoginScreen({super.key});
@@ -43,6 +44,11 @@ class StudentLoginScreen extends StatelessWidget {
             ActionForgetBassword(forget: 'student'),
             // ===== login btn =====
             LoginBtn(),
+
+            Align(
+              alignment: AlignmentGeometry.bottomEnd,
+              child: TextRegisterClick(),
+            ),
           ],
         ),
       ),

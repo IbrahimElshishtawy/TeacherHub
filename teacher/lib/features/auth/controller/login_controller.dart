@@ -8,27 +8,36 @@ class LoginController extends GetxController {
   RxBool showPassword = false.obs;
   RxBool rememberMe = false.obs;
 
-  void loginAsAdmin(String email, String password) async {
+  void login(String email, String password) async {
     isLoading.value = true;
-    await Future.delayed(Duration(seconds: 2));
 
-    if (email == "admin@example.com" && password == "admin123") {
-      isAuthenticated.value = true;
-      userEmail.value = email;
-      Get.toNamed("/home_admin");
-    } else if (email == "admin@example.com" && password != "admin123") {
-      isAuthenticated.value = false;
-      Get.toNamed('/error_401');
-    } else if (password != "admin123") {
-      isAuthenticated.value = false;
+    await Future.delayed(const Duration(seconds: 2));
+
+    isAuthenticated.value = false;
+
+    // Admin
+    if (email == "admin@example.com") {
+      if (password == "admin123") {
+        isAuthenticated.value = true;
+        userEmail.value = email;
+        Get.offAllNamed("/home_admin");
+      } else {
+        Get.toNamed('/error_401');
+      }
+    }
+    // Student
+    else if (email == "student@example.com") {
+      if (password == "student123") {
+        isAuthenticated.value = true;
+        userEmail.value = email;
+        Get.offAllNamed("/home_student");
+      } else {
+        Get.toNamed('/error_401');
+      }
+    }
+    // Email مش موجود أصلاً
+    else {
       Get.toNamed('/error_403');
-    } else {
-      isAuthenticated.value = false;
-      Get.snackbar(
-        "Error",
-        "Invalid credentials",
-        snackPosition: SnackPosition.BOTTOM,
-      );
     }
 
     isLoading.value = false;

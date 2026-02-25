@@ -22,7 +22,7 @@ class LoginBtn extends StatelessWidget {
             onPressed: loginController.isLoading.value
                 ? null
                 : () {
-                    loginController.loginAsAdmin(
+                    loginController.login(
                       loginController.userEmail.value,
                       loginController.userPassword.value,
                     );
