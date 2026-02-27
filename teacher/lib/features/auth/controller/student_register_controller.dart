@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,7 +31,7 @@ class StudentRegisterController extends GetxController {
   final isSendingOtp = false.obs;
   final isVerifyingOtp = false.obs;
   final isCreatingAccount = false.obs;
-
+  final isLoadingTeachers = false.obs;
   @override
   void onInit() {
     super.onInit();
@@ -105,7 +107,7 @@ class StudentRegisterController extends GetxController {
     }
     isSendingOtp.value = true;
     try {
-      // TODO: API call => send otp
+      //
       await Future.delayed(const Duration(milliseconds: 800));
       Get.snackbar("تم", "تم إرسال كود التحقق إلى بريدك");
     } finally {
@@ -116,7 +118,6 @@ class StudentRegisterController extends GetxController {
   Future<bool> verifyOtp() async {
     isVerifyingOtp.value = true;
     try {
-      // TODO: API call => verify otp
       await Future.delayed(const Duration(milliseconds: 700));
       // مثال بسيط: أي كود طوله >= 4 يعتبر OK
       if (otp.text.trim().length < 4) {
@@ -173,8 +174,24 @@ class StudentRegisterController extends GetxController {
     }
   }
 
+  final resendSeconds = 0.obs;
+  Timer? _resendTimer;
+
+  void startResendTimer([int seconds = 60]) {
+    _resendTimer?.cancel();
+    resendSeconds.value = seconds;
+    _resendTimer = Timer.periodic(const Duration(seconds: 1), (t) {
+      resendSeconds.value--;
+      if (resendSeconds.value <= 0) {
+        t.cancel();
+        resendSeconds.value = 0;
+      }
+    });
+  }
+
   @override
   void onClose() {
+    _resendTimer?.cancel();
     firstName.dispose();
     fatherName.dispose();
     grandName.dispose();

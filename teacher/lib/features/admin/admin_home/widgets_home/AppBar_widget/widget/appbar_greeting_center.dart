@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppBarGreetingCenter extends StatelessWidget {
   final String studentName;
 
-  AppBarGreetingCenter({super.key, required this.studentName});
+  const AppBarGreetingCenter({super.key, required this.studentName});
 
   @override
   Widget build(BuildContext context) {

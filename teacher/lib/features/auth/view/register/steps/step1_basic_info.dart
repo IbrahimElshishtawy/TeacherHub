@@ -11,10 +11,13 @@ class Step1BasicInfo extends GetView<StudentRegisterController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "الاسم بالكامل (الأسم رباعي)",
-          textDirection: TextDirection.rtl,
-          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+        Align(
+          alignment: AlignmentGeometry.centerRight,
+          child: Text(
+            "الاسم بالكامل (الأسم رباعي)",
+            textDirection: TextDirection.rtl,
+            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18),
+          ),
         ),
         const SizedBox(height: 10),
         AppTextField(
@@ -38,10 +41,13 @@ class Step1BasicInfo extends GetView<StudentRegisterController> {
           icon: Icons.person_outline,
         ),
         const SizedBox(height: 10),
-        const Text(
-          "رقم هاتف الطالب",
-          textDirection: TextDirection.rtl,
-          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+        Align(
+          alignment: AlignmentGeometry.centerRight,
+          child: Text(
+            "رقم هاتف الطالب",
+            textDirection: TextDirection.rtl,
+            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 19),
+          ),
         ),
         const SizedBox(height: 10),
         AppTextField(
@@ -50,11 +56,14 @@ class Step1BasicInfo extends GetView<StudentRegisterController> {
           icon: Icons.phone,
           keyboardType: TextInputType.phone,
         ),
-        const SizedBox(height: 10),
-        const Text(
-          "رقم هاتف ولي الأمر",
-          textDirection: TextDirection.rtl,
-          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+        const SizedBox(height: 4),
+        Align(
+          alignment: AlignmentGeometry.centerRight,
+          child: Text(
+            "رقم هاتف ولي الأمر",
+            textDirection: TextDirection.rtl,
+            style: TextStyle(fontWeight: FontWeight.w800, fontSize: 15),
+          ),
         ),
         const SizedBox(height: 10),
         AppTextField(
@@ -63,11 +72,13 @@ class Step1BasicInfo extends GetView<StudentRegisterController> {
           icon: Icons.phone_android,
           keyboardType: TextInputType.phone,
         ),
-        const SizedBox(height: 6),
-        Text(
-          "يرجى إدخال رقم ولي الأمر الصحيح لتجنب أي مشاكل.",
-          textDirection: TextDirection.rtl,
-          style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
+        Align(
+          alignment: AlignmentGeometry.centerRight,
+          child: Text(
+            "يرجى إدخال رقم ولي الأمر الصحيح لتجنب أي مشاكل.",
+            textDirection: TextDirection.rtl,
+            style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
+          ),
         ),
       ],
     );

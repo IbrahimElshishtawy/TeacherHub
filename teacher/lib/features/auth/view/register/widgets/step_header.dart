@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StepHeader extends StatelessWidget {
-  final int currentStep; // 0..2
+  final int currentStep;
   final List<String> labels;
 
   const StepHeader({
@@ -12,70 +12,149 @@ class StepHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const primary = Color(0xFF1E2D7D); // قريب من اللي بالصورة
-    final grey = Colors.grey.shade300;
+    const primary = Color(0xFF1E2D7D);
+    final greyBorder = Colors.grey.shade300;
+
+    const stepsWidth = 260.0;
+    const circleSize = 39.0;
+    const pillWidth = 140.0;
+
+    const triangleW = 14.0;
+    const triangleH = 10.0;
 
     Widget circle(int idx) {
-      final active = idx <= currentStep;
+      final isActive = idx == currentStep;
       return Container(
-        width: 34,
-        height: 34,
+        width: circleSize,
+        height: circleSize,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: active ? primary : Colors.white,
-          borderRadius: BorderRadius.circular(17),
-          border: Border.all(color: active ? primary : grey, width: 1.5),
+          color: isActive ? primary : Colors.white,
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: isActive ? primary : greyBorder,
+            width: 1.5,
+          ),
         ),
         child: Text(
           "${idx + 1}",
           style: TextStyle(
-            color: active ? Colors.white : Colors.black54,
+            color: isActive ? Colors.white : Colors.black54,
             fontWeight: FontWeight.w700,
           ),
         ),
       );
     }
 
-    Widget line(bool active) => Expanded(
-      child: Container(
-        height: 2,
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        color: active ? primary : grey,
-      ),
-    );
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final leftGroup = (constraints.maxWidth - stepsWidth) / 2;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 6),
-        Row(
+        // ✅ مراكز الدواير الفعلية داخل الجروب (مع spaceBetween)
+        final centersInGroup = <double>[
+          circleSize / 2, // circle 1 center
+          stepsWidth / 2, // circle 2 center
+          stepsWidth - (circleSize / 2), // circle 3 center
+        ];
+
+        final activeCenterX = leftGroup + centersInGroup[currentStep];
+
+        final pillLeft = (activeCenterX - (pillWidth / 2)).clamp(
+          0.0,
+          constraints.maxWidth - pillWidth,
+        );
+
+        final triangleLeft = (activeCenterX - (triangleW / 2)).clamp(
+          0.0,
+          constraints.maxWidth - triangleW,
+        );
+
+        return Column(
           children: [
-            circle(0),
-            line(currentStep >= 1),
-            circle(1),
-            line(currentStep >= 2),
-            circle(2),
-          ],
-        ),
-        const SizedBox(height: 10),
-        Align(
-          alignment: Alignment.center,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              color: primary,
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: Text(
-              labels[currentStep],
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
+            const SizedBox(height: 4),
+            Center(
+              child: SizedBox(
+                width: stepsWidth,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [circle(0), circle(1), circle(2)],
+                ),
               ),
             ),
-          ),
-        ),
-      ],
+            SizedBox(
+              height: 52,
+              width: double.infinity,
+              child: Stack(
+                children: [
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.easeOut,
+                    left: triangleLeft,
+                    top: 1,
+                    child: CustomPaint(
+                      size: const Size(triangleW, triangleH),
+                      painter: _TrianglePainter(primary),
+                    ),
+                  ),
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.easeOut,
+                    left: pillLeft,
+                    top: 12,
+                    child: SizedBox(
+                      width: pillWidth,
+                      child: Container(
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 14,
+                          vertical: 7,
+                        ),
+                        decoration: BoxDecoration(
+                          color: primary,
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: Text(
+                          labels[currentStep],
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
+}
+
+class _TrianglePainter extends CustomPainter {
+  final Color color;
+  _TrianglePainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    final path = Path()
+      ..moveTo(size.width / 2, size.height)
+      ..lineTo(0, 0)
+      ..lineTo(size.width, 0)
+      ..close();
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant _TrianglePainter oldDelegate) =>
+      oldDelegate.color != color;
 }
