@@ -25,6 +25,7 @@ import 'package:teacher/features/admin/teachers/view/teacher_account_screen.dart
 import 'package:teacher/features/admin/teachers/view/teacher_analytics_screen/teacher_analytics_screen.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_form_screen/teacher_form_screen.dart';
 import 'package:teacher/features/admin/teachers/view/teacher_permissions_screen/teacher_permissions_screen.dart';
+import 'package:teacher/features/auth/binding/student_register_binding.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_401_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/Error_403_Page.dart';
 import 'package:teacher/features/auth/view/login/admin_login/admin_login_screen.dart';
@@ -34,6 +35,7 @@ import 'package:teacher/features/auth/view/login/student_login/forget_password_s
 import 'package:teacher/features/auth/view/login/student_login/student_login_screen.dart';
 import 'package:teacher/features/auth/view/login/teacher_login/forget_password_teacher.dart';
 import 'package:teacher/features/auth/view/login/teacher_login/teacher_login_screen.dart';
+import 'package:teacher/features/auth/view/register/view/student_register_screen.dart';
 import 'features/auth/view/Onboarding/Onboarding_Screen.dart';
 import 'features/auth/view/user_type_login/User_Type_login_Screen.dart';
 
@@ -176,6 +178,11 @@ class MyApp extends StatelessWidget {
           name: '/home_student',
           page: () => const StudentHomePage(),
           binding: HomeBinding(),
+        ),
+        GetPage(
+          name: '/student-register',
+          page: () => StudentRegisterScreen(),
+          binding: StudentRegisterBinding(),
         ),
       ],
     );

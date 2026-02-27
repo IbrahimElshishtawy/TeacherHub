@@ -10,10 +10,9 @@ class TextRegisterClick extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text("' هل لديك حساب..؟ ?"),
         TextButton(
           onPressed: () {
-            Get.toNamed('/register');
+            Get.toNamed('/student-register');
           },
           child: const Text(
             "انشاء حساب",
@@ -22,6 +21,15 @@ class TextRegisterClick extends StatelessWidget {
               fontSize: 14,
               fontWeight: FontWeight.w700,
             ),
+          ),
+        ),
+        const Text(
+          "هل لديك حساب..؟ ",
+          textAlign: TextAlign.right,
+          style: TextStyle(
+            color: Colors.black54,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],
