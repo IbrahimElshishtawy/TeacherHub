@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:teacher/features/Student/Student_home/bindings/Student_home_binding.dart';
 import 'package:teacher/features/Student/Student_home/view/home_page/home_page.dart';
 import 'package:teacher/features/admin/attendance/binding/attendance_binding.dart';
 import 'package:teacher/features/admin/attendance/view/attendance_screen.dart';
@@ -177,7 +178,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/home_student',
           page: () => const StudentHomePage(),
-          binding: HomeBinding(),
+          binding: StudentHomeBinding(),
         ),
         GetPage(
           name: '/student-register',

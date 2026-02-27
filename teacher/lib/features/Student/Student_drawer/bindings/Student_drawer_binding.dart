@@ -1,11 +1,11 @@
-// import 'package:get/get.dart';
-// import '../controller/admin_drawer_controller.dart';
-// import '../state/admin_drawer_state.dart'; // Import AdminDrawerState
+import 'package:get/get.dart';
+import 'package:teacher/features/Student/Student_drawer/controller/Student_drawer_controller.dart';
+import 'package:teacher/features/Student/Student_drawer/state/Student_drawer_state.dart';
 
-// class AdminDrawerBinding extends Bindings {
-//   @override
-//   void dependencies() {
-//     Get.lazyPut<AdminDrawerState>(() => AdminDrawerState());
-//     Get.lazyPut<AdminDrawerController>(() => AdminDrawerController());
-//   }
-// }
+class StudentDrawerBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut<StudentDrawerState>(() => StudentDrawerState());
+    Get.lazyPut<StudentDrawerController>(() => StudentDrawerController());
+  }
+}
