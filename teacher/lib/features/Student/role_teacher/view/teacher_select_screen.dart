@@ -13,7 +13,6 @@ class TeacherSelectScreen extends GetView<SubjectTeacherController> {
 
   @override
   Widget build(BuildContext context) {
-    // ✅ عرّف المادة الحالية عشان نراقب اختيارها
     controller.selectedSubjectId.value = subject.id;
 
     final teachers = controller.teachersForSubject(subject.id);

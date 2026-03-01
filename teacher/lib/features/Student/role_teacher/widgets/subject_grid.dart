@@ -11,9 +11,7 @@ class SubjectGrid extends GetView<SubjectTeacherController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      // ✅ observable inside
       final selectedMap = controller.state.selectedTeachers;
-
       return GridView.builder(
         padding: const EdgeInsets.fromLTRB(16, 6, 16, 16),
         itemCount: controller.subjects.length,
