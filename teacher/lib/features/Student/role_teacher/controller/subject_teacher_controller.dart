@@ -5,7 +5,7 @@ class SubjectTeacherController extends GetxController {
   final _state = const SubjectTeacherState().obs;
   SubjectTeacherState get state => _state.value;
 
-  // بيانات تجريبية (بدّلها بالـ API)
+  final selectedSubjectId = "".obs;
   final subjects = const <SubjectModel>[
     SubjectModel(
       id: "ar",
@@ -79,8 +79,19 @@ class SubjectTeacherController extends GetxController {
   void setTeacherForSubject(String subjectId, TeacherModel teacher) {
     final newMap = Map<String, TeacherModel>.from(state.selectedTeachers);
     newMap[subjectId] = teacher;
+
     _state.value = state.copyWith(selectedTeachers: newMap);
   }
 
-  bool get hasAnySelection => state.selectedTeachers.isNotEmpty;
+  bool hasSelectedFor(String subjectId) {
+    return _state.value.selectedTeachers.containsKey(subjectId);
+  }
+
+  bool get hasSelectedForCurrent {
+    final id = selectedSubjectId.value;
+    if (id.isEmpty) return false;
+    return _state.value.selectedTeachers.containsKey(id);
+  }
+
+  bool get hasAnySelection => _state.value.selectedTeachers.isNotEmpty;
 }
