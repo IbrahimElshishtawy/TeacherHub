@@ -167,7 +167,7 @@ class StudentRegisterController extends GetxController {
       await Future.delayed(const Duration(milliseconds: 900));
 
       Get.snackbar("نجاح", "تم إنشاء الحساب بنجاح");
-      Get.toNamed('/home_student');
+      Get.toNamed('/subjects');
       // مثال: Navigate to login
       Get.back();
     } finally {

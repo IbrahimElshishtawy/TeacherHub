@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/Student/Student_home/bindings/Student_home_binding.dart';
 import 'package:teacher/features/Student/Student_home/view/home_page/home_page.dart';
+import 'package:teacher/features/Student/role_teacher/bindings/subject_teacher_binding.dart';
+import 'package:teacher/features/Student/role_teacher/view/subject_select_screen.dart';
 import 'package:teacher/features/admin/attendance/binding/attendance_binding.dart';
 import 'package:teacher/features/admin/attendance/view/attendance_screen.dart';
 import 'package:teacher/features/admin/courses/binding/courses_binding.dart';
@@ -184,6 +186,11 @@ class MyApp extends StatelessWidget {
           name: '/student-register',
           page: () => StudentRegisterScreen(),
           binding: StudentRegisterBinding(),
+        ),
+        GetPage(
+          name: '/subjects',
+          page: () => const SubjectSelectScreen(),
+          binding: SubjectTeacherBinding(),
         ),
       ],
     );
