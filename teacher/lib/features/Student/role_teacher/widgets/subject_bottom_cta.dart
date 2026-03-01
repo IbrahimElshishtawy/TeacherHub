@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../controller/subject_teacher_controller.dart';
 import 'teacher_primary_button.dart';
+import 'entry_info_dialog.dart';
 
 class SubjectBottomCta extends GetView<SubjectTeacherController> {
   const SubjectBottomCta({super.key});
@@ -63,14 +64,26 @@ class SubjectBottomCta extends GetView<SubjectTeacherController> {
 
               TeacherPrimaryButton(
                 text: enabled ? "الدخول للتطبيق" : "اختر مادة ومدرس أولاً",
-
                 icon: Icons.login_rounded,
                 onPressed: enabled
                     ? () {
-                        Get.offAllNamed(
-                          '/home_student',
-                          arguments: controller.state.selectedTeachers.values
-                              .toList(),
+                        Get.dialog(
+                          EntryInfoDialog(
+                            userName: "مصطفى_هيكل",
+                            userId: "30205060",
+                            onStart: () {
+                              Get.back();
+                              Get.offAllNamed(
+                                '/home_student',
+                                arguments: controller
+                                    .state
+                                    .selectedTeachers
+                                    .values
+                                    .toList(),
+                              );
+                            },
+                          ),
+                          barrierDismissible: true,
                         );
                       }
                     : null,
