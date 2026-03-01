@@ -1,19 +1,20 @@
+// ignore_for_file: camel_case_types
+
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:teacher/features/admin/admin_home/widgets_home/AppBar_widget/widget/Menu_Square_Button_appbar.dart';
-import 'package:teacher/features/admin/admin_home/widgets_home/AppBar_widget/widget/appbar_greeting_center.dart';
-import 'package:teacher/features/admin/admin_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
+import 'package:teacher/features/Student/Student_home/widgets_home/AppBar_widget/widget/Menu_Square_Button_appbar.dart';
+import 'package:teacher/features/Student/Student_home/widgets_home/AppBar_widget/widget/appbar_greeting_center.dart';
+import 'package:teacher/features/Student/Student_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
 
 import '../../controller/Student_home_controller.dart';
 
-class HomeAppBarWidget extends GetView<StudentHomeController>
+class studentHomeAppBarWidget extends GetView<StudentHomeController>
     implements PreferredSizeWidget {
   final VoidCallback? onMenuTap;
   final double hideT;
 
-  const HomeAppBarWidget({super.key, this.onMenuTap, this.hideT = 0.0});
+  const studentHomeAppBarWidget({super.key, this.onMenuTap, this.hideT = 0.0});
 
   @override
   Size get preferredSize => const Size.fromHeight(100);
@@ -57,7 +58,7 @@ class HomeAppBarWidget extends GetView<StudentHomeController>
                         onTap: () => Get.toNamed('/profile'),
                       ),
                       //gap12,
-                      AppBarGreetingCenter(studentName: s.studentName),
+                      AppbarGreetingstudnet(studentName: s.studentName),
                       gap12,
 
                       MenuSquareButton(onTap: onMenuTap),

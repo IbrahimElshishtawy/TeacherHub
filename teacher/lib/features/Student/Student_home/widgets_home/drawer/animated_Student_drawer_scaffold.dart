@@ -1,14 +1,14 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/admin/admin_drawer/view/admin_drawer.dart';
-import 'package:teacher/features/admin/admin_home/controller/home_controller.dart';
+import 'package:teacher/features/Student/Student_drawer/view/Student_drawer.dart';
+import 'package:teacher/features/Student/Student_home/controller/Student_home_controller.dart';
 
-class AnimatedAdminDrawerScaffold extends StatelessWidget {
+class AnimatedStudentDrawerScaffold extends StatelessWidget {
   final PreferredSizeWidget appBar;
   final Widget body;
 
-  const AnimatedAdminDrawerScaffold({
+  const AnimatedStudentDrawerScaffold({
     super.key,
     required this.appBar,
     required this.body,
@@ -16,15 +16,15 @@ class AnimatedAdminDrawerScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = Get.find<HomeController>();
+    final c = Get.find<StudentHomeController>();
 
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: const Color(0xFFF6F7F9),
         appBar: appBar,
-        body: GetBuilder<HomeController>(
-          id: 'drawer',
+        body: GetBuilder<StudentHomeController>(
+          id: 'drawer_student',
           builder: (_) {
             final t = c.t.clamp(0.0, 1.0);
             final w = MediaQuery.of(context).size.width;
@@ -38,7 +38,7 @@ class AnimatedAdminDrawerScaffold extends StatelessWidget {
             return Stack(
               children: [
                 // ===== Drawer Full Screen تحت =====
-                const Positioned.fill(child: AdminDrawer()),
+                const Positioned.fill(child: StudentDrawer()),
 
                 // ===== Home فوق =====
                 Transform.translate(

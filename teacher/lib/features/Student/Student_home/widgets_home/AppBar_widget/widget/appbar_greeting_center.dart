@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class AppBarGreetingCenter extends StatelessWidget {
-  final String adminName;
+class AppbarGreetingstudnet extends StatelessWidget {
+  final String studentName;
 
-  const AppBarGreetingCenter({super.key, required this.adminName});
+  const AppbarGreetingstudnet({super.key, required this.studentName});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class AppBarGreetingCenter extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
                 Text(
-                  adminName,
+                  studentName,
                   textAlign: TextAlign.center,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

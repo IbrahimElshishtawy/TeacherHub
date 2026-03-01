@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:teacher/features/Student/Student_home/widgets_home/subject/subject_actions_section.dart';
 
 class StudentHomeBodyContent extends StatelessWidget {
   const StudentHomeBodyContent({super.key});
@@ -11,7 +12,7 @@ class StudentHomeBodyContent extends StatelessWidget {
       padding: const EdgeInsets.all(1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [],
+        children: const [SubjectActionsSection()],
       ),
     );
   }

@@ -41,7 +41,7 @@ class StudentHomeController extends GetxController
     );
 
     drawerController.addListener(() {
-      update(['drawer']);
+      update(['drawer_student']);
     });
   }
 

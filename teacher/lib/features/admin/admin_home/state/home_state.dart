@@ -1,3 +1,3 @@
 class HomeState {
-  String studentName = "اسم الطالب";
+  String Adminame = "اسم الطالب";
 }
