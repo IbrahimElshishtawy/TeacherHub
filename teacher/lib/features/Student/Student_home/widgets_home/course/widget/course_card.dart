@@ -27,8 +27,9 @@ class CourseCard extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Container(
-        width: 260,
-        padding: const EdgeInsets.all(10), // ✅ padding محترم
+        width: 300,
+        height: 320,
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(14),
@@ -43,7 +44,7 @@ class CourseCard extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min, // ✅ يساعد في منع مشاكل قياس
+          mainAxisSize: MainAxisSize.min,
           children: [
             CourseCardImage(imageUrl: course.imageUrl),
             const SizedBox(height: 10),
@@ -63,7 +64,7 @@ class CourseCard extends StatelessWidget {
                   priceEGP: course.priceEGP,
                   status: course.status,
                 ),
-                const Spacer(),
+                //const Spacer(),
               ],
             ),
             const SizedBox(height: 10),

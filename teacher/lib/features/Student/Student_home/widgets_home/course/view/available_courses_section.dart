@@ -86,11 +86,11 @@ class AvailableCoursesSection extends StatelessWidget {
         : courses!;
 
     return Container(
-      margin: const EdgeInsets.fromLTRB(16, 10, 16, 0),
+      margin: const EdgeInsets.fromLTRB(6, 6, 6, 0),
       padding: const EdgeInsets.only(bottom: 10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(6),
         border: Border.all(color: const Color(0xFFE9EDF5)),
         boxShadow: const [
           BoxShadow(

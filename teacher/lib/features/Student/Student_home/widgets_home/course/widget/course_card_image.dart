@@ -10,7 +10,7 @@ class CourseCardImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: SizedBox(
-        height: 120,
+        height: 150,
         width: double.infinity,
         child: Image.network(
           imageUrl,

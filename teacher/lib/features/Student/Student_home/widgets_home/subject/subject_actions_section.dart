@@ -1,4 +1,4 @@
-// quick_actions_section.dart
+// subject_actions_section.dart
 import 'package:flutter/material.dart';
 import 'package:teacher/features/Student/Student_home/widgets_home/subject/widget/subject_action_button.dart';
 import 'package:teacher/features/admin/admin_home/widgets_home/quick_actions_section/widget/button_Width.dart';
@@ -10,37 +10,48 @@ class SubjectActionsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final actions = <SubjectActionModel>[
+      // المواد الدراسية المعدلة هنا
       SubjectActionModel(
-        title: 'إدارة المستخدمين',
-        icon: Icons.group_outlined,
+        title: 'مادة الرياضيات',
+        icon: Icons.calculate_outlined,
         color: const Color(0xFF7B3F12),
-        routeName: AppRoutes.usersManagement,
+        routeName: '',
       ),
-
       SubjectActionModel(
-        title: 'حسابات المدرسين',
-        icon: Icons.school_outlined,
+        title: 'مادة الفيزياء',
+        icon: Icons.science_outlined,
         color: const Color(0xFF6A1BB2),
-        routeName: AppRoutes.teachersAccounts,
+        routeName: '',
       ),
-
       SubjectActionModel(
-        title: 'الأمان و التحكم',
-        icon: Icons.security_outlined,
+        title: 'مادة الكيمياء',
+        icon: Icons.emoji_symbols_outlined,
         color: const Color(0xFFF59A23),
-        routeName: AppRoutes.securityControl,
+        routeName: '',
       ),
       SubjectActionModel(
-        title: 'متابعة المدفوعات',
-        icon: Icons.payments_outlined,
+        title: 'مادة البرمجة',
+        icon: Icons.computer_outlined,
         color: const Color(0xFF2E7D32),
-        routeName: AppRoutes.paymentsFollowUp,
+        routeName: '',
       ),
       SubjectActionModel(
-        title: 'معاينة التقارير',
-        icon: Icons.settings_outlined,
+        title: 'مادة التاريخ',
+        icon: Icons.history_outlined,
         color: const Color(0xFF2F78FF),
-        routeName: AppRoutes.reportsPreview,
+        routeName: '',
+      ),
+      SubjectActionModel(
+        title: 'مادة الجغرافيا',
+        icon: Icons.public_outlined,
+        color: const Color(0xFF9C27B0),
+        routeName: '',
+      ),
+      SubjectActionModel(
+        title: 'مادة اللغة العربية',
+        icon: Icons.language_outlined,
+        color: const Color(0xFF00796B),
+        routeName: '',
       ),
     ];
 
@@ -54,7 +65,7 @@ class SubjectActionsSection extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: Text(
-              "إجراءات سريعة",
+              "المواد الدراسية",
               textAlign: TextAlign.right,
               style: const TextStyle(
                 fontSize: 26,
