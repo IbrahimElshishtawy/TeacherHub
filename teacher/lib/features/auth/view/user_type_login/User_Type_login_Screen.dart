@@ -14,7 +14,6 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
   int selectedIndex = -1;
   String selectedRoute = '';
 
-  // دالة لإنشاء العناصر بشكل ديناميكي
   Widget _buildUserTypeOption(
     String title,
     String subtitle,
@@ -39,6 +38,7 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: SingleChildScrollView(
