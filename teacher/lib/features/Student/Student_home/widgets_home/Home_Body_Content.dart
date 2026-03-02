@@ -1,7 +1,6 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/Student/Student_home/data/course_card_model.dart';
 import 'package:teacher/features/Student/Student_home/widgets_home/course/view/available_courses_section.dart';
 import 'package:teacher/features/Student/Student_home/widgets_home/subject/subject_actions_section.dart';
 
