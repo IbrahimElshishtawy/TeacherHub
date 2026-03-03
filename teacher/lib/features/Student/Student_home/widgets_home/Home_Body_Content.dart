@@ -8,34 +8,17 @@ class StudentHomeBodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(
-          2,
-          0,
-          2,
-          2,
-        ), // إضافة padding لتوزيع المسافة بشكل صحيح
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Section for available courses
-            const AvailableCoursesSection(),
-
-            const SizedBox(height: 16), // زيادة المسافة بين الأقسام
-            // Section for subject actions
-            const SubjectActionsSection(),
-
-            const SizedBox(height: 16), // زيادة المسافة بين الأقسام
-            // Section for available tests wrapped with ConstrainedBox to avoid unbounded size
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                maxHeight: 600,
-              ), // تحديد حد أقصى للارتفاع
-              child: AvailableTestsScreen(),
-            ),
-          ],
-        ),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.fromLTRB(2, 0, 2, 2),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          AvailableCoursesSection(),
+          SizedBox(height: 5),
+          SubjectActionsSection(),
+          SizedBox(height: 6),
+          AvailableTestsScreen(),
+        ],
       ),
     );
   }

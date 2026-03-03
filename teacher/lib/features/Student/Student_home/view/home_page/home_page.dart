@@ -13,6 +13,7 @@ class StudentHomePage extends StatelessWidget {
     final c = Get.find<StudentHomeController>();
 
     return Scaffold(
+      backgroundColor: const Color(0xFFF5F5F5),
       body: SafeArea(
         child: AnimatedStudentDrawerScaffold(
           appBar: PreferredSize(
