@@ -12,18 +12,25 @@ class StudentHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = Get.find<StudentHomeController>();
 
-    return AnimatedStudentDrawerScaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child: GetBuilder<StudentHomeController>(
-          id: 'drawer_student',
-          builder: (_) {
-            final t = c.t.clamp(0.0, 1.0);
-            return studentHomeAppBarWidget(onMenuTap: c.toggleDrawer, hideT: t);
-          },
+    return Scaffold(
+      body: SafeArea(
+        child: AnimatedStudentDrawerScaffold(
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(100),
+            child: GetBuilder<StudentHomeController>(
+              id: 'drawer_student',
+              builder: (_) {
+                final t = c.t.clamp(0.0, 1.0);
+                return studentHomeAppBarWidget(
+                  onMenuTap: c.toggleDrawer,
+                  hideT: t,
+                );
+              },
+            ),
+          ),
+          body: StudentHomeBodyContent(),
         ),
       ),
-      body: StudentHomeBodyContent(),
     );
   }
 }

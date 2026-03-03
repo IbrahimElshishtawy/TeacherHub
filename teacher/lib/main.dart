@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_file.dart';
 import 'package:teacher/features/Student/Student_home/bindings/Student_home_binding.dart';
 import 'package:teacher/features/Student/Student_home/view/home_page/home_page.dart';
 import 'package:teacher/features/Student/role_teacher/bindings/subject_teacher_binding.dart';
@@ -42,7 +44,22 @@ import 'package:teacher/features/auth/view/register/view/student_register_screen
 import 'features/auth/view/Onboarding/Onboarding_Screen.dart';
 import 'features/auth/view/user_type_login/User_Type_login_Screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('ar_SA', '')
+      .then((_) {
+        if (kDebugMode) {
+          print('Date formatting initialized for ar_SA');
+        }
+      })
+      .catchError((error) {
+        if (kDebugMode) {
+          print('Error initializing date formatting for ar_SA: $error');
+        }
+      });
+  if (kDebugMode) {
+    print('Date formatting initialized for ar_SA');
+  }
   runApp(const MyApp());
 }
 
@@ -53,8 +70,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+
       title: 'Flutter Onboarding Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       home: OnboardingScreen(),
       getPages: [
         // Define your routes here with bindings
