@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 
 class StudentDrawerSubItemModel {
@@ -12,7 +10,7 @@ class StudentDrawerSubItemModel {
 class StudentDrawerItemModel {
   final String title;
   final IconData icon;
-  final String? route; // If it's a regular item that opens a page
+  final String? route;
   final List<StudentDrawerSubItemModel> children;
 
   const StudentDrawerItemModel({
@@ -29,45 +27,40 @@ class StudentDrawerState {
   String selectedRoute = "/home_student";
 
   final List<StudentDrawerItemModel> items = const [
-    StudentDrawerItemModel(title: "لوحة التحكم", icon: Icons.grid_view_rounded),
     StudentDrawerItemModel(
-      title: "المستخدمين",
-      icon: Icons.group_outlined,
-      children: [
-        StudentDrawerSubItemModel(
-          title: "الطلاب & اولياء الأمور",
-          route: "/home_student/user_management",
-        ),
-        StudentDrawerSubItemModel(
-          title: "المدرسين",
-          route: "/home_student/teachers",
-        ),
-      ],
+      title: "الملف الشخصي",
+      icon: Icons.person_outline,
+      route: "/profile",
     ),
     StudentDrawerItemModel(
-      title: "الكورسات",
-      icon: Icons.folder_outlined,
-      route: "/home_student/courses",
+      title: "المواد الدراسية",
+      icon: Icons.book_outlined,
+      route: "/courses",
     ),
     StudentDrawerItemModel(
-      title: "الاختبارات والمراجعات",
-      icon: Icons.edit_note_outlined,
-      route: "/home_student/exams_rr",
+      title: "كورساتي",
+      icon: Icons.play_circle_filled_outlined,
+      route: "/my_courses",
     ),
     StudentDrawerItemModel(
-      title: "الحضور والغياب",
-      icon: Icons.calendar_month_outlined,
-      route: "/home_student/attendance",
+      title: "قناة التواصل",
+      icon: Icons.chat_bubble_outline_rounded,
+      route: "/communication_channel",
     ),
     StudentDrawerItemModel(
-      title: "المدفوعات",
-      icon: Icons.credit_card_outlined,
-      route: "/home_student/payments",
+      title: "العناصر المحفوظة",
+      icon: Icons.bookmark_border_rounded,
+      route: "/saved_items",
     ),
     StudentDrawerItemModel(
-      title: "التقارير والإحصائيات",
-      icon: Icons.bar_chart_rounded,
-      route: "/home_student/reports",
+      title: "الأحداث المهمة",
+      icon: Icons.event_outlined,
+      route: "/important_events",
+    ),
+    StudentDrawerItemModel(
+      title: "تسجيل الحضور",
+      icon: Icons.check_circle_outline,
+      route: "/attendance",
     ),
     StudentDrawerItemModel(
       title: "الإعدادات",
@@ -76,13 +69,13 @@ class StudentDrawerState {
     ),
     StudentDrawerItemModel(
       title: "الإشعارات",
-      icon: Icons.notifications_none_rounded,
-      route: "/home_student/notifications",
+      icon: Icons.notifications_outlined,
+      route: "/notifications",
     ),
     StudentDrawerItemModel(
-      title: "الدعم والمساعدة",
-      icon: Icons.support_agent_outlined,
-      route: "/home_student/support",
+      title: "تسجيل الخروج",
+      icon: Icons.exit_to_app_outlined,
+      route: "/logout", // يمكن تعديل المسار حسب الحاجة
     ),
   ];
 

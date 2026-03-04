@@ -3,6 +3,7 @@ import 'package:teacher/features/Student/Student_home/widgets_home/course/view/a
 import 'package:teacher/features/Student/Student_home/widgets_home/overview/view/home_overview_big_card.dart';
 import 'package:teacher/features/Student/Student_home/widgets_home/quiz/view/available_tests_screen.dart';
 import 'package:teacher/features/Student/Student_home/widgets_home/subject/subject_actions_section.dart';
+import 'package:teacher/features/Student/Student_home/widgets_home/warning/view/warning_card.dart';
 
 class StudentHomeBodyContent extends StatelessWidget {
   const StudentHomeBodyContent({super.key});
@@ -21,6 +22,8 @@ class StudentHomeBodyContent extends StatelessWidget {
           AvailableTestsScreen(),
           SizedBox(height: 6),
           HomeOverviewBigCard(),
+          SizedBox(height: 6),
+          WarningCard(),
         ],
       ),
     );

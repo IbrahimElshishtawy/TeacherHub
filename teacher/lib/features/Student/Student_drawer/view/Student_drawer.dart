@@ -90,7 +90,7 @@ class StudentDrawer extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         vertical: 2,
-                        horizontal: 5,
+                        horizontal: 6,
                       ),
                       child: StudentLogoutTile(onTap: () {}),
                     ),
