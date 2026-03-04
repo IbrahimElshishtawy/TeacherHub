@@ -131,8 +131,6 @@ class MyApp extends StatelessWidget {
           },
           binding: TeachersBinding(),
         ),
-
-        // Teachers Screens
         GetPage(
           name: '/teachers/teacher-form',
           page: () => const TeacherFormScreen(),
