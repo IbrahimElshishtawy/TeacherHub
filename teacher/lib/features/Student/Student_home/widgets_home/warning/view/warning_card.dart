@@ -13,7 +13,7 @@ class WarningCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: const [
-          WarningCardHeader(), // العنوان + الأيقونة
+          WarningCardHeader(),
           SizedBox(height: 12),
           WarningList(), // قائمة التحذيرات
         ],

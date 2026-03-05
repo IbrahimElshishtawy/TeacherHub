@@ -9,6 +9,7 @@ class WarningCardHeader extends StatelessWidget {
       children: [
         const SizedBox(width: 8),
         Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Align(
               alignment: Alignment.bottomRight,

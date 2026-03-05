@@ -17,7 +17,7 @@ class StudentHomePage extends StatelessWidget {
       body: SafeArea(
         child: AnimatedStudentDrawerScaffold(
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(100),
+            preferredSize: const Size.fromHeight(110),
             child: GetBuilder<StudentHomeController>(
               id: 'drawer_student',
               builder: (_) {
