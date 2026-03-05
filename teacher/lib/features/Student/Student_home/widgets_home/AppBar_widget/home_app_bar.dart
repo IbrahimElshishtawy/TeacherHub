@@ -26,7 +26,7 @@ class studentHomeAppBarWidget extends GetView<StudentHomeController>
 
     if (h < 8) return const SizedBox.shrink();
 
-    const gap12 = SizedBox(width: 115);
+    const gap12 = SizedBox(width: 125);
 
     return SafeArea(
       bottom: false,
