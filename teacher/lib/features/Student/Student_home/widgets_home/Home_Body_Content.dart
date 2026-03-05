@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:teacher/features/Student/Student_home/widgets_home/course/view/available_courses_section.dart';
 import 'package:teacher/features/Student/Student_home/widgets_home/overview/view/home_overview_big_card.dart';

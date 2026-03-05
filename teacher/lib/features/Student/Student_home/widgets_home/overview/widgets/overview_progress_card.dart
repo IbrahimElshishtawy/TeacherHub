@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'overview_primary_button.dart';
 import 'overview_progress_bar.dart';

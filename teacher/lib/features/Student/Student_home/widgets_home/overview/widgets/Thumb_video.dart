@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: deprecated_member_use, unnecessary_underscores, file_names
 
 import 'package:flutter/material.dart';
 
@@ -84,7 +84,7 @@ class _ThumbImage extends StatelessWidget {
       return Image.network(
         networkUrl!,
         fit: BoxFit.cover,
-        errorBuilder: (_, __, ___) => const _ImageFallback(),
+        errorBuilder: (_, _, ___) => const _ImageFallback(),
         loadingBuilder: (context, child, loadingProgress) {
           if (loadingProgress == null) return child;
           return const Center(
