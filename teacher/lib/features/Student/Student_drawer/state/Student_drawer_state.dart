@@ -32,7 +32,7 @@ class StudentDrawerState {
     StudentDrawerItemModel(
       title: "الملف الشخصي",
       icon: Icons.person_outline,
-      route: "/profile",
+      route: "/profile_student",
     ),
     StudentDrawerItemModel(
       title: "المواد الدراسية",
