@@ -74,11 +74,6 @@ class StudentDrawerState {
       icon: Icons.notifications_outlined,
       route: "/notifications",
     ),
-    StudentDrawerItemModel(
-      title: "تسجيل الخروج",
-      icon: Icons.exit_to_app_outlined,
-      route: "/logout", // يمكن تعديل المسار حسب الحاجة
-    ),
   ];
 
   // A list to keep track of expanded items
@@ -100,7 +95,6 @@ class StudentDrawerState {
     }
   }
 
-  // Check if the item is expanded
   bool isExpanded(String route) {
     return expandedItems[route] ?? false;
   }

@@ -38,7 +38,7 @@ class StudentDrawer extends StatelessWidget {
                     backgroundColor: bg,
                     pinned: true,
                     automaticallyImplyLeading: false,
-                    expandedHeight: 130.0,
+                    expandedHeight: 132.0,
                     flexibleSpace: FlexibleSpaceBar(
                       background: StudentDrawerHeader(
                         onClose: () => c.closeDrawerFromHome(),
@@ -53,7 +53,7 @@ class StudentDrawer extends StatelessWidget {
 
                       return Padding(
                         padding: const EdgeInsets.symmetric(
-                          vertical: 4,
+                          vertical: 8,
                           horizontal: 6,
                         ),
                         child: item.hasChildren
