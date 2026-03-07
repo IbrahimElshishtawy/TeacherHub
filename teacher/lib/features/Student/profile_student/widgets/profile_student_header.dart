@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_underscores
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:teacher/features/Student/profile_student/controller/profile_student_controller.dart';
@@ -45,7 +47,10 @@ class ProfileStudentHeader extends StatelessWidget {
                 ),
                 const Spacer(),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Navigate to settings screen
+                    Get.toNamed('/settings_student');
+                  },
                   icon: const Icon(
                     Icons.settings_outlined,
                     color: Colors.white,
@@ -56,12 +61,14 @@ class ProfileStudentHeader extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             CircleAvatar(
-              radius: 34,
+              radius: 50,
               backgroundColor: Colors.white,
               child: CircleAvatar(
-                radius: 32,
+                radius: 50,
                 backgroundImage: NetworkImage(data.avatarUrl),
-                onBackgroundImageError: (_, __) {},
+                onBackgroundImageError: (_, __) {
+                  // Handle image load error, maybe set a default avatar
+                },
                 backgroundColor: Colors.grey.shade300,
               ),
             ),

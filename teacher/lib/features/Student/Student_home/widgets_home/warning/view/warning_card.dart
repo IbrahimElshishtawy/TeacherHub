@@ -15,7 +15,7 @@ class WarningCard extends StatelessWidget {
         children: const [
           WarningCardHeader(),
           SizedBox(height: 12),
-          WarningList(), // قائمة التحذيرات
+          WarningList(),
         ],
       ),
     );

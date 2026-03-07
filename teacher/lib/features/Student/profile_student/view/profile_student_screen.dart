@@ -26,7 +26,6 @@ class ProfileStudentScreen extends StatelessWidget {
                 children: [
                   Obx(() {
                     final data = controller.state.value;
-
                     return ProfileStudentSectionCard(
                       title: 'البيانات الشخصية',
                       subtitle: 'إدارة معلوماتك الأساسية وتفاصيل الحساب.',

@@ -9,17 +9,14 @@ class WarningCardHeader extends StatelessWidget {
       children: [
         const SizedBox(width: 8),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-              alignment: Alignment.bottomRight,
-              child: Text(
-                'التنبيهات',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xFF2D3A55),
-                ),
+            Text(
+              'التنبيهات',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w800,
+                color: Color(0xFF2D3A55),
               ),
             ),
             const Text(

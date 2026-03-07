@@ -8,6 +8,8 @@ import 'package:teacher/features/Student/profile_student/bindings/profile_studen
 import 'package:teacher/features/Student/profile_student/view/profile_student_screen.dart';
 import 'package:teacher/features/Student/role_teacher/bindings/subject_teacher_binding.dart';
 import 'package:teacher/features/Student/role_teacher/view/subject_select_screen.dart';
+import 'package:teacher/features/Student/settings/bindings/settings_binding.dart';
+import 'package:teacher/features/Student/settings/view/settings_screen.dart';
 import 'package:teacher/features/admin/attendance/binding/attendance_binding.dart';
 import 'package:teacher/features/admin/attendance/view/attendance_screen.dart';
 import 'package:teacher/features/admin/courses/binding/courses_binding.dart';
@@ -80,7 +82,6 @@ class MyApp extends StatelessWidget {
       ),
       home: OnboardingScreen(),
       getPages: [
-        // Define your routes here with bindings
         GetPage(name: '/onboarding', page: () => OnboardingScreen()),
         GetPage(name: '/user_type', page: () => UserTypeScreen()),
         GetPage(
@@ -148,12 +149,6 @@ class MyApp extends StatelessWidget {
           page: () => const TeacherAnalyticsScreen(),
           binding: TeachersBinding(),
         ),
-
-        GetPage(
-          name: '/not-found',
-          page: () =>
-              const Scaffold(body: Center(child: Text('Route Not Found'))),
-        ),
         GetPage(
           name: '/user_management/students',
           page: () => const StudentsScreen(),
@@ -217,6 +212,11 @@ class MyApp extends StatelessWidget {
           name: '/profile_student',
           page: () => const ProfileStudentScreen(),
           binding: ProfileStudentBinding(),
+        ),
+        GetPage(
+          name: '/settings_student',
+          page: () => const SettingsScreen(),
+          binding: SettingsBinding(),
         ),
       ],
     );
