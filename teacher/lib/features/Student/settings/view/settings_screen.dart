@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:teacher/features/Student/settings/widgets/settings_item.dart';
 import 'package:teacher/features/Student/settings/widgets/settings_section.dart';
 import 'package:teacher/features/Student/settings/widgets/settings_switch.dart';
+import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
 import '../controller/settings_controller.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -13,11 +14,31 @@ class SettingsScreen extends StatelessWidget {
     final controller = Get.find<SettingsController>();
 
     return Scaffold(
-      appBar: AppBar(title: Text("الإعدادات العامة")),
+      backgroundColor: Color(0xFFF5F7FA),
+      appBar: AppbarTap(),
       body: ListView(
         children: [
+          Text(
+            '  الإعدادات العامه',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.w600,
+              color: Color.fromARGB(255, 5, 6, 9),
+            ),
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            '   التحكم في إعدادات حسابك وتفضيلاتك بما في يناسب احتياجاتك',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w200,
+              color: Color(0xFF2D3A55),
+            ),
+            textAlign: TextAlign.center,
+          ),
           SettingsSection(
             title: 'إعدادات الحساب',
+            icon: Icons.account_circle,
             children: [
               SettingsItem(title: 'المعلومات الشخصية', onTap: () {}),
               SettingsItem(title: 'كلمة المرور والأمان', onTap: () {}),
@@ -26,6 +47,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           SettingsSection(
             title: 'المظهر والتفضيلات',
+            icon: Icons.palette,
             children: [
               SettingsSwitch(
                 title: 'الوضع الداكن',
@@ -38,6 +60,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           SettingsSection(
             title: 'الدعم',
+            icon: Icons.support,
             children: [
               SettingsItem(title: 'مركز المساعدة', onTap: () {}),
               SettingsItem(title: 'تواصل مع الدعم', onTap: () {}),
@@ -46,16 +69,27 @@ class SettingsScreen extends StatelessWidget {
           ),
           SettingsSection(
             title: 'حول التطبيق',
+            icon: Icons.info,
             children: [
               SettingsItem(title: 'حول التطبيق', onTap: () {}),
               SettingsItem(title: 'شروط الخدمة', onTap: () {}),
             ],
           ),
-          ListTile(
-            title: Text('تسجيل الخروج', style: TextStyle(color: Colors.red)),
-            onTap: () {
-              // Handle log out
-            },
+          Align(
+            alignment: Alignment.center,
+            child: ListTile(
+              title: Text(
+                'تسجيل الخروج',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              trailing: Icon(Icons.logout, color: Colors.red),
+              onTap: () {
+                // Handle log out
+              },
+            ),
           ),
         ],
       ),
