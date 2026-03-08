@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_file.dart';
 import 'package:teacher/features/Student/Student_home/bindings/Student_home_binding.dart';
 import 'package:teacher/features/Student/Student_home/view/home_page/home_page.dart';
+import 'package:teacher/features/Student/attendance/bindings/attendance_binding.dart';
+import 'package:teacher/features/Student/attendance/view/attendance_screen.dart';
 import 'package:teacher/features/Student/profile_student/bindings/profile_student_binding.dart';
 import 'package:teacher/features/Student/profile_student/view/profile_student_screen.dart';
 import 'package:teacher/features/Student/role_teacher/bindings/subject_teacher_binding.dart';
@@ -217,6 +219,11 @@ class MyApp extends StatelessWidget {
           name: '/settings_student',
           page: () => const SettingsScreen(),
           binding: SettingsBinding(),
+        ),
+        GetPage(
+          name: '/attendance_student',
+          page: () => const AttendanceScreenStudent(),
+          binding: AttendanceBindingtStudent(),
         ),
       ],
     );

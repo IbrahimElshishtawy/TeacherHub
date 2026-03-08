@@ -62,12 +62,12 @@ class StudentDrawerState {
     StudentDrawerItemModel(
       title: "تسجيل الحضور",
       icon: Icons.check_circle_outline,
-      route: "/attendance",
+      route: "/attendance_student",
     ),
     StudentDrawerItemModel(
       title: "الإعدادات",
       icon: Icons.settings_outlined,
-      route: "/settings",
+      route: "/settings_student",
     ),
     StudentDrawerItemModel(
       title: "الإشعارات",

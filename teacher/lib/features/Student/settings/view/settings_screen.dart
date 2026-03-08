@@ -28,7 +28,7 @@ class SettingsScreen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Text(
-            '   التحكم في إعدادات حسابك وتفضيلاتك بما في يناسب احتياجاتك',
+            ' التحكم في إعدادات حسابك وتفضيلاتك بما في يناسب احتياجاتك',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w200,
