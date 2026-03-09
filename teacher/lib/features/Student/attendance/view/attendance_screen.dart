@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/attendance/widgets/%D9%8EQr_scanner_widget.dart';
+import 'package:teacher/features/Student/attendance/widgets/qr_scanner_widget.dart';
 import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
 import '../controller/attendance_controller.dart';
 import '../widgets/manual_input_widget.dart';
@@ -31,7 +31,8 @@ class AttendanceScreenStudent extends StatelessWidget {
         builder: (_) {
           final isScanning = controller.state.isScanning.value;
           final studentId = controller.state.studentId.value;
-          final hasId = studentId.isNotEmpty;
+          final hasId = studentId.trim().isNotEmpty;
+          final isSubmitted = controller.state.isSubmitted.value;
 
           return Stack(
             children: [
@@ -87,7 +88,11 @@ class AttendanceScreenStudent extends StatelessWidget {
                           ),
                         ),
                         child: hasId
-                            ? _buildStudentBadge(studentId)
+                            ? _buildStudentBadge(
+                                studentId,
+                                isSubmitted,
+                                controller,
+                              )
                             : const SizedBox.shrink(),
                       ),
 
@@ -255,6 +260,9 @@ class AttendanceScreenStudent extends StatelessWidget {
   }
 
   Widget _buildInputCard(bool isScanning, AttendanceController controller) {
+    final studentId = controller.state.studentId.value;
+    final canScan = studentId.trim().isEmpty;
+
     return Container(
       decoration: BoxDecoration(
         color: _card,
@@ -272,8 +280,12 @@ class AttendanceScreenStudent extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         child: isScanning
             ? SizedBox(
+                key: ValueKey('scanner_${canScan ? "active" : "locked"}'),
                 height: 320,
-                child: QRScannerWidget(onQRScan: controller.setQRCode),
+                child: QRScannerWidget(
+                  onQRScan: controller.setQRCode,
+                  scanEnabled: canScan,
+                ),
               )
             : Padding(
                 padding: const EdgeInsets.all(24),
@@ -283,7 +295,11 @@ class AttendanceScreenStudent extends StatelessWidget {
     );
   }
 
-  Widget _buildStudentBadge(String studentId) {
+  Widget _buildStudentBadge(
+    String studentId,
+    bool isSubmitted,
+    AttendanceController controller,
+  ) {
     return Container(
       key: ValueKey(studentId),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -329,10 +345,16 @@ class AttendanceScreenStudent extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          Icon(
-            Icons.person_outline_rounded,
-            color: _success.withOpacity(0.6),
-            size: 22,
+          IconButton(
+            onPressed: controller.clearStudentId,
+            tooltip: isSubmitted ? 'مسح والبدء من جديد' : 'إعادة المسح',
+            icon: Icon(
+              isSubmitted
+                  ? Icons.refresh_rounded
+                  : Icons.qr_code_scanner_rounded,
+              color: _success.withOpacity(0.8),
+              size: 22,
+            ),
           ),
         ],
       ),

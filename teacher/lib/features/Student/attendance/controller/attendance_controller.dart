@@ -13,27 +13,54 @@ class AttendanceController extends GetxController {
 
   // Function to handle manual ID entry
   void setManualId(String id) {
-    state.studentId.value = id;
+    state.studentId.value = id.trim();
+    state.isSubmitted.value = false;
     update();
   }
 
   // Function to handle QR scan result
   void setQRCode(String qrCode) {
-    state.studentId.value = qrCode;
+    final code = qrCode.trim();
+    if (code.isEmpty) return;
+    if (state.studentId.value == code) return;
+    state.studentId.value = code;
+    state.isSubmitted.value = false;
+    state.submittedAt.value = '';
+    update();
+  }
+
+  void clearStudentId() {
+    state.studentId.value = '';
+    state.isSubmitted.value = false;
+    state.submittedAt.value = '';
     update();
   }
 
   // Handle attendance submission (QR or manual)
   void submitAttendance() {
-    if (state.studentId.isNotEmpty) {
+    final id = state.studentId.value.trim();
+    if (id.isNotEmpty) {
+      state.studentId.value = id;
+      state.isSubmitted.value = true;
+      state.submittedAt.value = _formattedTime();
       // You can integrate a backend service here
       if (kDebugMode) {
-        print('Attendance marked successfully for ${state.studentId}');
+        print('Attendance marked successfully for $id');
       }
     } else {
+      state.isSubmitted.value = false;
+      state.submittedAt.value = '';
       if (kDebugMode) {
         print('Please enter a valid ID.');
       }
     }
+    update();
+  }
+
+  String _formattedTime() {
+    final now = DateTime.now();
+    final h = now.hour.toString().padLeft(2, '0');
+    final m = now.minute.toString().padLeft(2, '0');
+    return 'تم التسجيل الساعة $h:$m';
   }
 }
