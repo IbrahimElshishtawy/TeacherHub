@@ -3,47 +3,44 @@ plugins {
     id("kotlin-android")
     id("dev.flutter.flutter-gradle-plugin")
 }
-android {
-    compileSdkVersion 32
 
-    defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 32
-    }
+android {
+    namespace = "com.example.teacher"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
-    // Enable core library desugaring to support Java 8+ features
+    defaultConfig {
+        applicationId = "com.example.teacher"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
     buildTypes {
         release {
-            // Add this to enable desugaring
-            coreLibraryDesugaringEnabled true
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 }
 
-dependencies {
-    // Add the core library desugaring dependency
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.2.0'
-}
-
-dependencies {
-    // إضافة الاعتماد اللازم ل coreLibraryDesugaring
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.2.0")
-
-    // باقي الاعتماديات
-    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
-    implementation("androidx.appcompat:appcompat:1.4.2")
-    implementation("com.google.zxing:core:3.5.0")
-}
-
 flutter {
     source = "../.."
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.zxing:core:3.5.3")
 }
