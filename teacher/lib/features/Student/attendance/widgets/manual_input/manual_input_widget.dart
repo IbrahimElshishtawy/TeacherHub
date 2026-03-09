@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
 
 import 'manual_input_footer_hint.dart';
 import 'manual_input_header.dart';
@@ -73,7 +75,9 @@ class _ManualInputWidgetState extends State<ManualInputWidget>
           border: Border.all(color: ManualInputTheme.cardBorder),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(ManualInputTheme.cardShadowOpacity),
+              color: Colors.black.withOpacity(
+                ManualInputTheme.cardShadowOpacity,
+              ),
               blurRadius: 20,
               spreadRadius: -5,
               offset: const Offset(0, 10),

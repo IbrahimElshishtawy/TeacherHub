@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
 
 import 'success_dialog_body.dart';
 import 'success_dialog_checkmark.dart';
@@ -42,11 +44,11 @@ class _SuccessDialogWidgetState extends State<SuccessDialogWidget>
 
     _slideAnim = Tween<Offset>(begin: const Offset(0, 0.3), end: Offset.zero)
         .animate(
-      CurvedAnimation(
-        parent: _animController,
-        curve: const Interval(0.1, 0.8, curve: Curves.easeOutCubic),
-      ),
-    );
+          CurvedAnimation(
+            parent: _animController,
+            curve: const Interval(0.1, 0.8, curve: Curves.easeOutCubic),
+          ),
+        );
 
     if (widget.studentId.isNotEmpty) {
       _animController.forward();

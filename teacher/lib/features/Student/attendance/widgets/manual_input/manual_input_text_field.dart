@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
 
 import 'manual_input_theme.dart';
 
@@ -24,7 +26,9 @@ class ManualInputTextField extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isFocused ? ManualInputTheme.primary : ManualInputTheme.fieldBorder,
+          color: isFocused
+              ? ManualInputTheme.primary
+              : ManualInputTheme.fieldBorder,
           width: isFocused ? 1.5 : 1,
         ),
         boxShadow: isFocused
@@ -62,12 +66,17 @@ class ManualInputTextField extends StatelessWidget {
             padding: const EdgeInsets.only(right: 4),
             child: Icon(
               Icons.tag_rounded,
-              color: isFocused ? ManualInputTheme.primary : ManualInputTheme.hint,
+              color: isFocused
+                  ? ManualInputTheme.primary
+                  : ManualInputTheme.hint,
               size: 20,
             ),
           ),
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 18,
+            vertical: 18,
+          ),
         ),
         onSubmitted: (_) => onSubmitted(),
       ),
