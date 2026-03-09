@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/attendance/widgets/qr_scanner_widget.dart';
+import 'package:teacher/features/Student/attendance/widgets/qr_scanner/qr_scanner_widget.dart';
 import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
 import '../controller/attendance_controller.dart';
-import '../widgets/manual_input_widget.dart';
-import '../widgets/success_dialog_widget.dart';
+import '../widgets/manual_input/manual_input_widget.dart';
+import '../widgets/success_dialog/success_dialog_widget.dart';
 
 class AttendanceScreenStudent extends StatelessWidget {
   const AttendanceScreenStudent({super.key});
 
   // Design tokens
-  static const _bg = Color(0xFF060B18);
-  static const _surface = Color(0xFF0D1526);
-  static const _card = Color(0xFF111D35);
+  static const _bg = Color(0xFFF8FAFC);
+  static const _surface = Color(0xFFFFFFFF);
+  static const _card = Color(0xFFFFFFFF);
   static const _accent = Color(0xFF3B82F6);
   static const _accentGlow = Color(0xFF1D4ED8);
   static const _success = Color(0xFF10B981);
-  static const _border = Color(0xFF1E2D4A);
-  static const _textPrimary = Color(0xFFEFF6FF);
-  static const _textMuted = Color(0xFF4B6A9B);
+  static const _border = Color(0xFFE2E8F0);
+  static const _textPrimary = Color(0xFF0F172A);
+  static const _textMuted = Color(0xFF64748B);
 
   @override
   Widget build(BuildContext context) {
@@ -270,9 +270,9 @@ class AttendanceScreenStudent extends StatelessWidget {
         border: Border.all(color: _border),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            blurRadius: 24,
-            offset: const Offset(0, 8),
+            color: Colors.black.withOpacity(0.06),
+            blurRadius: 18,
+            offset: const Offset(0, 6),
           ),
         ],
       ),
@@ -394,7 +394,7 @@ class AttendanceScreenStudent extends StatelessWidget {
           child: InkWell(
             borderRadius: BorderRadius.circular(18),
             onTap: hasId ? controller.submitAttendance : null,
-            splashColor: Colors.white.withOpacity(0.1),
+            splashColor: _accent.withOpacity(0.15),
             child: Center(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
