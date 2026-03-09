@@ -78,6 +78,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      unknownRoute: GetPage(
+        name: '/not_found',
+        page: () => const _RouteNotFoundScreen(),
+      ),
 
       title: 'Flutter Onboarding Demo',
       theme: ThemeData(
@@ -232,7 +236,58 @@ class MyApp extends StatelessWidget {
           page: () => const ImportantEventsScreen(),
           binding: ImportantEventsBinding(),
         ),
+        GetPage(
+          name: '/courses',
+          page: () => const _StudentTempScreen(title: 'المواد الدراسية'),
+        ),
+        GetPage(
+          name: '/my_courses',
+          page: () => const _StudentTempScreen(title: 'كورساتي'),
+        ),
+        GetPage(
+          name: '/communication_channel',
+          page: () => const _StudentTempScreen(title: 'قناة التواصل'),
+        ),
+        GetPage(
+          name: '/saved_items',
+          page: () => const _StudentTempScreen(title: 'العناصر المحفوظة'),
+        ),
+        GetPage(
+          name: '/notifications',
+          page: () => const _StudentTempScreen(title: 'الإشعارات'),
+        ),
       ],
+    );
+  }
+}
+
+class _RouteNotFoundScreen extends StatelessWidget {
+  const _RouteNotFoundScreen();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text('الصفحة غير موجودة'),
+      ),
+    );
+  }
+}
+
+class _StudentTempScreen extends StatelessWidget {
+  final String title;
+
+  const _StudentTempScreen({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: Center(
+        child: Text('$title - قريبًا'),
+      ),
     );
   }
 }

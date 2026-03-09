@@ -40,7 +40,7 @@ class ImportantEventCard extends StatelessWidget {
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     color: item.textColor,
-                    fontSize: 43,
+                    fontSize: 16,
                     fontWeight: FontWeight.w700,
                     height: 1.1,
                   ),
@@ -53,7 +53,7 @@ class ImportantEventCard extends StatelessWidget {
                       item.dateText,
                       style: TextStyle(
                         color: item.textColor.withOpacity(0.95),
-                        fontSize: 34,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -68,7 +68,7 @@ class ImportantEventCard extends StatelessWidget {
                       item.timeText,
                       style: TextStyle(
                         color: item.textColor.withOpacity(0.95),
-                        fontSize: 34,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),

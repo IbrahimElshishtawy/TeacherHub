@@ -21,7 +21,7 @@ class ImportantEventsHeader extends StatelessWidget {
           title,
           style: const TextStyle(
             color: ImportantEventsTokens.textPrimary,
-            fontSize: 38,
+            fontSize: 22,
             fontWeight: FontWeight.w700,
             height: 1.2,
           ),
@@ -32,7 +32,7 @@ class ImportantEventsHeader extends StatelessWidget {
           textAlign: TextAlign.center,
           style: const TextStyle(
             color: ImportantEventsTokens.textSecondary,
-            fontSize: 22,
+            fontSize: 13,
             fontWeight: FontWeight.w500,
             height: 1.45,
           ),

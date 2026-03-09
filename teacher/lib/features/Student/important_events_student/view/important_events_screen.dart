@@ -12,7 +12,7 @@ class ImportantEventsScreen extends GetView<ImportantEventsController> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: ImportantEventsTokens.pageBg,
         appBar: AppBar(
@@ -36,7 +36,7 @@ class ImportantEventsScreen extends GetView<ImportantEventsController> {
                   title: controller.state.title,
                   subtitle: controller.state.subtitle,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 Expanded(
                   child: ImportantEventsList(events: controller.state.events),
                 ),
