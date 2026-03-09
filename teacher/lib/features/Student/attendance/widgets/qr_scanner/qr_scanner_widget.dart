@@ -1,6 +1,10 @@
-import 'dart:async';
+﻿import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+
+import 'qr_scanner_loading.dart';
+import 'qr_scanner_processed_badge.dart';
 
 class QRScannerWidget extends StatefulWidget {
   final Function(String) onQRScan;
@@ -18,13 +22,14 @@ class QRScannerWidget extends StatefulWidget {
 
 class _QRScannerWidgetState extends State<QRScannerWidget> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+
   QRViewController? _controller;
   StreamSubscription? _scanSubscription;
-  bool _isProcessing = false; // Prevent duplicate scans
+  bool _isProcessing = false;
 
   @override
   void dispose() {
-    _scanSubscription?.cancel(); // Cancel stream to prevent memory leaks
+    _scanSubscription?.cancel();
     _controller?.dispose();
     super.dispose();
   }
@@ -33,35 +38,26 @@ class _QRScannerWidgetState extends State<QRScannerWidget> {
   void didUpdateWidget(covariant QRScannerWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.scanEnabled == widget.scanEnabled) return;
-    if (widget.scanEnabled) {
-      _controller?.resumeCamera();
-    } else {
-      _controller?.pauseCamera();
-    }
+    widget.scanEnabled ? _controller?.resumeCamera() : _controller?.pauseCamera();
   }
 
   void _onQRViewCreated(QRViewController controller) {
     _controller = controller;
-    if (mounted) {
-      setState(() {});
-    }
+    if (mounted) setState(() {});
 
     if (!widget.scanEnabled) {
       _controller?.pauseCamera();
     }
 
     _scanSubscription = controller.scannedDataStream.listen((scanData) {
-      // Guard against duplicate/rapid scans and disabled scanning state.
-      if (!widget.scanEnabled) return;
-      if (scanData.code != null && !_isProcessing) {
-        _isProcessing = true;
-        _controller?.pauseCamera();
-        widget.onQRScan(scanData.code!);
+      if (!widget.scanEnabled || _isProcessing) return;
+      if (scanData.code == null) return;
 
-        if (mounted) {
-          setState(() {});
-        }
-      }
+      _isProcessing = true;
+      _controller?.pauseCamera();
+      widget.onQRScan(scanData.code!);
+
+      if (mounted) setState(() {});
     });
   }
 
@@ -80,44 +76,8 @@ class _QRScannerWidgetState extends State<QRScannerWidget> {
             cutOutSize: MediaQuery.of(context).size.width * 0.75,
           ),
         ),
-
-        if (_controller == null)
-          const Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircularProgressIndicator(color: Colors.white),
-                SizedBox(height: 12),
-                Text(
-                  'جارٍ تحميل الكاميرا...',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ],
-            ),
-          ),
-
-        if (_isProcessing)
-          Positioned(
-            bottom: 40,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 8,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.black54,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Text(
-                  'تم مسح الرمز',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-              ),
-            ),
-          ),
+        if (_controller == null) const QrScannerLoading(),
+        if (_isProcessing) const QrScannerProcessedBadge(),
       ],
     );
   }
