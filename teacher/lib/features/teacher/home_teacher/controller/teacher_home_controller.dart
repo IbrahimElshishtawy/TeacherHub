@@ -1,11 +1,13 @@
+// ignore_for_file: camel_case_types, file_names
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../state/home_state.dart';
+import 'package:teacher/features/teacher/home_teacher/state/home_state.dart';
 
-class HomeController extends GetxController
+class teacherHomeController extends GetxController
     with GetSingleTickerProviderStateMixin {
-  final state = HomeState().obs;
+  final state = teacherHomeState().obs;
 
   final userImageUrl = ''.obs;
   final userLocalPath = ''.obs;
@@ -41,7 +43,7 @@ class HomeController extends GetxController
     );
 
     drawerController.addListener(() {
-      update(['drawer_admin']);
+      update(['drawer_teacher']);
     });
   }
 

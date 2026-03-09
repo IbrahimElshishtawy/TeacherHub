@@ -24,7 +24,7 @@ class AdminDrawerItemModel {
 }
 
 class AdminDrawerState {
-  String selectedRoute = "/home_admin"; // Currently selected route
+  String selectedRoute = "/home_admin";
 
   final List<AdminDrawerItemModel> items = const [
     AdminDrawerItemModel(title: "لوحة التحكم", icon: Icons.grid_view_rounded),
@@ -84,10 +84,7 @@ class AdminDrawerState {
     ),
   ];
 
-  // A list to keep track of expanded items
   final Map<String, bool> expandedItems = {};
-
-  // Function to toggle item expansion
   void toggleExpansion(String route) {
     if (expandedItems.containsKey(route)) {
       expandedItems[route] = !expandedItems[route]!;
@@ -95,7 +92,6 @@ class AdminDrawerState {
       expandedItems[route] = true;
     }
 
-    // Close all other items that are not the selected one
     for (var key in expandedItems.keys) {
       if (key != route) {
         expandedItems[key] = false;
@@ -103,7 +99,6 @@ class AdminDrawerState {
     }
   }
 
-  // Check if the item is expanded
   bool isExpanded(String route) {
     return expandedItems[route] ?? false;
   }

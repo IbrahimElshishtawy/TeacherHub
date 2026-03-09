@@ -1,16 +1,18 @@
+// ignore_for_file: camel_case_types, file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:teacher/features/admin/admin_drawer/controller/admin_drawer_controller.dart';
-import 'package:teacher/features/admin/admin_drawer/widgets_drawer/ExpandableT_ile.dart';
-import 'package:teacher/features/admin/admin_drawer/widgets_drawer/Logout_Tile.dart';
-import 'package:teacher/features/admin/admin_drawer/widgets_drawer/Main_Tile.dart';
-import 'package:teacher/features/admin/admin_drawer/widgets_drawer/admin_drawer_header.dart';
+import 'package:teacher/features/teacher/drawer_teacher/controller/teacher_drawer_controller.dart';
+import 'package:teacher/features/teacher/drawer_teacher/widgets_drawer/teacher_Expandable_Tile.dart';
+import 'package:teacher/features/teacher/drawer_teacher/widgets_drawer/teacher_Logout_Tile.dart';
+import 'package:teacher/features/teacher/drawer_teacher/widgets_drawer/teacher_Main_Tile.dart';
+import 'package:teacher/features/teacher/drawer_teacher/widgets_drawer/teacher_drawer_header.dart';
 
-class AdminDrawer extends StatelessWidget {
-  const AdminDrawer({super.key});
+class teacherDrawer extends StatelessWidget {
+  const teacherDrawer({super.key});
 
   static const Color bg = Color(0xFF0E1622);
   static const Color white = Colors.white;
@@ -19,7 +21,7 @@ class AdminDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = Get.find<AdminDrawerController>();
+    final c = Get.find<teacherDrawerController>();
 
     return SizedBox.expand(
       child: Material(
@@ -32,13 +34,14 @@ class AdminDrawer extends StatelessWidget {
 
               return CustomScrollView(
                 slivers: [
+                  // Fixed header that does not scroll
                   SliverAppBar(
                     backgroundColor: bg,
                     pinned: true,
                     automaticallyImplyLeading: false,
-                    expandedHeight: 130.0,
+                    expandedHeight: 132.0,
                     flexibleSpace: FlexibleSpaceBar(
-                      background: AdminDrawerHeader(
+                      background: teacherDrawerHeader(
                         onClose: () => c.closeDrawerFromHome(),
                       ),
                     ),
@@ -51,11 +54,11 @@ class AdminDrawer extends StatelessWidget {
 
                       return Padding(
                         padding: const EdgeInsets.symmetric(
-                          vertical: 4,
+                          vertical: 8,
                           horizontal: 6,
                         ),
                         child: item.hasChildren
-                            ? ExpandableTile(
+                            ? teacherExpandableTile(
                                 item: item,
                                 selectedRoute: s.selectedRoute,
                                 isExpanded:
@@ -68,7 +71,7 @@ class AdminDrawer extends StatelessWidget {
                                   }
                                 },
                               )
-                            : MainTile(
+                            : teacherMainTile(
                                 title: item.title,
                                 icon: item.icon,
                                 selected: s.selectedRoute == item.route,
@@ -88,9 +91,9 @@ class AdminDrawer extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         vertical: 2,
-                        horizontal: 5,
+                        horizontal: 6,
                       ),
-                      child: LogoutTile(
+                      child: teacherLogoutTile(
                         onTap: () {
                           Get.offAllNamed("/user_type");
                         },

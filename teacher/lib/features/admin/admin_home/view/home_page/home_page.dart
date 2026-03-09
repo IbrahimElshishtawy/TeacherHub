@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100),
         child: GetBuilder<HomeController>(
-          id: 'drawer',
+          id: 'drawer_admin',
           builder: (_) {
             final t = c.t.clamp(0.0, 1.0);
             return HomeAppBarWidget(onMenuTap: c.toggleDrawer, hideT: t);

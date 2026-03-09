@@ -23,12 +23,18 @@ class ManagementStatsSection extends StatefulWidget {
 
 class _ManagementStatsSectionState extends State<ManagementStatsSection> {
   final List<String> months = const [
-    'يونيو',
-    'مايو',
-    'أبريل',
-    'مارس',
-    'فبراير',
     'يناير',
+    'فبراير',
+    'مارس',
+    'أبريل',
+    'مايو',
+    'يونيو',
+    'يوليو',
+    'أغسطس',
+    'سبتمبر',
+    'أكتوبر',
+    'نوفمبر',
+    'ديسمبر',
   ];
   String selectedMonth = 'يناير';
 
@@ -44,7 +50,7 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
           ),
           StatItem(
             title: "عدد أولياء الأمور",
-            value: 240,
+            value: 230,
             color: Color(0xFF7B3F12),
             type: StatDisplayType.bar,
           ),
@@ -56,7 +62,7 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
           ),
           StatItem(
             title: "متوسط الدفع",
-            value: 300,
+            value: 330,
             color: Color(0xFF2F78FF),
             type: StatDisplayType.chip,
           ),
@@ -68,13 +74,13 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
           ),
           StatItem(
             title: "الطلبات الجديدة",
-            value: 222,
+            value: 232,
             color: Color(0xFFF59A23),
             type: StatDisplayType.chip,
           ),
           StatItem(
             title: "الأجهزة المجمدة",
-            value: 230,
+            value: 210,
             color: Color(0xFFE53935),
             type: StatDisplayType.chip,
           ),
@@ -149,17 +155,6 @@ class _ManagementStatsSectionState extends State<ManagementStatsSection> {
                           label: "تحديث",
                           icon: Icons.refresh,
                           onTap: widget.onRefresh ?? () {},
-                        ),
-                        const SizedBox(width: 10),
-                        ManagementActionButton(
-                          label: "تحميل",
-                          trailing: const Icon(
-                            Icons.download_outlined,
-                            size: 18,
-                            color: Color(0xFF2F78FF),
-                          ),
-                          icon: Icons.keyboard_arrow_down_rounded,
-                          onTap: widget.onDownload ?? () {},
                         ),
                       ],
                     ),
