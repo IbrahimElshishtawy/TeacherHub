@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/date_symbol_data_file.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:teacher/features/Student/Student_home/bindings/Student_home_binding.dart';
 import 'package:teacher/features/Student/Student_home/view/home_page/home_page.dart';
 import 'package:teacher/features/Student/attendance/bindings/attendance_binding.dart';
@@ -52,7 +52,7 @@ import 'features/auth/view/user_type_login/User_Type_login_Screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initializeDateFormatting('ar_SA', '')
+  await initializeDateFormatting('ar_SA')
       .then((_) {
         if (kDebugMode) {
           print('Date formatting initialized for ar_SA');
