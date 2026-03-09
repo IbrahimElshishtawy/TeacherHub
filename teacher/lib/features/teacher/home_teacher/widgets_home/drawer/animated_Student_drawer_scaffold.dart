@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/Student_drawer/view/Student_drawer.dart';
 import 'package:teacher/features/Student/Student_home/controller/Student_home_controller.dart';
 import 'package:teacher/features/teacher/drawer_teacher/view/teacher_drawer.dart';
 
