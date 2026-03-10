@@ -13,6 +13,8 @@ import 'package:teacher/features/Student/important_events_student/view/important
 import 'package:teacher/features/Student/my_courses/bindings/my_courses_binding.dart';
 import 'package:teacher/features/Student/my_courses/view/my_course_details_screen.dart';
 import 'package:teacher/features/Student/my_courses/view/my_courses_screen.dart';
+import 'package:teacher/features/Student/notification_student/bindings/notification_student_binding.dart';
+import 'package:teacher/features/Student/notification_student/view/notification_student_screen.dart';
 import 'package:teacher/features/Student/profile_student/bindings/profile_student_binding.dart';
 import 'package:teacher/features/Student/profile_student/view/profile_student_screen.dart';
 import 'package:teacher/features/Student/role_teacher/bindings/subject_teacher_binding.dart';
@@ -289,8 +291,9 @@ class MyApp extends StatelessWidget {
           binding: SavedItemsBinding(),
         ),
         GetPage(
-          name: '/notifications',
-          page: () => const _StudentTempScreen(title: 'Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±Ø§Øª'),
+          name: '/notifications_student',
+          page: () => const NotificationStudentScreen(),
+          binding: NotificationStudentBinding(),
         ),
       ],
     );
@@ -303,9 +306,7 @@ class _RouteNotFoundScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('Ø§Ù„ØµÙØ­Ø© ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯Ø©'),
-      ),
+      body: Center(child: Text('Ø§Ù„ØµÙØ­Ø© ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯Ø©')),
     );
   }
 }
@@ -318,13 +319,8 @@ class _StudentTempScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text('$title - Ù‚Ø±ÙŠØ¨Ù‹Ø§'),
-      ),
+      appBar: AppBar(title: Text(title)),
+      body: Center(child: Text('$title - Ù‚Ø±ÙŠØ¨Ù‹Ø§')),
     );
   }
 }
-

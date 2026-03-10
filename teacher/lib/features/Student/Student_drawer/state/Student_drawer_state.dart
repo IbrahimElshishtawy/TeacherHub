@@ -72,7 +72,7 @@ class StudentDrawerState {
     StudentDrawerItemModel(
       title: "الإشعارات",
       icon: Icons.notifications_outlined,
-      route: "/notifications",
+      route: "/notifications_student",
     ),
   ];
 
