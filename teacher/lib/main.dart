@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+﻿import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -12,6 +12,9 @@ import 'package:teacher/features/Student/profile_student/bindings/profile_studen
 import 'package:teacher/features/Student/profile_student/view/profile_student_screen.dart';
 import 'package:teacher/features/Student/role_teacher/bindings/subject_teacher_binding.dart';
 import 'package:teacher/features/Student/role_teacher/view/subject_select_screen.dart';
+import 'package:teacher/features/Student/saved_items/bindings/saved_items_binding.dart';
+import 'package:teacher/features/Student/saved_items/view/my_subscribed_courses_screen.dart';
+import 'package:teacher/features/Student/saved_items/view/saved_items_screen.dart';
 import 'package:teacher/features/Student/settings/bindings/settings_binding.dart';
 import 'package:teacher/features/Student/settings/view/settings_screen.dart';
 import 'package:teacher/features/admin/attendance/binding/attendance_binding.dart';
@@ -238,23 +241,25 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/courses',
-          page: () => const _StudentTempScreen(title: 'المواد الدراسية'),
+          page: () => const _StudentTempScreen(title: 'Ø§Ù„Ù…ÙˆØ§Ø¯ Ø§Ù„Ø¯Ø±Ø§Ø³ÙŠØ©'),
         ),
         GetPage(
           name: '/my_courses',
-          page: () => const _StudentTempScreen(title: 'كورساتي'),
+          page: () => const MySubscribedCoursesScreen(),
+          binding: SavedItemsBinding(),
         ),
         GetPage(
           name: '/communication_channel',
-          page: () => const _StudentTempScreen(title: 'قناة التواصل'),
+          page: () => const _StudentTempScreen(title: 'Ù‚Ù†Ø§Ø© Ø§Ù„ØªÙˆØ§ØµÙ„'),
         ),
         GetPage(
           name: '/saved_items',
-          page: () => const _StudentTempScreen(title: 'العناصر المحفوظة'),
+          page: () => const SavedItemsScreen(),
+          binding: SavedItemsBinding(),
         ),
         GetPage(
           name: '/notifications',
-          page: () => const _StudentTempScreen(title: 'الإشعارات'),
+          page: () => const _StudentTempScreen(title: 'Ø§Ù„Ø¥Ø´Ø¹Ø§Ø±Ø§Øª'),
         ),
       ],
     );
@@ -268,7 +273,7 @@ class _RouteNotFoundScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('الصفحة غير موجودة'),
+        child: Text('Ø§Ù„ØµÙØ­Ø© ØºÙŠØ± Ù…ÙˆØ¬ÙˆØ¯Ø©'),
       ),
     );
   }
@@ -286,8 +291,9 @@ class _StudentTempScreen extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Text('$title - قريبًا'),
+        child: Text('$title - Ù‚Ø±ÙŠØ¨Ù‹Ø§'),
       ),
     );
   }
 }
+
