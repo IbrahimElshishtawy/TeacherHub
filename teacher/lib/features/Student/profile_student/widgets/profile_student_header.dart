@@ -38,7 +38,7 @@ class ProfileStudentHeader extends StatelessWidget {
             Row(
               children: [
                 IconButton(
-                  onPressed: Get.back,
+                  onPressed: () => Get.offNamed('/home_student'),
                   icon: const Icon(
                     Icons.arrow_back_ios_new_rounded,
                     color: Colors.white,

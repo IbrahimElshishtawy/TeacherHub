@@ -10,12 +10,14 @@ import 'package:teacher/features/Student/communication_channel/bindings/communic
 import 'package:teacher/features/Student/communication_channel/view/communication_channel_screen.dart';
 import 'package:teacher/features/Student/important_events_student/bindings/important_events_binding.dart';
 import 'package:teacher/features/Student/important_events_student/view/important_events_screen.dart';
+import 'package:teacher/features/Student/my_courses/bindings/my_courses_binding.dart';
+import 'package:teacher/features/Student/my_courses/view/my_course_details_screen.dart';
+import 'package:teacher/features/Student/my_courses/view/my_courses_screen.dart';
 import 'package:teacher/features/Student/profile_student/bindings/profile_student_binding.dart';
 import 'package:teacher/features/Student/profile_student/view/profile_student_screen.dart';
 import 'package:teacher/features/Student/role_teacher/bindings/subject_teacher_binding.dart';
 import 'package:teacher/features/Student/role_teacher/view/subject_select_screen.dart';
 import 'package:teacher/features/Student/saved_items/bindings/saved_items_binding.dart';
-import 'package:teacher/features/Student/saved_items/view/my_subscribed_courses_screen.dart';
 import 'package:teacher/features/Student/saved_items/view/saved_items_screen.dart';
 import 'package:teacher/features/Student/settings/bindings/settings_binding.dart';
 import 'package:teacher/features/Student/settings/view/settings_screen.dart';
@@ -247,8 +249,13 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/my_courses',
-          page: () => const MySubscribedCoursesScreen(),
-          binding: SavedItemsBinding(),
+          page: () => const MyCoursesScreen(),
+          binding: MyCoursesBinding(),
+        ),
+        GetPage(
+          name: '/my_courses/details',
+          page: () => const MyCourseDetailsScreen(),
+          binding: MyCoursesBinding(),
         ),
         GetPage(
           name: '/communication_channel',

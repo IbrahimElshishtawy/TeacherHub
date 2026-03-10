@@ -14,7 +14,7 @@ class AttendanceStudentAppBar extends StatelessWidget implements PreferredSizeWi
       elevation: 0,
       leading: IconButton(
         icon: const Icon(
-          Icons.arrow_back_ios_new_rounded,
+          Icons.arrow_forward_ios_sharp,
           color: Color(0xFF8D221A),
         ),
         onPressed: () => Get.offAllNamed('/home_student'),

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:teacher/features/Student/settings/widgets/settings_item.dart';
 import 'package:teacher/features/Student/settings/widgets/settings_section.dart';
 import 'package:teacher/features/Student/settings/widgets/settings_switch.dart';
-import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
 import '../controller/settings_controller.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -14,8 +13,18 @@ class SettingsScreen extends StatelessWidget {
     final controller = Get.find<SettingsController>();
 
     return Scaffold(
-      backgroundColor: Color(0xFFF5F7FA),
-      appBar: AppbarTap(),
+      backgroundColor: const Color(0xFFF5F7FA),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_forward_ios_sharp,
+            color: Color.fromARGB(255, 141, 34, 26),
+          ),
+          onPressed: () => Get.offNamed('/home_student'),
+        ),
+      ),
       body: ListView(
         children: [
           Text(

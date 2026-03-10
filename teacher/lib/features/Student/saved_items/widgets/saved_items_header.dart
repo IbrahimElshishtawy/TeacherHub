@@ -19,7 +19,15 @@ class SavedItemsHeader extends StatelessWidget {
     return Column(
       children: [
         Row(
+          textDirection: TextDirection.ltr,
           children: [
+            IconButton(
+              onPressed: onBack,
+              icon: const Icon(
+                Icons.arrow_forward_ios_sharp,
+                color: Color(0xFF8D221A),
+              ),
+            ),
             const Spacer(),
             Text(
               title,
@@ -29,15 +37,8 @@ class SavedItemsHeader extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            //const SizedBox(width: 40),
             const Spacer(),
-            IconButton(
-              onPressed: onBack,
-              icon: const Icon(
-                Icons.arrow_forward_ios_sharp,
-                color: Color(0xFF8D221A),
-              ),
-            ),
+            const SizedBox(width: 48),
           ],
         ),
         Text(

@@ -22,7 +22,7 @@ class ImportantEventsScreen extends GetView<ImportantEventsController> {
           leading: IconButton(
             onPressed: controller.goToStudentHome,
             icon: const Icon(
-              Icons.arrow_back_ios_new_rounded,
+              Icons.arrow_forward_ios_sharp,
               color: Color(0xFF8D221A),
             ),
           ),

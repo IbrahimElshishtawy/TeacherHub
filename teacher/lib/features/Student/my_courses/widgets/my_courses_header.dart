@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'communication_channel_tokens.dart';
+import 'my_courses_tokens.dart';
 
-class CommunicationChannelHeader extends StatelessWidget {
+class MyCoursesHeader extends StatelessWidget {
   final String title;
   final String subtitle;
   final VoidCallback onBack;
 
-  const CommunicationChannelHeader({
+  const MyCoursesHeader({
     super.key,
     required this.title,
     required this.subtitle,
@@ -32,7 +32,7 @@ class CommunicationChannelHeader extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                color: CommunicationChannelTokens.textPrimary,
+                color: MyCoursesTokens.textPrimary,
                 fontSize: 22,
                 fontWeight: FontWeight.w700,
               ),
@@ -45,7 +45,7 @@ class CommunicationChannelHeader extends StatelessWidget {
           subtitle,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            color: CommunicationChannelTokens.textSecondary,
+            color: MyCoursesTokens.textSecondary,
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
