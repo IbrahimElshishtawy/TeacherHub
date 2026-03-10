@@ -6,6 +6,8 @@ import 'package:teacher/features/Student/Student_home/bindings/Student_home_bind
 import 'package:teacher/features/Student/Student_home/view/home_page/home_page.dart';
 import 'package:teacher/features/Student/attendance/bindings/attendance_binding.dart';
 import 'package:teacher/features/Student/attendance/view/attendance_screen.dart';
+import 'package:teacher/features/Student/communication_channel/bindings/communication_channel_binding.dart';
+import 'package:teacher/features/Student/communication_channel/view/communication_channel_screen.dart';
 import 'package:teacher/features/Student/important_events_student/bindings/important_events_binding.dart';
 import 'package:teacher/features/Student/important_events_student/view/important_events_screen.dart';
 import 'package:teacher/features/Student/profile_student/bindings/profile_student_binding.dart';
@@ -250,7 +252,8 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/communication_channel',
-          page: () => const _StudentTempScreen(title: 'Ù‚Ù†Ø§Ø© Ø§Ù„ØªÙˆØ§ØµÙ„'),
+          page: () => const CommunicationChannelScreen(),
+          binding: CommunicationChannelBinding(),
         ),
         GetPage(
           name: '/saved_items',
