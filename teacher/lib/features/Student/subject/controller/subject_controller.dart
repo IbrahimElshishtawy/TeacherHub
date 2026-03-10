@@ -17,6 +17,18 @@ class SubjectController extends GetxController {
     Get.toNamed('/courses/lesson', arguments: lesson);
   }
 
+  void openCourseViewer(SubjectCourseItem course) {
+    final lessons = state.value.lessons;
+    SubjectLessonItem? matchedLesson;
+    for (final lesson in lessons) {
+      if (lesson.imageStyle == course.imageStyle) {
+        matchedLesson = lesson;
+        break;
+      }
+    }
+    Get.toNamed('/courses/lesson', arguments: matchedLesson ?? lessons.first);
+  }
+
   void openTests() {
     Get.toNamed('/courses/tests');
   }

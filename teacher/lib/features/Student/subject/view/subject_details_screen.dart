@@ -74,7 +74,11 @@ class SubjectDetailsScreen extends GetView<SubjectController> {
                                   padding: EdgeInsets.only(
                                     left: course == state.courses.last ? 0 : 8,
                                   ),
-                                  child: SubjectCourseCard(item: course),
+                                  child: SubjectCourseCard(
+                                    item: course,
+                                    onContinue: () =>
+                                        controller.openCourseViewer(course),
+                                  ),
                                 ),
                               ),
                             )

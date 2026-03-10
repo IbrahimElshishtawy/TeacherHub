@@ -6,8 +6,13 @@ import 'subject_tokens.dart';
 
 class SubjectCourseCard extends StatelessWidget {
   final SubjectCourseItem item;
+  final VoidCallback? onContinue;
 
-  const SubjectCourseCard({super.key, required this.item});
+  const SubjectCourseCard({
+    super.key,
+    required this.item,
+    this.onContinue,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +63,7 @@ class SubjectCourseCard extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: onContinue,
               style: ElevatedButton.styleFrom(
                 backgroundColor: SubjectTokens.blue,
                 foregroundColor: Colors.white,
