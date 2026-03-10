@@ -1,6 +1,4 @@
-﻿import 'package:flutter/material.dart';
-
-enum SavedItemsTab { courses, files, previousTests }
+﻿enum SavedItemsTab { courses, files, previousTests }
 
 class SavedTestItem {
   final String title;
@@ -54,22 +52,61 @@ class SavedItemsState {
   String query = '';
 
   final String title = 'العناصر المحفوظة';
-  final String subtitle = 'قائمة بكافة الدروس والملفات التي قمت بحفظها للرجوع إليها لاحقًا.';
+  final String subtitle =
+      'قائمة بكافة الدروس والملفات التي قمت بحفظها للرجوع إليها لاحقًا.';
 
   final List<SavedTestItem> tests = const [
-    SavedTestItem(title: 'اختبار الباب الثاني', code: '#54321', score: 25, total: 30),
-    SavedTestItem(title: 'اختبار الباب الثاني', code: '#54321', score: 25, total: 30),
-    SavedTestItem(title: 'اختبار الباب الثاني', code: '#54321', score: 25, total: 30),
-    SavedTestItem(title: 'اختبار الباب الثاني', code: '#54321', score: 15, total: 30),
+    SavedTestItem(
+      title: 'اختبار الباب الثاني',
+      code: '#54321',
+      score: 25,
+      total: 30,
+    ),
+    SavedTestItem(
+      title: 'اختبار الباب الثاني',
+      code: '#54321',
+      score: 25,
+      total: 30,
+    ),
+    SavedTestItem(
+      title: 'اختبار الباب الثاني',
+      code: '#54321',
+      score: 25,
+      total: 30,
+    ),
+    SavedTestItem(
+      title: 'اختبار الباب الثاني',
+      code: '#54321',
+      score: 15,
+      total: 30,
+    ),
   ];
 
   final List<SavedFileItem> files = const [
-    SavedFileItem(title: 'ملخص حصة الكيمياء', subtitle: 'الروابط الكيميائية والجدول الدوري'),
-    SavedFileItem(title: 'ملخص حصة الكيمياء', subtitle: 'الروابط الكيميائية والجدول الدوري'),
-    SavedFileItem(title: 'ملخص حصة الكيمياء', subtitle: 'الروابط الكيميائية والجدول الدوري'),
-    SavedFileItem(title: 'ملخص حصة الكيمياء', subtitle: 'الروابط الكيميائية والجدول الدوري'),
-    SavedFileItem(title: 'ملخص حصة الكيمياء', subtitle: 'الروابط الكيميائية والجدول الدوري'),
-    SavedFileItem(title: 'ملخص حصة الكيمياء', subtitle: 'الروابط الكيميائية والجدول الدوري'),
+    SavedFileItem(
+      title: 'ملخص حصة الكيمياء',
+      subtitle: 'الروابط الكيميائية والجدول الدوري',
+    ),
+    SavedFileItem(
+      title: 'ملخص حصة الكيمياء',
+      subtitle: 'الروابط الكيميائية والجدول الدوري',
+    ),
+    SavedFileItem(
+      title: 'ملخص حصة الكيمياء',
+      subtitle: 'الروابط الكيميائية والجدول الدوري',
+    ),
+    SavedFileItem(
+      title: 'ملخص حصة الكيمياء',
+      subtitle: 'الروابط الكيميائية والجدول الدوري',
+    ),
+    SavedFileItem(
+      title: 'ملخص حصة الكيمياء',
+      subtitle: 'الروابط الكيميائية والجدول الدوري',
+    ),
+    SavedFileItem(
+      title: 'ملخص حصة الكيمياء',
+      subtitle: 'الروابط الكيميائية والجدول الدوري',
+    ),
   ];
 
   final List<SavedCourseItem> courses = const [
@@ -127,18 +164,24 @@ class SavedItemsState {
   List<SavedTestItem> get filteredTests {
     if (query.trim().isEmpty) return tests;
     final q = query.trim();
-    return tests.where((e) => e.title.contains(q) || e.code.contains(q)).toList();
+    return tests
+        .where((e) => e.title.contains(q) || e.code.contains(q))
+        .toList();
   }
 
   List<SavedFileItem> get filteredFiles {
     if (query.trim().isEmpty) return files;
     final q = query.trim();
-    return files.where((e) => e.title.contains(q) || e.subtitle.contains(q)).toList();
+    return files
+        .where((e) => e.title.contains(q) || e.subtitle.contains(q))
+        .toList();
   }
 
   List<SavedCourseItem> get filteredCourses {
     if (query.trim().isEmpty) return courses;
     final q = query.trim();
-    return courses.where((e) => e.title.contains(q) || e.subtitle.contains(q)).toList();
+    return courses
+        .where((e) => e.title.contains(q) || e.subtitle.contains(q))
+        .toList();
   }
 }
