@@ -143,7 +143,7 @@ class OverviewLastVideoCard extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: OverviewPrimaryButton(text: 'متابعة', onTap: () {}),
+                child: OverviewPrimaryButton(text: 'متابعة', onTap: onTapContinue ?? () {}),
               ),
               const SizedBox(width: 10),
               Expanded(
@@ -206,3 +206,4 @@ class _InnerCardShell extends StatelessWidget {
     );
   }
 }
+

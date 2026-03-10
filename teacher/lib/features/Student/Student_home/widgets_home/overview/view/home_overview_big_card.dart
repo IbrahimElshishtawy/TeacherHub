@@ -1,6 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:teacher/features/Student/subject/state/subject_state.dart';
 import '../widgets/overview_header.dart';
 import '../widgets/overview_last_video_card.dart';
 import '../widgets/overview_progress_card.dart';
@@ -51,7 +53,7 @@ class HomeOverviewBigCard extends StatelessWidget {
               child: SizedBox(
                 width: _innerCardW,
                 height: _innerCardH,
-                child: const OverviewLastVideoCard(
+                child: OverviewLastVideoCard(
                   videoTitle: 'الذرة وبنيتها',
                   videoSubtitle: 'مكونات الذرة والإلكترونات والطاقة',
                   courseName: 'الباب الأول - كيمياء',
@@ -62,6 +64,18 @@ class HomeOverviewBigCard extends StatelessWidget {
                       'https://samplelib.com/lib/preview/mp4/sample-5s.mp4',
                   thumbnailNetworkUrl:
                       "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800",
+                  onTapContinue: () => Get.toNamed(
+                    '/courses/lesson',
+                    arguments: const SubjectLessonItem(
+                      id: 'lesson_2',
+                      title: 'الذرة وبنيتها',
+                      subtitle: 'مكونات الذرة والإلكترونات والطاقة',
+                      dateText: 'الثلاثاء 2 فبراير',
+                      duration: '40:00',
+                      imageStyle: 'blue_lab',
+                    ),
+                  ),
+                  onTapCourse: () => Get.toNamed('/courses/details'),
                 ),
               ),
             ),
@@ -80,3 +94,4 @@ class HomeOverviewBigCard extends StatelessWidget {
     );
   }
 }
+

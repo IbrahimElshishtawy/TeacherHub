@@ -47,7 +47,7 @@ class SubjectExamPreviewCard extends StatelessWidget {
             children: [
               Expanded(
                 child: Container(
-                  height: 140,
+                  constraints: const BoxConstraints(minHeight: 140),
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: const Color(0xFFF7F7F8),
@@ -79,7 +79,7 @@ class SubjectExamPreviewCard extends StatelessWidget {
               const SizedBox(width: 10),
               Expanded(
                 child: Container(
-                  height: 140,
+                  constraints: const BoxConstraints(minHeight: 140),
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: const Color(0xFFF7F7F8),
@@ -136,7 +136,7 @@ class SubjectExamPreviewCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Spacer(),
+                      const SizedBox(height: 12),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: ElevatedButton(
