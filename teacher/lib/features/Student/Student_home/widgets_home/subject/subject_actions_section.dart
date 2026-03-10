@@ -1,57 +1,68 @@
-// subject_actions_section.dart
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:teacher/features/Student/Student_home/widgets_home/subject/widget/subject_action_button.dart';
+import 'package:teacher/features/Student/subject/state/subject_state.dart';
 import 'package:teacher/features/admin/admin_home/widgets_home/quick_actions_section/widget/button_Width.dart';
+
 import 'widget/subject_action_model.dart';
 
 class SubjectActionsSection extends StatelessWidget {
   const SubjectActionsSection({super.key});
 
+  SubjectItem _toSubjectItem(SubjectActionModel action) {
+    return SubjectItem(
+      id: action.title,
+      title: action.title.replaceFirst('مادة ', ''),
+      teacherName: 'اسم المدرس',
+      icon: action.icon,
+      iconColor: action.color,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final actions = <SubjectActionModel>[
-      // المواد الدراسية المعدلة هنا
       SubjectActionModel(
         title: 'مادة الرياضيات',
         icon: Icons.calculate_outlined,
         color: const Color(0xFF7B3F12),
-        routeName: '',
+        routeName: '/courses/details',
       ),
       SubjectActionModel(
         title: 'مادة الفيزياء',
         icon: Icons.science_outlined,
         color: const Color(0xFF6A1BB2),
-        routeName: '',
+        routeName: '/courses/details',
       ),
       SubjectActionModel(
         title: 'مادة الكيمياء',
         icon: Icons.emoji_symbols_outlined,
         color: const Color(0xFFF59A23),
-        routeName: '',
+        routeName: '/courses/details',
       ),
       SubjectActionModel(
         title: 'مادة البرمجة',
         icon: Icons.computer_outlined,
         color: const Color(0xFF2E7D32),
-        routeName: '',
+        routeName: '/courses/details',
       ),
       SubjectActionModel(
         title: 'مادة التاريخ',
         icon: Icons.history_outlined,
         color: const Color(0xFF2F78FF),
-        routeName: '',
+        routeName: '/courses/details',
       ),
       SubjectActionModel(
         title: 'مادة الجغرافيا',
         icon: Icons.public_outlined,
         color: const Color(0xFF9C27B0),
-        routeName: '',
+        routeName: '/courses/details',
       ),
       SubjectActionModel(
         title: 'مادة اللغة العربية',
         icon: Icons.language_outlined,
         color: const Color(0xFF00796B),
-        routeName: '',
+        routeName: '/courses/details',
       ),
     ];
 
@@ -62,12 +73,12 @@ class SubjectActionsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Align(
+          const Align(
             alignment: Alignment.centerRight,
             child: Text(
-              "المواد الدراسية",
+              'المواد الدراسية',
               textAlign: TextAlign.right,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
@@ -82,12 +93,14 @@ class SubjectActionsSection extends StatelessWidget {
               runSpacing: 10,
               children: actions
                   .map(
-                    (a) => SizedBox(
+                    (action) => SizedBox(
                       width: btnW,
                       child: SubjectActionButton(
-                        model: a,
-                        onTap: () =>
-                            Navigator.of(context).pushNamed(a.routeName),
+                        model: action,
+                        onTap: () => Get.toNamed(
+                          action.routeName,
+                          arguments: _toSubjectItem(action),
+                        ),
                       ),
                     ),
                   )
