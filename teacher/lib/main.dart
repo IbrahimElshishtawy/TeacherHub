@@ -21,6 +21,11 @@ import 'package:teacher/features/Student/saved_items/bindings/saved_items_bindin
 import 'package:teacher/features/Student/saved_items/view/saved_items_screen.dart';
 import 'package:teacher/features/Student/settings/bindings/settings_binding.dart';
 import 'package:teacher/features/Student/settings/view/settings_screen.dart';
+import 'package:teacher/features/Student/subject/bindings/subject_binding.dart';
+import 'package:teacher/features/Student/subject/view/subject_details_screen.dart';
+import 'package:teacher/features/Student/subject/view/subject_lesson_screen.dart';
+import 'package:teacher/features/Student/subject/view/subject_screen.dart';
+import 'package:teacher/features/Student/subject/view/subject_tests_screen.dart';
 import 'package:teacher/features/admin/attendance/binding/attendance_binding.dart';
 import 'package:teacher/features/admin/attendance/view/attendance_screen.dart';
 import 'package:teacher/features/admin/courses/binding/courses_binding.dart';
@@ -245,7 +250,23 @@ class MyApp extends StatelessWidget {
         ),
         GetPage(
           name: '/courses',
-          page: () => const _StudentTempScreen(title: 'Ø§Ù„Ù…ÙˆØ§Ø¯ Ø§Ù„Ø¯Ø±Ø§Ø³ÙŠØ©'),
+          page: () => const SubjectScreen(),
+          binding: SubjectBinding(),
+        ),
+        GetPage(
+          name: '/courses/details',
+          page: () => const SubjectDetailsScreen(),
+          binding: SubjectBinding(),
+        ),
+        GetPage(
+          name: '/courses/lesson',
+          page: () => const SubjectLessonScreen(),
+          binding: SubjectBinding(),
+        ),
+        GetPage(
+          name: '/courses/tests',
+          page: () => const SubjectTestsScreen(),
+          binding: SubjectBinding(),
         ),
         GetPage(
           name: '/my_courses',
