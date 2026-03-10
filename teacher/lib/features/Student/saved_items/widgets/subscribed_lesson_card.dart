@@ -28,7 +28,7 @@ class SubscribedLessonCard extends StatelessWidget {
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     color: Color(0xFF1F1F1F),
-                    fontSize: 40,
+                    fontSize: 20,
                     fontWeight: FontWeight.w700,
                     height: 1.1,
                   ),
@@ -38,7 +38,7 @@ class SubscribedLessonCard extends StatelessWidget {
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     color: Color(0xFF4A4A4A),
-                    fontSize: 24,
+                    fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -50,12 +50,16 @@ class SubscribedLessonCard extends StatelessWidget {
                       item.dateText,
                       style: const TextStyle(
                         color: Color(0xFF7A7A7A),
-                        fontSize: 20,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     const SizedBox(width: 4),
-                    const Icon(Icons.access_time_rounded, size: 16, color: Color(0xFF7A7A7A)),
+                    const Icon(
+                      Icons.access_time_rounded,
+                      size: 16,
+                      color: Color(0xFF7A7A7A),
+                    ),
                   ],
                 ),
               ],
@@ -72,7 +76,11 @@ class SubscribedLessonCard extends StatelessWidget {
                   height: 96,
                   color: const Color(0xFF98A3AF),
                   child: const Center(
-                    child: Icon(Icons.biotech_rounded, color: Colors.white70, size: 30),
+                    child: Icon(
+                      Icons.biotech_rounded,
+                      color: Colors.white70,
+                      size: 30,
+                    ),
                   ),
                 ),
                 Container(

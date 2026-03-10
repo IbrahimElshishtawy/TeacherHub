@@ -37,7 +37,7 @@ class SavedTestCard extends StatelessWidget {
               textAlign: TextAlign.right,
               style: TextStyle(
                 color: failed ? Colors.white : const Color(0xFF1F2F88),
-                fontSize: 33,
+                fontSize: 23,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -46,7 +46,7 @@ class SavedTestCard extends StatelessWidget {
             '${item.score}/${item.total}',
             style: TextStyle(
               color: scoreColor,
-              fontSize: 44,
+              fontSize: 24,
               fontWeight: FontWeight.w700,
             ),
           ),

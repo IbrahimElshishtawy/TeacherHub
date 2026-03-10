@@ -13,7 +13,7 @@ class MySubscribedCoursesScreen extends GetView<SavedItemsController> {
     final lessons = controller.state.subscribedLessons;
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: SavedItemsTokens.bg,
         body: SafeArea(
@@ -35,7 +35,7 @@ class MySubscribedCoursesScreen extends GetView<SavedItemsController> {
                       'كورساتي المشتركة',
                       style: TextStyle(
                         color: SavedItemsTokens.textPrimary,
-                        fontSize: 46,
+                        fontSize: 26,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
@@ -48,7 +48,7 @@ class MySubscribedCoursesScreen extends GetView<SavedItemsController> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: SavedItemsTokens.textSecondary,
-                    fontSize: 22,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -56,7 +56,8 @@ class MySubscribedCoursesScreen extends GetView<SavedItemsController> {
                 Expanded(
                   child: ListView.builder(
                     itemCount: lessons.length,
-                    itemBuilder: (_, i) => SubscribedLessonCard(item: lessons[i]),
+                    itemBuilder: (_, i) =>
+                        SubscribedLessonCard(item: lessons[i]),
                   ),
                 ),
               ],

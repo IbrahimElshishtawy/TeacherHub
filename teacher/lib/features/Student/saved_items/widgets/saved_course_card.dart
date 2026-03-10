@@ -30,14 +30,14 @@ class SavedCourseCard extends StatelessWidget {
         children: [
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   item.title,
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     color: Color(0xFF2F72E6),
-                    fontSize: 38,
+                    fontSize: 18,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -47,7 +47,7 @@ class SavedCourseCard extends StatelessWidget {
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     color: Color(0xFF333333),
-                    fontSize: 24,
+                    fontSize: 14,
                     fontWeight: FontWeight.w500,
                     height: 1.25,
                   ),
@@ -60,12 +60,16 @@ class SavedCourseCard extends StatelessWidget {
                       item.dateText,
                       style: const TextStyle(
                         color: Color(0xFF6D6D6D),
-                        fontSize: 20,
+                        fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     const SizedBox(width: 6),
-                    const Icon(Icons.access_time_rounded, size: 16, color: Color(0xFF6D6D6D)),
+                    const Icon(
+                      Icons.access_time_rounded,
+                      size: 16,
+                      color: Color(0xFF6D6D6D),
+                    ),
                   ],
                 ),
               ],
@@ -79,7 +83,11 @@ class SavedCourseCard extends StatelessWidget {
               height: 96,
               color: const Color(0xFF2A1B10),
               child: const Center(
-                child: Icon(Icons.science_rounded, color: Colors.white70, size: 34),
+                child: Icon(
+                  Icons.science_rounded,
+                  color: Colors.white70,
+                  size: 34,
+                ),
               ),
             ),
           ),

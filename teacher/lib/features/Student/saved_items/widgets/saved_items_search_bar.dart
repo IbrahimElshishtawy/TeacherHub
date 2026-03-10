@@ -13,7 +13,7 @@ class SavedItemsSearchBar extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            height: 58,
+            height: 48,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
@@ -32,17 +32,23 @@ class SavedItemsSearchBar extends StatelessWidget {
               decoration: const InputDecoration(
                 hintText: 'ابحث عن كل ما تريد مثل كورس او شئ معين',
                 hintStyle: TextStyle(fontSize: 18, color: Color(0xFFAEAEAE)),
-                suffixIcon: Icon(Icons.search_rounded, color: Color(0xFFAEAEAE)),
+                suffixIcon: Icon(
+                  Icons.search_rounded,
+                  color: Color(0xFFAEAEAE),
+                ),
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 6,
+                  vertical: 6,
+                ),
               ),
             ),
           ),
         ),
         const SizedBox(width: 8),
         Container(
-          width: 56,
-          height: 58,
+          width: 36,
+          height: 38,
           decoration: BoxDecoration(
             color: SavedItemsTokens.blue,
             borderRadius: BorderRadius.circular(8),

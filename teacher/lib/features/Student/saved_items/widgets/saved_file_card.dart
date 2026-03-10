@@ -23,19 +23,23 @@ class SavedFileCard extends StatelessWidget {
             width: 48,
             height: 48,
             alignment: Alignment.center,
-            child: const Icon(Icons.bookmark_border_rounded, color: Color(0xFF2F80ED), size: 36),
+            child: const Icon(
+              Icons.bookmark_border_rounded,
+              color: Color(0xFF2F80ED),
+              size: 36,
+            ),
           ),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   item.title,
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 32,
+                    fontSize: 16,
                     fontWeight: FontWeight.w700,
                     height: 1.2,
                   ),
@@ -45,7 +49,7 @@ class SavedFileCard extends StatelessWidget {
                   textAlign: TextAlign.right,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: 19,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -56,8 +60,15 @@ class SavedFileCard extends StatelessWidget {
           Container(
             width: 46,
             height: 46,
-            decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-            child: const Icon(Icons.link_rounded, color: Color(0xFF2F80ED), size: 28),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.link_rounded,
+              color: Color(0xFF2F80ED),
+              size: 28,
+            ),
           ),
         ],
       ),

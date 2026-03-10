@@ -62,7 +62,7 @@ class _TabButton extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(8),
       child: Container(
-        height: 54,
+        height: 40,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: selected ? SavedItemsTokens.blue : Colors.transparent,
@@ -73,7 +73,7 @@ class _TabButton extends StatelessWidget {
           label,
           style: TextStyle(
             color: selected ? Colors.white : SavedItemsTokens.textPrimary,
-            fontSize: 30,
+            fontSize: 16,
             fontWeight: FontWeight.w700,
           ),
         ),

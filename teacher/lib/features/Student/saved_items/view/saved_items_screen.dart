@@ -25,7 +25,7 @@ class SavedItemsScreen extends GetView<SavedItemsController> {
             builder: (c) {
               final state = c.state;
               return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
                 child: Column(
                   children: [
                     SavedItemsHeader(
