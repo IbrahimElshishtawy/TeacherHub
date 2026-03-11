@@ -17,6 +17,10 @@ import 'package:teacher/features/Student/notification_student/bindings/notificat
 import 'package:teacher/features/Student/notification_student/view/notification_student_screen.dart';
 import 'package:teacher/features/Student/profile_student/bindings/profile_student_binding.dart';
 import 'package:teacher/features/Student/profile_student/view/profile_student_screen.dart';
+import 'package:teacher/features/Student/quiz/bindings/quiz_binding.dart';
+import 'package:teacher/features/Student/quiz/view/quiz_exam_screen.dart';
+import 'package:teacher/features/Student/quiz/view/quiz_entry_screen.dart';
+import 'package:teacher/features/Student/quiz/view/quiz_result_screen.dart';
 import 'package:teacher/features/Student/role_teacher/bindings/subject_teacher_binding.dart';
 import 'package:teacher/features/Student/role_teacher/view/subject_select_screen.dart';
 import 'package:teacher/features/Student/saved_items/bindings/saved_items_binding.dart';
@@ -244,6 +248,21 @@ class MyApp extends StatelessWidget {
           name: '/attendance_student',
           page: () => const AttendanceScreenStudent(),
           binding: AttendanceBindingtStudent(),
+        ),
+        GetPage(
+          name: '/quiz-entry',
+          page: () => const QuizEntryScreen(),
+          binding: QuizBinding(),
+        ),
+        GetPage(
+          name: '/quiz-exam',
+          page: () => const QuizExamScreen(),
+          binding: QuizBinding(),
+        ),
+        GetPage(
+          name: '/quiz-result',
+          page: () => const QuizResultScreen(),
+          binding: QuizBinding(),
         ),
         GetPage(
           name: '/important_events',
