@@ -1,4 +1,6 @@
-﻿import 'package:flutter/foundation.dart';
+﻿// ignore_for_file: unused_element
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
