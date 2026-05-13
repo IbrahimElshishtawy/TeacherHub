@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types, file_names, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/student/student_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
+import 'package:teacher/features/teacher/home_teacher/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
 
 class teacherDrawerHeader extends StatelessWidget {
   final VoidCallback onClose;
@@ -45,7 +45,7 @@ class teacherDrawerHeader extends StatelessWidget {
             child: InkWell(
               onTap: onAvatarTap ?? () {},
               borderRadius: BorderRadius.circular(999),
-              child: ProfileAvatarButton(
+              child: teacherProfileAvatarButton(
                 onTap: onAvatarTap ?? () {},
                 avatarUrl: avatarUrl,
               ),
