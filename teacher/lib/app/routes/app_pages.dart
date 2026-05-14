@@ -68,6 +68,8 @@ import 'package:teacher/features/auth/view/login/teacher_login/forget_password_t
 import 'package:teacher/features/auth/view/login/teacher_login/teacher_login_screen.dart';
 import 'package:teacher/features/auth/view/register/view/student_register_screen.dart';
 import 'package:teacher/features/auth/view/user_type_login/User_Type_login_Screen.dart';
+import 'package:teacher/features/teacher/home_teacher/bindings/teacher_home_binding.dart';
+import 'package:teacher/features/teacher/home_teacher/view/home_page/home_page.dart';
 
 class AppPages {
   const AppPages._();
@@ -191,6 +193,11 @@ class AppPages {
       name: AppRoutes.homeStudent,
       page: () => const StudentHomePage(),
       binding: StudentHomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.homeTeacher,
+      page: () => const teacherHomePage(),
+      binding: TeacherHomeBinding(),
     ),
     GetPage(
       name: AppRoutes.studentRegister,

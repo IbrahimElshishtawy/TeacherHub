@@ -1,17 +1,13 @@
-// ignore_for_file: file_names
+import 'package:get/get.dart';
+import 'package:teacher/features/teacher/home_teacher/controller/teacher_home_controller.dart';
+import 'package:teacher/features/teacher/drawer_teacher/controller/teacher_drawer_controller.dart';
+import 'package:teacher/features/teacher/drawer_teacher/state/teacher_drawer_state.dart';
 
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/bindings_interface.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:teacher/features/Student/Student_drawer/controller/Student_drawer_controller.dart';
-import 'package:teacher/features/Student/Student_drawer/state/Student_drawer_state.dart';
-import 'package:teacher/features/Student/Student_home/controller/Student_home_controller.dart';
-
-class StudentHomeBinding extends Bindings {
+class TeacherHomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<StudentHomeController>(() => StudentHomeController());
-    Get.lazyPut<StudentDrawerController>(() => StudentDrawerController());
-    Get.lazyPut<StudentDrawerState>(() => StudentDrawerState());
+    Get.lazyPut<teacherHomeController>(() => teacherHomeController());
+    Get.lazyPut<teacherDrawerState>(() => teacherDrawerState());
+    Get.lazyPut<teacherDrawerController>(() => teacherDrawerController());
   }
 }

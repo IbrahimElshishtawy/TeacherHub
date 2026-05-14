@@ -29,6 +29,7 @@ class AppRoutes {
   static const homeAdminReports = '/home_admin/reports';
   static const settings = '/settings';
   static const homeStudent = '/home_student';
+  static const homeTeacher = '/home_teacher';
   static const studentRegister = '/student-register';
   static const subjects = '/subjects';
   static const profileStudent = '/profile_student';
