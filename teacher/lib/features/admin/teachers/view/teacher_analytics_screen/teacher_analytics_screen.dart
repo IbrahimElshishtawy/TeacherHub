@@ -76,7 +76,7 @@ class TeacherAnalyticsScreen extends StatelessWidget {
                             child: _buildCard(
                               "عدد الطلاب",
                               "الطلاب في كل المستويات : 453",
-                              FontAwesomeIcons.users, // FontAwesome icon
+                              FontAwesomeIcons.users.data, // FontAwesome icon
                               Color(0xFF4CAF50), // Green color
                             ),
                           ),
@@ -85,7 +85,7 @@ class TeacherAnalyticsScreen extends StatelessWidget {
                             child: _buildCard(
                               "المواد الدراسية",
                               "المدرس مسؤول عن : مادتيين”",
-                              FontAwesomeIcons.book, // FontAwesome icon
+                              FontAwesomeIcons.book.data, // FontAwesome icon
                               Color(0xFF2196F3), // Blue color
                             ),
                           ),
@@ -99,7 +99,7 @@ class TeacherAnalyticsScreen extends StatelessWidget {
                             child: _buildCard(
                               "عدد الحصص الملغية",
                               "تم إلغاء 4 حصص",
-                              FontAwesomeIcons.calendarTimes, // Cancel icon
+                              FontAwesomeIcons.calendarTimes.data, // Cancel icon
                               Color(0xFFFF5722), // Red color
                             ),
                           ),
@@ -108,7 +108,7 @@ class TeacherAnalyticsScreen extends StatelessWidget {
                             child: _buildCard(
                               "عدد الحصص الدراسية",
                               "عدد الحصص أسبوعياً: 3 حصص”",
-                              FontAwesomeIcons.chalkboardTeacher, // Class icon
+                              FontAwesomeIcons.chalkboardTeacher.data, // Class icon
                               Color(0xFFFFC107), // Yellow color
                             ),
                           ),
@@ -119,7 +119,7 @@ class TeacherAnalyticsScreen extends StatelessWidget {
                       _buildCard(
                         "عدد الاختبارات المنشورة",
                         "تم نشر 6 اختبارات",
-                        FontAwesomeIcons.clipboardCheck, // Test icon
+                        FontAwesomeIcons.clipboardCheck.data, // Test icon
                         Color(0xFF673AB7), // Purple color
                       ),
                     ],
