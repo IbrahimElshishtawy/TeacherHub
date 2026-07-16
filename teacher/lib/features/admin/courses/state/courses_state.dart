@@ -1,45 +1,95 @@
 enum CoursesViewMode { list, details }
 
-class CourseModel {
+class ContentModel {
   final String id;
   final String title;
+  final String description;
+  final String contentType; // كورس, فيديو مستقل, مراجعة, ملخص, حل امتحان, حل واجب, اختبار, PDF, فيديو الصفحة الرئيسية
+  final String subject;
   final String stage;
+  final List<String> batches;
+  final String sourceType; // Upload Video, YouTube, Google Drive, PDF
+  final String videoUrl;
+  final bool belongsToCourse;
+  final String? courseName;
+  final String? sectionName;
   final int videosCount;
-  final DateTime publishDate;
+  final String duration;
   final String coverUrl;
-  final bool isActive;
-  final int durationHours;
-  final int price;
+  final bool showInHome;
+  final bool isAvailableForStudents;
+  final bool isFree;
+  final bool requiresSubscription;
+  final DateTime publishDate;
   final int views;
   final int enrolled;
+  final bool isActive;
 
-  const CourseModel({
+  const ContentModel({
     required this.id,
     required this.title,
+    this.description = "",
+    required this.contentType,
+    required this.subject,
     required this.stage,
-    required this.videosCount,
+    required this.batches,
+    required this.sourceType,
+    this.videoUrl = "",
+    this.belongsToCourse = false,
+    this.courseName,
+    this.sectionName,
+    this.videosCount = 0,
+    this.duration = "00:00",
+    this.coverUrl = "",
+    this.showInHome = false,
+    this.isAvailableForStudents = true,
+    this.isFree = false,
+    this.requiresSubscription = true,
     required this.publishDate,
-    required this.coverUrl,
-    required this.isActive,
-    required this.durationHours,
-    required this.price,
-    required this.views,
-    required this.enrolled,
+    this.views = 0,
+    this.enrolled = 0,
+    this.isActive = true,
   });
 }
 
 class CoursesState {
   final String query;
-  final List<CourseModel> courses;
+  final List<ContentModel> courses;
+  final String selectedType;
+  final String selectedSubject;
+  final String selectedBatch;
+  final String selectedStage;
+  final String selectedStatus;
 
-  const CoursesState({required this.query, required this.courses});
+  const CoursesState({
+    required this.query,
+    required this.courses,
+    this.selectedType = "الكل",
+    this.selectedSubject = "الكل",
+    this.selectedBatch = "الكل",
+    this.selectedStage = "الكل",
+    this.selectedStatus = "الكل",
+  });
 
   static const initial = CoursesState(query: "", courses: []);
 
-  CoursesState copyWith({String? query, List<CourseModel>? courses}) {
+  CoursesState copyWith({
+    String? query,
+    List<ContentModel>? courses,
+    String? selectedType,
+    String? selectedSubject,
+    String? selectedBatch,
+    String? selectedStage,
+    String? selectedStatus,
+  }) {
     return CoursesState(
       query: query ?? this.query,
       courses: courses ?? this.courses,
+      selectedType: selectedType ?? this.selectedType,
+      selectedSubject: selectedSubject ?? this.selectedSubject,
+      selectedBatch: selectedBatch ?? this.selectedBatch,
+      selectedStage: selectedStage ?? this.selectedStage,
+      selectedStatus: selectedStatus ?? this.selectedStatus,
     );
   }
 }
