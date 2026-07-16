@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/exams_rr_controller.dart';
-import '../state/exams_rr_state.dart';
 import 'student_result_details_screen.dart';
 
 class ResultsAnalyticsDashboardScreen extends GetView<ExamsRRController> {
@@ -316,8 +315,10 @@ class ResultsAnalyticsDashboardScreen extends GetView<ExamsRRController> {
                           ],
                         ),
                         const SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Wrap(
+                          spacing: 12,
+                          runSpacing: 6,
+                          alignment: WrapAlignment.spaceBetween,
                           children: const [
                             Text("امتياز (>90%): 15%", style: TextStyle(fontSize: 10, color: Colors.green, fontWeight: FontWeight.bold)),
                             Text("جيد جداً (75-90%): 40%", style: TextStyle(fontSize: 10, color: Colors.blue, fontWeight: FontWeight.bold)),
@@ -338,7 +339,14 @@ class ResultsAnalyticsDashboardScreen extends GetView<ExamsRRController> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: const [
-                                  Text("سؤال 3: معادلة تحضير غاز الميثان في المختبر بالتقطير الجاف...", style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                                  Expanded(
+                                    child: Text(
+                                      "سؤال 3: معادلة تحضير غاز الميثان في المختبر بالتقطير الجاف...",
+                                      style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  SizedBox(width: 8),
                                   Text("معدل الخطأ: 55%", style: TextStyle(fontSize: 11, color: Colors.red, fontWeight: FontWeight.bold)),
                                 ],
                               ),
@@ -346,7 +354,14 @@ class ResultsAnalyticsDashboardScreen extends GetView<ExamsRRController> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: const [
-                                  Text("سؤال 4: تتميز الألكينات بوجود رابطة ثنائية بين ذرتي كربون وتحتوي على...", style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+                                  Expanded(
+                                    child: Text(
+                                      "سؤال 4: تتميز الألكينات بوجود رابطة ثنائية بين ذرتي كربون وتحتوي على...",
+                                      style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                  SizedBox(width: 8),
                                   Text("معدل الخطأ: 40%", style: TextStyle(fontSize: 11, color: Colors.red, fontWeight: FontWeight.bold)),
                                 ],
                               ),

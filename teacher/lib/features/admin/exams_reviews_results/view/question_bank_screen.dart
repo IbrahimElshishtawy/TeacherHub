@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/exams_rr_controller.dart';
-import '../state/exams_rr_state.dart';
+import 'question_builder_screen.dart';
 
 class QuestionBankScreen extends GetView<ExamsRRController> {
   const QuestionBankScreen({super.key});
@@ -23,149 +23,6 @@ class QuestionBankScreen extends GetView<ExamsRRController> {
     );
   }
 
-  void _openAddQuestionDialog(BuildContext context, QuestionFolderModel folder) {
-    final textController = TextEditingController();
-    final option1Controller = TextEditingController();
-    final option2Controller = TextEditingController();
-    final option3Controller = TextEditingController();
-    final option4Controller = TextEditingController();
-
-    String selectedDifficulty = "سهل";
-    String selectedType = "اختيار من متعدد";
-
-    Get.dialog(
-      Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Directionality(
-          textDirection: TextDirection.rtl,
-          child: Padding(
-            padding: const EdgeInsets.all(18),
-            child: StatefulBuilder(
-              builder: (context, setState) {
-                return SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Row(
-                        children: const [
-                          Icon(Icons.add_task, color: Colors.orange, size: 28),
-                          SizedBox(width: 10),
-                          Text(
-                            "إضافة سؤال جديد للبنك",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      const Divider(height: 1, color: Color(0xFFE2E8F0)),
-                      const SizedBox(height: 14),
-
-                      TextField(
-                        controller: textController,
-                        maxLines: 2,
-                        decoration: InputDecoration(
-                          labelText: "نص السؤال",
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-
-                      DropdownButtonFormField<String>(
-                        decoration: InputDecoration(labelText: "نوع السؤال", border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
-                        value: selectedType,
-                        items: const [
-                          DropdownMenuItem(value: "اختيار من متعدد", child: Text("اختيار من متعدد")),
-                          DropdownMenuItem(value: "صواب وخطأ", child: Text("صواب وخطأ")),
-                          DropdownMenuItem(value: "مقالي", child: Text("مقالي")),
-                        ],
-                        onChanged: (val) {
-                          if (val != null) setState(() => selectedType = val);
-                        },
-                      ),
-                      const SizedBox(height: 12),
-
-                      DropdownButtonFormField<String>(
-                        decoration: InputDecoration(labelText: "مستوى الصعوبة", border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
-                        value: selectedDifficulty,
-                        items: const [
-                          DropdownMenuItem(value: "سهل", child: Text("سهل")),
-                          DropdownMenuItem(value: "متوسط", child: Text("متوسط")),
-                          DropdownMenuItem(value: "صعب", child: Text("صعب")),
-                        ],
-                        onChanged: (val) {
-                          if (val != null) setState(() => selectedDifficulty = val);
-                        },
-                      ),
-                      const SizedBox(height: 12),
-
-                      if (selectedType == "اختيار من متعدد") ...[
-                        const Text("خيارات الإجابة:", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                        const SizedBox(height: 6),
-                        TextField(controller: option1Controller, decoration: const InputDecoration(labelText: "خيار أ (الصحيح)")),
-                        TextField(controller: option2Controller, decoration: const InputDecoration(labelText: "خيار ب")),
-                        TextField(controller: option3Controller, decoration: const InputDecoration(labelText: "خيار ج")),
-                        TextField(controller: option4Controller, decoration: const InputDecoration(labelText: "خيار د")),
-                        const SizedBox(height: 16),
-                      ],
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          TextButton(
-                            onPressed: () => Get.back(),
-                            child: const Text("إلغاء", style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
-                          ),
-                          const SizedBox(width: 8),
-                          ElevatedButton(
-                            onPressed: () {
-                              final text = textController.text.trim();
-                              if (text.isEmpty) {
-                                Get.snackbar("خطأ", "يرجى كتابة نص السؤال");
-                                return;
-                              }
-
-                              final options = selectedType == "اختيار من متعدد"
-                                  ? [
-                                      option1Controller.text.trim(),
-                                      option2Controller.text.trim(),
-                                      option3Controller.text.trim(),
-                                      option4Controller.text.trim()
-                                    ]
-                                  : <String>[];
-
-                              final newQ = QuestionModel(
-                                id: "Q-${DateTime.now().millisecondsSinceEpoch}",
-                                text: text,
-                                type: selectedType,
-                                options: options,
-                                correctAnswer: selectedType == "اختيار من متعدد" ? option1Controller.text.trim() : "صواب",
-                                difficulty: selectedDifficulty,
-                                marks: 2,
-                              );
-
-                              controller.addQuestionToFolder(folder, newQ);
-                              Get.back();
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.orange.shade700,
-                              foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                            ),
-                            child: const Text("حفظ بالبنك", style: TextStyle(fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -350,7 +207,7 @@ class QuestionBankScreen extends GetView<ExamsRRController> {
                               ),
                               const SizedBox(width: 8),
                               ElevatedButton.icon(
-                                onPressed: () => _openAddQuestionDialog(context, folder),
+                                onPressed: () => Get.to(() => QuestionBuilderScreen(folderContext: folder)),
                                 icon: const Icon(Icons.add, size: 16),
                                 label: const Text("إضافة سؤال", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
                                 style: ElevatedButton.styleFrom(
