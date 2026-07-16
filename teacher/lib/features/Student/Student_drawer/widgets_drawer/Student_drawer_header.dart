@@ -1,7 +1,7 @@
 // ignore_for_file: file_names, deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/student/student_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
+import 'package:teacher/features/Student/Student_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
 
 class StudentDrawerHeader extends StatelessWidget {
   final VoidCallback onClose;
