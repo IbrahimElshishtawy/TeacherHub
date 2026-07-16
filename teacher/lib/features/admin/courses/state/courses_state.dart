@@ -53,25 +53,47 @@ class ContentModel {
 }
 
 class CoursesState {
-  final String query;
-  final List<ContentModel> courses;
-  final String selectedType;
-  final String selectedSubject;
-  final String selectedBatch;
-  final String selectedStage;
-  final String selectedStatus;
+  final String? _query;
+  final List<ContentModel>? _courses;
+  final String? _selectedType;
+  final String? _selectedSubject;
+  final String? _selectedBatch;
+  final String? _selectedStage;
+  final String? _selectedStatus;
+
+  String get query => _query ?? "";
+  List<ContentModel> get courses => _courses ?? const [];
+  String get selectedType => _selectedType ?? "الكل";
+  String get selectedSubject => _selectedSubject ?? "الكل";
+  String get selectedBatch => _selectedBatch ?? "الكل";
+  String get selectedStage => _selectedStage ?? "الكل";
+  String get selectedStatus => _selectedStatus ?? "الكل";
 
   const CoursesState({
-    required this.query,
-    required this.courses,
-    this.selectedType = "الكل",
-    this.selectedSubject = "الكل",
-    this.selectedBatch = "الكل",
-    this.selectedStage = "الكل",
-    this.selectedStatus = "الكل",
-  });
+    String? query,
+    List<ContentModel>? courses,
+    String? selectedType,
+    String? selectedSubject,
+    String? selectedBatch,
+    String? selectedStage,
+    String? selectedStatus,
+  })  : _query = query,
+        _courses = courses,
+        _selectedType = selectedType,
+        _selectedSubject = selectedSubject,
+        _selectedBatch = selectedBatch,
+        _selectedStage = selectedStage,
+        _selectedStatus = selectedStatus;
 
-  static const initial = CoursesState(query: "", courses: []);
+  static const initial = CoursesState(
+    query: "",
+    courses: [],
+    selectedType: "الكل",
+    selectedSubject: "الكل",
+    selectedBatch: "الكل",
+    selectedStage: "الكل",
+    selectedStatus: "الكل",
+  );
 
   CoursesState copyWith({
     String? query,

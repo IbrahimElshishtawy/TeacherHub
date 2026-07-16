@@ -1026,6 +1026,20 @@ class CoursesController extends GetxController {
                                 return;
                               }
 
+                              if (showInHome && videoUrlController.text.trim().isNotEmpty) {
+                                final genId = "GEN-${GeneralVideosState.generalVideos.length + 101}";
+                                final newGenVideo = GeneralVideoModel(
+                                  id: genId,
+                                  title: title,
+                                  stage: selectedStage,
+                                  part: selectedSubject,
+                                  videoUrl: videoUrlController.text.trim(),
+                                );
+                                if (!GeneralVideosState.generalVideos.any((v) => v.videoUrl == newGenVideo.videoUrl)) {
+                                  GeneralVideosState.generalVideos.insert(0, newGenVideo);
+                                }
+                              }
+
                               final newItem = ContentModel(
                                 id: existingItem?.id ?? "CON-${state.value.courses.length + 301}",
                                 title: title,
