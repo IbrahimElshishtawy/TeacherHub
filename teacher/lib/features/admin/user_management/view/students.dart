@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/user_management_controller.dart';
-import '../state/user_management_state.dart';
 import 'student_details_screen.dart';
 
 class StudentsScreen extends GetView<UserManagementController> {
