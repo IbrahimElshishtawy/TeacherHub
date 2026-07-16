@@ -8,8 +8,8 @@ import 'package:teacher/features/admin/admin_home/controller/home_controller.dar
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<HomeController>(() => HomeController());
-    Get.lazyPut<AdminDrawerController>(() => AdminDrawerController());
-    Get.lazyPut<AdminDrawerState>(() => AdminDrawerState());
+    Get.put<HomeController>(HomeController(), permanent: true);
+    Get.put<AdminDrawerController>(AdminDrawerController(), permanent: true);
+    Get.put<AdminDrawerState>(AdminDrawerState(), permanent: true);
   }
 }

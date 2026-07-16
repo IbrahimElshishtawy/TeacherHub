@@ -10,8 +10,8 @@ import 'package:teacher/features/Student/Student_home/controller/Student_home_co
 class StudentHomeBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<StudentHomeController>(() => StudentHomeController());
-    Get.lazyPut<StudentDrawerController>(() => StudentDrawerController());
-    Get.lazyPut<StudentDrawerState>(() => StudentDrawerState());
+    Get.put<StudentHomeController>(StudentHomeController(), permanent: true);
+    Get.put<StudentDrawerController>(StudentDrawerController(), permanent: true);
+    Get.put<StudentDrawerState>(StudentDrawerState(), permanent: true);
   }
 }
