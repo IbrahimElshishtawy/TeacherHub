@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../state/user_management_state.dart';
 
 class UserManagementController extends GetxController {
@@ -9,550 +8,414 @@ class UserManagementController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _initializeData();
+    _seedData();
   }
 
-  // =========================================================
-  // ========================= Initialization =================
-  // =========================================================
-
-  void _initializeData() {
-    loadStudentsData();
-    loadParentsData();
-  }
-
-  // =========================================================
-  // ========================= Students =======================
-  // =========================================================
-
-  void loadStudentsData() {
-    const overview = StudentsOverview(
-      active: 299,
-      total: 320,
-      suspended: 6,
-      warned: 15,
-    );
-
-    const students = [
-      StudentRowModel(
-        id: "#3352",
-        fullName: "مصطفى أحمد هيكل",
-        email: "MostafaH56@example.com",
-        avatarUrl: "",
-        phone: "01019038129",
-        parentPhone: "01019038129",
-        grade: "الصف الأول - إعدادي",
+  void _seedData() {
+    final students = [
+      const StudentModel(
+        id: "ST-101",
+        fullName: "أحمد محمد كمال",
+        phone: "01011223344",
+        parentPhone: "01099887766",
+        parentWhatsapp: "01099887766",
+        grade: "الصف الثالث الثانوي",
+        batch: "Third Secondary 2026",
+        schoolYear: "2025/2026",
         isActive: true,
+        subscriptionStatus: "نشط",
+        attendanceRate: 92.5,
+        latestExamScore: "19/20",
+        attendanceCount: 12,
+        absenceCount: 1,
+        latestAttendanceDate: "2026/07/15",
+        examCount: 5,
+        avgExamScore: 18.2,
+        highestExamScore: 20.0,
+        latestExamName: "شامل الكيمياء العضوية",
+        homeworkCount: 10,
+        completedHomework: 9,
+        delayedHomework: 1,
+        purchasedCoursesCount: 2,
+        courseProgress: 80.0,
+        completedLessons: 16,
+        remainingLessons: 4,
+        internalNotes: "طالب ممتاز ومتفاعل جداً في الحصص البث المباشر وقاعات المحاضرات.",
+        lastLogin: "منذ ساعتين",
+        lastWatch: "منذ 4 ساعات",
+        lastExam: "أمس",
+        lastHomework: "أمس",
       ),
-      StudentRowModel(
-        id: "#3351",
-        fullName: "إبراهيم أحمد سند",
-        email: "IbrahimA9@example.com",
-        avatarUrl: "",
-        phone: "01099932151",
-        parentPhone: "01099932151",
-        grade: "الصف الثاني - ثانوي",
+      const StudentModel(
+        id: "ST-102",
+        fullName: "يوسف أحمد علي",
+        phone: "01122334455",
+        parentPhone: "01288776655",
+        parentWhatsapp: "01288776655",
+        grade: "الصف الثالث الثانوي",
+        batch: "Third Secondary 2026",
+        schoolYear: "2025/2026",
         isActive: true,
+        subscriptionStatus: "منتهي",
+        attendanceRate: 75.0,
+        latestExamScore: "12/20",
+        attendanceCount: 9,
+        absenceCount: 3,
+        latestAttendanceDate: "2026/07/12",
+        examCount: 5,
+        avgExamScore: 14.5,
+        highestExamScore: 17.0,
+        latestExamName: "شامل الكيمياء العضوية",
+        homeworkCount: 10,
+        completedHomework: 7,
+        delayedHomework: 3,
+        purchasedCoursesCount: 1,
+        courseProgress: 45.0,
+        completedLessons: 9,
+        remainingLessons: 11,
+        internalNotes: "يحتاج لمتابعة في حل الواجبات المتأخرة وتجديد الاشتراك الشهري.",
+        lastLogin: "منذ 3 أيام",
+        lastWatch: "منذ 5 أيام",
+        lastExam: "منذ أسبوع",
+        lastHomework: "منذ أسبوع",
       ),
-      StudentRowModel(
-        id: "#3350",
-        fullName: "هيام السيد مجدي",
-        email: "HiamM50@example.com",
-        avatarUrl: "",
-        phone: "01136363691",
-        parentPhone: "01136363691",
-        grade: "الصف الأول - ثانوي",
+      const StudentModel(
+        id: "ST-103",
+        fullName: "سارة محمود السيد",
+        phone: "01233445566",
+        parentPhone: "01177665544",
+        parentWhatsapp: "01177665544",
+        grade: "الصف الثاني الثانوي",
+        batch: "Second Secondary",
+        schoolYear: "2025/2026",
         isActive: true,
+        subscriptionStatus: "نشط",
+        attendanceRate: 98.0,
+        latestExamScore: "20/20",
+        attendanceCount: 15,
+        absenceCount: 0,
+        latestAttendanceDate: "2026/07/16",
+        examCount: 6,
+        avgExamScore: 19.5,
+        highestExamScore: 20.0,
+        latestExamName: "اختبار الباب الثاني",
+        homeworkCount: 12,
+        completedHomework: 12,
+        delayedHomework: 0,
+        purchasedCoursesCount: 3,
+        courseProgress: 95.0,
+        completedLessons: 24,
+        remainingLessons: 1,
+        internalNotes: "أداء متميز وثابت، دائماً تشارك بحيوية وتلتزم بكل الواجبات والاختبارات.",
+        lastLogin: "منذ ساعة",
+        lastWatch: "منذ ساعتين",
+        lastExam: "أمس",
+        lastHomework: "أمس",
       ),
-      StudentRowModel(
-        id: "#3349",
-        fullName: "وفاء إبراهيم محمود",
-        email: "WafaaG6@example.com",
-        avatarUrl: "",
-        phone: "01252521221",
-        parentPhone: "01252521221",
-        grade: "الصف الثالث - ثانوي",
+      const StudentModel(
+        id: "ST-104",
+        fullName: "عمر خالد عبدالرحمن",
+        phone: "01544556677",
+        parentPhone: "01066554433",
+        parentWhatsapp: "01066554433",
+        grade: "الصف الأول الثانوي",
+        batch: "First Secondary",
+        schoolYear: "2025/2026",
         isActive: false,
+        subscriptionStatus: "غير مشترك",
+        attendanceRate: 60.0,
+        latestExamScore: "9/20",
+        attendanceCount: 6,
+        absenceCount: 4,
+        latestAttendanceDate: "2026/07/08",
+        examCount: 4,
+        avgExamScore: 10.0,
+        highestExamScore: 12.0,
+        latestExamName: "اختبار الباب الأول",
+        homeworkCount: 8,
+        completedHomework: 4,
+        delayedHomework: 4,
+        purchasedCoursesCount: 0,
+        courseProgress: 0.0,
+        completedLessons: 0,
+        remainingLessons: 0,
+        internalNotes: "تم إيقاف الحساب مؤقتاً لعدم سداد مصروفات الشهر والغياب المتكرر.",
+        lastLogin: "منذ أسبوعين",
+        lastWatch: "منذ أسبوعين",
+        lastExam: "منذ أسبوعين",
+        lastHomework: "منذ أسبوعين",
+      ),
+    ];
+
+    final parents = [
+      const ParentModel(
+        id: "PR-201",
+        fullName: "محمد كمال الدين",
+        phone: "01099887766",
+        whatsapp: "01099887766",
+        childrenIds: ["ST-101"],
+      ),
+      const ParentModel(
+        id: "PR-202",
+        fullName: "أحمد علي حسين",
+        phone: "01288776655",
+        whatsapp: "01288776655",
+        childrenIds: ["ST-102"],
+      ),
+      const ParentModel(
+        id: "PR-203",
+        fullName: "محمود السيد البشري",
+        phone: "01177665544",
+        whatsapp: "01177665544",
+        childrenIds: ["ST-103"],
+      ),
+      const ParentModel(
+        id: "PR-204",
+        fullName: "خالد عبدالرحمن غانم",
+        phone: "01066554433",
+        whatsapp: "01066554433",
+        childrenIds: ["ST-104"],
       ),
     ];
 
     state.value = state.value.copyWith(
-      studentsOverview: overview,
       students: students,
-    );
-  }
-
-  void openStudentsOverview() {
-    state.value = state.value.copyWith(studentsMode: StudentsViewMode.overview);
-  }
-
-  void openStudentsTable() {
-    state.value = state.value.copyWith(studentsMode: StudentsViewMode.table);
-  }
-
-  void setStudentsQuery(String query) {
-    state.value = state.value.copyWith(studentsQuery: query);
-  }
-
-  List<StudentRowModel> get filteredStudents {
-    final query = state.value.studentsQuery.trim().toLowerCase();
-    if (query.isEmpty) return state.value.students;
-
-    return state.value.students.where((student) {
-      return _studentMatchesQuery(student, query);
-    }).toList();
-  }
-
-  bool _studentMatchesQuery(StudentRowModel student, String query) {
-    final statusText = student.isActive ? "نشط" : "موقوف";
-    return student.id.toLowerCase().contains(query) ||
-        student.fullName.toLowerCase().contains(query) ||
-        student.email.toLowerCase().contains(query) ||
-        student.phone.toLowerCase().contains(query) ||
-        student.parentPhone.toLowerCase().contains(query) ||
-        student.grade.toLowerCase().contains(query) ||
-        statusText.contains(query);
-  }
-
-  void onStudentActions(StudentRowModel student) {
-    _showActionsBottomSheet(
-      title: "إجراءات ${student.id}",
-      isActive: student.isActive,
-      onToggleStatus: () => toggleStudentStatus(student.id),
-      onViewProfile: () => _viewStudentProfile(student),
-      onEdit: () => _editStudent(student),
-    );
-  }
-
-  void _viewStudentProfile(StudentRowModel student) {
-    Get.back();
-    _showSuccessSnackbar("الطالب", "فتح ملف ${student.fullName}");
-  }
-
-  void _editStudent(StudentRowModel student) {
-    Get.back();
-    _showSuccessSnackbar("تعديل", "تعديل بيانات ${student.fullName}");
-  }
-
-  void toggleStudentStatus(String id) {
-    final updatedStudents = _updateStudentStatus(id);
-    final newStats = _calculateStudentStats(updatedStudents);
-
-    state.value = state.value.copyWith(
-      students: updatedStudents,
-      studentsOverview: state.value.studentsOverview.copyWith(
-        active: newStats.active,
-        suspended: newStats.suspended,
-        total: newStats.total,
-      ),
-    );
-
-    Get.back();
-    _showSuccessSnackbar("تم", "تم تغيير حالة الطالب بنجاح");
-  }
-
-  List<StudentRowModel> _updateStudentStatus(String id) {
-    return state.value.students.map((student) {
-      if (student.id == id) {
-        return student.copyWith(isActive: !student.isActive);
-      }
-      return student;
-    }).toList();
-  }
-
-  ({int active, int suspended, int total}) _calculateStudentStats(
-    List<StudentRowModel> students,
-  ) {
-    final active = students.where((s) => s.isActive).length;
-    final suspended = students.where((s) => !s.isActive).length;
-    return (active: active, suspended: suspended, total: students.length);
-  }
-
-  void exportStudents() {
-    _showInfoSnackbar("Export", "تصدير بيانات الطلاب (قريباً)");
-  }
-
-  // =========================================================
-  // ========================= Parents ========================
-  // =========================================================
-
-  void loadParentsData() {
-    const overview = ParentsOverview(
-      active: 299,
-      total: 320,
-      suspended: 6,
-      warned: 15,
-    );
-
-    const parents = [
-      ParentRowModel(
-        id: "#3352",
-        fullName: "أحمد السيد هيكل",
-        avatarUrl: "",
-        phone: "01019038129",
-        whatsapp: "01019038129",
-        linkedStudentId: "#3352",
-        isActive: true,
-      ),
-      ParentRowModel(
-        id: "#3351",
-        fullName: "أحمد محمد سند",
-        avatarUrl: "",
-        phone: "01099932151",
-        whatsapp: "01099932151",
-        linkedStudentId: "#3351",
-        isActive: true,
-      ),
-      ParentRowModel(
-        id: "#3350",
-        fullName: "السيد محمود مجدي",
-        avatarUrl: "",
-        phone: "01136363691",
-        whatsapp: "01136363691",
-        linkedStudentId: "#3350",
-        isActive: true,
-      ),
-      ParentRowModel(
-        id: "#3349",
-        fullName: "محمد إبراهيم السيد",
-        avatarUrl: "",
-        phone: "01252521221",
-        whatsapp: "01252521221",
-        linkedStudentId: "#3349",
-        isActive: false,
-      ),
-    ];
-
-    state.value = state.value.copyWith(
-      parentsOverview: overview,
       parents: parents,
     );
   }
 
-  void openParentsOverview() {
-    state.value = state.value.copyWith(parentsMode: ParentsViewMode.overview);
+  // ----------------------------------------------------
+  // Statistics Calculations
+  // ----------------------------------------------------
+  int get totalStudents => state.value.students.length;
+  int get activeStudents => state.value.students.where((s) => s.isActive).length;
+  int get expiredSubStudents => state.value.students.where((s) => s.subscriptionStatus == "منتهي" || s.subscriptionStatus == "غير مشترك").length;
+  int get totalBatches {
+    final list = state.value.students.map((s) => s.batch).toSet();
+    return list.length;
   }
 
-  void openParentsTable() {
-    state.value = state.value.copyWith(parentsMode: ParentsViewMode.table);
-  }
+  // ----------------------------------------------------
+  // Student Filter Setters
+  // ----------------------------------------------------
+  void setStudentQuery(String val) => state.value = state.value.copyWith(studentQuery: val);
+  void setStudentBatch(String val) => state.value = state.value.copyWith(selectedStudentBatch: val);
+  void setStudentGrade(String val) => state.value = state.value.copyWith(selectedStudentGrade: val);
+  void setStudentYear(String val) => state.value = state.value.copyWith(selectedStudentYear: val);
+  void setStudentStatus(String val) => state.value = state.value.copyWith(selectedStudentStatus: val);
+  void setStudentSub(String val) => state.value = state.value.copyWith(selectedStudentSub: val);
+  void setStudentAttendance(String val) => state.value = state.value.copyWith(selectedStudentAttendance: val);
 
-  void setParentsQuery(String query) {
-    state.value = state.value.copyWith(parentsQuery: query);
-  }
+  // Filtered Student List
+  List<StudentModel> get filteredStudents {
+    final query = state.value.studentQuery.trim().toLowerCase();
+    final batch = state.value.selectedStudentBatch;
+    final grade = state.value.selectedStudentGrade;
+    final year = state.value.selectedStudentYear;
+    final status = state.value.selectedStudentStatus;
+    final sub = state.value.selectedStudentSub;
+    final att = state.value.selectedStudentAttendance;
 
-  List<ParentRowModel> get filteredParents {
-    final query = state.value.parentsQuery.trim().toLowerCase();
-    if (query.isEmpty) return state.value.parents;
-
-    return state.value.parents.where((parent) {
-      return _parentMatchesQuery(parent, query);
-    }).toList();
-  }
-
-  bool _parentMatchesQuery(ParentRowModel parent, String query) {
-    final statusText = parent.isActive ? "نشط" : "موقوف";
-    return parent.id.toLowerCase().contains(query) ||
-        parent.fullName.toLowerCase().contains(query) ||
-        parent.phone.toLowerCase().contains(query) ||
-        parent.whatsapp.toLowerCase().contains(query) ||
-        parent.linkedStudentId.toLowerCase().contains(query) ||
-        statusText.contains(query);
-  }
-
-  void onParentActions(ParentRowModel parent) {
-    _showActionsBottomSheet(
-      title: "إجراءات ${parent.id}",
-      isActive: parent.isActive,
-      onToggleStatus: () => toggleParentStatus(parent.id),
-      onViewProfile: () => _viewParentProfile(parent),
-      onEdit: () => _editParent(parent),
-      onSendStudentInfo: () => sendStudentInfoToParent(parent),
-    );
-  }
-
-  void sendStudentInfoToParent(ParentRowModel parent) {
-    Get.back();
-    _showSuccessSnackbar(
-      "تم الإرسال",
-      "تم إرسال تقرير الطالب (الحضور، الدرجات، والمذاكرة) إلى ولي الأمر ${parent.fullName} بنجاح عبر الشات بوت.",
-    );
-  }
-
-  void _viewParentProfile(ParentRowModel parent) {
-    Get.back();
-    _showSuccessSnackbar("ولي الأمر", "فتح ملف ${parent.fullName}");
-  }
-
-  void _editParent(ParentRowModel parent) {
-    Get.back();
-    _showSuccessSnackbar("تعديل", "تعديل بيانات ${parent.fullName}");
-  }
-
-  void toggleParentStatus(String id) {
-    final updatedParents = _updateParentStatus(id);
-    final newStats = _calculateParentStats(updatedParents);
-
-    state.value = state.value.copyWith(
-      parents: updatedParents,
-      parentsOverview: state.value.parentsOverview.copyWith(
-        active: newStats.active,
-        suspended: newStats.suspended,
-        total: newStats.total,
-      ),
-    );
-
-    Get.back();
-    _showSuccessSnackbar("تم", "تم تغيير حالة ولي الأمر بنجاح");
-  }
-
-  List<ParentRowModel> _updateParentStatus(String id) {
-    return state.value.parents.map((parent) {
-      if (parent.id == id) {
-        return parent.copyWith(isActive: !parent.isActive);
+    return state.value.students.where((s) {
+      if (query.isNotEmpty) {
+        final matches = s.fullName.toLowerCase().contains(query) ||
+            s.id.toLowerCase().contains(query) ||
+            s.phone.contains(query);
+        if (!matches) return false;
       }
-      return parent;
+      if (batch != "الكل" && s.batch != batch) return false;
+      if (grade != "الكل" && s.grade != grade) return false;
+      if (year != "الكل" && s.schoolYear != year) return false;
+      if (status != "الكل") {
+        if (status == "نشط" && !s.isActive) return false;
+        if (status == "موقوف" && s.isActive) return false;
+      }
+      if (sub != "الكل" && s.subscriptionStatus != sub) return false;
+      if (att != "الكل") {
+        if (att == "ممتاز" && s.attendanceRate < 90.0) return false;
+        if (att == "مقبول" && (s.attendanceRate < 75.0 || s.attendanceRate >= 90.0)) return false;
+        if (att == "ضعيف" && s.attendanceRate >= 75.0) return false;
+      }
+      return true;
     }).toList();
   }
 
-  ({int active, int suspended, int total}) _calculateParentStats(
-    List<ParentRowModel> parents,
-  ) {
-    final active = parents.where((p) => p.isActive).length;
-    final suspended = parents.where((p) => !p.isActive).length;
-    return (active: active, suspended: suspended, total: parents.length);
+  // ----------------------------------------------------
+  // Parent Filter Setters
+  // ----------------------------------------------------
+  void setParentQuery(String val) => state.value = state.value.copyWith(parentQuery: val);
+  void setParentBatch(String val) => state.value = state.value.copyWith(selectedParentBatch: val);
+  void setParentGrade(String val) => state.value = state.value.copyWith(selectedParentGrade: val);
+  void setParentYear(String val) => state.value = state.value.copyWith(selectedParentYear: val);
+  void setParentChildrenCount(String val) => state.value = state.value.copyWith(selectedParentChildrenCount: val);
+
+  // Filtered Parent List
+  List<ParentModel> get filteredParents {
+    final query = state.value.parentQuery.trim().toLowerCase();
+    final batch = state.value.selectedParentBatch;
+    final grade = state.value.selectedParentGrade;
+    final year = state.value.selectedParentYear;
+    final count = state.value.selectedParentChildrenCount;
+
+    return state.value.parents.where((p) {
+      if (query.isNotEmpty) {
+        final matches = p.fullName.toLowerCase().contains(query) ||
+            p.phone.contains(query) ||
+            p.whatsapp.contains(query);
+        if (!matches) return false;
+      }
+
+      // Check linked children details
+      final childrenList = state.value.students.where((s) => p.childrenIds.contains(s.id)).toList();
+      if (batch != "الكل" && !childrenList.any((c) => c.batch == batch)) return false;
+      if (grade != "الكل" && !childrenList.any((c) => c.grade == grade)) return false;
+      if (year != "الكل" && !childrenList.any((c) => c.schoolYear == year)) return false;
+
+      if (count != "الكل") {
+        final len = p.childrenIds.length;
+        if (count == "1" && len != 1) return false;
+        if (count == "2" && len != 2) return false;
+        if (count == "3+" && len < 3) return false;
+      }
+
+      return true;
+    }).toList();
   }
 
-  void exportParents() {
-    _showInfoSnackbar("Export", "تصدير بيانات أولياء الأمور (قريباً)");
+  // ----------------------------------------------------
+  // Student Actions
+  // ----------------------------------------------------
+  void toggleStudentStatus(StudentModel student) {
+    final updated = student.copyWith(isActive: !student.isActive);
+    final list = List<StudentModel>.from(state.value.students);
+    final idx = list.indexWhere((s) => s.id == student.id);
+    if (idx != -1) {
+      list[idx] = updated;
+      state.value = state.value.copyWith(students: list);
+      Get.snackbar(
+        "تحديث الحالة",
+        updated.isActive ? "تم تفعيل حساب الطالب بنجاح" : "تم إيقاف حساب الطالب بنجاح",
+        backgroundColor: updated.isActive ? Colors.green : Colors.orange,
+        colorText: Colors.white,
+      );
+    }
   }
 
-  void sendReportsToAllParents() {
-    _showSuccessSnackbar(
-      "إرسال جماعي",
-      "تم إرسال تقارير الطلاب لجميع أولياء الأمور المسجلين بنجاح عبر الشات بوت.",
-    );
+  void saveNotes(StudentModel student, String note) {
+    final updated = student.copyWith(internalNotes: note);
+    final list = List<StudentModel>.from(state.value.students);
+    final idx = list.indexWhere((s) => s.id == student.id);
+    if (idx != -1) {
+      list[idx] = updated;
+      state.value = state.value.copyWith(students: list);
+      Get.snackbar("تم الحفظ", "تم حفظ الملاحظات الداخلية بنجاح.");
+    }
   }
 
-  // =========================================================
-  // ========================= Helpers ========================
-  // =========================================================
+  void deleteStudent(StudentModel student) {
+    final list = List<StudentModel>.from(state.value.students)..removeWhere((s) => s.id == student.id);
+    state.value = state.value.copyWith(students: list);
+    Get.snackbar("حذف", "تم حذف الطالب بنجاح من النظام.", backgroundColor: Colors.red, colorText: Colors.white);
+  }
 
-  void _showActionsBottomSheet({
-    required String title,
-    required bool isActive,
-    required VoidCallback onToggleStatus,
-    required VoidCallback onViewProfile,
-    required VoidCallback onEdit,
-    VoidCallback? onSendStudentInfo,
+  // ----------------------------------------------------
+  // Chatbot Toggles
+  // ----------------------------------------------------
+  void toggleReport(String reportName) {
+    final current = Map<String, bool>.from(state.value.enabledReports);
+    current[reportName] = !(current[reportName] ?? false);
+    state.value = state.value.copyWith(enabledReports: current);
+    Get.snackbar("تحديث الإعدادات", "تم تغيير حالة تقرير '$reportName'.");
+  }
+
+  // ----------------------------------------------------
+  // Student Registration Form
+  // ----------------------------------------------------
+  void registerStudent({
+    required String name,
+    required String studentPhone,
+    required String parentPhone,
+    required String parentWhatsapp,
+    required String grade,
+    required String batch,
+    required String schoolYear,
   }) {
-    Get.bottomSheet(
-      _ActionsBottomSheet(
-        title: title,
-        isActive: isActive,
-        onToggleStatus: onToggleStatus,
-        onViewProfile: onViewProfile,
-        onEdit: onEdit,
-        onSendStudentInfo: onSendStudentInfo,
-      ),
-      isScrollControlled: false,
-      backgroundColor: Colors.transparent,
-      isDismissible: true,
-      enableDrag: true,
+    final studentId = "ST-${100 + state.value.students.length + 1}";
+    
+    // 1. Create Student
+    final newStudent = StudentModel(
+      id: studentId,
+      fullName: name,
+      phone: studentPhone,
+      parentPhone: parentPhone,
+      parentWhatsapp: parentWhatsapp,
+      grade: grade,
+      batch: batch,
+      schoolYear: schoolYear,
+      subscriptionStatus: "نشط",
+      publishDate: DateTime.now(), // dummy fallback
     );
-  }
 
-  void _showSuccessSnackbar(String title, String message) {
+    // 2. Link or create Parent Account
+    final parentList = List<ParentModel>.from(state.value.parents);
+    final existingIdx = parentList.indexWhere((p) => p.phone == parentPhone);
+
+    if (existingIdx != -1) {
+      // Link child to existing parent
+      final parent = parentList[existingIdx];
+      final kids = List<String>.from(parent.childrenIds);
+      if (!kids.contains(studentId)) kids.add(studentId);
+      parentList[existingIdx] = parent.copyWith(childrenIds: kids);
+    } else {
+      // Create new parent
+      final parentId = "PR-${200 + parentList.length + 1}";
+      final newParent = ParentModel(
+        id: parentId,
+        fullName: "ولي أمر $name",
+        phone: parentPhone,
+        whatsapp: parentWhatsapp,
+        childrenIds: [studentId],
+      );
+      parentList.add(newParent);
+    }
+
+    final studentList = List<StudentModel>.from(state.value.students)..insert(0, newStudent);
+    state.value = state.value.copyWith(
+      students: studentList,
+      parents: parentList,
+    );
+
     Get.snackbar(
-      title,
-      message,
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: const Color(0xFF4CAF50).withValues(alpha: 0.9),
+      "تسجيل ناجح",
+      "تم تسجيل الطالب '$name' وإنشاء/تحديث حساب ولي الأمر بنجاح.",
+      backgroundColor: Colors.green,
       colorText: Colors.white,
-      borderRadius: 12,
-      margin: const EdgeInsets.all(16),
-      duration: const Duration(seconds: 3),
-      icon: const Icon(Icons.check_circle, color: Colors.white),
     );
   }
 
-  void _showInfoSnackbar(String title, String message) {
+  // ----------------------------------------------------
+  // Bulk WhatsApp Messaging
+  // ----------------------------------------------------
+  void sendBulkWhatsapp({
+    required List<String> targetGroups,
+    required String messageType,
+    required String messageText,
+  }) {
     Get.snackbar(
-      title,
-      message,
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: const Color(0xFF2196F3).withValues(alpha: 0.9),
+      "إرسال ناجح",
+      "جاري معالجة وإرسال الرسائل الجماعية لـ (${targetGroups.join(', ')}) عبر الشات بوت بنجاح.",
+      backgroundColor: const Color(0xFF7C3AED),
       colorText: Colors.white,
-      borderRadius: 12,
-      margin: const EdgeInsets.all(16),
-      duration: const Duration(seconds: 3),
-      icon: const Icon(Icons.info, color: Colors.white),
+      duration: const Duration(seconds: 4),
     );
   }
-}
 
-// ======================================================
-// =================== Bottom Sheet =====================
-// ======================================================
-
-class _ActionsBottomSheet extends StatelessWidget {
-  final String title;
-  final bool isActive;
-  final VoidCallback onToggleStatus;
-  final VoidCallback onViewProfile;
-  final VoidCallback onEdit;
-  final VoidCallback? onSendStudentInfo;
-
-  const _ActionsBottomSheet({
-    required this.title,
-    required this.isActive,
-    required this.onToggleStatus,
-    required this.onViewProfile,
-    required this.onEdit,
-    this.onSendStudentInfo,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.15),
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Handle bar
-          Container(
-            margin: const EdgeInsets.only(top: 12),
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: const Color(0xFFE6E8F0),
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-
-          // Title
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w900,
-                color: Color(0xFF1E2A3B),
-                letterSpacing: 0.2,
-              ),
-            ),
-          ),
-
-          const Divider(height: 1, thickness: 1, color: Color(0xFFE6E8F0)),
-
-          // Actions
-          _ActionTile(
-            icon: Icons.person_outline_rounded,
-            iconColor: const Color(0xFF2F6BFF),
-            title: "عرض الملف الشخصي",
-            onTap: onViewProfile,
-          ),
-          _ActionTile(
-            icon: Icons.edit_outlined,
-            iconColor: const Color(0xFF9C27B0),
-            title: "تعديل البيانات",
-            onTap: onEdit,
-          ),
-          if (onSendStudentInfo != null)
-            _ActionTile(
-              icon: Icons.send_and_archive_outlined,
-              iconColor: const Color(0xFFE65100),
-              title: "إرسال تقرير الطالب لولي الأمر",
-              onTap: onSendStudentInfo!,
-            ),
-          _ActionTile(
-            icon: isActive
-                ? Icons.block_outlined
-                : Icons.check_circle_outline_rounded,
-            iconColor: isActive
-                ? const Color(0xFFE53935)
-                : const Color(0xFF19B66A),
-            title: isActive ? "إيقاف الحساب" : "تفعيل الحساب",
-            onTap: onToggleStatus,
-            isDestructive: isActive,
-          ),
-
-          const SizedBox(height: 8),
-        ],
-      ),
-    );
-  }
-}
-
-class _ActionTile extends StatelessWidget {
-  final IconData icon;
-  final Color iconColor;
-  final String title;
-  final VoidCallback onTap;
-  final bool isDestructive;
-
-  const _ActionTile({
-    required this.icon,
-    required this.iconColor,
-    required this.title,
-    required this.onTap,
-    this.isDestructive = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-          child: Row(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: iconColor.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Icon(icon, color: iconColor, size: 22),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
-                    color: isDestructive
-                        ? const Color(0xFFE53935)
-                        : const Color(0xFF1E2A3B),
-                    letterSpacing: 0.2,
-                  ),
-                ),
-              ),
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 16,
-                color: const Color(0xFFB0B5C3),
-              ),
-            ],
-          ),
-        ),
-      ),
+  void sendParentWhatsapp(ParentModel parent, String text) {
+    Get.snackbar(
+      "إرسال WhatsApp",
+      "تم إرسال الرسالة إلى ولي الأمر ${parent.fullName} بنجاح.",
+      backgroundColor: const Color(0xFF2563EB),
+      colorText: Colors.white,
     );
   }
 }

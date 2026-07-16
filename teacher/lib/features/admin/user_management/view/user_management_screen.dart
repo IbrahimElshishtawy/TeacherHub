@@ -1,34 +1,84 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/admin/admin_home/widgets/select_card.dart';
 
-enum UserManagementType { students, parents }
-
-class UserManagementScreen extends StatefulWidget {
+class UserManagementScreen extends StatelessWidget {
   const UserManagementScreen({super.key});
 
-  @override
-  State<UserManagementScreen> createState() => _UserManagementScreenState();
-}
+  static const Color bg = Color(0xFFF8FAFC);
 
-class _UserManagementScreenState extends State<UserManagementScreen> {
-  static const Color primaryBlue = Color(0xFF2F6BFF);
-  static const Color bg = Color(0xFFF6F7FB);
-
-  UserManagementType? selected;
-
-  void _onSelect(UserManagementType type) {
-    setState(() => selected = type);
-  }
-
-  void _onEnter() {
-    if (selected == null) return;
-
-    if (selected == UserManagementType.students) {
-      Get.toNamed('/user_management/students');
-    } else {
-      Get.toNamed('/user_management/parents');
-    }
+  Widget _buildCategoryCard({
+    required String title,
+    required String subtitle,
+    required String emoji,
+    required Color accentColor,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(24),
+      child: Container(
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          border: Border.all(color: const Color(0xFFE2E8F0), width: 1.5),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x08000000),
+              blurRadius: 16,
+              offset: Offset(0, 8),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                color: accentColor.withValues(alpha: 0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Center(
+                child: Text(
+                  emoji,
+                  style: const TextStyle(fontSize: 34),
+                ),
+              ),
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                      color: Color(0xFF1E293B),
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Color(0xFF64748B),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              size: 18,
+              color: Color(0xFF94A3B8),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -36,93 +86,71 @@ class _UserManagementScreenState extends State<UserManagementScreen> {
     return Scaffold(
       backgroundColor: bg,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 6),
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 16),
 
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () => Get.offNamed('/home_admin'),
-                    borderRadius: BorderRadius.circular(12),
-                    child: const Padding(
-                      padding: EdgeInsets.all(10),
-                      child: Icon(
-                        Icons.arrow_back_ios_new_rounded,
-                        size: 20,
-                        color: Colors.red,
-                      ),
+                // Top Header Row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () => Get.offAllNamed('/home_admin'),
+                      icon: const Icon(Icons.arrow_forward_ios, size: 22, color: Color(0xFF1E293B)),
                     ),
-                  ),
-                  const Spacer(),
-                ],
-              ),
-
-              const SizedBox(height: 6),
-              const Text(
-                "إدارة المستخدمين",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
-              ),
-              const SizedBox(height: 6),
-              const Text(
-                "التحكم في حسابات الطلاب وأولياء الأمور وصلاحياتهم في التطبيق",
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14, color: Colors.black54),
-              ),
-              const SizedBox(height: 18),
-
-              // الطلاب
-              SelectCard(
-                titleEn: "طلاب",
-                subtitleAr: "إدارة شاملة لحسابات الطلاب داخل التطبيق",
-                assetPath: "assets/lottie/Schoolstudent.json",
-                isSelected: selected == UserManagementType.students,
-                onTap: () => _onSelect(UserManagementType.students),
-              ),
-
-              const SizedBox(height: 14),
-
-              // أولياء الأمور
-              SelectCard(
-                titleEn: "أولياء الأمور",
-                subtitleAr: "إدارة حسابات أولياء الأمور وربطهم بالطلاب",
-                assetPath: "assets/lottie/Parenting.json",
-                isSelected: selected == UserManagementType.parents,
-                onTap: () => _onSelect(UserManagementType.parents),
-              ),
-
-              const SizedBox(height: 18),
-
-              // زر الدخول يظهر فقط بعد الاختيار
-              if (selected != null)
-                SizedBox(
-                  height: 52,
-                  child: ElevatedButton(
-                    onPressed: _onEnter,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: primaryBlue,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+                    const Icon(
+                      Icons.manage_accounts_outlined,
+                      size: 28,
+                      color: Color(0xFF2563EB),
                     ),
-                    child: const Text(
-                      "الدخول",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w800,
-                        color: Colors.white,
-                      ),
-                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+
+                // Title & Subtitle
+                const Text(
+                  "إدارة المستخدمين",
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.w900,
+                    color: Color(0xFF1E293B),
                   ),
                 ),
+                const SizedBox(height: 6),
+                const Text(
+                  "إدارة الطلاب وأولياء الأمور والتواصل معهم بشكل كامل وفوري.",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0xFF64748B),
+                  ),
+                ),
+                const SizedBox(height: 32),
 
-              const Spacer(),
-            ],
+                // Large Categories Cards
+                _buildCategoryCard(
+                  title: "إدارة الطلاب",
+                  subtitle: "عرض الطلاب، تتبع الحضور والغياب، الواجبات، الاشتراكات والدرجات.",
+                  emoji: "👨‍🎓",
+                  accentColor: const Color(0xFF2563EB),
+                  onTap: () => Get.toNamed('/user_management/students'),
+                ),
+                const SizedBox(height: 16),
+                _buildCategoryCard(
+                  title: "إدارة أولياء الأمور",
+                  subtitle: "التواصل مع أولياء الأمور، ربط الأبناء، والرسائل التلقائية والتقارير.",
+                  emoji: "👨‍👩‍👦",
+                  accentColor: const Color(0xFF7C3AED),
+                  onTap: () => Get.toNamed('/user_management/parents'),
+                ),
+
+                const Spacer(),
+              ],
+            ),
           ),
         ),
       ),

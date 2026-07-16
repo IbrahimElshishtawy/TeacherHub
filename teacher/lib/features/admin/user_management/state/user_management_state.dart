@@ -1,240 +1,276 @@
-// =============================
-// Students
-// =============================
-enum StudentsViewMode { overview, table }
+import 'package:flutter/material.dart';
 
-class StudentsOverview {
-  final int active;
-  final int total;
-  final int suspended;
-  final int warned;
-
-  const StudentsOverview({
-    required this.active,
-    required this.total,
-    required this.suspended,
-    required this.warned,
-  });
-
-  static const empty = StudentsOverview(
-    active: 0,
-    total: 0,
-    suspended: 0,
-    warned: 0,
-  );
-
-  StudentsOverview copyWith({
-    int? active,
-    int? total,
-    int? suspended,
-    int? warned,
-  }) {
-    return StudentsOverview(
-      active: active ?? this.active,
-      total: total ?? this.total,
-      suspended: suspended ?? this.suspended,
-      warned: warned ?? this.warned,
-    );
-  }
-}
-
-class StudentRowModel {
+class StudentModel {
   final String id;
   final String fullName;
-  final String email;
   final String avatarUrl;
-
   final String phone;
   final String parentPhone;
-  final String grade;
+  final String parentWhatsapp;
+  final String grade; // e.g. الصف الثالث الثانوي
+  final String batch; // e.g. Third Secondary 2026
+  final String schoolYear; // e.g. 2025/2026
   final bool isActive;
+  final String subscriptionStatus; // نشط / منتهي / غير مشترك
+  final double attendanceRate; // e.g. 85.0
+  final String latestExamScore; // e.g. 18/20
 
-  const StudentRowModel({
+  // Attendance Detail
+  final int attendanceCount;
+  final int absenceCount;
+  final String latestAttendanceDate;
+
+  // Exam Statistics
+  final int examCount;
+  final double avgExamScore;
+  final double highestExamScore;
+  final String latestExamName;
+
+  // Homework Statistics
+  final int homeworkCount;
+  final int completedHomework;
+  final int delayedHomework;
+
+  // Course Progress
+  final int purchasedCoursesCount;
+  final double courseProgress; // e.g. 75.0
+  final int completedLessons;
+  final int remainingLessons;
+
+  // Notes
+  final String internalNotes;
+
+  // Timeline logs
+  final String lastLogin;
+  final String lastWatch;
+  final String lastExam;
+  final String lastHomework;
+
+  const StudentModel({
     required this.id,
     required this.fullName,
-    required this.email,
     this.avatarUrl = "",
     required this.phone,
     required this.parentPhone,
+    required this.parentWhatsapp,
     required this.grade,
-    required this.isActive,
+    required this.batch,
+    required this.schoolYear,
+    this.isActive = true,
+    required this.subscriptionStatus,
+    this.attendanceRate = 0.0,
+    this.latestExamScore = "N/A",
+    this.attendanceCount = 0,
+    this.absenceCount = 0,
+    this.latestAttendanceDate = "N/A",
+    this.examCount = 0,
+    this.avgExamScore = 0.0,
+    this.highestExamScore = 0.0,
+    this.latestExamName = "N/A",
+    this.homeworkCount = 0,
+    this.completedHomework = 0,
+    this.delayedHomework = 0,
+    this.purchasedCoursesCount = 0,
+    this.courseProgress = 0.0,
+    this.completedLessons = 0,
+    this.remainingLessons = 0,
+    this.internalNotes = "",
+    this.lastLogin = "N/A",
+    this.lastWatch = "N/A",
+    this.lastExam = "N/A",
+    this.lastHomework = "N/A",
   });
 
-  StudentRowModel copyWith({
+  StudentModel copyWith({
     String? id,
     String? fullName,
-    String? email,
     String? avatarUrl,
     String? phone,
     String? parentPhone,
+    String? parentWhatsapp,
     String? grade,
+    String? batch,
+    String? schoolYear,
     bool? isActive,
+    String? subscriptionStatus,
+    double? attendanceRate,
+    String? latestExamScore,
+    int? attendanceCount,
+    int? absenceCount,
+    String? latestAttendanceDate,
+    int? examCount,
+    double? avgExamScore,
+    double? highestExamScore,
+    String? latestExamName,
+    int? homeworkCount,
+    int? completedHomework,
+    int? delayedHomework,
+    int? purchasedCoursesCount,
+    double? courseProgress,
+    int? completedLessons,
+    int? remainingLessons,
+    String? internalNotes,
+    String? lastLogin,
+    String? lastWatch,
+    String? lastExam,
+    String? lastHomework,
   }) {
-    return StudentRowModel(
+    return StudentModel(
       id: id ?? this.id,
       fullName: fullName ?? this.fullName,
-      email: email ?? this.email,
       avatarUrl: avatarUrl ?? this.avatarUrl,
       phone: phone ?? this.phone,
       parentPhone: parentPhone ?? this.parentPhone,
+      parentWhatsapp: parentWhatsapp ?? this.parentWhatsapp,
       grade: grade ?? this.grade,
+      batch: batch ?? this.batch,
+      schoolYear: schoolYear ?? this.schoolYear,
       isActive: isActive ?? this.isActive,
+      subscriptionStatus: subscriptionStatus ?? this.subscriptionStatus,
+      attendanceRate: attendanceRate ?? this.attendanceRate,
+      latestExamScore: latestExamScore ?? this.latestExamScore,
+      attendanceCount: attendanceCount ?? this.attendanceCount,
+      absenceCount: absenceCount ?? this.absenceCount,
+      latestAttendanceDate: latestAttendanceDate ?? this.latestAttendanceDate,
+      examCount: examCount ?? this.examCount,
+      avgExamScore: avgExamScore ?? this.avgExamScore,
+      highestExamScore: highestExamScore ?? this.highestExamScore,
+      latestExamName: latestExamName ?? this.latestExamName,
+      homeworkCount: homeworkCount ?? this.homeworkCount,
+      completedHomework: completedHomework ?? this.completedHomework,
+      delayedHomework: delayedHomework ?? this.delayedHomework,
+      purchasedCoursesCount: purchasedCoursesCount ?? this.purchasedCoursesCount,
+      courseProgress: courseProgress ?? this.courseProgress,
+      completedLessons: completedLessons ?? this.completedLessons,
+      remainingLessons: remainingLessons ?? this.remainingLessons,
+      internalNotes: internalNotes ?? this.internalNotes,
+      lastLogin: lastLogin ?? this.lastLogin,
+      lastWatch: lastWatch ?? this.lastWatch,
+      lastExam: lastExam ?? this.lastExam,
+      lastHomework: lastHomework ?? this.lastHomework,
     );
   }
 }
 
-// =============================
-// Parents
-// =============================
-enum ParentsViewMode { overview, table }
-
-class ParentsOverview {
-  final int active;
-  final int total;
-  final int suspended;
-  final int warned;
-
-  const ParentsOverview({
-    required this.active,
-    required this.total,
-    required this.suspended,
-    required this.warned,
-  });
-
-  static const empty = ParentsOverview(
-    active: 0,
-    total: 0,
-    suspended: 0,
-    warned: 0,
-  );
-
-  ParentsOverview copyWith({
-    int? active,
-    int? total,
-    int? suspended,
-    int? warned,
-  }) {
-    return ParentsOverview(
-      active: active ?? this.active,
-      total: total ?? this.total,
-      suspended: suspended ?? this.suspended,
-      warned: warned ?? this.warned,
-    );
-  }
-}
-
-class ParentRowModel {
+class ParentModel {
   final String id;
   final String fullName;
-  final String avatarUrl;
-
-  // وسائل التواصل
   final String phone;
   final String whatsapp;
+  final List<String> childrenIds;
 
-  // ربط بالطالب (لو محتاجه)
-  final String linkedStudentId;
-
-  // حالة الحساب
-  final bool isActive;
-
-  const ParentRowModel({
+  const ParentModel({
     required this.id,
     required this.fullName,
-    this.avatarUrl = "",
     required this.phone,
     required this.whatsapp,
-    required this.linkedStudentId,
-    required this.isActive,
+    required this.childrenIds,
   });
 
-  ParentRowModel copyWith({
+  ParentModel copyWith({
     String? id,
     String? fullName,
-    String? avatarUrl,
     String? phone,
     String? whatsapp,
-    String? linkedStudentId,
-    bool? isActive,
+    List<String>? childrenIds,
   }) {
-    return ParentRowModel(
+    return ParentModel(
       id: id ?? this.id,
       fullName: fullName ?? this.fullName,
-      avatarUrl: avatarUrl ?? this.avatarUrl,
       phone: phone ?? this.phone,
       whatsapp: whatsapp ?? this.whatsapp,
-      linkedStudentId: linkedStudentId ?? this.linkedStudentId,
-      isActive: isActive ?? this.isActive,
+      childrenIds: childrenIds ?? this.childrenIds,
     );
   }
 }
 
-// =============================
-// State
-// =============================
 class UserManagementState {
-  // ===== Students =====
-  final StudentsViewMode studentsMode;
-  final StudentsOverview studentsOverview;
-  final List<StudentRowModel> students;
-  final String studentsQuery;
+  final List<StudentModel> students;
+  final List<ParentModel> parents;
 
-  // ===== Parents =====
-  final ParentsViewMode parentsMode;
-  final ParentsOverview parentsOverview;
-  final List<ParentRowModel> parents;
-  final String parentsQuery;
+  // Student Filters
+  final String studentQuery;
+  final String selectedStudentBatch;
+  final String selectedStudentGrade;
+  final String selectedStudentYear;
+  final String selectedStudentStatus; // الكل / نشط / موقوف
+  final String selectedStudentSub; // الكل / نشط / منتهي
+  final String selectedStudentAttendance; // الكل / ممتاز / مقبول / ضعيف
+
+  // Parent Filters
+  final String parentQuery;
+  final String selectedParentBatch;
+  final String selectedParentGrade;
+  final String selectedParentYear;
+  final String selectedParentChildrenCount; // الكل / 1 / 2 / 3+
+
+  // Chatbot Toggles
+  final Map<String, bool> enabledReports;
 
   const UserManagementState({
-    required this.studentsMode,
-    required this.studentsOverview,
     required this.students,
-    required this.studentsQuery,
-    required this.parentsMode,
-    required this.parentsOverview,
     required this.parents,
-    required this.parentsQuery,
+    this.studentQuery = "",
+    this.selectedStudentBatch = "الكل",
+    this.selectedStudentGrade = "الكل",
+    this.selectedStudentYear = "الكل",
+    this.selectedStudentStatus = "الكل",
+    this.selectedStudentSub = "الكل",
+    this.selectedStudentAttendance = "الكل",
+    this.parentQuery = "",
+    this.selectedParentBatch = "الكل",
+    this.selectedParentGrade = "الكل",
+    this.selectedParentYear = "الكل",
+    this.selectedParentChildrenCount = "الكل",
+    this.enabledReports = const {
+      "تقرير الحضور اليومي": true,
+      "تقرير الغياب": true,
+      "درجات الاختبارات": true,
+      "الواجبات": true,
+      "تقدم الطالب": false,
+      "تذكير بالمحاضرات": true,
+      "انتهاء الاشتراك": false,
+    },
   });
 
   static const initial = UserManagementState(
-    // Students
-    studentsMode: StudentsViewMode.overview,
-    studentsOverview: StudentsOverview.empty,
     students: [],
-    studentsQuery: "",
-
-    // Parents
-    parentsMode: ParentsViewMode.overview,
-    parentsOverview: ParentsOverview.empty,
     parents: [],
-    parentsQuery: "",
   );
 
   UserManagementState copyWith({
-    // Students
-    StudentsViewMode? studentsMode,
-    StudentsOverview? studentsOverview,
-    List<StudentRowModel>? students,
-    String? studentsQuery,
-
-    // Parents
-    ParentsViewMode? parentsMode,
-    ParentsOverview? parentsOverview,
-    List<ParentRowModel>? parents,
-    String? parentsQuery,
+    List<StudentModel>? students,
+    List<ParentModel>? parents,
+    String? studentQuery,
+    String? selectedStudentBatch,
+    String? selectedStudentGrade,
+    String? selectedStudentYear,
+    String? selectedStudentStatus,
+    String? selectedStudentSub,
+    String? selectedStudentAttendance,
+    String? parentQuery,
+    String? selectedParentBatch,
+    String? selectedParentGrade,
+    String? selectedParentYear,
+    String? selectedParentChildrenCount,
+    Map<String, bool>? enabledReports,
   }) {
     return UserManagementState(
-      // Students
-      studentsMode: studentsMode ?? this.studentsMode,
-      studentsOverview: studentsOverview ?? this.studentsOverview,
       students: students ?? this.students,
-      studentsQuery: studentsQuery ?? this.studentsQuery,
-
-      // Parents
-      parentsMode: parentsMode ?? this.parentsMode,
-      parentsOverview: parentsOverview ?? this.parentsOverview,
       parents: parents ?? this.parents,
-      parentsQuery: parentsQuery ?? this.parentsQuery,
+      studentQuery: studentQuery ?? this.studentQuery,
+      selectedStudentBatch: selectedStudentBatch ?? this.selectedStudentBatch,
+      selectedStudentGrade: selectedStudentGrade ?? this.selectedStudentGrade,
+      selectedStudentYear: selectedStudentYear ?? this.selectedStudentYear,
+      selectedStudentStatus: selectedStudentStatus ?? this.selectedStudentStatus,
+      selectedStudentSub: selectedStudentSub ?? this.selectedStudentSub,
+      selectedStudentAttendance: selectedStudentAttendance ?? this.selectedStudentAttendance,
+      parentQuery: parentQuery ?? this.parentQuery,
+      selectedParentBatch: selectedParentBatch ?? this.selectedParentBatch,
+      selectedParentGrade: selectedParentGrade ?? this.selectedParentGrade,
+      selectedParentYear: selectedParentYear ?? this.selectedParentYear,
+      selectedParentChildrenCount: selectedParentChildrenCount ?? this.selectedParentChildrenCount,
+      enabledReports: enabledReports ?? this.enabledReports,
     );
   }
 }
