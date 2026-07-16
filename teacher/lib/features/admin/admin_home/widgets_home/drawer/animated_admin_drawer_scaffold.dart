@@ -22,9 +22,9 @@ class AnimatedAdminDrawerScaffold extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: const Color(0xFFF6F7F9),
-        appBar: appBar,
+        appBar: null,
         body: GetBuilder<HomeController>(
-          id: 'drawer',
+          id: 'drawer_admin',
           builder: (_) {
             final t = c.t.clamp(0.0, 1.0);
             final w = MediaQuery.of(context).size.width;
@@ -64,7 +64,12 @@ class AnimatedAdminDrawerScaffold extends StatelessWidget {
                         ),
                         child: Stack(
                           children: [
-                            body,
+                            Column(
+                              children: [
+                                appBar,
+                                Expanded(child: body),
+                              ],
+                            ),
 
                             // ===== Overlay فوق الهوم فقط لما الدرو مفتوح =====
                             if (t > 0)

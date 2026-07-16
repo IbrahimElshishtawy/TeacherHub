@@ -22,7 +22,7 @@ class AnimatedStudentDrawerScaffold extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: const Color(0xFFF6F7F9),
-        appBar: appBar,
+        appBar: null,
         body: GetBuilder<StudentHomeController>(
           id: 'drawer_student',
           builder: (_) {
@@ -64,7 +64,12 @@ class AnimatedStudentDrawerScaffold extends StatelessWidget {
                         ),
                         child: Stack(
                           children: [
-                            body,
+                            Column(
+                              children: [
+                                appBar,
+                                Expanded(child: body),
+                              ],
+                            ),
 
                             // ===== Overlay فوق الهوم فقط لما الدرو مفتوح =====
                             if (t > 0)
