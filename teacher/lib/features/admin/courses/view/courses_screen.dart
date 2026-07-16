@@ -32,25 +32,44 @@ class CoursesScreen extends GetView<CoursesController> {
                 ),
                 const SizedBox(height: 12),
 
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: const Text(
-                    "الكورسات",
-
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentGeometry.centerRight,
-                  child: Text(
-                    "عرض جميع الكورسات المتاحة وتعديل بياناتها بسهولة",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.blueGrey,
-                      fontWeight: FontWeight.w900,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "الكورسات",
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+                        ),
+                        Text(
+                          "عرض جميع الكورسات المتاحة وتعديل بياناتها بسهولة",
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.blueGrey,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
+                    ElevatedButton.icon(
+                      onPressed: controller.assignVideoListToBatch,
+                      icon: const Icon(Icons.share_outlined, size: 18),
+                      label: const Text(
+                        "إسناد لدفعة",
+                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF6A1BB2),
+                        foregroundColor: Colors.white,
+                        elevation: 0,
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 10),
 

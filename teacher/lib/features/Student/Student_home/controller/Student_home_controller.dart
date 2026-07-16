@@ -69,3 +69,31 @@ class StudentHomeController extends GetxController
     super.onClose();
   }
 }
+
+class GeneralVideoModel {
+  final String id;
+  final String title;
+  final String stage;
+  final String videoUrl;
+  final String part;
+
+  const GeneralVideoModel({
+    required this.id,
+    required this.title,
+    required this.stage,
+    required this.videoUrl,
+    required this.part,
+  });
+}
+
+class GeneralVideosState {
+  static final RxList<GeneralVideoModel> generalVideos = <GeneralVideoModel>[
+    const GeneralVideoModel(
+      id: "GEN-01",
+      title: "محاضرة تعريفية عامة عن المنهج كيمياء",
+      stage: "الصف الثالث الثانوي",
+      part: "الباب الأول (مفاهيم كيميائية)",
+      videoUrl: "https://drive.google.com/file/d/1234567890/view",
+    ),
+  ].obs;
+}

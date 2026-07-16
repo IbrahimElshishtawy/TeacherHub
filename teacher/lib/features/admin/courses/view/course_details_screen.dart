@@ -139,9 +139,31 @@ class CourseDetailsScreen extends GetView<CoursesController> {
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 14),
-              child: const Text(
-                "فيديوهات الكورس",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "فيديوهات الكورس",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () => controller.uploadVideoFromGoogleDrive(course),
+                    icon: const Icon(Icons.add_to_drive_outlined, size: 18),
+                    label: const Text(
+                      "رفع فيديو (جوجل درايف)",
+                      style: TextStyle(fontWeight: FontWeight.w800, fontSize: 12),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF1976D2),
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 10),

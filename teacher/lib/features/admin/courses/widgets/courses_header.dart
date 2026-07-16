@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../controller/courses_controller.dart';
 
 class CoursesHeader extends StatelessWidget {
   const CoursesHeader({super.key});
@@ -22,6 +23,23 @@ class CoursesHeader extends StatelessWidget {
               ),
             ),
             const Spacer(),
+            ElevatedButton.icon(
+              onPressed: () => Get.find<CoursesController>().createNewCourseDialog(),
+              icon: const Icon(Icons.add_rounded, size: 18),
+              label: const Text(
+                "إنشاء كورس جديد",
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF2F6BFF),
+                foregroundColor: Colors.white,
+                elevation: 0,
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
           ],
         ),
         const SizedBox(height: 2),
