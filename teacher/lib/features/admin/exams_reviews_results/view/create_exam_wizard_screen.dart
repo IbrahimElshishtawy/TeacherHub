@@ -12,10 +12,6 @@ class CreateExamWizardScreen extends GetView<ExamsRRController> {
     bool isCompleted = stepIndex < currentStep;
     bool isActive = stepIndex == currentStep;
 
-    Color color = const Color(0xFF94A3B8);
-    if (isActive) color = const Color(0xFF2563EB);
-    if (isCompleted) color = Colors.green;
-
     return Expanded(
       child: Column(
         children: [
@@ -209,7 +205,6 @@ class CreateExamWizardScreen extends GetView<ExamsRRController> {
         ),
         const SizedBox(height: 14),
         ...sources.map((src) {
-          final isSelected = selectedSource.value == src;
           return RadioListTile<String>(
             title: Text(src, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
             value: src,

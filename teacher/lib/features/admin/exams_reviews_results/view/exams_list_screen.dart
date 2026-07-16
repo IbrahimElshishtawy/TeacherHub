@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/exams_rr_controller.dart';
-import '../state/exams_rr_state.dart';
 import 'create_exam_wizard_screen.dart';
 import 'question_bank_screen.dart';
 import 'results_analytics_dashboard_screen.dart';
