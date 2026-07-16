@@ -353,7 +353,6 @@ class UserManagementController extends GetxController {
       batch: batch,
       schoolYear: schoolYear,
       subscriptionStatus: "نشط",
-      publishDate: DateTime.now(), // dummy fallback
     );
 
     // 2. Link or create Parent Account

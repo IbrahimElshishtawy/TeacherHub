@@ -263,7 +263,8 @@ class StudentsScreen extends GetView<UserManagementController> {
                         ],
                       ),
                     ],
-                  );
+                  ),
+                );
               },
             ),
           ),
@@ -353,8 +354,7 @@ class StudentsScreen extends GetView<UserManagementController> {
 
     final recipientOptions = [
       "جميع أولياء الأمور",
-      "دفعة معينة",
-      "صف معين",
+      "مجموعة مخصصة",
       "أولياء أمور الطلاب الغائبين",
       "أولياء أمور الطلاب منخفضي الدرجات",
       "أولياء أمور الاشتراك المنتهي"
@@ -517,7 +517,7 @@ class StudentsScreen extends GetView<UserManagementController> {
         onPressed: () => _openBulkWhatsappSheet(context),
         backgroundColor: const Color(0xFF7C3AED),
         foregroundColor: Colors.white,
-        icon: const Icon(Icons.whatsapp),
+        icon: const Icon(Icons.chat_bubble_outline_rounded),
         label: const Text("إرسال رسالة جماعية", style: TextStyle(fontWeight: FontWeight.bold)),
       ),
       body: SafeArea(

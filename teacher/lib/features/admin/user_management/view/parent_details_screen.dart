@@ -229,7 +229,7 @@ class ParentDetailsScreen extends GetView<UserManagementController> {
                   onPressed: () {
                     controller.sendParentWhatsapp(parent, "متابعة دراسية شاملة.");
                   },
-                  icon: const Icon(Icons.whatsapp),
+                  icon: const Icon(Icons.chat_bubble_outline_rounded),
                   label: const Text("إرسال تقرير المتابعة عبر واتساب", style: TextStyle(fontWeight: FontWeight.bold)),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
