@@ -417,4 +417,75 @@ class UserManagementController extends GetxController {
       colorText: Colors.white,
     );
   }
+
+  // ----------------------------------------------------
+  // Parent Multi-Select Methods
+  // ----------------------------------------------------
+  void toggleParentSelection(String id) {
+    final current = Set<String>.from(state.value.selectedParentIds);
+    if (current.contains(id)) {
+      current.remove(id);
+    } else {
+      current.add(id);
+    }
+    state.value = state.value.copyWith(selectedParentIds: current);
+  }
+
+  void selectAllParents() {
+    final filtered = filteredParents.map((p) => p.id).toSet();
+    state.value = state.value.copyWith(selectedParentIds: filtered);
+  }
+
+  void clearParentSelection() {
+    state.value = state.value.copyWith(selectedParentIds: const {});
+  }
+
+  void sendStudentsDataForSelectedParents() {
+    final selectedIds = state.value.selectedParentIds;
+    if (selectedIds.isEmpty) {
+      Get.snackbar("تنبيه", "يرجى تحديد أولياء الأمور أولاً", backgroundColor: Colors.orange, colorText: Colors.white);
+      return;
+    }
+    
+    final parentsList = state.value.parents.where((p) => selectedIds.contains(p.id)).toList();
+    int childrenCount = 0;
+    for (var p in parentsList) {
+      final childrenList = state.value.students.where((s) => p.childrenIds.contains(s.id)).toList();
+      childrenCount += childrenList.length;
+    }
+
+    Get.dialog(
+      Directionality(
+        textDirection: TextDirection.rtl,
+        child: AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          title: Row(
+            children: const [
+              Icon(Icons.check_circle_rounded, color: Colors.green, size: 28),
+              SizedBox(width: 8),
+              Text("تم إرسال البيانات", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ],
+          ),
+          content: Text(
+            "تم إرسال تقارير بيانات الطلاب لعدد (${parentsList.length}) ولي أمر لـ ($childrenCount) طالب بنجاح عبر الشات بوت.",
+            style: const TextStyle(fontSize: 14),
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                clearParentSelection();
+                Get.back();
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF2563EB),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              ),
+              child: const Text("حسناً"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

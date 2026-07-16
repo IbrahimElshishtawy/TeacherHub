@@ -206,6 +206,9 @@ class UserManagementState {
   // Chatbot Toggles
   final Map<String, bool> enabledReports;
 
+  // Selected Parents for Multi-Select
+  final Set<String> selectedParentIds;
+
   const UserManagementState({
     required this.students,
     required this.parents,
@@ -230,6 +233,7 @@ class UserManagementState {
       "تذكير بالمحاضرات": true,
       "انتهاء الاشتراك": false,
     },
+    this.selectedParentIds = const {},
   });
 
   static const initial = UserManagementState(
@@ -253,6 +257,7 @@ class UserManagementState {
     String? selectedParentYear,
     String? selectedParentChildrenCount,
     Map<String, bool>? enabledReports,
+    Set<String>? selectedParentIds,
   }) {
     return UserManagementState(
       students: students ?? this.students,
@@ -270,6 +275,7 @@ class UserManagementState {
       selectedParentYear: selectedParentYear ?? this.selectedParentYear,
       selectedParentChildrenCount: selectedParentChildrenCount ?? this.selectedParentChildrenCount,
       enabledReports: enabledReports ?? this.enabledReports,
+      selectedParentIds: selectedParentIds ?? this.selectedParentIds,
     );
   }
 }
