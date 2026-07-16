@@ -18,13 +18,6 @@ class QuickActionsSection extends StatelessWidget {
       ),
 
       QuickActionModel(
-        title: 'حسابات المدرسين',
-        icon: Icons.school_outlined,
-        color: const Color(0xFF6A1BB2),
-        routeName: AppRoutes.teachersAccounts,
-      ),
-
-      QuickActionModel(
         title: 'الأمان و التحكم',
         icon: Icons.security_outlined,
         color: const Color(0xFFF59A23),

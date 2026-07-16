@@ -31,16 +31,7 @@ class AdminDrawerState {
     AdminDrawerItemModel(
       title: "المستخدمين",
       icon: Icons.group_outlined,
-      children: [
-        AdminDrawerSubItemModel(
-          title: "الطلاب & اولياء الأمور",
-          route: "/home_admin/user_management",
-        ),
-        AdminDrawerSubItemModel(
-          title: "المدرسين",
-          route: "/home_admin/teachers",
-        ),
-      ],
+      route: "/home_admin/user_management",
     ),
     AdminDrawerItemModel(
       title: "الكورسات",
