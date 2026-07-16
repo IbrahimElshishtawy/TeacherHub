@@ -45,7 +45,7 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SizedBox(height: 60),
+              const SizedBox(height: 160),
 
               const Text(
                 "من سيستخدم التطبيق؟",
@@ -53,7 +53,7 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
                 textAlign: TextAlign.center,
               ),
 
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
 
               const Text(
                 'يساعدنا هذا في تخصيص تجربتك داخل التطبيق',
@@ -61,7 +61,7 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
                 textAlign: TextAlign.center,
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
 
               // خيارات المستخدمين باستخدام الدالة _buildUserTypeOption
               _buildUserTypeOption(
@@ -71,26 +71,13 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
                 0,
                 '/admin_login',
               ),
-              _buildUserTypeOption(
-                'Teacher',
-                'إنشاء وإدارة الدروس',
-                'assets/lottie/Teacher.json',
-                1,
-                '/teacher_login',
-              ),
+
               _buildUserTypeOption(
                 'Student',
                 'التعلّم ومتابعة الدروس',
                 'assets/lottie/Student transparent.json',
                 2,
                 '/student_login',
-              ),
-              _buildUserTypeOption(
-                'Parent',
-                'تابع تعلم أبنك ومتابعة دروسه بسهولة',
-                'assets/lottie/Parenting.json',
-                3,
-                '/parent_login',
               ),
 
               const SizedBox(
