@@ -546,7 +546,8 @@ class CoursesController extends GetxController {
                         ],
                       ),
                     ],
-                  );
+                  ),
+                );
               },
             ),
           ),

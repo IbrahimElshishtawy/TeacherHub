@@ -13,10 +13,14 @@ class CoursesScreen extends GetView<CoursesController> {
   Widget _buildFilterChip(String label, String currentSelected, ValueChanged<String> onSelected) {
     final isSelected = label == currentSelected;
     return ChoiceChip(
-      label: Text(label),
+      label: Text(
+        label,
+        style: TextStyle(
+          color: isSelected ? Colors.white : Colors.black87,
+        ),
+      ),
       selected: isSelected,
       selectedColor: const Color(0xFF2563EB),
-      textColor: isSelected ? Colors.white : Colors.black87,
       onSelected: (val) {
         if (val) onSelected(label);
       },
