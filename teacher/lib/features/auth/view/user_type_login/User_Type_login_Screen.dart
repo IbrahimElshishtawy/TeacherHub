@@ -76,7 +76,7 @@ class _UserTypeScreenState extends State<UserTypeScreen> {
                 'Student',
                 'التعلّم ومتابعة الدروس',
                 'assets/lottie/Student transparent.json',
-                2,
+                1,
                 '/student_login',
               ),
 
