@@ -30,7 +30,7 @@ class AnimatedStudentDrawerScaffold extends StatelessWidget {
             final w = MediaQuery.of(context).size.width;
             final h = MediaQuery.of(context).size.height;
             final homeX = -w * 0.48 * t;
-            final homeY = 30.0 * t;
+            final homeY = 100.0 * t;
             final homeScale = 1.0 - (0.23 * t);
             final radius = 22.0 * t;
             final shadowOpacity = 0.2 * t;

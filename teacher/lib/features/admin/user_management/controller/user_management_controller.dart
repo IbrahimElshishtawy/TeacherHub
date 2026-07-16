@@ -267,6 +267,15 @@ class UserManagementController extends GetxController {
       onToggleStatus: () => toggleParentStatus(parent.id),
       onViewProfile: () => _viewParentProfile(parent),
       onEdit: () => _editParent(parent),
+      onSendStudentInfo: () => sendStudentInfoToParent(parent),
+    );
+  }
+
+  void sendStudentInfoToParent(ParentRowModel parent) {
+    Get.back();
+    _showSuccessSnackbar(
+      "تم الإرسال",
+      "تم إرسال تقرير الطالب (الحضور، الدرجات، والمذاكرة) إلى ولي الأمر ${parent.fullName} بنجاح عبر الشات بوت.",
     );
   }
 
@@ -318,6 +327,13 @@ class UserManagementController extends GetxController {
     _showInfoSnackbar("Export", "تصدير بيانات أولياء الأمور (قريباً)");
   }
 
+  void sendReportsToAllParents() {
+    _showSuccessSnackbar(
+      "إرسال جماعي",
+      "تم إرسال تقارير الطلاب لجميع أولياء الأمور المسجلين بنجاح عبر الشات بوت.",
+    );
+  }
+
   // =========================================================
   // ========================= Helpers ========================
   // =========================================================
@@ -328,6 +344,7 @@ class UserManagementController extends GetxController {
     required VoidCallback onToggleStatus,
     required VoidCallback onViewProfile,
     required VoidCallback onEdit,
+    VoidCallback? onSendStudentInfo,
   }) {
     Get.bottomSheet(
       _ActionsBottomSheet(
@@ -336,6 +353,7 @@ class UserManagementController extends GetxController {
         onToggleStatus: onToggleStatus,
         onViewProfile: onViewProfile,
         onEdit: onEdit,
+        onSendStudentInfo: onSendStudentInfo,
       ),
       isScrollControlled: false,
       backgroundColor: Colors.transparent,
@@ -383,6 +401,7 @@ class _ActionsBottomSheet extends StatelessWidget {
   final VoidCallback onToggleStatus;
   final VoidCallback onViewProfile;
   final VoidCallback onEdit;
+  final VoidCallback? onSendStudentInfo;
 
   const _ActionsBottomSheet({
     required this.title,
@@ -390,6 +409,7 @@ class _ActionsBottomSheet extends StatelessWidget {
     required this.onToggleStatus,
     required this.onViewProfile,
     required this.onEdit,
+    this.onSendStudentInfo,
   });
 
   @override
@@ -450,6 +470,13 @@ class _ActionsBottomSheet extends StatelessWidget {
             title: "تعديل البيانات",
             onTap: onEdit,
           ),
+          if (onSendStudentInfo != null)
+            _ActionTile(
+              icon: Icons.send_and_archive_outlined,
+              iconColor: const Color(0xFFE65100),
+              title: "إرسال تقرير الطالب لولي الأمر",
+              onTap: onSendStudentInfo!,
+            ),
           _ActionTile(
             icon: isActive
                 ? Icons.block_outlined

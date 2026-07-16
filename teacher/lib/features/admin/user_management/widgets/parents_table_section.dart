@@ -71,22 +71,47 @@ class ParentsTableSection extends GetView<UserManagementController> {
 
           const SizedBox(height: 12),
 
-          Row(
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 8,
+            runSpacing: 8,
             children: [
-              ElevatedButton.icon(
-                onPressed: controller.exportParents,
-                icon: const Icon(Icons.file_upload_outlined),
-                label: const Text("Export"),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: primaryBlue,
-                  foregroundColor: Colors.white,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: controller.exportParents,
+                    icon: const Icon(Icons.file_upload_outlined),
+                    label: const Text("Export"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primaryBlue,
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(width: 8),
+                  ElevatedButton.icon(
+                    onPressed: controller.sendReportsToAllParents,
+                    icon: const Icon(Icons.send_rounded),
+                    label: const Text(
+                      "إرسال للكل",
+                      style: TextStyle(fontWeight: FontWeight.w900),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFE65100), // Deep orange
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              const Spacer(),
               TextButton(
                 onPressed: () => Get.snackbar(
                   "عرض الكل",
