@@ -157,7 +157,8 @@ class QuestionBankScreen extends GetView<ExamsRRController> {
                         ],
                       ),
                     ],
-                  );
+                  ),
+                );
               },
             ),
           ),

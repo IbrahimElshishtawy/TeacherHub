@@ -154,7 +154,8 @@ class ReviewsListScreen extends GetView<ExamsRRController> {
                         ],
                       ),
                     ],
-                  );
+                  ),
+                );
               },
             ),
           ),
