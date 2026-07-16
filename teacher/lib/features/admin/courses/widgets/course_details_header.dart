@@ -6,7 +6,7 @@ import 'package:teacher/features/admin/courses/widgets/CourseStatus_Pill.dart';
 import '../state/courses_state.dart';
 
 class CourseDetailsHeader extends StatelessWidget {
-  final CourseModel course;
+  final ContentModel course;
 
   const CourseDetailsHeader({super.key, required this.course});
 

@@ -17,9 +17,8 @@ class CourseDetailsScreen extends GetView<CoursesController> {
 
   @override
   Widget build(BuildContext context) {
-    final CourseModel course = Get.arguments as CourseModel;
+    final ContentModel course = Get.arguments as ContentModel;
 
-    // بيانات فيديوهات (Placeholder زي التصميم)
     final videos = <CourseVideoModel>[
       const CourseVideoModel(
         title: "الذرة وبنيتها",
@@ -62,7 +61,7 @@ class CourseDetailsScreen extends GetView<CoursesController> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const Text(
-                      "التحكم في الكورس",
+                      "التحكم في المحتوى",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
@@ -72,7 +71,7 @@ class CourseDetailsScreen extends GetView<CoursesController> {
                     const SizedBox(height: 12),
 
                     CourseActionsRow(
-                      onEdit: () => controller.editCourse(course),
+                      onEdit: () => controller.openContentForm(existingItem: course),
                       onChangeStatus: () => controller.changeStatus(course),
                       onPreview: () => controller.previewCourse(course),
                     ),
@@ -82,7 +81,7 @@ class CourseDetailsScreen extends GetView<CoursesController> {
                     const SizedBox(height: 14),
 
                     const Text(
-                      "تفاصيل الكورس",
+                      "تفاصيل المحتوى",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
@@ -92,18 +91,18 @@ class CourseDetailsScreen extends GetView<CoursesController> {
 
                     CourseInfoRow(
                       icon: Icons.video_library_outlined,
-                      title: "عدد الفيديوهات",
-                      value: "${course.videosCount} فيديوهات",
+                      title: "نوع المحتوى",
+                      value: course.contentType,
                     ),
                     CourseInfoRow(
                       icon: Icons.timelapse_outlined,
-                      title: "مدة الكورس",
-                      value: "${course.durationHours} ساعات",
+                      title: "المدة / التفاصيل",
+                      value: course.contentType == "كورسات" ? "${course.videosCount} فيديوهات" : course.duration,
                     ),
                     CourseInfoRow(
                       icon: Icons.payments_outlined,
-                      title: "السعر",
-                      value: "${course.price} جنيه",
+                      title: "الحالة",
+                      value: course.isFree ? "مجاني" : "يتطلب اشتراك",
                     ),
                     CourseInfoRow(
                       icon: Icons.calendar_month_outlined,
@@ -127,7 +126,7 @@ class CourseDetailsScreen extends GetView<CoursesController> {
                     ),
                     CourseInfoRow(
                       icon: Icons.qr_code_2_outlined,
-                      title: "كود الكورس",
+                      title: "الكود التعريفي",
                       value: course.id,
                     ),
                   ],
