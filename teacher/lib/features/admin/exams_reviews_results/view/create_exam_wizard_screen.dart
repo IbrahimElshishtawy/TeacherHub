@@ -130,31 +130,78 @@ class CreateExamWizardScreen extends GetView<ExamsRRController> {
           ],
         ),
         const SizedBox(height: 12),
-        Row(
-          children: [
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: "تاريخ البدء المتاح",
-                  hintText: "YYYY/MM/DD",
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        Obx(() {
+          final startDateStr = controller.state.value.tempWizardData["start_date"] ?? "";
+          final endDateStr = controller.state.value.tempWizardData["end_date"] ?? "";
+
+          return Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: TextEditingController(text: startDateStr),
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    labelText: "تاريخ البدء المتاح",
+                    hintText: "اختر تاريخ البدء",
+                    suffixIcon: const Icon(Icons.calendar_month, color: Color(0xFF2563EB)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                  ),
+                  onTap: () async {
+                    DateTime? date = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime(2030),
+                    );
+                    if (date != null) {
+                      if (!context.mounted) return;
+                      TimeOfDay? time = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.now(),
+                      );
+                      if (time != null) {
+                        final formattedTime = "${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}";
+                        controller.updateTempWizardData("start_date", "${date.year}/${date.month.toString().padLeft(2, '0')}/${date.day.toString().padLeft(2, '0')} $formattedTime");
+                      }
+                    }
+                  },
                 ),
-                onChanged: (val) => controller.updateTempWizardData("start_date", val),
               ),
-            ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: "تاريخ الانتهاء المغلق",
-                  hintText: "YYYY/MM/DD",
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              const SizedBox(width: 8),
+              Expanded(
+                child: TextField(
+                  controller: TextEditingController(text: endDateStr),
+                  readOnly: true,
+                  decoration: InputDecoration(
+                    labelText: "تاريخ الانتهاء المغلق",
+                    hintText: "اختر تاريخ الانتهاء",
+                    suffixIcon: const Icon(Icons.calendar_month, color: Color(0xFF2563EB)),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                  ),
+                  onTap: () async {
+                    DateTime? date = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now().add(const Duration(days: 1)),
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime(2030),
+                    );
+                    if (date != null) {
+                      if (!context.mounted) return;
+                      TimeOfDay? time = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.now(),
+                      );
+                      if (time != null) {
+                        final formattedTime = "${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}";
+                        controller.updateTempWizardData("end_date", "${date.year}/${date.month.toString().padLeft(2, '0')}/${date.day.toString().padLeft(2, '0')} $formattedTime");
+                      }
+                    }
+                  },
                 ),
-                onChanged: (val) => controller.updateTempWizardData("end_date", val),
               ),
-            ),
-          ],
-        ),
+            ],
+          );
+        }),
       ],
     );
   }
