@@ -29,13 +29,13 @@ class _AttendanceSettingsSheetState extends State<AttendanceSettingsSheet> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.88,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-      ),
-      child: Column(
+    return Material(
+      color: Colors.white,
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+      clipBehavior: Clip.antiAlias,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.88,
+        child: Column(
         children: [
           const SizedBox(height: 12),
           Container(
@@ -289,6 +289,7 @@ class _AttendanceSettingsSheetState extends State<AttendanceSettingsSheet> {
           ),
         ],
       ),
+     ),
     );
   }
 }
