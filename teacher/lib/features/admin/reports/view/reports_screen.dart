@@ -24,7 +24,7 @@ class ReportsScreen extends GetView<ReportsController> {
 
             return ListView(
               children: [
-                ReportsHeader(onBack: () => Get.back()),
+                ReportsHeader(onBack: () => Get.offAllNamed('/home_admin')),
                 const SizedBox(height: 14),
 
                 ReportsSectionCard(
