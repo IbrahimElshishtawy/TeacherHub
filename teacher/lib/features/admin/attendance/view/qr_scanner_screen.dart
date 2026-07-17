@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_underscores, deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/attendance_controller.dart';
