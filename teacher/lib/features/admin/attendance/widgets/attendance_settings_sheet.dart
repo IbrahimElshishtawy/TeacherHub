@@ -204,7 +204,7 @@ class _AttendanceSettingsSheetState extends State<AttendanceSettingsSheet> {
                       _ToggleTile(
                         label: 'تفعيل الإشعارات',
                         subtitle: 'إرسال إشعارات WhatsApp لأولياء الأمور',
-                        icon: Icons.whatsapp_rounded,
+                        icon: Icons.chat_bubble_rounded,
                         value: _current.enableParentNotifications,
                         color: const Color(0xFF22C55E),
                         onChanged: (v) => setState(() => _current = _current

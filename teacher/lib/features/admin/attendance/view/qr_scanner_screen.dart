@@ -1,4 +1,3 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/attendance_controller.dart';
@@ -21,8 +20,6 @@ class _QrScannerScreenState extends State<QrScannerScreen>
 
   bool _isProcessing = false;
   String _statusMessage = 'قم بتوجيه الكاميرا نحو QR الخاص بالطالب';
-  String _lastResultCode = '';
-  DateTime? _lastScanTime;
 
   @override
   void initState() {

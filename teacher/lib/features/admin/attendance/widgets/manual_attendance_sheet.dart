@@ -20,7 +20,6 @@ class _ManualAttendanceSheetState extends State<ManualAttendanceSheet> {
   String _searchQuery = '';
   MockStudentEntry? _selectedStudent;
   AttendanceStatus _status = AttendanceStatus.present;
-  String _reason = '';
   String _notes = '';
 
   List<MockStudentEntry> get _filteredStudents {
@@ -142,7 +141,7 @@ class _ManualAttendanceSheetState extends State<ManualAttendanceSheet> {
                       child: ListView.separated(
                         shrinkWrap: true,
                         itemCount: _filteredStudents.length,
-                        separatorBuilder: (_, __) =>
+                        separatorBuilder: (_, _s) =>
                             Divider(height: 1, color: Colors.grey.shade100),
                         itemBuilder: (_, i) {
                           final s = _filteredStudents[i];

@@ -224,7 +224,7 @@ class AttendanceController extends GetxController {
         backgroundColor: const Color(0xFF2563EB),
         colorText: Colors.white,
         duration: const Duration(seconds: 3),
-        icon: const Icon(Icons.whatsapp, color: Colors.white),
+        icon: const Icon(Icons.chat_bubble_rounded, color: Colors.white),
       );
     });
   }

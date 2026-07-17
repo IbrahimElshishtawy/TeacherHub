@@ -166,20 +166,21 @@ class _ExportReportSheetState extends State<ExportReportSheet> {
                     ? null
                     : () async {
                         setState(() => _exporting = true);
+                        final messenger = ScaffoldMessenger.of(context);
+                        final navigator = Navigator.of(context);
                         await Future.delayed(const Duration(seconds: 2));
-                        if (mounted) {
-                          Navigator.pop(context);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                  '✅ تم تصدير التقرير ال$_reportType بصيغة $_exportFormat بنجاح'),
-                              backgroundColor: const Color(0xFF22C55E),
-                              behavior: SnackBarBehavior.floating,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12)),
-                            ),
-                          );
-                        }
+                        if (!mounted) return;
+                        navigator.pop();
+                        messenger.showSnackBar(
+                          SnackBar(
+                            content: Text(
+                                '✅ تم تصدير التقرير ال$_reportType بصيغة $_exportFormat بنجاح'),
+                            backgroundColor: const Color(0xFF22C55E),
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12)),
+                          ),
+                        );
                       },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF22C55E),
