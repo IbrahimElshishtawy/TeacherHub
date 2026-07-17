@@ -18,13 +18,13 @@ class StudentDetailsSheet extends StatelessWidget {
     final statusColor = _statusColor(record.status);
     final statusLabel = _statusLabel(record.status);
 
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.85,
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-      ),
-      child: Column(
+    return Material(
+      color: Colors.white,
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
+      clipBehavior: Clip.antiAlias,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.85,
+        child: Column(
         children: [
           // Handle
           const SizedBox(height: 12),
@@ -288,6 +288,7 @@ class StudentDetailsSheet extends StatelessWidget {
           ),
         ],
       ),
+     ),
     );
   }
 
