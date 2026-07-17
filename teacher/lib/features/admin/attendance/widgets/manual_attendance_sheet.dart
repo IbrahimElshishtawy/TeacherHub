@@ -270,7 +270,6 @@ class _ManualAttendanceSheetState extends State<ManualAttendanceSheet> {
                               widget.controller.registerManualAttendance(
                                 student: _selectedStudent!,
                                 status: _status,
-                                reason: _reason.isEmpty ? null : _reason,
                                 notes: _notes.isEmpty ? null : _notes,
                               );
                             },

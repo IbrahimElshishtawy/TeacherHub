@@ -86,7 +86,6 @@ class _QrScannerScreenState extends State<QrScannerScreen>
       setState(() {
         _isProcessing = false;
         _statusMessage = 'قم بتوجيه الكاميرا نحو QR الخاص بالطالب';
-        _lastScanTime = DateTime.now();
       });
     }
   }
