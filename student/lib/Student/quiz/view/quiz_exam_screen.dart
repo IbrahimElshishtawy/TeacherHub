@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/quiz/controller/quiz_guard_controller.dart';
-import 'package:teacher/features/Student/quiz/widgets/quiz_answer_option.dart';
-import 'package:teacher/features/Student/quiz/widgets/quiz_exam_header.dart';
-import 'package:teacher/features/Student/quiz/widgets/quiz_navigation_bar.dart';
-import 'package:teacher/features/Student/quiz/widgets/quiz_progress_strip.dart';
-import 'package:teacher/features/Student/quiz/widgets/quiz_question_card.dart';
+import 'package:student/Student/quiz/controller/quiz_guard_controller.dart';
+import 'package:student/Student/quiz/widgets/quiz_answer_option.dart';
+import 'package:student/Student/quiz/widgets/quiz_exam_header.dart';
+import 'package:student/Student/quiz/widgets/quiz_navigation_bar.dart';
+import 'package:student/Student/quiz/widgets/quiz_progress_strip.dart';
+import 'package:student/Student/quiz/widgets/quiz_question_card.dart';
 
 class QuizExamScreen extends GetView<QuizGuardController> {
   const QuizExamScreen({super.key});

@@ -4,8 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/quiz/state/quiz_guard_state.dart';
-import 'package:teacher/features/Student/quiz/widgets/quiz_security_service.dart';
+import 'package:student/Student/quiz/state/quiz_guard_state.dart';
+import 'package:student/Student/quiz/widgets/quiz_security_service.dart';
 
 class QuizGuardController extends GetxController with WidgetsBindingObserver {
   final QuizGuardState state = QuizGuardState();

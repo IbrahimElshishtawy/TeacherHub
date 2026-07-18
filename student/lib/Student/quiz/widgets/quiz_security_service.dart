@@ -1,7 +1,7 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:teacher/features/Student/quiz/state/quiz_guard_state.dart';
+import 'package:student/Student/quiz/state/quiz_guard_state.dart';
 
 class QuizSecurityService {
   static const MethodChannel _channel = MethodChannel(

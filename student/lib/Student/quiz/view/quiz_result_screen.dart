@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/quiz/controller/quiz_guard_controller.dart';
-import 'package:teacher/features/Student/quiz/widgets/quiz_result_gauge.dart';
+import 'package:student/Student/quiz/controller/quiz_guard_controller.dart';
+import 'package:student/Student/quiz/widgets/quiz_result_gauge.dart';
 
 class QuizResultScreen extends StatelessWidget {
   const QuizResultScreen({super.key});

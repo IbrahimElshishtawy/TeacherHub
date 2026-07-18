@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/settings/widgets/settings_item.dart';
-import 'package:teacher/features/Student/settings/widgets/settings_section.dart';
-import 'package:teacher/features/Student/settings/widgets/settings_switch.dart';
+import 'package:student/Student/settings/widgets/settings_item.dart';
+import 'package:student/Student/settings/widgets/settings_section.dart';
+import 'package:student/Student/settings/widgets/settings_switch.dart';
 import '../controller/settings_controller.dart';
 
 class SettingsScreen extends StatelessWidget {
