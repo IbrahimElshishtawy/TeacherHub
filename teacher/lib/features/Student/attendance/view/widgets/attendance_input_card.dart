@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
 
 import '../../controller/attendance_controller.dart';
 import '../../widgets/manual_input/manual_input_widget.dart';

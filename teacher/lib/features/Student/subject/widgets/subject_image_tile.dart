@@ -29,7 +29,7 @@ class SubjectImageTile extends StatelessWidget {
             child: Center(
               child: Icon(
                 _iconFor(style),
-                color: Colors.white.withOpacity(0.75),
+                color: Colors.white.withValues(alpha: 0.75),
                 size: 30,
               ),
             ),

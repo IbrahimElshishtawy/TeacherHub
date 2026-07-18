@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
 
 import '../../controller/attendance_controller.dart';
 import 'attendance_ui_tokens.dart';
@@ -47,7 +49,7 @@ class AttendanceSubmitButton extends StatelessWidget {
           child: InkWell(
             borderRadius: BorderRadius.circular(18),
             onTap: hasId ? controller.submitAttendance : null,
-            splashColor: AttendanceUiTokens.accent.withOpacity(0.15),
+            splashColor: AttendanceUiTokens.accent.withValues(alpha: 0.15),
             child: Center(
               child: Row(
                 mainAxisSize: MainAxisSize.min,

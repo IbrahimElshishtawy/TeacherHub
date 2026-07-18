@@ -1,4 +1,6 @@
-﻿import 'package:flutter/material.dart';
+﻿// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/material.dart';
 
 import '../../controller/attendance_controller.dart';
 import 'attendance_ui_tokens.dart';
