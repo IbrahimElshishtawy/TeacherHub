@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/profile_student/state/profile_student_state.dart';
+import 'package:student/Student/profile_student/state/profile_student_state.dart';
 
 class ProfileStudentController extends GetxController {
   final state = const ProfileStudentState(
