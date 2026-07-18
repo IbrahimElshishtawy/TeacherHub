@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../state/courses_state.dart';
-import 'package:teacher/features/Student/Student_home/controller/Student_home_controller.dart';
+import 'package:student/Student/Student_home/controller/Student_home_controller.dart';
 
 class CoursesController extends GetxController {
   final Rx<CoursesState> state = CoursesState.initial.obs;
