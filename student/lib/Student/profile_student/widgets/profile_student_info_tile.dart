@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/Student/profile_student/state/profile_student_state.dart';
+import 'package:student/Student/profile_student/state/profile_student_state.dart';
 
 class ProfileStudentInfoTile extends StatelessWidget {
   const ProfileStudentInfoTile({

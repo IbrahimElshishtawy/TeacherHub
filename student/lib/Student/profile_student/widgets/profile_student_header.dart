@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/profile_student/controller/profile_student_controller.dart';
-import 'package:teacher/features/Student/profile_student/state/profile_student_state.dart';
+import 'package:student/Student/profile_student/controller/profile_student_controller.dart';
+import 'package:student/Student/profile_student/state/profile_student_state.dart';
 
 class ProfileStudentHeader extends StatelessWidget {
   const ProfileStudentHeader({super.key});

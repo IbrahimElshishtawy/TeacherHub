@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/profile_student/controller/profile_student_controller.dart';
-import 'package:teacher/features/Student/profile_student/widgets/profile_student_info_tile.dart';
-import 'package:teacher/features/Student/profile_student/widgets/profile_student_section_card.dart';
+import 'package:student/Student/profile_student/controller/profile_student_controller.dart';
+import 'package:student/Student/profile_student/widgets/profile_student_info_tile.dart';
+import 'package:student/Student/profile_student/widgets/profile_student_section_card.dart';
 
 class ProfileStudentStatsSection extends StatelessWidget {
   const ProfileStudentStatsSection({super.key});
