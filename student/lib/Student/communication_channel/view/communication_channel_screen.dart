@@ -23,7 +23,6 @@ class CommunicationChannelScreen
               final selectedId = state.selectedTeacherId;
               final teachers = c.visibleTeachers;
               final selectedTeacher = c.selectedTeacher;
-
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
                 child: Column(
