@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/auth/view/login/widget.login/AppBar_Tap.dart';
-import 'package:teacher/features/auth/view/login/widget.login/Text_body_login.dart';
-import 'package:teacher/features/auth/view/login/widget.login/action_forget_bassword.dart';
-import 'package:teacher/features/auth/view/login/widget.login/header_login_screan.dart';
-import 'package:teacher/features/auth/view/login/widget.login/input_login.dart';
-import 'package:teacher/features/auth/view/login/widget.login/login_btn.dart';
-import 'package:teacher/features/auth/view/login/widget.login/text_register_click.dart';
+import 'package:student/auth/view/login/widget.login/AppBar_Tap.dart';
+import 'package:student/auth/view/login/widget.login/Text_body_login.dart';
+import 'package:student/auth/view/login/widget.login/action_forget_bassword.dart';
+import 'package:student/auth/view/login/widget.login/header_login_screan.dart';
+import 'package:student/auth/view/login/widget.login/input_login.dart';
+import 'package:student/auth/view/login/widget.login/login_btn.dart';
+import 'package:student/auth/view/login/widget.login/text_register_click.dart';
 
 class StudentLoginScreen extends StatelessWidget {
   const StudentLoginScreen({super.key});

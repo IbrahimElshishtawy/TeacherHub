@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/auth/controller/login_controller.dart';
+import 'package:student/auth/controller/login_controller.dart';
 
 class InputLogin extends StatelessWidget {
   final String emailTitle;

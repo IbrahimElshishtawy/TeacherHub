@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/auth/view/login/widget.forget/contact_button.dart';
+import 'package:student/auth/view/login/widget.forget/contact_button.dart';
 
 class BtnContact extends StatelessWidget {
   const BtnContact({super.key});

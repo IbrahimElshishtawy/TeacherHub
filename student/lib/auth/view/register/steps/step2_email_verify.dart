@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:student/features/admin/payments/widgets/card_shell.dart';
-import 'package:student/features/auth/view/register/widgets/Card_Header.dart';
-import 'package:student/features/auth/view/register/widgets/Otp_Boxes.dart';
+import 'package:student/auth/view/register/widgets/Card_Shell.dart';
+import 'package:student/auth/view/register/widgets/Card_Header.dart';
+import 'package:student/auth/view/register/widgets/Otp_Boxes.dart';
 import '../../../controller/student_register_controller.dart';
 import '../widgets/app_text_field.dart';
 
