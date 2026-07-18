@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/Student/Student_home/data/course_card_model.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/course/widget/course_card.dart';
+import 'package:student/Student/Student_home/data/course_card_model.dart';
+import 'package:student/Student/Student_home/widgets_home/course/widget/course_card.dart';
 
 import 'courses_section_header.dart';
 import 'courses_horizontal_list.dart';

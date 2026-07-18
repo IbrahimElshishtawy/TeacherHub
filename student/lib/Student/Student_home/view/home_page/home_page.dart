@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/Student_home/controller/Student_home_controller.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/AppBar_widget/home_app_bar.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/Home_Body_Content.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/drawer/animated_Student_drawer_scaffold.dart';
+import 'package:student/Student/Student_home/controller/Student_home_controller.dart';
+import 'package:student/Student/Student_home/widgets_home/AppBar_widget/home_app_bar.dart';
+import 'package:student/Student/Student_home/widgets_home/Home_Body_Content.dart';
+import 'package:student/Student/Student_home/widgets_home/drawer/animated_Student_drawer_scaffold.dart';
 
 class StudentHomePage extends StatelessWidget {
   const StudentHomePage({super.key});

@@ -3,9 +3,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/AppBar_widget/widget/Menu_Square_Button_appbar.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/AppBar_widget/widget/appbar_greeting_center.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
+import 'package:student/Student/Student_home/widgets_home/AppBar_widget/widget/Menu_Square_Button_appbar.dart';
+import 'package:student/Student/Student_home/widgets_home/AppBar_widget/widget/appbar_greeting_center.dart';
+import 'package:student/Student/Student_home/widgets_home/AppBar_widget/widget/profile_avatar_button.dart';
 
 import '../../controller/Student_home_controller.dart';
 

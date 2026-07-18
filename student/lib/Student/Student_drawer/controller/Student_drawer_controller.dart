@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/Student_drawer/state/Student_drawer_state.dart';
-import 'package:teacher/features/Student/Student_home/controller/Student_home_controller.dart';
+import 'package:student/Student/Student_drawer/state/Student_drawer_state.dart';
+import 'package:student/Student/Student_home/controller/Student_home_controller.dart';
 
 class StudentDrawerController extends GetxController {
   final state = StudentDrawerState().obs;

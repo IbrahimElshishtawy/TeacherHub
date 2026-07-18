@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/subject/state/subject_state.dart';
+import 'package:student/Student/subject/state/subject_state.dart';
 import '../widgets/overview_header.dart';
 import '../widgets/overview_last_video_card.dart';
 import '../widgets/overview_progress_card.dart';

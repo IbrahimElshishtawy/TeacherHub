@@ -5,11 +5,11 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:teacher/features/Student/Student_drawer/controller/Student_drawer_controller.dart';
-import 'package:teacher/features/Student/Student_drawer/widgets_drawer/ExpandableT_ile.dart';
-import 'package:teacher/features/Student/Student_drawer/widgets_drawer/Student_Logout_Tile.dart';
-import 'package:teacher/features/Student/Student_drawer/widgets_drawer/Student_Main_Tile.dart';
-import 'package:teacher/features/Student/Student_drawer/widgets_drawer/Student_drawer_header.dart';
+import 'package:student/Student/Student_drawer/controller/Student_drawer_controller.dart';
+import 'package:student/Student/Student_drawer/widgets_drawer/ExpandableT_ile.dart';
+import 'package:student/Student/Student_drawer/widgets_drawer/Student_Logout_Tile.dart';
+import 'package:student/Student/Student_drawer/widgets_drawer/Student_Main_Tile.dart';
+import 'package:student/Student/Student_drawer/widgets_drawer/Student_drawer_header.dart';
 
 class StudentDrawer extends StatelessWidget {
   const StudentDrawer({super.key});

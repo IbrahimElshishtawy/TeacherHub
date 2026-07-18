@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/overview/widgets/Thumb_video.dart';
+import 'package:student/Student/Student_home/widgets_home/overview/widgets/Thumb_video.dart';
 import 'overview_primary_button.dart';
 
 class OverviewLastVideoCard extends StatelessWidget {

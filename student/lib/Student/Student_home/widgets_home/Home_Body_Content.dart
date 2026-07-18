@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/Student_home/data/course_card_model.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/course/view/available_courses_section.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/overview/view/home_overview_big_card.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/quiz/view/available_tests_screen.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/subject/subject_actions_section.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/warning/view/warning_card.dart';
-import 'package:teacher/features/Student/subject/state/subject_state.dart';
+import 'package:student/Student/Student_home/data/course_card_model.dart';
+import 'package:student/Student/Student_home/widgets_home/course/view/available_courses_section.dart';
+import 'package:student/Student/Student_home/widgets_home/overview/view/home_overview_big_card.dart';
+import 'package:student/Student/Student_home/widgets_home/quiz/view/available_tests_screen.dart';
+import 'package:student/Student/Student_home/widgets_home/subject/subject_actions_section.dart';
+import 'package:student/Student/Student_home/widgets_home/warning/view/warning_card.dart';
+import 'package:student/Student/subject/state/subject_state.dart';
 import '../controller/Student_home_controller.dart';
 
 class StudentHomeBodyContent extends StatelessWidget {

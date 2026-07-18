@@ -3,7 +3,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/Student_home/state/home_state.dart';
+import 'package:student/Student/Student_home/state/home_state.dart';
 
 class StudentHomeController extends GetxController
     with GetSingleTickerProviderStateMixin {

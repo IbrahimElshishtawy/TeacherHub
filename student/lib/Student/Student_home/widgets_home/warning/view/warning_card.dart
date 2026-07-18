@@ -1,8 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/warning/widgets/warning_card_header.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/warning/widgets/warning_list.dart';
+import 'package:student/Student/Student_home/widgets_home/warning/widgets/warning_card_header.dart';
+import 'package:student/Student/Student_home/widgets_home/warning/widgets/warning_list.dart';
 
 class WarningCard extends StatelessWidget {
   const WarningCard({super.key});

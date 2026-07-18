@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:teacher/features/Student/Student_home/data/course_card_model.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/course/widget/course_primary_button.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/course/widget/course_secondary_button.dart';
+import 'package:student/Student/Student_home/data/course_card_model.dart';
+import 'package:student/Student/Student_home/widgets_home/course/widget/course_primary_button.dart';
+import 'package:student/Student/Student_home/widgets_home/course/widget/course_secondary_button.dart';
 
 class CourseCardActions extends StatelessWidget {
   final CourseStatus status;

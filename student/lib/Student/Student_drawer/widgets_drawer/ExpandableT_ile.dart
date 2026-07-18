@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/Student_drawer/state/Student_drawer_state.dart';
+import 'package:student/Student/Student_drawer/state/Student_drawer_state.dart';
 
 class StudentExpandableTile extends StatefulWidget {
   final StudentDrawerItemModel item;

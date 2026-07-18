@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:teacher/features/Student/Student_home/widgets_home/subject/widget/subject_action_button.dart';
-import 'package:teacher/features/Student/subject/state/subject_state.dart';
+import 'package:student/Student/Student_home/widgets_home/subject/widget/subject_action_button.dart';
+import 'package:student/Student/subject/state/subject_state.dart';
 import 'package:teacher/features/admin/admin_home/widgets_home/quick_actions_section/widget/button_Width.dart';
 
 import 'widget/subject_action_model.dart';

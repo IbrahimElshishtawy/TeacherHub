@@ -3,9 +3,9 @@
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/bindings_interface.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:teacher/features/Student/Student_drawer/controller/Student_drawer_controller.dart';
-import 'package:teacher/features/Student/Student_drawer/state/Student_drawer_state.dart';
-import 'package:teacher/features/Student/Student_home/controller/Student_home_controller.dart';
+import 'package:student/Student/Student_drawer/controller/Student_drawer_controller.dart';
+import 'package:student/Student/Student_drawer/state/Student_drawer_state.dart';
+import 'package:student/Student/Student_home/controller/Student_home_controller.dart';
 
 class StudentHomeBinding extends Bindings {
   @override
